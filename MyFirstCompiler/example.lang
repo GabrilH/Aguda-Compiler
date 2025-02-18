@@ -1,0 +1,5 @@
+# Isto é um exemplo da linguagem de programação lang
+
+x = 1
+y = 1 + 8
+print y + x
