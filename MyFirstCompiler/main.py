@@ -1,10 +1,16 @@
-from abc import ABC
+__copyright__ = """
+    Técnicas de Compilação
+    Mestrado em Engenharia Informática
+    Faculdade de Ciências
+    Universidade de Lisboa
+    2024/2025"""
+__author__ = "Alcides Fonseca"
+
+from abc import ABC # abstract base classes
 from dataclasses import dataclass
 import os
 import sys
 from typing import Any
-
-
 
 class Expr(ABC):
     pass
@@ -34,8 +40,6 @@ class Assignment(Statement):
 class Print(Statement):
     value:Expr
 
-
-
 def parse_expr(s:str) -> Expr:
     if "+" in s:
         p1, p2 = s.split("+")
@@ -62,103 +66,87 @@ def parse(contents:str) -> list[Statement]:
             program.append(p)
         elif "=" in line:
             p1, p2 = line.split("=")
-
             assign = Assignment(p1.strip(), parse_expr(p2.strip()))
             program.append(assign)
         else:
             raise Exception(f"Line {line} not correct!")
     return program
 
-def eval(execution_frame:dict[str, int], e:Expr) -> int:
-    if isinstance(e, Literal):
-        return e.value
-    elif isinstance(e, Variable):
-        return execution_frame[e.name]
-    elif isinstance(e, Plus):
-        a = eval(execution_frame, e.left)
-        b = eval(execution_frame, e.right)
-        return a + b
-    else:
-        raise Exception("Not implemented")
+def eval(store:dict[str, int], e:Expr) -> int:
+    match e:
+        case Variable(v):
+            return store[v]
+        case Literal(n):
+            return v
+        case Plus(e1, e2):
+            return eval(store, e1) + eval(store, e2)
 
-def interpreter(stmts:list[Statement]):
-    execution_frame:dict[str, int] = {}
+def interpret(stmts:list[Statement]):
+    store:dict[str, int] = {}
     for stmt in stmts:
-        if isinstance(stmt, Assignment):
-            v = eval(execution_frame, stmt.rhs)
-            execution_frame[stmt.lhs] = v
-        elif isinstance(stmt, Print):
-            v = eval(execution_frame, stmt.value)
-            print(v)
-        else:
-            pass
-    #print("Debug", execution_frame)
+        match stmt:
+            case Assignment(v, e):
+                store[v] = eval(store, e)
+            case Print(e):
+                print(eval(store, e))
 
-def validate_expr(defined_variables:list[str], e:Expr):
-    if isinstance(e, Variable):
-        if e.name not in defined_variables:
-            raise Exception(f"Variable {e.name} not defined. Defined variables are {defined_variables}")
-    elif isinstance(e, Plus):
-        validate_expr(defined_variables, e.left)
-        validate_expr(defined_variables, e.right)
+def validate_expr(defined_variables:set[str], e:Expr):
+    match e:
+        case Variable(v):
+            if v not in defined_variables:
+                raise Exception(f"Variable {v} not defined. Defined variables are {defined_variables}")
+        case Literal(_): True
+        case Plus(e1, e2):
+            validate_expr(defined_variables, e1)
+            validate_expr(defined_variables, e2)
 
 def validate(stmts):
-    defined_variables = []
+    defined_variables = set()
     for stmt in stmts:
-        if isinstance(stmt, Assignment):
-            validate_expr(defined_variables, stmt.rhs)
-            defined_variables.append(stmt.lhs)
-        elif isinstance(stmt, Print):
-            validate_expr(defined_variables, stmt.value)
-        else:
-            pass
-
+        match stmt:
+            case Assignment(v, e):
+                validate_expr(defined_variables, e)
+                defined_variables.add(v)
+            case Print(e):
+                validate_expr(defined_variables, e)
 
 def wrapper(s:str) -> str:
-    return f"""#include <stdio.h>\nint main() {{\n{s}\nreturn 0;}}"""
+    return f"""#include <stdio.h>\nint main() {{\n{s}\n  return 0;\n}}\n"""
 
 def compile_expr(e:Expr) -> str:
-    if isinstance(e, Literal):
-        return str(e.value)
-    elif isinstance(e, Variable):
-        return e.name
-    elif isinstance(e, Plus):
-        if isinstance(e.left, Literal) and isinstance(e.right, Literal):
-            v = e.left.value + e.right.value
-            return f"{v}"
-
-        a = compile_expr(e.left)
-        b = compile_expr(e.right)
-        return f"{a} + {b}"
-    else:
-        raise Exception("Not implemented")
+    match e:
+        case Variable(v):
+            return v
+        case Literal(n):
+            return str(n)
+        case Plus(Literal(n1), Literal(n2)):
+            return f"  {n1 + n2}"
+        case Plus(e1, e2):
+            return f"  {compile_expr(e1)} + {compile_expr(e2)}"
 
 def compile_stmt(stmt: Statement) -> str:
-    if isinstance(stmt, Assignment):
-        v = compile_expr(stmt.rhs)
-        return f"int {stmt.lhs} = {v};"
-    elif isinstance(stmt, Print):
-        v = compile_expr(stmt.value)
-        return f"""printf("%d\\n", {v});"""
-    else:
-        return ""
+    match stmt:
+        case Assignment(v, e):
+            return f"  int {v} = {compile_expr(e)};"
+        case Print(e):
+            return f"""  printf("%d\\n", {compile_expr(e)});"""
 
 def compile_stmts(stmts:list[Statement]) -> str:
     return "\n".join(compile_stmt(s) for s in stmts)
 
-def compiler(stmts:list[Statement]):
+def compile(stmts:list[Statement]):
     compiled_stmts = compile_stmts(stmts)
-    codigo = wrapper(compiled_stmts)
+    code = wrapper(compiled_stmts)
     with open("middle.c", "w") as f:
-        f.write(codigo)
+        f.write(code)
     os.system("gcc -o executable middle.c")
 
 def main(fname:str):
     contents = open(fname).read()
     ast = parse(contents)
     validate(ast)
-    #interpreter(ast)
-    compiler(ast)
+    # interpret(ast)
+    compile(ast)
 
 if __name__ == "__main__":
     filename = sys.argv[1]    
