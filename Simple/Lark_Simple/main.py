@@ -24,6 +24,7 @@ simple_grammar = r"""
 
     ?exp: term
         | "let" NAME "=" exp "in" exp
+        | array_access "=" exp
 
     ?term: factor
         | term "+" factor
@@ -37,6 +38,9 @@ simple_grammar = r"""
         | "-" primary
         | NAME
         | "(" exp ")"
+        | array_access
+
+    ?array_access: "vals" "[" NUMBER "]"
 
     %import common.CNAME -> NAME
     %import common.NUMBER
