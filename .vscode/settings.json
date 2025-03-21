@@ -1,0 +1,7 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "antlr-4.13.2-complete.jar",
+        "week3/myFirstParser/Java/antlr-4.13.2-complete.jar"
+    ]
+}
