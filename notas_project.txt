@@ -1,0 +1,6 @@
+Lexer e Parser - usar Ply no python
+Syntax - usar ABC (abstract base classes) no python, na main faz-se pattern matching tipo haskell
+
+# trabalho 1
+gerar arvore sintatica em memoria
+imprimir a AST
