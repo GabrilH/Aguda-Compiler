@@ -28,6 +28,8 @@ tokens = [
     'LPAREN','RPAREN'
     ] + list(reserved.values())
 
+# Regras para identificar os tokens
+
 t_PLUS    = r'\+'
 t_MINUS   = r'-'
 t_TIMES   = r'\*'
@@ -37,6 +39,8 @@ t_LPAREN  = r'\('
 t_RPAREN  = r'\)'
 t_LET     = r'let'
 t_IN      = r'in'
+
+# Para regras mais complexas
 
 def t_ID(t):
     r'[a-zA-Z_][a-zA-Z_0-9]*'
@@ -54,8 +58,11 @@ def t_NUMBER(t):
 
 t_ignore = " \t"
 
+
+# qualquer comentario de linha (. não reconhece \n)
 t_ignore_COMMENT = r'\-\-.*'
 
+# para controlar as linhas de posição do codigo
 def t_newline(t):
     r'\n+'
     t.lexer.lineno += t.value.count("\n")
@@ -77,6 +84,7 @@ precedence = (
     ('right','IN'),
     )
 
+# tem sempre que começar com p - produção mas pode ser p_exp_let
 def p_expression_let(t):
     'expression : LET ID EQUALS expression IN expression'
 
