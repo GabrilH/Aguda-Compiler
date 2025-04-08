@@ -1,0 +1,44 @@
+Lexer e Parser - usar Ply no python
+Syntax - usar ABC (abstract base classes) no python, na main faz-se pattern matching tipo haskell
+
+# trabalho 2
+gerar arvore sintatica em memoria
+imprimir a AST
+fazer script de python para correr todos os tests
+Regras para transformar na AST:
+    -5 -> 0 - 5
+    if x then x -> if x then x else unit
+
+# trabalho 3
+2 passagens pela AST -> 1º colecionar tipos dos ids sem verificar (com identificadores o stor não sabe, mas funções dá)
+                        apenas meter as promessas das funções (even : Int -> Bool    odd : Int -> Bool)
+                        2º verificar tipos
+    (para reconhecer funções mutuamente recursivas)
+
+- Algorithmic type checking:
+
+    type ctx = Map String Type (basicamente a symbol table)
+
+    typeof :: Ctx -> Exp -> Type
+    typeof ctx (Var x) = ctx!x (get ao ctx o valor da key x)
+    typeof _ (BoolLit _) = Bool
+    typeof _ (NatLit _) = Nat
+    typeof ctx (Succ e)
+        | typeof ctx e == Nat = Nat
+    typeof ctx (Eq e1 e2) =
+        let t1 = typeof ctx e1
+            t2 = typeof ctx e2
+        in  if t1 == t2 && comparable t1 then Bool
+            else error "== with ops of diff types"
+    typeof ctx (Call f es)
+        let (Fun ts u) = ctx!f
+        if map(typeof ctx) es == t3
+        then u else error "tipos dos argumentos"    
+        
+    TYPES = Nat | Unit | Bool | Fun...
+    
+    comparable : Type -> Bool
+    comparable (Fun...) = False
+    comparable _ = True
+
+

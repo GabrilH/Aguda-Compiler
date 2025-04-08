@@ -1,0 +1,453 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> exp
+Rule 1     exp -> LET ID EQUALS exp IN exp
+Rule 2     exp -> exp PLUS exp
+Rule 3     exp -> exp MINUS exp
+Rule 4     exp -> exp TIMES exp
+Rule 5     exp -> exp DIVIDE exp
+Rule 6     exp -> MINUS exp
+Rule 7     exp -> LPAREN exp RPAREN
+Rule 8     exp -> NUMBER
+Rule 9     exp -> ID
+
+Terminals, with rules where they appear
+
+DIVIDE               : 5
+EQUALS               : 1
+ID                   : 1 9
+IN                   : 1
+LET                  : 1
+LPAREN               : 7
+MINUS                : 3 6
+NUMBER               : 8
+PLUS                 : 2
+RPAREN               : 7
+TIMES                : 4
+error                : 
+
+Nonterminals, with rules where they appear
+
+exp                  : 1 1 2 2 3 3 4 4 5 5 6 7 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . exp
+    (1) exp -> . LET ID EQUALS exp IN exp
+    (2) exp -> . exp PLUS exp
+    (3) exp -> . exp MINUS exp
+    (4) exp -> . exp TIMES exp
+    (5) exp -> . exp DIVIDE exp
+    (6) exp -> . MINUS exp
+    (7) exp -> . LPAREN exp RPAREN
+    (8) exp -> . NUMBER
+    (9) exp -> . ID
+
+    LET             shift and go to state 2
+    MINUS           shift and go to state 4
+    LPAREN          shift and go to state 5
+    NUMBER          shift and go to state 6
+    ID              shift and go to state 3
+
+    exp                            shift and go to state 1
+
+state 1
+
+    (0) S' -> exp .
+    (2) exp -> exp . PLUS exp
+    (3) exp -> exp . MINUS exp
+    (4) exp -> exp . TIMES exp
+    (5) exp -> exp . DIVIDE exp
+
+    PLUS            shift and go to state 7
+    MINUS           shift and go to state 8
+    TIMES           shift and go to state 9
+    DIVIDE          shift and go to state 10
+
+
+state 2
+
+    (1) exp -> LET . ID EQUALS exp IN exp
+
+    ID              shift and go to state 11
+
+
+state 3
+
+    (9) exp -> ID .
+
+    PLUS            reduce using rule 9 (exp -> ID .)
+    MINUS           reduce using rule 9 (exp -> ID .)
+    TIMES           reduce using rule 9 (exp -> ID .)
+    DIVIDE          reduce using rule 9 (exp -> ID .)
+    $end            reduce using rule 9 (exp -> ID .)
+    RPAREN          reduce using rule 9 (exp -> ID .)
+    IN              reduce using rule 9 (exp -> ID .)
+
+
+state 4
+
+    (6) exp -> MINUS . exp
+    (1) exp -> . LET ID EQUALS exp IN exp
+    (2) exp -> . exp PLUS exp
+    (3) exp -> . exp MINUS exp
+    (4) exp -> . exp TIMES exp
+    (5) exp -> . exp DIVIDE exp
+    (6) exp -> . MINUS exp
+    (7) exp -> . LPAREN exp RPAREN
+    (8) exp -> . NUMBER
+    (9) exp -> . ID
+
+    LET             shift and go to state 2
+    MINUS           shift and go to state 4
+    LPAREN          shift and go to state 5
+    NUMBER          shift and go to state 6
+    ID              shift and go to state 3
+
+    exp                            shift and go to state 12
+
+state 5
+
+    (7) exp -> LPAREN . exp RPAREN
+    (1) exp -> . LET ID EQUALS exp IN exp
+    (2) exp -> . exp PLUS exp
+    (3) exp -> . exp MINUS exp
+    (4) exp -> . exp TIMES exp
+    (5) exp -> . exp DIVIDE exp
+    (6) exp -> . MINUS exp
+    (7) exp -> . LPAREN exp RPAREN
+    (8) exp -> . NUMBER
+    (9) exp -> . ID
+
+    LET             shift and go to state 2
+    MINUS           shift and go to state 4
+    LPAREN          shift and go to state 5
+    NUMBER          shift and go to state 6
+    ID              shift and go to state 3
+
+    exp                            shift and go to state 13
+
+state 6
+
+    (8) exp -> NUMBER .
+
+    PLUS            reduce using rule 8 (exp -> NUMBER .)
+    MINUS           reduce using rule 8 (exp -> NUMBER .)
+    TIMES           reduce using rule 8 (exp -> NUMBER .)
+    DIVIDE          reduce using rule 8 (exp -> NUMBER .)
+    $end            reduce using rule 8 (exp -> NUMBER .)
+    RPAREN          reduce using rule 8 (exp -> NUMBER .)
+    IN              reduce using rule 8 (exp -> NUMBER .)
+
+
+state 7
+
+    (2) exp -> exp PLUS . exp
+    (1) exp -> . LET ID EQUALS exp IN exp
+    (2) exp -> . exp PLUS exp
+    (3) exp -> . exp MINUS exp
+    (4) exp -> . exp TIMES exp
+    (5) exp -> . exp DIVIDE exp
+    (6) exp -> . MINUS exp
+    (7) exp -> . LPAREN exp RPAREN
+    (8) exp -> . NUMBER
+    (9) exp -> . ID
+
+    LET             shift and go to state 2
+    MINUS           shift and go to state 4
+    LPAREN          shift and go to state 5
+    NUMBER          shift and go to state 6
+    ID              shift and go to state 3
+
+    exp                            shift and go to state 14
+
+state 8
+
+    (3) exp -> exp MINUS . exp
+    (1) exp -> . LET ID EQUALS exp IN exp
+    (2) exp -> . exp PLUS exp
+    (3) exp -> . exp MINUS exp
+    (4) exp -> . exp TIMES exp
+    (5) exp -> . exp DIVIDE exp
+    (6) exp -> . MINUS exp
+    (7) exp -> . LPAREN exp RPAREN
+    (8) exp -> . NUMBER
+    (9) exp -> . ID
+
+    LET             shift and go to state 2
+    MINUS           shift and go to state 4
+    LPAREN          shift and go to state 5
+    NUMBER          shift and go to state 6
+    ID              shift and go to state 3
+
+    exp                            shift and go to state 15
+
+state 9
+
+    (4) exp -> exp TIMES . exp
+    (1) exp -> . LET ID EQUALS exp IN exp
+    (2) exp -> . exp PLUS exp
+    (3) exp -> . exp MINUS exp
+    (4) exp -> . exp TIMES exp
+    (5) exp -> . exp DIVIDE exp
+    (6) exp -> . MINUS exp
+    (7) exp -> . LPAREN exp RPAREN
+    (8) exp -> . NUMBER
+    (9) exp -> . ID
+
+    LET             shift and go to state 2
+    MINUS           shift and go to state 4
+    LPAREN          shift and go to state 5
+    NUMBER          shift and go to state 6
+    ID              shift and go to state 3
+
+    exp                            shift and go to state 16
+
+state 10
+
+    (5) exp -> exp DIVIDE . exp
+    (1) exp -> . LET ID EQUALS exp IN exp
+    (2) exp -> . exp PLUS exp
+    (3) exp -> . exp MINUS exp
+    (4) exp -> . exp TIMES exp
+    (5) exp -> . exp DIVIDE exp
+    (6) exp -> . MINUS exp
+    (7) exp -> . LPAREN exp RPAREN
+    (8) exp -> . NUMBER
+    (9) exp -> . ID
+
+    LET             shift and go to state 2
+    MINUS           shift and go to state 4
+    LPAREN          shift and go to state 5
+    NUMBER          shift and go to state 6
+    ID              shift and go to state 3
+
+    exp                            shift and go to state 17
+
+state 11
+
+    (1) exp -> LET ID . EQUALS exp IN exp
+
+    EQUALS          shift and go to state 18
+
+
+state 12
+
+    (6) exp -> MINUS exp .
+    (2) exp -> exp . PLUS exp
+    (3) exp -> exp . MINUS exp
+    (4) exp -> exp . TIMES exp
+    (5) exp -> exp . DIVIDE exp
+
+    PLUS            reduce using rule 6 (exp -> MINUS exp .)
+    MINUS           reduce using rule 6 (exp -> MINUS exp .)
+    TIMES           reduce using rule 6 (exp -> MINUS exp .)
+    DIVIDE          reduce using rule 6 (exp -> MINUS exp .)
+    $end            reduce using rule 6 (exp -> MINUS exp .)
+    RPAREN          reduce using rule 6 (exp -> MINUS exp .)
+    IN              reduce using rule 6 (exp -> MINUS exp .)
+
+  ! PLUS            [ shift and go to state 7 ]
+  ! MINUS           [ shift and go to state 8 ]
+  ! TIMES           [ shift and go to state 9 ]
+  ! DIVIDE          [ shift and go to state 10 ]
+
+
+state 13
+
+    (7) exp -> LPAREN exp . RPAREN
+    (2) exp -> exp . PLUS exp
+    (3) exp -> exp . MINUS exp
+    (4) exp -> exp . TIMES exp
+    (5) exp -> exp . DIVIDE exp
+
+    RPAREN          shift and go to state 19
+    PLUS            shift and go to state 7
+    MINUS           shift and go to state 8
+    TIMES           shift and go to state 9
+    DIVIDE          shift and go to state 10
+
+
+state 14
+
+    (2) exp -> exp PLUS exp .
+    (2) exp -> exp . PLUS exp
+    (3) exp -> exp . MINUS exp
+    (4) exp -> exp . TIMES exp
+    (5) exp -> exp . DIVIDE exp
+
+    PLUS            reduce using rule 2 (exp -> exp PLUS exp .)
+    MINUS           reduce using rule 2 (exp -> exp PLUS exp .)
+    $end            reduce using rule 2 (exp -> exp PLUS exp .)
+    RPAREN          reduce using rule 2 (exp -> exp PLUS exp .)
+    IN              reduce using rule 2 (exp -> exp PLUS exp .)
+    TIMES           shift and go to state 9
+    DIVIDE          shift and go to state 10
+
+  ! TIMES           [ reduce using rule 2 (exp -> exp PLUS exp .) ]
+  ! DIVIDE          [ reduce using rule 2 (exp -> exp PLUS exp .) ]
+  ! PLUS            [ shift and go to state 7 ]
+  ! MINUS           [ shift and go to state 8 ]
+
+
+state 15
+
+    (3) exp -> exp MINUS exp .
+    (2) exp -> exp . PLUS exp
+    (3) exp -> exp . MINUS exp
+    (4) exp -> exp . TIMES exp
+    (5) exp -> exp . DIVIDE exp
+
+    PLUS            reduce using rule 3 (exp -> exp MINUS exp .)
+    MINUS           reduce using rule 3 (exp -> exp MINUS exp .)
+    $end            reduce using rule 3 (exp -> exp MINUS exp .)
+    RPAREN          reduce using rule 3 (exp -> exp MINUS exp .)
+    IN              reduce using rule 3 (exp -> exp MINUS exp .)
+    TIMES           shift and go to state 9
+    DIVIDE          shift and go to state 10
+
+  ! TIMES           [ reduce using rule 3 (exp -> exp MINUS exp .) ]
+  ! DIVIDE          [ reduce using rule 3 (exp -> exp MINUS exp .) ]
+  ! PLUS            [ shift and go to state 7 ]
+  ! MINUS           [ shift and go to state 8 ]
+
+
+state 16
+
+    (4) exp -> exp TIMES exp .
+    (2) exp -> exp . PLUS exp
+    (3) exp -> exp . MINUS exp
+    (4) exp -> exp . TIMES exp
+    (5) exp -> exp . DIVIDE exp
+
+    PLUS            reduce using rule 4 (exp -> exp TIMES exp .)
+    MINUS           reduce using rule 4 (exp -> exp TIMES exp .)
+    TIMES           reduce using rule 4 (exp -> exp TIMES exp .)
+    DIVIDE          reduce using rule 4 (exp -> exp TIMES exp .)
+    $end            reduce using rule 4 (exp -> exp TIMES exp .)
+    RPAREN          reduce using rule 4 (exp -> exp TIMES exp .)
+    IN              reduce using rule 4 (exp -> exp TIMES exp .)
+
+  ! PLUS            [ shift and go to state 7 ]
+  ! MINUS           [ shift and go to state 8 ]
+  ! TIMES           [ shift and go to state 9 ]
+  ! DIVIDE          [ shift and go to state 10 ]
+
+
+state 17
+
+    (5) exp -> exp DIVIDE exp .
+    (2) exp -> exp . PLUS exp
+    (3) exp -> exp . MINUS exp
+    (4) exp -> exp . TIMES exp
+    (5) exp -> exp . DIVIDE exp
+
+    PLUS            reduce using rule 5 (exp -> exp DIVIDE exp .)
+    MINUS           reduce using rule 5 (exp -> exp DIVIDE exp .)
+    TIMES           reduce using rule 5 (exp -> exp DIVIDE exp .)
+    DIVIDE          reduce using rule 5 (exp -> exp DIVIDE exp .)
+    $end            reduce using rule 5 (exp -> exp DIVIDE exp .)
+    RPAREN          reduce using rule 5 (exp -> exp DIVIDE exp .)
+    IN              reduce using rule 5 (exp -> exp DIVIDE exp .)
+
+  ! PLUS            [ shift and go to state 7 ]
+  ! MINUS           [ shift and go to state 8 ]
+  ! TIMES           [ shift and go to state 9 ]
+  ! DIVIDE          [ shift and go to state 10 ]
+
+
+state 18
+
+    (1) exp -> LET ID EQUALS . exp IN exp
+    (1) exp -> . LET ID EQUALS exp IN exp
+    (2) exp -> . exp PLUS exp
+    (3) exp -> . exp MINUS exp
+    (4) exp -> . exp TIMES exp
+    (5) exp -> . exp DIVIDE exp
+    (6) exp -> . MINUS exp
+    (7) exp -> . LPAREN exp RPAREN
+    (8) exp -> . NUMBER
+    (9) exp -> . ID
+
+    LET             shift and go to state 2
+    MINUS           shift and go to state 4
+    LPAREN          shift and go to state 5
+    NUMBER          shift and go to state 6
+    ID              shift and go to state 3
+
+    exp                            shift and go to state 20
+
+state 19
+
+    (7) exp -> LPAREN exp RPAREN .
+
+    PLUS            reduce using rule 7 (exp -> LPAREN exp RPAREN .)
+    MINUS           reduce using rule 7 (exp -> LPAREN exp RPAREN .)
+    TIMES           reduce using rule 7 (exp -> LPAREN exp RPAREN .)
+    DIVIDE          reduce using rule 7 (exp -> LPAREN exp RPAREN .)
+    $end            reduce using rule 7 (exp -> LPAREN exp RPAREN .)
+    RPAREN          reduce using rule 7 (exp -> LPAREN exp RPAREN .)
+    IN              reduce using rule 7 (exp -> LPAREN exp RPAREN .)
+
+
+state 20
+
+    (1) exp -> LET ID EQUALS exp . IN exp
+    (2) exp -> exp . PLUS exp
+    (3) exp -> exp . MINUS exp
+    (4) exp -> exp . TIMES exp
+    (5) exp -> exp . DIVIDE exp
+
+    IN              shift and go to state 21
+    PLUS            shift and go to state 7
+    MINUS           shift and go to state 8
+    TIMES           shift and go to state 9
+    DIVIDE          shift and go to state 10
+
+
+state 21
+
+    (1) exp -> LET ID EQUALS exp IN . exp
+    (1) exp -> . LET ID EQUALS exp IN exp
+    (2) exp -> . exp PLUS exp
+    (3) exp -> . exp MINUS exp
+    (4) exp -> . exp TIMES exp
+    (5) exp -> . exp DIVIDE exp
+    (6) exp -> . MINUS exp
+    (7) exp -> . LPAREN exp RPAREN
+    (8) exp -> . NUMBER
+    (9) exp -> . ID
+
+    LET             shift and go to state 2
+    MINUS           shift and go to state 4
+    LPAREN          shift and go to state 5
+    NUMBER          shift and go to state 6
+    ID              shift and go to state 3
+
+    exp                            shift and go to state 22
+
+state 22
+
+    (1) exp -> LET ID EQUALS exp IN exp .
+    (2) exp -> exp . PLUS exp
+    (3) exp -> exp . MINUS exp
+    (4) exp -> exp . TIMES exp
+    (5) exp -> exp . DIVIDE exp
+
+    PLUS            reduce using rule 1 (exp -> LET ID EQUALS exp IN exp .)
+    MINUS           reduce using rule 1 (exp -> LET ID EQUALS exp IN exp .)
+    TIMES           reduce using rule 1 (exp -> LET ID EQUALS exp IN exp .)
+    DIVIDE          reduce using rule 1 (exp -> LET ID EQUALS exp IN exp .)
+    $end            reduce using rule 1 (exp -> LET ID EQUALS exp IN exp .)
+    RPAREN          reduce using rule 1 (exp -> LET ID EQUALS exp IN exp .)
+    IN              reduce using rule 1 (exp -> LET ID EQUALS exp IN exp .)
+
+  ! PLUS            [ shift and go to state 7 ]
+  ! MINUS           [ shift and go to state 8 ]
+  ! TIMES           [ shift and go to state 9 ]
+  ! DIVIDE          [ shift and go to state 10 ]
+
