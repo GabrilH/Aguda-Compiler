@@ -59,7 +59,7 @@ def p_parameters_tail(t):
 
 def p_type(t):
     '''type : base_type array_suffix'''
-    t[0] = t[1] + t[2]
+    t[0] = s.Type(t[1], t[2])
 
 def p_base_type(t):
     '''base_type : INT_TYPE
@@ -68,31 +68,29 @@ def p_base_type(t):
                  | STRING_TYPE'''
     t[0] = t[1]
 
-# TODO  t[0] = t[1] + t[2] + t[3] provavelmente nao correto
 def p_array_suffix(t):
     '''array_suffix : LBRACKET RBRACKET array_suffix
                     | empty'''
     if len(t) == 4:
-        t[0] = t[1] + t[2] + t[3]
+        t[0] = 1 + t[3] # count the number of brackets
     else:
-        t[0] = ''
+        t[0] = 0
 
-# TODO meter FunctionType no syntax?
 def p_function_type(t):
     '''function_type : type ARROW type
                      | LPAREN type function_type_tail RPAREN ARROW type'''
     if len(t) == 4:
-        t[0] = s.FunctionType(t[1], t[3])
+        t[0] = s.FunctionType([t[1]], t[3])
     else:
-        t[0] = s.FunctionType(t[2], t[5])
+        t[0] = s.FunctionType(t[2] + t[3], t[5])
 
 def p_function_type_tail(t):
     '''function_type_tail : COMMA type function_type_tail
                           | empty'''
-    if len(t) == 2:
-        t[0] = [t[1]]
+    if len(t) == 4:
+        t[0] = [t[2]] + t[3]
     else:
-        t[0] = t[1] + [t[3]]
+        t[0] = []
 
 def p_exp(t):
     '''exp : variable
@@ -147,14 +145,13 @@ def p_binary_exp(t):
                     | exp OR exp'''
     t[0] = s.BinaryOp(t[1], t[2], t[3])
 
-#TODO mudar UnaryOp para NegationOp ou algo assim
 def p_unary_exp(t):
     '''unary_exp : MINUS exp %prec UMINUS
                  | NOT exp'''
     if t[1] == '-':
         t[0] = s.BinaryOp(s.IntLiteral(0), '-', t[2])
     else:
-        t[0] = s.UnaryOp(t[1], t[2])
+        t[0] = s.LogicalNegation(t[2])
 
 def p_function_call(t):
     '''function_call : ID LPAREN arguments RPAREN'''
@@ -189,14 +186,17 @@ def p_variable_declaration(t):
     '''variable_declaration : LET ID COLON type EQUALS exp'''
     t[0] = s.VariableDeclaration(t[2], t[4], t[6])
 
-# TODO fiquei aqui, necessario left factoring e ver se é None que se usa
 def p_conditional(t):
-    '''conditional : IF expression THEN expression ELSE expression
-                   | IF expression THEN expression'''
-    if len(t) == 6:
-        t[0] = s.Conditional(t[2], t[4], None)
+    '''conditional : IF expression THEN expression conditional_else'''
+    t[0] = s.Conditional(t[2], t[4], t[5])
+
+def p_conditional_else(t):
+    '''conditional_else : ELSE expression
+                        | empty'''
+    if len(t) == 3:
+        t[0] = t[2]
     else:
-        t[0] = s.Conditional(t[2], t[4], t[6])
+        t[0] = s.UnitLiteral()
 
 def p_while_loop(t):
     '''while_loop : WHILE exp DO exp'''
@@ -205,6 +205,10 @@ def p_while_loop(t):
 def p_array_creation(t):
     '''array_creation : NEW type LBRACKET exp BAR exp RBRACKET'''
     t[0] = s.ArrayCreation(t[2], t[4], t[6])
+
+def p_group(t):
+    '''group : LPAREN exp RPAREN'''
+    t[0] = t[2]
 
 def p_empty(t):
     '''empty :'''

@@ -5,15 +5,21 @@ from typing import List, Optional, Union
 class ASTNode(ABC):
     pass
 
-# TODO será util? ou apenas usar str como type?
-class Type(ASTNode):
-    pass
-
 class Declaration(ASTNode):
     pass
 
 class Exp(ASTNode):
     pass
+
+@dataclass
+class Type(ASTNode):
+    base_type: str
+    array_dimensions: int
+
+@dataclass
+class FunctionType(ASTNode):
+    param_types: List[Type]
+    return_type: Type
 
 @dataclass
 class Var(Exp):
@@ -28,7 +34,7 @@ class BoolLiteral(Exp):
     value: bool
 
 @dataclass
-class Unit(Exp):
+class UnitLiteral(Exp):
     pass
 # TODO Serão a mesma coisa?
 @dataclass
@@ -45,10 +51,8 @@ class BinaryOp(Exp):
     operator: str
     right: Exp
 
-# TODO mudar para negation op ou algo assim
 @dataclass
-class UnaryOp(Exp):
-    operator: str
+class LogicalNegation(Exp):
     operand: Exp
 
 @dataclass
@@ -56,7 +60,6 @@ class FunctionCall(Exp):
     name: str
     arguments: List[Exp]
 
-# TODO array tem que ser LHS que por sua vez é um VarExp ou ArrayAccess
 @dataclass
 class ArrayAccess(Exp):
     array: Exp
@@ -67,14 +70,11 @@ class Assignment(ASTNode):
     lhs: Union[Var, ArrayAccess]
     exp: Exp
 
-# TODO provavelmente o else passará a ser Exp pois
-# vai ser traduzido para Unit
-# E condition será BoolExp ?
 @dataclass
 class Conditional(Exp):
     condition: Exp
     then_branch: Exp
-    else_branch: Optional[Exp] = None
+    else_branch: Exp
 
 @dataclass
 class WhileLoop(Exp):
@@ -97,7 +97,7 @@ class VariableDeclaration(Declaration):
 class FunctionDeclaration(Declaration):
     name: str
     parameters: List[str]
-    return_type: Type
+    return_type: FunctionType
     body: Exp
 
 @dataclass
