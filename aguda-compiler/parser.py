@@ -1,105 +1,4 @@
-# Lexer first
-
-# Reserved keywords
-reserved = {
-    'let': 'LET',
-    'if': 'IF',
-    'then': 'THEN',
-    'else': 'ELSE',
-    'while': 'WHILE',
-    'do': 'DO',
-    'set': 'SET',
-    'unit': 'UNIT',
-    'true': 'TRUE',
-    'false': 'FALSE',
-    'null': 'NULL',
-    'new': 'NEW',
-    'length': 'LENGTH',
-    'print': 'PRINT',
-    'Int': 'INT_TYPE',
-    'Bool': 'BOOL_TYPE',
-    'Unit': 'UNIT_TYPE',
-    'String': 'STRING_TYPE'
-}
-
-# Token names
-tokens = [
-    'ID', 'INT_LITERAL', 'STRING_LITERAL',
-    'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'MOD', 'POWER',
-    'EQUALS', 'NOT_EQUALS', 'LESS', 'LESS_EQUAL', 'GREATER', 'GREATER_EQUAL',
-    'AND', 'OR', 'NOT', 'LPAREN', 'RPAREN', 'LBRACKET', 'RBRACKET', 'COMMA', 'SEMICOLON',
-    'BAR'
-] + list(reserved.values())
-
-# Token regular expressions
-t_PLUS = r'\+'
-t_MINUS = r'-'
-t_TIMES = r'\*'
-t_DIVIDE = r'/'
-t_MOD = r'%'
-t_POWER = r'\^'
-t_EQUALS = r'='
-t_NOT_EQUALS = r'!='
-t_LESS = r'<'
-t_LESS_EQUAL = r'<='
-t_GREATER = r'>'
-t_GREATER_EQUAL = r'>='
-t_AND = r'&&'
-t_OR = r'\|\|'
-t_NOT = r'!'
-t_LPAREN = r'\('
-t_RPAREN = r'\)'
-t_LBRACKET = r'\['
-t_RBRACKET = r'\]'
-t_COMMA = r','
-t_SEMICOLON = r';'
-t_BAR = r'\|'
-t_ARROW = r'->'
-
-# Identifier rule
-def t_ID(t):
-    r'[a-zA-Z][a-zA-Z_0-9\']*'
-    t.type = reserved.get(t.value, 'ID')  # Check for reserved words
-    return t
-
-# Integer literal rule
-def t_INT_LITERAL(t):
-    r'-?\d+'
-    try:
-        t.value = int(t.value)
-    except ValueError:
-        print("Integer value too large %d", t.value)
-        t.value = 0
-    return t
-
-# String literal rule
-def t_STRING_LITERAL(t):
-    r'"([^"\\n]*)"'
-    t.value = t.value[1:-1]  # Remove surrounding quotes
-    return t
-
-# Ignored characters (whitespace)
-t_ignore = " \t"
-
-# Comment rule
-t_ignore_COMMENT = r'\-\-.*'
-
-# Newline rule
-def t_newline(t):
-    r'\n+'
-    t.lexer.lineno += t.value.count("\n")
-
-# Error handling rule
-def t_error(t):
-    print(f"Illegal character '{t.value[0]}' at line {t.lexer.lineno}")
-    t.lexer.skip(1)
-
-# Build the lexer
-import ply.lex as lex
-lexer = lex.lex()
-
-# 2. Parser
-
+import ply.yacc as yacc
 import syntax as s
 
 # Define operator precedence and associativity
@@ -123,12 +22,19 @@ def p_program(t):
     t[0] = s.Program(t[1])
 
 def p_declarations(t):
-    '''declarations : declaration
-                    | declaration declarations'''
+    '''declarations : declaration declarations_tail'''
     if len(t) == 2:
         t[0] = [t[1]]
     else:
-        t[0] = t[1] + [t[2]]
+        t[0] = [t[1]] + t[2]
+
+def p_declarations_tail(t):
+    '''declarations_tail : declaration declarations_tail
+                         | empty'''
+    if len(t) == 3:
+        t[0] = [t[1]] + t[2]
+    else:
+        t[0] = []
 
 def p_declaration(t):
     '''declaration : variable_declaration
@@ -140,17 +46,25 @@ def p_variable_declaration(t):
     t[0] = s.VariableDeclaration(t[2], t[4], t[6])
 
 def p_function_declaration(t):
-    '''function_declaration : LET ID LPAREN function_parameters RPAREN COLON function_type EQUALS expression'''
-    t[0] = s.FunctionDeclaration(t[2], t[4], t[7], t[9], t[11])
+    '''function_declaration : LET ID LPAREN parameters RPAREN COLON function_type EQUALS expression'''
+    t[0] = s.FunctionDeclaration(t[2], t[4], t[7], t[9])
 
-def p_function_parameters(t):
-    '''function_parameters : ID
-                           | ID COMMA function_parameters'''
-    if len(t) == 2:
-        t[0] = [t[1]]
+# TODO refazer com o Mistral (é suposto ser só ID COMMA ID COMMA ID ...)
+# perguntar se vale a pena criar Parameters no syntax
+def p_parameters(t):
+    '''parameters : ID COLON type parameters_tail'''
+    t[0] = s.Parameters([(t[1], t[3])] + t[4].params)
+
+def p_parameters_tail(t):
+    '''parameters_tail : COMMA ID COLON type parameters_tail
+                       | empty'''
+    if len(t) == 5:
+        t[0] = s.Parameters([(t[2], t[4])] + t[5].params)
     else:
-        t[0] = t[1] + [t[3]]
+        t[0] = s.Parameters([])
 
+# TODO tem left recursion e o else está estranho
+# vale a pena criar um syntax para Type?
 def p_type(t):
     '''type : INT_TYPE
             | BOOL_TYPE
@@ -160,19 +74,20 @@ def p_type(t):
     if len(t) == 2:
         t[0] = t[1]
     else:
-        t[0] = s.ArrayType(t[1])
+        t[0] = f"{t[1]}[]"
 
+# TODO meter FunctionType no syntax?
 def p_function_type(t):
     '''function_type : type ARROW type
-                     | LPAREN function_type_multi RPAREN ARROW type'''
+                     | LPAREN type function_type_tail RPAREN ARROW type'''
     if len(t) == 4:
         t[0] = s.FunctionType(t[1], t[3])
     else:
         t[0] = s.FunctionType(t[2], t[5])
 
-def p_function_type_multi(t):
-    '''function_type_multi : type
-                           | type COMMA function_type_multi'''
+def p_function_type_tail(t):
+    '''function_type_tail : COMMA type function_type_tail
+                          | empty'''
     if len(t) == 2:
         t[0] = [t[1]]
     else:
@@ -215,7 +130,7 @@ def p_binary_expression(t):
                         | expression OR expression'''
     t[0] = s.BinaryOp(t[1], t[2], t[3])
 
-#TODO -1 deve-se transformar em 0-1, mas e o NOT?
+#TODO -1 deve-se transformar em 0-1, mas e o NOT? maybe criar s.Negatation?
 def p_unary_expression(t):
     '''unary_expression : MINUS expression %prec UMINUS
                         | NOT expression'''
@@ -226,6 +141,7 @@ def p_assignment(t):
                   | array_access EQUALS expression'''
     t[0] = s.Assignment(t[1], t[3])
 
+#TODO fazer left refactor
 def p_conditional(t):
     '''conditional : IF expression THEN expression ELSE expression
                    | IF expression THEN expression'''
@@ -241,21 +157,26 @@ def p_while_loop(t):
     t[0] = s.WhileLoop(t[2], t[4])
 
 def p_function_call(t):
-    '''function_call : ID LPAREN function_call_args RPAREN'''
+    '''function_call : ID LPAREN arguments RPAREN'''
     t[0] = s.FunctionCall(t[1], t[3])
 
-def p_function_call_args(t):
-    '''function_call_args : expression
-                          | expression COMMA function_call_args'''
-    if len(t) == 2:
-        t[0] = [t[1]]
+def p_arguments(t):
+    '''arguments : expression arguments_tail'''
+    t[0] = [t[1]] + t[2]
+
+def p_arguments_tail(t):
+    '''arguments_tail : COMMA expression arguments_tail
+                      | empty'''
+    if len(t) == 4:
+        t[0] = [t[2]] + t[3]
     else:
-        t[0] = t[1] + [t[3]]
+        t[0] = []
 
 def p_array_creation(t):
     '''array_creation : NEW type LBRACKET expression BAR expression RBRACKET'''
     t[0] = s.ArrayCreation(t[2], t[4], t[6])
 
+# TODO o primeiro expression tem que ser um ID ou ArrayAccess
 def p_array_access(t):
     '''array_access : expression LBRACKET expression RBRACKET'''
     t[0] = s.ArrayAccess(t[1], t[3])
@@ -279,12 +200,13 @@ def p_literal(t):
 
 def p_variable(t):
     '''variable : ID'''
-    t[0] = s.Variable(t[1])
+    t[0] = s.Var(t[1])
+
+def p_empty(t):
+    '''empty :'''
+    t[0] = []
 
 def p_error(t):
     print(f"Syntax error at '{t.value}' on line {t.lineno}")
 
-# Build the parser
-import ply.yacc as yacc
 parser = yacc.yacc()
-
