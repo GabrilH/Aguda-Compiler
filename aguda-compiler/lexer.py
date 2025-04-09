@@ -14,8 +14,8 @@ reserved = {
     'false': 'FALSE',
     'null': 'NULL',
     'new': 'NEW',
-    'length': 'LENGTH', #TODO maybe remove
-    'print': 'PRINT', #TODO maybe remove
+    # 'length': 'LENGTH', #TODO maybe remove
+    # 'print': 'PRINT', #TODO maybe remove
     'Int': 'INT_TYPE',
     'Bool': 'BOOL_TYPE',
     'Unit': 'UNIT_TYPE',
@@ -28,7 +28,7 @@ tokens = [
     'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'MOD', 'POWER',
     'EQUALS', 'NOT_EQUALS', 'LESS', 'LESS_EQUAL', 'GREATER', 'GREATER_EQUAL',
     'AND', 'OR', 'NOT', 'LPAREN', 'RPAREN', 'LBRACKET', 'RBRACKET', 'COMMA', 'SEMICOLON',
-    'BAR'
+    'BAR', 'ARROW', 'COLON', 'UNDERSCORE'
 ] + list(reserved.values())
 
 # Token regular expressions
@@ -55,6 +55,8 @@ t_COMMA = r','
 t_SEMICOLON = r';'
 t_BAR = r'\|'
 t_ARROW = r'->'
+t_COLON = r':'
+t_UNDERSCORE = r'_'
 
 # Identifier rule
 def t_ID(t):
@@ -74,7 +76,7 @@ def t_INT_LITERAL(t):
 
 # String literal rule
 def t_STRING_LITERAL(t):
-    r'"([^"\\n]*)"'
+    r'"([^"\\]|\\.)*"'
     t.value = t.value[1:-1]  # Remove surrounding quotes
     return t
 
@@ -95,3 +97,16 @@ def t_error(t):
     t.lexer.skip(1)
 
 lexer = lex.lex()
+
+if __name__ == '__main__':
+    import sys
+
+    # lexer.input(sys.stdin.read())
+    with open("aguda-compiler/diagonal.agu") as f:
+        lexer.input(f.read())
+
+    while True:
+        tok = lexer.token()
+        if not tok: 
+            break      # No more input
+        print(tok)

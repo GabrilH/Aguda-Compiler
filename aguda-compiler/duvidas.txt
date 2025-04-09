@@ -3,3 +3,5 @@ O operator '!' está em ambos operadores binarios e nos unarios.
 Só há duas "subdivisões" de types: os basic+array e o function type, certo? Porque os types dentro do function type apenas podem ser basic+array, e não um function type?
 
 Qual a diferença entre o literal unit e o literal null? quando é que cada um deles é usado? Qual é o type de null?
+
+o underscore pode ser usado como placeholder no nome de funções?

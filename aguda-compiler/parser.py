@@ -1,10 +1,14 @@
 import ply.yacc as yacc
 import syntax as s
+from lexer import tokens
 
 # Define operator precedence and associativity
 # https://introcs.cs.princeton.edu/java/11precedence/
 precedence = (
-    ('rigth', 'SEMICOLON'),
+    ('right', 'SEMICOLON'),
+    ('right', 'ARROW'),
+    ('nonassoc', 'WHILE', 'DO', 'IF'),
+    ('right', 'THEN', 'ELSE'),
     ('left', 'OR'),
     ('left', 'AND'),
     ('left', 'EQUALS', 'NOT_EQUALS'),
@@ -12,7 +16,7 @@ precedence = (
     ('left', 'PLUS', 'MINUS'),
     ('left', 'TIMES', 'DIVIDE', 'MOD'),
     ('right', 'POWER'),
-    ('right', 'UMINUS', 'NOT'),
+    ('right', 'UMINUS', 'NOT')
 )
 
 # Grammar rules
@@ -46,11 +50,11 @@ def p_function_declaration(t):
     t[0] = s.FunctionDeclaration(t[2], t[4], t[7], t[9])
 
 def p_parameters(t):
-    '''parameters : ID parameters_tail'''
+    '''parameters : variable parameters_tail'''
     t[0] = [t[1]] + t[2]
 
 def p_parameters_tail(t):
-    '''parameters_tail : COMMA ID parameters_tail
+    '''parameters_tail : COMMA variable parameters_tail
                        | empty'''
     if len(t) == 4:
         t[0] = [t[2]] + t[3]
@@ -108,7 +112,8 @@ def p_exp(t):
     t[0] = t[1]
 
 def p_variable(t):
-    '''variable : ID'''
+    '''variable : ID
+                | UNDERSCORE'''
     t[0] = s.Var(t[1])
 
 def p_literal(t):
@@ -116,6 +121,7 @@ def p_literal(t):
                | TRUE
                | FALSE
                | NULL
+               | UNIT
                | STRING_LITERAL'''
     if t[1] == 'true':
         t[0] = s.BoolLiteral(True)
@@ -123,6 +129,8 @@ def p_literal(t):
         t[0] = s.BoolLiteral(False)
     elif t[1] == 'null':
         t[0] = s.NullLiteral()
+    elif t[1] == 'unit':
+        t[0] = s.UnitLiteral()
     elif isinstance(t[1], int):
         t[0] = s.IntLiteral(t[1])
     else:
@@ -142,7 +150,8 @@ def p_binary_exp(t):
                     | exp GREATER exp
                     | exp GREATER_EQUAL exp
                     | exp AND exp
-                    | exp OR exp'''
+                    | exp OR exp
+                    | exp SEMICOLON exp'''
     t[0] = s.BinaryOp(t[1], t[2], t[3])
 
 def p_unary_exp(t):
@@ -154,7 +163,7 @@ def p_unary_exp(t):
         t[0] = s.LogicalNegation(t[2])
 
 def p_function_call(t):
-    '''function_call : ID LPAREN arguments RPAREN'''
+    '''function_call : variable LPAREN arguments RPAREN'''
     t[0] = s.FunctionCall(t[1], t[3])
 
 def p_arguments(t):
@@ -170,7 +179,7 @@ def p_arguments_tail(t):
         t[0] = []
 
 def p_assignment(t):
-    '''assignment : lhs EQUALS exp'''
+    '''assignment : SET lhs EQUALS exp'''
     t[0] = s.Assignment(t[1], t[3])
 
 def p_lhs(t):
@@ -183,15 +192,15 @@ def p_array_access(t):
     t[0] = s.ArrayAccess(t[1], t[3])
 
 def p_variable_declaration(t):
-    '''variable_declaration : LET ID COLON type EQUALS exp'''
+    '''variable_declaration : LET variable COLON type EQUALS exp'''
     t[0] = s.VariableDeclaration(t[2], t[4], t[6])
 
 def p_conditional(t):
-    '''conditional : IF expression THEN expression conditional_else'''
+    '''conditional : IF exp THEN exp conditional_else'''
     t[0] = s.Conditional(t[2], t[4], t[5])
 
 def p_conditional_else(t):
-    '''conditional_else : ELSE expression
+    '''conditional_else : ELSE exp
                         | empty'''
     if len(t) == 3:
         t[0] = t[2]
@@ -218,3 +227,15 @@ def p_error(t):
     print(f"Syntax error at '{t.value}' on line {t.lineno}")
 
 parser = yacc.yacc()
+
+if __name__ == '__main__':
+    # import sys
+    # if len(sys.argv) != 2:
+    #     print("Usage: python parser.py <input_file>")
+    #     sys.exit(1)
+
+    with open("aguda-compiler/tests/arrayOfUnit.agu", 'r') as f:
+        data = f.read()
+
+    result = parser.parse(data)
+    print(result)
