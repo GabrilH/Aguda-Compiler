@@ -45,8 +45,7 @@ class BinaryOp(Exp):
     operator: str
     right: Exp
 
-# TODO provavelmente não é necessário
-# porque unary vão ser traduzidos para binary
+# TODO mudar para negation op ou algo assim
 @dataclass
 class UnaryOp(Exp):
     operator: str

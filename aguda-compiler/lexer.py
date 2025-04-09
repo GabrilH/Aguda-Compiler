@@ -14,8 +14,8 @@ reserved = {
     'false': 'FALSE',
     'null': 'NULL',
     'new': 'NEW',
-    'length': 'LENGTH',
-    'print': 'PRINT',
+    'length': 'LENGTH', #TODO maybe remove
+    'print': 'PRINT', #TODO maybe remove
     'Int': 'INT_TYPE',
     'Bool': 'BOOL_TYPE',
     'Unit': 'UNIT_TYPE',
