@@ -5,10 +5,10 @@ from lexer import tokens
 # Define operator precedence and associativity
 # https://introcs.cs.princeton.edu/java/11precedence/
 precedence = (
-    ('right', 'SEMICOLON'),
     ('right', 'ASSIGN'),
+    ('right', 'SEMICOLON'),
     ('right', 'ARROW'),
-    ('nonassoc', 'WHILE', 'IF'),
+    ('nonassoc', 'WHILE', 'IF', 'DO'),
     ('right', 'THEN', 'ELSE'),
     ('left', 'OR'),
     ('left', 'AND'),
@@ -62,12 +62,7 @@ def p_parameters_tail(t):
     else:
         t[0] = []
 
-# There is an intentional shift/reduce conflict involving `array_suffix`
-# when parsing `type` and `array_creation`, both with `LBRACKET` as lookahead.
-# code e.g. new Int[] [n | new Int [n | 0]]
-# 
-# After the reading 'Int', the parser resolves the conflict by shifting
-# to parse `array_suffix` as part of `type`, and then it will parse the rest
+# TODO try to add function_type
 def p_type(t):
     '''
     type : base_type
@@ -92,28 +87,6 @@ def p_array_type(t):
     else:
         # First array level
         t[0] = s.ArrayType(t[1], 1)
-
-# def p_type(t):
-#     '''type : base_type array_suffix'''
-#     if t[2] > 0:
-#         t[0] = s.ArrayType(t[1], t[2])
-#     else:
-#         t[0] = t[1]
-
-# def p_base_type(t):
-#     '''base_type : INT_TYPE
-#                  | BOOL_TYPE
-#                  | UNIT_TYPE
-#                  | STRING_TYPE'''
-#     t[0] = s.BaseType(t[1])
-
-# def p_array_suffix(t):
-#     '''array_suffix : LBRACKET RBRACKET array_suffix
-#                     | empty'''
-#     if len(t) == 4:
-#         t[0] = 1 + t[3] # count the number of brackets
-#     else:
-#         t[0] = 0
 
 def p_function_type(t):
     '''function_type : type ARROW type
@@ -232,42 +205,20 @@ def p_variable_declaration(t):
     t[0] = s.VariableDeclaration(t[2], t[4], t[6])
 
 def p_if_then_else(t):
-    '''if_then_else : IF exp THEN exp ELSE exp %prec IF'''
+    '''if_then_else : IF exp THEN exp ELSE exp'''
     t[0] = s.Conditional(t[2], t[4], t[6])
 
 def p_if_then(t):
-    '''if_then : IF exp THEN exp %prec IF'''
+    '''if_then : IF exp THEN exp'''
     t[0] = s.Conditional(t[2], t[4], s.UnitLiteral())
 
-# def p_conditional(t):
-#     '''conditional : IF exp THEN exp conditional_else %prec IF'''
-#     t[0] = s.Conditional(t[2], t[4], t[5])
-
-# def p_conditional_else(t):
-#     '''conditional_else : ELSE exp
-#                         | empty'''
-#     if len(t) == 3:
-#         t[0] = t[2]
-#     else:
-#         t[0] = s.UnitLiteral()
-
 def p_while_loop(t):
-    '''while_loop : WHILE exp DO exp %prec WHILE'''
+    '''while_loop : WHILE exp DO exp'''
     t[0] = s.WhileLoop(t[2], t[4])
 
-# There is an intentional shift/reduce conflict involving `array_suffix`
-# when parsing `type` and `array_creation`, both with `LBRACKET` as lookahead.
-# code e.g. new Int[] [n | new Int [n | 0]]
-# 
-# After the reading 'Int', the parser resolves the conflict by shifting
-# to parse `array_suffix` as part of `type`, and then it will parse the rest
 def p_array_creation(t):
     '''array_creation : NEW type LBRACKET exp BAR exp RBRACKET'''
     t[0] = s.ArrayCreation(t[2], t[4], t[6])
-
-# def p_array_initializer(t):
-#     '''array_initializer : LBRACKET array_initializer_tail RBRACKET'''
-#     t[0] = t[2]
 
 def p_group(t):
     '''group : LPAREN exp RPAREN'''
@@ -294,7 +245,7 @@ def p_error(p):
 parser = yacc.yacc()
 
 if __name__ == '__main__':
-    with open("TComp_Repo/aguda-compiler/tests/diagonal.agu", 'r') as f:
+    with open("TComp_Repo/aguda-compiler/tests/powers.agu", 'r') as f:
         data = f.read()
 
     result = parser.parse(data)

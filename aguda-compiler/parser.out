@@ -685,7 +685,6 @@ state 34
 
     LET             reduce using rule 68 (variable_declaration -> LET variable COLON type ASSIGN exp .)
     $end            reduce using rule 68 (variable_declaration -> LET variable COLON type ASSIGN exp .)
-    SEMICOLON       reduce using rule 68 (variable_declaration -> LET variable COLON type ASSIGN exp .)
     RPAREN          reduce using rule 68 (variable_declaration -> LET variable COLON type ASSIGN exp .)
     THEN            reduce using rule 68 (variable_declaration -> LET variable COLON type ASSIGN exp .)
     DO              reduce using rule 68 (variable_declaration -> LET variable COLON type ASSIGN exp .)
@@ -707,6 +706,7 @@ state 34
     GREATER_EQUAL   shift and go to state 76
     AND             shift and go to state 77
     OR              shift and go to state 78
+    SEMICOLON       shift and go to state 79
 
   ! PLUS            [ reduce using rule 68 (variable_declaration -> LET variable COLON type ASSIGN exp .) ]
   ! MINUS           [ reduce using rule 68 (variable_declaration -> LET variable COLON type ASSIGN exp .) ]
@@ -722,7 +722,7 @@ state 34
   ! GREATER_EQUAL   [ reduce using rule 68 (variable_declaration -> LET variable COLON type ASSIGN exp .) ]
   ! AND             [ reduce using rule 68 (variable_declaration -> LET variable COLON type ASSIGN exp .) ]
   ! OR              [ reduce using rule 68 (variable_declaration -> LET variable COLON type ASSIGN exp .) ]
-  ! SEMICOLON       [ shift and go to state 79 ]
+  ! SEMICOLON       [ reduce using rule 68 (variable_declaration -> LET variable COLON type ASSIGN exp .) ]
 
 
 state 35
@@ -5212,7 +5212,6 @@ state 124
     (56) binary_exp -> exp . OR exp
     (57) binary_exp -> exp . SEMICOLON exp
 
-    SEMICOLON       reduce using rule 64 (assignment -> SET lhs ASSIGN exp .)
     LET             reduce using rule 64 (assignment -> SET lhs ASSIGN exp .)
     $end            reduce using rule 64 (assignment -> SET lhs ASSIGN exp .)
     RPAREN          reduce using rule 64 (assignment -> SET lhs ASSIGN exp .)
@@ -5236,6 +5235,7 @@ state 124
     GREATER_EQUAL   shift and go to state 76
     AND             shift and go to state 77
     OR              shift and go to state 78
+    SEMICOLON       shift and go to state 79
 
   ! PLUS            [ reduce using rule 64 (assignment -> SET lhs ASSIGN exp .) ]
   ! MINUS           [ reduce using rule 64 (assignment -> SET lhs ASSIGN exp .) ]
@@ -5251,7 +5251,7 @@ state 124
   ! GREATER_EQUAL   [ reduce using rule 64 (assignment -> SET lhs ASSIGN exp .) ]
   ! AND             [ reduce using rule 64 (assignment -> SET lhs ASSIGN exp .) ]
   ! OR              [ reduce using rule 64 (assignment -> SET lhs ASSIGN exp .) ]
-  ! SEMICOLON       [ shift and go to state 79 ]
+  ! SEMICOLON       [ reduce using rule 64 (assignment -> SET lhs ASSIGN exp .) ]
 
 
 state 125
