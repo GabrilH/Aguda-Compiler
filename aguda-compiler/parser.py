@@ -7,7 +7,7 @@ from lexer import tokens
 precedence = (
     ('right', 'SEMICOLON'),
     ('right', 'ARROW'),
-    ('nonassoc', 'WHILE', 'DO', 'IF'),
+    ('nonassoc', 'WHILE', 'IF'),
     ('right', 'THEN', 'ELSE'),
     ('left', 'OR'),
     ('left', 'AND'),
@@ -61,16 +61,25 @@ def p_parameters_tail(t):
     else:
         t[0] = []
 
+# There is an intentional shift/reduce conflict involving `array_suffix`
+# when parsing `type` and `array_creation`, both with `LBRACKET` as lookahead.
+# code e.g. new Int[] [n | new Int [n | 0]]
+# 
+# After the reading 'Int', the parser resolves the conflict by shifting
+# to parse `array_suffix` as part of `type`, and then it will parse the rest
 def p_type(t):
     '''type : base_type array_suffix'''
-    t[0] = s.Type(t[1], t[2])
+    if t[2] > 0:
+        t[0] = s.ArrayType(t[1], t[2])
+    else:
+        t[0] = t[1]
 
 def p_base_type(t):
     '''base_type : INT_TYPE
                  | BOOL_TYPE
                  | UNIT_TYPE
                  | STRING_TYPE'''
-    t[0] = t[1]
+    t[0] = s.BaseType(t[1])
 
 def p_array_suffix(t):
     '''array_suffix : LBRACKET RBRACKET array_suffix
@@ -104,7 +113,8 @@ def p_exp(t):
             | function_call
             | assignment
             | variable_declaration
-            | conditional
+            | if_then_else
+            | if_then
             | while_loop
             | array_creation
             | array_access
@@ -180,7 +190,7 @@ def p_arguments_tail(t):
 
 def p_assignment(t):
     '''assignment : SET lhs EQUALS exp'''
-    t[0] = s.Assignment(t[1], t[3])
+    t[0] = s.Assignment(t[2], t[4])
 
 def p_lhs(t):
     '''lhs : variable
@@ -195,22 +205,36 @@ def p_variable_declaration(t):
     '''variable_declaration : LET variable COLON type EQUALS exp'''
     t[0] = s.VariableDeclaration(t[2], t[4], t[6])
 
-def p_conditional(t):
-    '''conditional : IF exp THEN exp conditional_else'''
-    t[0] = s.Conditional(t[2], t[4], t[5])
+def p_if_then_else(t):
+    '''if_then_else : IF exp THEN exp ELSE exp %prec IF'''
+    t[0] = s.Conditional(t[2], t[4], t[6])
 
-def p_conditional_else(t):
-    '''conditional_else : ELSE exp
-                        | empty'''
-    if len(t) == 3:
-        t[0] = t[2]
-    else:
-        t[0] = s.UnitLiteral()
+def p_if_then(t):
+    '''if_then : IF exp THEN exp %prec IF'''
+    t[0] = s.Conditional(t[2], t[4], s.UnitLiteral())
+
+# def p_conditional(t):
+#     '''conditional : IF exp THEN exp conditional_else %prec IF'''
+#     t[0] = s.Conditional(t[2], t[4], t[5])
+
+# def p_conditional_else(t):
+#     '''conditional_else : ELSE exp
+#                         | empty'''
+#     if len(t) == 3:
+#         t[0] = t[2]
+#     else:
+#         t[0] = s.UnitLiteral()
 
 def p_while_loop(t):
-    '''while_loop : WHILE exp DO exp'''
+    '''while_loop : WHILE exp DO exp %prec WHILE'''
     t[0] = s.WhileLoop(t[2], t[4])
 
+# There is an intentional shift/reduce conflict involving `array_suffix`
+# when parsing `type` and `array_creation`, both with `LBRACKET` as lookahead.
+# code e.g. new Int[] [n | new Int [n | 0]]
+# 
+# After the reading 'Int', the parser resolves the conflict by shifting
+# to parse `array_suffix` as part of `type`, and then it will parse the rest
 def p_array_creation(t):
     '''array_creation : NEW type LBRACKET exp BAR exp RBRACKET'''
     t[0] = s.ArrayCreation(t[2], t[4], t[6])
@@ -234,7 +258,7 @@ if __name__ == '__main__':
     #     print("Usage: python parser.py <input_file>")
     #     sys.exit(1)
 
-    with open("aguda-compiler/tests/arrayOfUnit.agu", 'r') as f:
+    with open("TComp_Repo/aguda-compiler/tests/diagonal.agu", 'r') as f:
         data = f.read()
 
     result = parser.parse(data)

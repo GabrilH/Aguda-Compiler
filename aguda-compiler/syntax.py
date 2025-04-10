@@ -11,10 +11,22 @@ class Declaration(ASTNode):
 class Exp(ASTNode):
     pass
 
-@dataclass
 class Type(ASTNode):
-    base_type: str
-    array_dimensions: int
+    pass
+
+@dataclass
+class BaseType(Type):
+    name: str
+
+@dataclass
+class ArrayType(Type):
+    base_type: Type
+    dimensions: int
+
+@dataclass
+class FunctionType(Type):
+    param_types: List[Type]
+    return_type: Type
 
 @dataclass
 class FunctionType(ASTNode):
