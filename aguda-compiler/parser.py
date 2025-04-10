@@ -5,8 +5,7 @@ from lexer import tokens
 # Define operator precedence and associativity
 # https://introcs.cs.princeton.edu/java/11precedence/
 precedence = (
-    ('right', 'ASSIGN'),
-    ('right', 'SEMICOLON'),
+    ('right', 'ASSIGN', 'SEMICOLON'),
     ('right', 'ARROW'),
     ('nonassoc', 'WHILE', 'IF', 'DO'),
     ('right', 'THEN', 'ELSE'),
@@ -245,7 +244,7 @@ def p_error(p):
 parser = yacc.yacc()
 
 if __name__ == '__main__':
-    with open("TComp_Repo/aguda-compiler/tests/powers.agu", 'r') as f:
+    with open("TComp_Repo/aguda-compiler/tests/lookuprec.agu", 'r') as f:
         data = f.read()
 
     result = parser.parse(data)
