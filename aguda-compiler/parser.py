@@ -70,17 +70,28 @@ def p_parameters_tail(t):
 # to parse `array_suffix` as part of `type`, and then it will parse the rest
 def p_type(t):
     '''
-    type : INT_TYPE
-         | STRING_TYPE
-         | UNIT_TYPE
-         | BOOL_TYPE
+    type : base_type
          | array_type
     '''
     t[0] = t[1]
 
+def p_base_type(t):
+    '''
+    base_type : INT_TYPE
+              | STRING_TYPE
+              | UNIT_TYPE
+              | BOOL_TYPE
+    '''
+    t[0] = s.BaseType(t[1])
+
 def p_array_type(t):
-    'array_type : type LBRACKET RBRACKET '
-    t[0] = s.ArrayType(t[1],0)
+    'array_type : type LBRACKET RBRACKET'
+    if isinstance(t[1], s.ArrayType):
+        # Nested ArrayType: increase dimensions
+        t[0] = s.ArrayType(t[1].base_type, t[1].dimensions + 1)
+    else:
+        # First array level
+        t[0] = s.ArrayType(t[1], 1)
 
 # def p_type(t):
 #     '''type : base_type array_suffix'''
@@ -283,7 +294,7 @@ def p_error(p):
 parser = yacc.yacc()
 
 if __name__ == '__main__':
-    with open("aguda-compiler/tests/powers.agu", 'r') as f:
+    with open("TComp_Repo/aguda-compiler/tests/diagonal.agu", 'r') as f:
         data = f.read()
 
     result = parser.parse(data)
