@@ -6,6 +6,7 @@ from lexer import tokens
 # https://introcs.cs.princeton.edu/java/11precedence/
 precedence = (
     ('right', 'SEMICOLON'),
+    ('right', 'ASSIGN'),
     ('right', 'ARROW'),
     ('nonassoc', 'WHILE', 'IF'),
     ('right', 'THEN', 'ELSE'),
@@ -46,7 +47,7 @@ def p_declaration(t):
     t[0] = t[1]
 
 def p_function_declaration(t):
-    '''function_declaration : LET ID LPAREN parameters RPAREN COLON function_type EQUALS exp'''
+    '''function_declaration : LET ID LPAREN parameters RPAREN COLON function_type ASSIGN exp'''
     t[0] = s.FunctionDeclaration(t[2], t[4], t[7], t[9])
 
 def p_parameters(t):
@@ -68,26 +69,40 @@ def p_parameters_tail(t):
 # After the reading 'Int', the parser resolves the conflict by shifting
 # to parse `array_suffix` as part of `type`, and then it will parse the rest
 def p_type(t):
-    '''type : base_type array_suffix'''
-    if t[2] > 0:
-        t[0] = s.ArrayType(t[1], t[2])
-    else:
-        t[0] = t[1]
+    '''
+    type : INT_TYPE
+         | STRING_TYPE
+         | UNIT_TYPE
+         | BOOL_TYPE
+         | array_type
+    '''
+    t[0] = t[1]
 
-def p_base_type(t):
-    '''base_type : INT_TYPE
-                 | BOOL_TYPE
-                 | UNIT_TYPE
-                 | STRING_TYPE'''
-    t[0] = s.BaseType(t[1])
+def p_array_type(t):
+    'array_type : type LBRACKET RBRACKET '
+    t[0] = s.ArrayType(t[1],0)
 
-def p_array_suffix(t):
-    '''array_suffix : LBRACKET RBRACKET array_suffix
-                    | empty'''
-    if len(t) == 4:
-        t[0] = 1 + t[3] # count the number of brackets
-    else:
-        t[0] = 0
+# def p_type(t):
+#     '''type : base_type array_suffix'''
+#     if t[2] > 0:
+#         t[0] = s.ArrayType(t[1], t[2])
+#     else:
+#         t[0] = t[1]
+
+# def p_base_type(t):
+#     '''base_type : INT_TYPE
+#                  | BOOL_TYPE
+#                  | UNIT_TYPE
+#                  | STRING_TYPE'''
+#     t[0] = s.BaseType(t[1])
+
+# def p_array_suffix(t):
+#     '''array_suffix : LBRACKET RBRACKET array_suffix
+#                     | empty'''
+#     if len(t) == 4:
+#         t[0] = 1 + t[3] # count the number of brackets
+#     else:
+#         t[0] = 0
 
 def p_function_type(t):
     '''function_type : type ARROW type
@@ -95,7 +110,7 @@ def p_function_type(t):
     if len(t) == 4:
         t[0] = s.FunctionType([t[1]], t[3])
     else:
-        t[0] = s.FunctionType(t[2] + t[3], t[5])
+        t[0] = s.FunctionType([t[2]] + t[3], t[5])
 
 def p_function_type_tail(t):
     '''function_type_tail : COMMA type function_type_tail
@@ -189,7 +204,7 @@ def p_arguments_tail(t):
         t[0] = []
 
 def p_assignment(t):
-    '''assignment : SET lhs EQUALS exp'''
+    '''assignment : SET lhs ASSIGN exp'''
     t[0] = s.Assignment(t[2], t[4])
 
 def p_lhs(t):
@@ -202,7 +217,7 @@ def p_array_access(t):
     t[0] = s.ArrayAccess(t[1], t[3])
 
 def p_variable_declaration(t):
-    '''variable_declaration : LET variable COLON type EQUALS exp'''
+    '''variable_declaration : LET variable COLON type ASSIGN exp'''
     t[0] = s.VariableDeclaration(t[2], t[4], t[6])
 
 def p_if_then_else(t):
@@ -239,6 +254,10 @@ def p_array_creation(t):
     '''array_creation : NEW type LBRACKET exp BAR exp RBRACKET'''
     t[0] = s.ArrayCreation(t[2], t[4], t[6])
 
+# def p_array_initializer(t):
+#     '''array_initializer : LBRACKET array_initializer_tail RBRACKET'''
+#     t[0] = t[2]
+
 def p_group(t):
     '''group : LPAREN exp RPAREN'''
     t[0] = t[2]
@@ -247,18 +266,24 @@ def p_empty(t):
     '''empty :'''
     t[0] = []
 
-def p_error(t):
-    print(f"Syntax error at '{t.value}' on line {t.lineno}")
+def find_column(input, token):
+    last_cr = input.rfind('\n', 0, token.lexpos)
+    if last_cr < 0:
+        last_cr = -1
+    column = (token.lexpos - last_cr)
+    return column
+
+def p_error(p):
+    if p:
+        col = find_column(p.lexer.lexdata, p)
+        print(f"Syntactic error: at line {p.lineno}, column {col}: Unexpected token '{p.value}'")
+    else:
+        print("Syntactic error: at EOF")
 
 parser = yacc.yacc()
 
 if __name__ == '__main__':
-    # import sys
-    # if len(sys.argv) != 2:
-    #     print("Usage: python parser.py <input_file>")
-    #     sys.exit(1)
-
-    with open("TComp_Repo/aguda-compiler/tests/diagonal.agu", 'r') as f:
+    with open("aguda-compiler/tests/powers.agu", 'r') as f:
         data = f.read()
 
     result = parser.parse(data)
