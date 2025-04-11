@@ -1,0 +1,3 @@
+tentar adicionar function type aos types
+
+verificar testes invalidos

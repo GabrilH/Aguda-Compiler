@@ -130,7 +130,7 @@ class Assignment(ASTNode):
     exp: Exp
 
     def __str__(self):
-        return f'{self.lhs} = {self.exp}'
+        return f'set {self.lhs} = {self.exp}'
 
 
 @dataclass

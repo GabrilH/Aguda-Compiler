@@ -80,7 +80,9 @@ test\valid\56332_if_then_else_printing_string\if_then_else_printing_string.agu [
 test\valid\56332_min_elem_of_array\min_elem_of_array.agu [✔]
 test\valid\56332_precedence_calc\precedence_calc.agu [✔]
 test\valid\56332_simple_sum\simple_sum.agu [✔]
-test\valid\56334_bubbleSort\bubbleSort.agu [✔]
+test\valid\56334_bubbleSort\bubbleSort.agu [FAIL]
+Syntactic error: at line 3, column 26: Unexpected token '='
+
 test\valid\56334_countOccurrences\countOccurrences.agu [✔]
 test\valid\56334_factorial\factorial.agu [✔]
 test\valid\56334_fibonacci\fibonacci.agu [✔]

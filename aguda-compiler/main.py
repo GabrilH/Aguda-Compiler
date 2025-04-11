@@ -4,6 +4,7 @@ import io
 import contextlib
 from src.lexer import lexer
 from src.parser import parser, reset_parser
+import sys
 
 TEST_DIR = 'test'
 VALID_DIR = os.path.join(TEST_DIR, 'valid')
@@ -69,16 +70,30 @@ def run_tests(test_dir, valid):
 
     return logs
 
+def run_single_test(filepath):
+    with open(filepath, 'r') as f:
+        code = f.read()
+
+    ast = parser.parse(code)
+    print(ast)
+
 def main():
-    invalid_sem_tests_logs = run_tests(INVALID_SEM_DIR, valid=False)
-    write_logs(invalid_sem_tests_logs, "invalid-semantic-tests")
+    if len(sys.argv) > 1:
+        filepath = sys.argv[1]
+        if not os.path.isfile(filepath):
+            print(f"File '{filepath}' does not exist.")
+            return
+        run_single_test(filepath)
+    else:
+        invalid_sem_tests_logs = run_tests(INVALID_SEM_DIR, valid=False)
+        write_logs(invalid_sem_tests_logs, "invalid-semantic-tests")
 
-    invalid_syn_tests_logs = run_tests(INVALID_SYN_DIR, valid=False)
-    write_logs(invalid_syn_tests_logs, "invalid-syntax-tests")
+        invalid_syn_tests_logs = run_tests(INVALID_SYN_DIR, valid=False)
+        write_logs(invalid_syn_tests_logs, "invalid-syntax-tests")
 
-    valid_tests_logs = run_tests(VALID_DIR, valid=True)
-    write_logs(valid_tests_logs, "valid-tests")
-    print("Testing completed. Logs generated.")
+        valid_tests_logs = run_tests(VALID_DIR, valid=True)
+        write_logs(valid_tests_logs, "valid-tests")
+        print("Testing completed. Logs generated.")
 
 if __name__ == '__main__':
     main()
