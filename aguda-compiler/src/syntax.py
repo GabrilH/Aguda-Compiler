@@ -162,7 +162,7 @@ class ArrayCreation(Exp):
     initial_value: Exp
 
     def __str__(self):
-        return f'new {self.type}[{self.size}]({self.initial_value})'
+        return f'new {self.type} [{self.size} | {self.initial_value}]'
 
 
 @dataclass
