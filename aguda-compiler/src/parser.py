@@ -1,6 +1,8 @@
 import ply.yacc as yacc
-import syntax as s
-from lexer import *
+import src.syntax as s
+from src.lexer import lexer, tokens
+# import syntax as s
+# from lexer import tokens, lexer
 
 # Define operator precedence and associativity
 # https://introcs.cs.princeton.edu/java/11precedence/
@@ -241,10 +243,20 @@ def p_error(p):
     else:
         print("Syntactic error: at EOF")
 
+def reset_parser():
+
+    if hasattr(parser, 'symstack'):
+        parser.symstack.clear()
+    if hasattr(parser, 'statestack'):
+        parser.statestack.clear()
+    
+    if hasattr(lexer, 'lineno'):
+        lexer.lineno = 1
+
 parser = yacc.yacc()
 
 if __name__ == '__main__':
-    with open("aguda-compiler/tests/lookup.agu", 'r') as f:
+    with open("test/valid/56334_bubbleSort/bubbleSort.agu", 'r') as f:
         data = f.read()
 
     ast = parser.parse(data)

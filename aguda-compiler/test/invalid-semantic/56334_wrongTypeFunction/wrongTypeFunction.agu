@@ -2,10 +2,11 @@
 
 let max(x,y) : (Int,Int) -> Int =
     let max : Int = 0;
-    	if x <= y then
-            max = y
-        else
-            max = x
+    if x <= y then (
+        max = y
+    else
+        max = x
+    );
     max
 
 let _ : Int =

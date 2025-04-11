@@ -67,7 +67,7 @@ def t_ID(t):
 
 # Integer literal rule
 def t_INT_LITERAL(t):
-    r'-?\d+'
+    r'\d+'
     try:
         t.value = int(t.value)
     except ValueError:
@@ -107,15 +107,15 @@ def t_error(t):
 
 lexer = lex.lex()
 
-if __name__ == '__main__':
-    import sys
+# if __name__ == '__main__':
+#     import sys
 
-    # lexer.input(sys.stdin.read())
-    with open("aguda-compiler/tests/collatz.agu") as f:
-        lexer.input(f.read())
+#     # lexer.input(sys.stdin.read())
+#     with open("aguda-compiler/tests/collatz.agu") as f:
+#         lexer.input(f.read())
 
-    while True:
-        tok = lexer.token()
-        if not tok: 
-            break      # No more input
-        print(tok)
+#     while True:
+#         tok = lexer.token()
+#         if not tok: 
+#             break      # No more input
+#         print(tok)
