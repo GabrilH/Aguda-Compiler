@@ -1,0 +1,7 @@
+-- Author: tcomp56311, João Vedor
+
+-- Syntax Problem
+
+let add(m, n, _) : (Int, Int, Unit) -> Int = n + m
+
+-- Error: Used '_' as an variable 

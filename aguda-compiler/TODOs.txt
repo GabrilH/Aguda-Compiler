@@ -1,1 +1,0 @@
-semicolon a dar erro em alguns contextos? deve ser dos IFs sem ELSE
