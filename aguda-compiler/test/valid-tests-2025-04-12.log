@@ -1,5 +1,8 @@
 valid-tests
 
+Passed [✔]: 165
+Failed [FAIL]: 52
+
 test/valid/56307_countdownFunction/countdownFunction.agu [✔]
 test/valid/56332_precedence_calc/precedence_calc.agu [✔]
 test/valid/64371_index_of/index_of.agu [✔]

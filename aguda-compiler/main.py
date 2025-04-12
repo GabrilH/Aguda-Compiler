@@ -16,9 +16,13 @@ def write_logs(logs, header_message):
     today = datetime.date.today().isoformat()
     log_path = os.path.join(TEST_DIR, f'{header_message}-{today}.log')
 
+    passed = sum(1 for line in logs if '[✔]' in line)
+    failed = sum(1 for line in logs if '[FAIL]' in line or '[EXCEPTION]' in line)
+
     with open(log_path, 'w', encoding='utf-8') as f:
-        if header_message:
-            f.write(header_message + '\n\n')
+        f.write(header_message + '\n\n')
+        f.write(f"Passed [✔]: {passed}\n")
+        f.write(f"Failed [FAIL]: {failed}\n\n")
         for line in logs:
             f.write(line + '\n')
 

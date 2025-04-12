@@ -1,5 +1,8 @@
 invalid-semantic-tests
 
+Passed [✔]: 2
+Failed [FAIL]: 23
+
 test/invalid-semantic/58182_undeclared_var/undeclared_var.agu [FAIL]
 Expected error but none found.
 test/invalid-semantic/56334_wrongTypeFunction/wrongTypeFunction.agu [✔]

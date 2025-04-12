@@ -1,5 +1,8 @@
 invalid-syntax-tests
 
+Passed [✔]: 68
+Failed [FAIL]: 31
+
 test/invalid-syntax/64361_then_keyword_missing/then_keyword_missing.agu [✔]
 Syntactic error: at line 4, column 11: Unexpected token 'm'
 
