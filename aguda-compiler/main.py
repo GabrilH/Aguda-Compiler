@@ -95,6 +95,7 @@ def main():
             print(f"File '{filepath}' does not exist.")
             return
         run_single_test(filepath)
+        
     else:
         invalid_sem_tests_logs = run_tests(INVALID_SEM_DIR, valid=False)
         write_logs(invalid_sem_tests_logs, "invalid-semantic-tests")

@@ -1,8 +1,6 @@
 import ply.yacc as yacc
 import src.syntax as s
 from src.lexer import lexer, tokens
-# import syntax as s
-# from lexer import tokens, lexer
 
 # Define operator precedence and associativity
 # https://introcs.cs.princeton.edu/java/11precedence/
@@ -48,7 +46,7 @@ def p_declaration(t):
     t[0] = t[1]
 
 def p_function_declaration(t):
-    '''function_declaration : LET ID LPAREN parameters RPAREN COLON function_type ASSIGN exp'''
+    '''function_declaration : LET variable LPAREN parameters RPAREN COLON function_type ASSIGN exp'''
     t[0] = s.FunctionDeclaration(t[2], t[4], t[7], t[9])
 
 def p_parameters(t):
@@ -249,15 +247,14 @@ def reset_parser():
         parser.symstack.clear()
     if hasattr(parser, 'statestack'):
         parser.statestack.clear()
-    
     if hasattr(lexer, 'lineno'):
         lexer.lineno = 1
 
 parser = yacc.yacc()
 
-if __name__ == '__main__':
-    with open("test/valid/56334_bubbleSort/bubbleSort.agu", 'r') as f:
-        data = f.read()
+# if __name__ == '__main__':
+#     with open("test/valid/56334_bubbleSort/bubbleSort.agu", 'r') as f:
+#         data = f.read()
 
-    ast = parser.parse(data)
-    print(ast)
+#     ast = parser.parse(data)
+#     print(ast)

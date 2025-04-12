@@ -178,9 +178,8 @@ Lexical error: Illegal character '$' at line 6, column 25
 
 test/invalid-syntax/58219_invalid_number_of_arguments/invalid_number_of_arguments.agu [FAIL]
 Expected error but none found.
-test/invalid-syntax/58219_invalid_return_type/invalid_return_type.agu [✔]
-Syntactic error: at line 4, column 7: Unexpected token '('
-
+test/invalid-syntax/58219_invalid_return_type/invalid_return_type.agu [FAIL]
+Expected error but none found.
 test/invalid-syntax/58219_missing_parantheses/missing_parantheses.agu [✔]
 Syntactic error: at line 7, column 22: Unexpected token 'add'
 
@@ -270,10 +269,11 @@ test/invalid-syntax/64371_unterminated_string/unterminated_string.agu [✔]
 Lexical error: Illegal character '"' at line 3, column 19
 Syntactic error: at line 3, column 26: Unexpected token 'world'
 
-test/invalid-syntax/64854_missing_parentheses_in_while_loop/missing_parentheses_in_while_loop.agu [FAIL]
-Expected error but none found.
 test/invalid-syntax/64854_missing_separator/missing_separator.agu [FAIL]
 Expected error but none found.
+test/invalid-syntax/64854_missing_separator_in_while_loop/missing_separator_in_while_loop.agu [✔]
+Syntactic error: at line 8, column 5: Unexpected token 'set'
+
 test/invalid-syntax/64854_non_letter_id/non_letter_id.agu [✔]
 Syntactic error: at line 4, column 5: Unexpected token '1'
 

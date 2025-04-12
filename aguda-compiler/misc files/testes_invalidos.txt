@@ -8,11 +8,7 @@ testes sem erros (ao stor) mas com (a mim):
 
 testes com erros (ao stor) mas sem (a mim):
 
-
+64371_non_assoc_operator
 
 
 -----------------------------------
-
-56311_double_semicolons: stor nao tem o teste
-58215_capitalL: stor nao tem o teste
-58215_outOfBounds

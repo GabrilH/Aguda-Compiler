@@ -6,13 +6,14 @@
 This project is a compiler for the AGUDA programming language, built using PLY. For now, it includes a lexer, parser. The compiler also supports running tests for valid and invalid programs.
 
 ## How to build the compiler
-- **Ensure you have Docker installed**
+- **Ensure you have Docker installed and running**
 - **Run the following command** (inside `/aguda-compiler` folder):
 
-    `docker-compose build`
+        docker-compose build
+
 - When you no longer need the docker, remove the image by executing:
 
-    `docker rmi aguda-compiler`
+        docker rmi aguda-compiler
 
 ## How to run a particular test
 After building the docker image, you should put the program to test inside the `/test` folder, or their subdirectories, and run the following command:
@@ -71,7 +72,7 @@ The tests should be put separated into three different subdirectories depending 
 - Semantic invalid tests -> `test\invalid-semantic`
 - Syntatic invalid tests -> `test\invalid-syntax`
 
-Each `.agu` test file is expected to be inside their own folder, e.g. `powers.agu` should be inside the folder `test/valid/tcomp000_powers/`. Also, for the **valid** tests, there should be an extra file with the expected output of the program inside that same folder, e.g. `powers.expect`. Resulting in the following directory schema:
+Each program (valid or invalid) must be included in a distinct folder. Valid test folders should contain two files. For a program `p`, include a `p.agu` (the source code) and a `p.expect` (a txt file with the expected output of program `p`). Folders for invalid tests contain one `.agu` file only. Resulting in the following directory schema:
 
     aguda-compiler\
     ├── test\

@@ -1,7 +1,7 @@
 valid-tests
 
-Passed [✔]: 165
-Failed [FAIL]: 52
+Passed [✔]: 171
+Failed [FAIL]: 46
 
 test/valid/46494_arrays/arrays.agu [✔]
 test/valid/46494_check_for_primes/checking_primes.agu [✔]
@@ -83,22 +83,14 @@ test/valid/56332_if_then_else_printing_string/if_then_else_printing_string.agu [
 test/valid/56332_min_elem_of_array/min_elem_of_array.agu [✔]
 test/valid/56332_precedence_calc/precedence_calc.agu [✔]
 test/valid/56332_simple_sum/simple_sum.agu [✔]
-test/valid/56334_bubbleSort/bubbleSort.agu [FAIL]
-Syntactic error: at line 3, column 26: Unexpected token '='
-
+test/valid/56334_bubbleSort/bubbleSort.agu [✔]
 test/valid/56334_countOccurrences/countOccurrences.agu [✔]
 test/valid/56334_factorial/factorial.agu [✔]
 test/valid/56334_fibonacci/fibonacci.agu [✔]
-test/valid/56334_helloWorld/helloWorld.agu [FAIL]
-Syntactic error: at line 3, column 26: Unexpected token '='
-
+test/valid/56334_helloWorld/helloWorld.agu [✔]
 test/valid/56334_listSum/listSum.agu [✔]
-test/valid/56334_map/map.agu [FAIL]
-Syntactic error: at line 3, column 26: Unexpected token '='
-
-test/valid/56334_max/max.agu [FAIL]
-Syntactic error: at line 3, column 26: Unexpected token '='
-
+test/valid/56334_map/map.agu [✔]
+test/valid/56334_max/max.agu [✔]
 test/valid/56334_palindrome/palindrome.agu [✔]
 test/valid/56334_reverseArray/reverseArray.agu [✔]
 test/valid/58166_booleanConfusion/booleanConfusion.agu [✔]
@@ -325,21 +317,15 @@ test/valid/64371_pyramid/pyramid.agu [✔]
 test/valid/64371_reverse_array/reverse_array.agu [✔]
 test/valid/64371_two_sum/two_sum.agu [✔]
 test/valid/64854_add/add.agu [✔]
-test/valid/64854_chess_matrix/chess_matrix.agu [FAIL]
-Syntactic error: at line 14, column 5: Unexpected token 'board'
-Syntactic error: at line 23, column 13: Unexpected token 'set'
-
+test/valid/64854_chess_matrix/chess_matrix.agu [✔]
 test/valid/64854_coin_flip/coin_flip.agu [✔]
 test/valid/64854_heart/heart.agu [FAIL]
-Syntactic error: at line 4, column 5: Unexpected token 'let'
-Syntactic error: at line 24, column 16: Unexpected token ')'
+Syntactic error: at line 5, column 5: Unexpected token 'while'
 
 test/valid/64854_inc/inc.agu [✔]
 test/valid/64854_is_pair/is_pair.agu [✔]
 test/valid/64854_positive_power/positive_power.agu [✔]
-test/valid/64854_printA/printA.agu [FAIL]
-Syntactic error: at line 7, column 12: Unexpected token ')'
-
+test/valid/64854_printA/printA.agu [✔]
 test/valid/64854_produce_letter/produce_letter.agu [✔]
 test/valid/64854_switch/switch.agu [✔]
 test/valid/tcomp000_arrayOfUnit/arrayOfUnit.agu [✔]
