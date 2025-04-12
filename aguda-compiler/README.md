@@ -43,6 +43,9 @@ Should produce the following output:
 
 If the given test is **invalid**, the compiler outputs what it was able to parse and also the syntatic and/or lexer errors that are present in the test program. For example, the following program:
 
+    -- Author: 58250, Leonardo Monteiro
+
+    -- Function to convert euros to dollars
     let euros_to_usd (euros : Float) : Float = euros * 1.18
 
     let amount_euros : Float = 100  -- Amount in euros
@@ -50,6 +53,7 @@ If the given test is **invalid**, the compiler outputs what it was able to parse
 
     let _ : Unit = 
         print(amount_usd)    -- Expected result: 118.0 
+
 
 Should produce the following output:
 
@@ -89,7 +93,7 @@ Each `.agu` test file is expected to be inside their own folder, e.g. `powers.ag
 
 ### How to interpret the test suit output
 
-The test suit generates three different logs, one for each type of test. The logs consist of the following:
+The test suit generates three different logs inside the folder `test/logs`, one for each type of test. Each log consists of the following:
 - Log header:
     
     - Type-of-test
@@ -124,3 +128,50 @@ The test suit generates three different logs, one for each type of test. The log
                 test/invalid-syntax/tcomp000_wrong_comment/wrong_comment.agu [✔]
                 Lexical error: Illegal character '#' at line 3, column 1
                 Syntactic error: at line 3, column 3: Unexpected token 'Comments'
+
+## Comments/TODOs
+
+- The parser is currently not accepting functions as parameters of functions, e.g. it doesn't parse the following program:
+
+        -- Author: tcomp56311, João Vedor
+
+        let apply(f, x) : (Int -> Int, Int) -> Int = 
+            f(x)
+
+        let double(x) : Int -> Int = 
+            x * 2
+
+        let result : Int = 
+            apply(double, 21)
+
+        let main : Unit = 
+            print(result)
+
+    Resulting in the following output:
+
+        test/valid/56311_high_order_function_type/high_order_func_type.agu [FAIL]
+        Syntactic error: at line 3, column 24: Unexpected token '->'
+
+- The parser does not accept unary function types:
+
+        -- Author: fc56334, Goncalo Lopes
+
+        let buildArray(_) : Unit =
+            let array : Int[] = new Int [10 | 0];
+            set array[0] = 3;
+            set array[1] = 2;
+            set array[2] = 4;
+            set array[3] = 7;
+            set array[4] = 1;
+            set array[5] = 6;
+            set array[6] = 8;
+            set array[7] = 9;
+            set array[8] = 2;
+            set array[9] = 5;
+            array
+        (...)
+
+    Resulting in the following output:
+
+        test/valid/56334_bubbleSort/bubbleSort.agu [FAIL]
+        Syntactic error: at line 3, column 26: Unexpected token '='

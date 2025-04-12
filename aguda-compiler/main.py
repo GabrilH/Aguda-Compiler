@@ -7,6 +7,7 @@ from src.parser import parser, reset_parser
 import sys
 
 TEST_DIR = 'test'
+LOG_DIR = os.path.join(TEST_DIR, 'logs')
 VALID_DIR = os.path.join(TEST_DIR, 'valid')
 INVALID_SEM_DIR = os.path.join(TEST_DIR, 'invalid-semantic')
 INVALID_SYN_DIR = os.path.join(TEST_DIR, 'invalid-syntax')
@@ -14,7 +15,8 @@ INVALID_SYN_DIR = os.path.join(TEST_DIR, 'invalid-syntax')
 def write_logs(logs, header_message):
 
     today = datetime.date.today().isoformat()
-    log_path = os.path.join(TEST_DIR, f'{header_message}-{today}.log')
+    log_path = os.path.join(LOG_DIR, f'{header_message}-{today}.log')
+    os.makedirs(LOG_DIR, exist_ok=True)
 
     passed = sum(1 for line in logs if '[✔]' in line)
     failed = sum(1 for line in logs if '[FAIL]' in line or '[EXCEPTION]' in line)
@@ -26,51 +28,56 @@ def write_logs(logs, header_message):
         for line in logs:
             f.write(line + '\n')
 
+    print(f"Logs written to {log_path}")
+
 def run_tests(test_dir, valid):
     logs = []
 
+    all_files = []
     for root, _, files in os.walk(test_dir):
-        for file in files:
-            if not file.endswith('.agu'):
-                continue
+        all_files.extend(os.path.join(root, file) for file in files if file.endswith('.agu'))
 
-            filepath = os.path.join(root, file)
+    all_files.sort()
 
-            try:
-                with open(filepath, 'r') as f:
-                    code = f.read()
+    for filepath in all_files:
+        try:
+            with open(filepath, 'r') as f:
+                code = f.read()
 
-                # Reset the parser (for the line counter)
-                reset_parser() 
+        except Exception as e:
+            logs.append(f"{filepath} [EXCEPTION]")
+            logs.append(str(e))
 
-                # Store stdout of parser
-                output_buffer = io.StringIO()
-                with contextlib.redirect_stdout(output_buffer):
-                    parser.parse(code, lexer=lexer)
+        # Reset the parser (for the line counter)
+        reset_parser()
 
-                output = output_buffer.getvalue()
+        # Store stdout of parser
+        output_buffer = io.StringIO()
+        try:
+            with contextlib.redirect_stdout(output_buffer):
+                parser.parse(code, lexer=lexer)
+            output = output_buffer.getvalue()
+        except Exception as e:
+            logs.append(f"{filepath} [EXCEPTION]")
+            logs.append(str(e))
 
-                if valid:
-                    if output.strip() == "":
-                        # No errors printed -> Test passed
-                        logs.append(f"{filepath} [✔]")
-                    else:
-                        # Expected no output, but got errors
-                        logs.append(f"{filepath} [FAIL]")
-                        logs.append(output)
-                else:
-                    if output.strip() == "":
-                        # Expected errors, but got none
-                        logs.append(f"{filepath} [FAIL]")
-                        logs.append("Expected error but none found.")
-                    else:
-                        # Errors printed as expected
-                        logs.append(f"{filepath} [✔]")
-                        logs.append(output)
-
-            except Exception as e:
-                logs.append(f"{filepath} [EXCEPTION]")
-                logs.append(str(e))
+        if valid:
+            if output.strip() == "":
+                # No errors printed -> Test passed
+                logs.append(f"{filepath} [✔]")
+            else:
+                # Expected no output, but got errors
+                logs.append(f"{filepath} [FAIL]")
+                logs.append(output)
+        else:
+            if output.strip() == "":
+                # Expected errors, but got none
+                logs.append(f"{filepath} [FAIL]")
+                logs.append("Expected error but none found.")
+            else:
+                # Errors printed as expected
+                logs.append(f"{filepath} [✔]")
+                logs.append(output)
 
     return logs
 
@@ -97,7 +104,6 @@ def main():
 
         valid_tests_logs = run_tests(VALID_DIR, valid=True)
         write_logs(valid_tests_logs, "valid-tests")
-        print("Testing completed. Logs generated.")
 
 if __name__ == '__main__':
     main()
