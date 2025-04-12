@@ -1,0 +1,7 @@
+services:
+  aguda-compiler:
+    build: .
+    volumes:
+      - ./test:/app/output
+    stdin_open: true
+    tty: true
