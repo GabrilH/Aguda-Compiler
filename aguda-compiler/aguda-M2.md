@@ -3,7 +3,7 @@
 - **AGUDA Language Author:** tcomp000, Vasco T. Vasconcelos
 - **Compiler Author:** 58182, Gabriel Henriques
 
-This project is a compiler for the AGUDA programming language, built using PLY. For now, it includes a lexer, parser. The compiler also supports running tests for valid and invalid programs.
+This project is a compiler for the AGUDA programming language, built using PLY. For now, it includes a lexer and a parser. The compiler also supports running tests for valid and invalid programs.
 
 ## How to build the compiler
 - **Ensure you have Docker installed and running**
@@ -11,7 +11,7 @@ This project is a compiler for the AGUDA programming language, built using PLY. 
 
         docker-compose build
 
-- When you no longer need the docker, remove the image by executing:
+- When you no longer need the docker, you may remove the image by executing:
 
         docker rmi aguda-compiler
 
@@ -23,6 +23,10 @@ After building the docker image, you should put the program to test inside the `
 Example:
 
     docker-compose run --rm aguda-compiler test/valid/tcomp000_powers/powers.agu
+
+It's also possible to run without arguments and write the AGUDA program directly in the console, followed by [ENTER] and Ctrl+D (EOF):
+
+    docker-compose run --rm aguda-compiler
 
 ### How to interpret particular test output
 After running a particular **valid** test, the compiler outputs the textual representation of its AST, for example, the following command:
@@ -66,6 +70,10 @@ Should produce the following output:
         print(amount_usd)
 
 # How to run the whole test suit
+
+To run the whole test suit, the following command must be executed:
+
+    docker-compose run --rm aguda-compiler --tests 
 
 The tests should be put separated into three different subdirectories depending on their type:
 - Valid tests -> `test\valid`

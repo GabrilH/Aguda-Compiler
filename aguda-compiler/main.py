@@ -89,22 +89,40 @@ def run_single_test(filepath):
     print(ast)
 
 def main():
-    if len(sys.argv) > 1:
-        filepath = sys.argv[1]
-        if not os.path.isfile(filepath):
-            print(f"File '{filepath}' does not exist.")
-            return
-        run_single_test(filepath)
+    # If no args, accept stdin as program input
+    if len(sys.argv) == 1:
+        print("Write the AGUDA code to be parsed, followed by [ENTER] and Ctrl+D (EOF)")
+        code = sys.stdin.read()
+        ast = parser.parse(code)
+        print("Parsed AST:")
+        print("===================================")
+        print(ast)
+    
+    elif len(sys.argv) == 2:
+        # If the first argument is --tests, run all tests
+        if sys.argv[1] == "--tests":
+            invalid_sem_tests_logs = run_tests(INVALID_SEM_DIR, valid=False)
+            write_logs(invalid_sem_tests_logs, "invalid-semantic-tests")
+
+            invalid_syn_tests_logs = run_tests(INVALID_SYN_DIR, valid=False)
+            write_logs(invalid_syn_tests_logs, "invalid-syntax-tests")
+
+            valid_tests_logs = run_tests(VALID_DIR, valid=True)
+            write_logs(valid_tests_logs, "valid-tests")
         
+        elif sys.argv[1] == "--help":
+            print("Usage: docker-compose run --rm aguda-compiler [<file_path> | --tests]")
+            return
+        
+        # If the first argument is a file path, run that test
+        else:
+            filepath = sys.argv[1]
+            if not os.path.isfile(filepath):
+                print(f"File '{filepath}' does not exist.")
+                return
+            run_single_test(filepath)
     else:
-        invalid_sem_tests_logs = run_tests(INVALID_SEM_DIR, valid=False)
-        write_logs(invalid_sem_tests_logs, "invalid-semantic-tests")
-
-        invalid_syn_tests_logs = run_tests(INVALID_SYN_DIR, valid=False)
-        write_logs(invalid_syn_tests_logs, "invalid-syntax-tests")
-
-        valid_tests_logs = run_tests(VALID_DIR, valid=True)
-        write_logs(valid_tests_logs, "valid-tests")
+        print("Usage: docker-compose run --rm aguda-compiler [<file_path> | --tests]")
 
 if __name__ == '__main__':
     main()
