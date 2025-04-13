@@ -1,19 +1,12 @@
 invalid-syntax-tests
 
-Passed [✔]: 68
-Failed [FAIL]: 31
+Passed [✔]: 67
+Failed [FAIL]: 26
 
 test/invalid-syntax/46494_lexical_error/invalid_char.agu [✔]
 Lexical error: Illegal character '§' at line 3, column 17
 Syntactic error: at line 3, column 19: Unexpected token '2'
 
-test/invalid-syntax/46494_semantic_error_1/undeclared_variable.agu [FAIL]
-Expected error but none found.
-test/invalid-syntax/46494_semantic_error_2/wrong_argument_type.agu [✔]
-Syntactic error: at line 5, column 7: Unexpected token 'Unit'
-
-test/invalid-syntax/46494_semantic_error_3/wrong_type.agu [FAIL]
-Expected error but none found.
 test/invalid-syntax/46494_syntatic_error_1/missing_parentheses.agu [✔]
 Syntactic error: at line 3, column 25: Unexpected token ':'
 
@@ -96,12 +89,6 @@ Syntactic error: at line 7, column 15: Unexpected token 'else'
 test/invalid-syntax/58166_missingType/missingType.agu [✔]
 Syntactic error: at line 5, column 11: Unexpected token '='
 
-test/invalid-syntax/58166_outOfBounds/outOfBounds.agu [FAIL]
-Expected error but none found.
-test/invalid-syntax/58166_sumIntBool/sumIntBool.agu [FAIL]
-Expected error but none found.
-test/invalid-syntax/58166_wrongPara/wrongPara.agu [FAIL]
-Expected error but none found.
 test/invalid-syntax/58168_invalidIdentifier/58168_invalidIdentifier.agu [✔]
 Syntactic error: at line 4, column 7: Unexpected token '3'
 
@@ -278,6 +265,5 @@ test/invalid-syntax/64854_non_letter_id/non_letter_id.agu [✔]
 Syntactic error: at line 4, column 5: Unexpected token '1'
 
 test/invalid-syntax/tcomp000_wrong_comment/wrong_comment.agu [✔]
-Lexical error: Illegal character '#' at line 3, column 1
-Syntactic error: at line 3, column 3: Unexpected token 'Comments'
+Syntactic error: at EOF
 
