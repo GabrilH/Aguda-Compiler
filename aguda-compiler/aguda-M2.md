@@ -138,7 +138,7 @@ The test suit generates three different logs inside the folder `test/logs`, one 
                 Lexical error: Illegal character '#' at line 3, column 1
                 Syntactic error: at line 3, column 3: Unexpected token 'Comments'
 
-## Comments/TODOs
+## If your program does not pass all tests, explain why
 
 - The parser is currently not accepting functions as parameters of functions, e.g. it doesn't parse the following program:
 
