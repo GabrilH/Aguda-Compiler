@@ -140,47 +140,16 @@ The test suit generates three different logs inside the folder `test/logs`, one 
 
 ## If your program does not pass all tests, explain why
 
-- The parser is currently not accepting functions as parameters of functions, e.g. it doesn't parse the following program:
+- My parser currently has the same tests results as the professor's, except for the following (supposedly) syntax invalid test:
 
-        -- Author: tcomp56311, João Vedor
+        -- Author: 64371, Ricardo Costa
 
-        let apply(f, x) : (Int -> Int, Int) -> Int = 
-            f(x)
+        let between(x, min, max): (Int, Int, Int) -> Bool =
+            min < x < max -- syntax error: non associative operator '<'
 
-        let double(x) : Int -> Int = 
-            x * 2
+    Where the professor's parser detects an error, but mine doesn't resulting in the following output in the log:
 
-        let result : Int = 
-            apply(double, 21)
+        test/invalid-syntax/64371_non_assoc_operator/non_assoc_operator.agu [FAIL]
+        Expected error but none found.
 
-        let main : Unit = 
-            print(result)
-
-    Resulting in the following output:
-
-        test/valid/56311_high_order_function_type/high_order_func_type.agu [FAIL]
-        Syntactic error: at line 3, column 24: Unexpected token '->'
-
-- The parser does not accept unary function types:
-
-        -- Author: fc56334, Goncalo Lopes
-
-        let buildArray(_) : Unit =
-            let array : Int[] = new Int [10 | 0];
-            set array[0] = 3;
-            set array[1] = 2;
-            set array[2] = 4;
-            set array[3] = 7;
-            set array[4] = 1;
-            set array[5] = 6;
-            set array[6] = 8;
-            set array[7] = 9;
-            set array[8] = 2;
-            set array[9] = 5;
-            array
-        (...)
-
-    Resulting in the following output:
-
-        test/valid/56334_bubbleSort/bubbleSort.agu [FAIL]
-        Syntactic error: at line 3, column 26: Unexpected token '='
+    I think this program has a semantic error, but not a syntatic one.
