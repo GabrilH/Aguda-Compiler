@@ -100,7 +100,7 @@ def main():
     elif len(sys.argv) == 2:
         # If the first argument is --tests, run all tests
         if sys.argv[1] == "--tests":
-            invalid_sem_tests_logs = run_tests(INVALID_SEM_DIR, valid=False)
+            invalid_sem_tests_logs = run_tests(INVALID_SEM_DIR, valid=True)
             write_logs(invalid_sem_tests_logs, "invalid-semantic-tests")
 
             invalid_syn_tests_logs = run_tests(INVALID_SYN_DIR, valid=False)
