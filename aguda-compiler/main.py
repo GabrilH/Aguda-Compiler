@@ -12,17 +12,16 @@ VALID_DIR = os.path.join(TEST_DIR, 'valid')
 INVALID_SEM_DIR = os.path.join(TEST_DIR, 'invalid-semantic')
 INVALID_SYN_DIR = os.path.join(TEST_DIR, 'invalid-syntax')
 
-def write_logs(logs, header_message):
+def write_logs(logs, test_type):
 
-    today = datetime.date.today().isoformat()
-    log_path = os.path.join(LOG_DIR, f'{header_message}-{today}.log')
+    log_path = os.path.join(LOG_DIR, f'{test_type}.log')
     os.makedirs(LOG_DIR, exist_ok=True)
 
     passed = sum(1 for line in logs if '[✔]' in line)
     failed = sum(1 for line in logs if '[FAIL]' in line or '[EXCEPTION]' in line)
 
     with open(log_path, 'w', encoding='utf-8') as f:
-        f.write(header_message + '\n\n')
+        f.write(test_type + '\n\n')
         f.write(f"Passed [✔]: {passed}\n")
         f.write(f"Failed [FAIL]: {failed}\n\n")
         for line in logs:
