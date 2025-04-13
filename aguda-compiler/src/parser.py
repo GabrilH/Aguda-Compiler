@@ -46,7 +46,7 @@ def p_declaration(t):
     t[0] = t[1]
 
 def p_function_declaration(t):
-    '''function_declaration : LET variable LPAREN parameters RPAREN COLON function_type ASSIGN exp'''
+    '''function_declaration : LET variable LPAREN parameters RPAREN COLON type ASSIGN exp'''
     t[0] = s.FunctionDeclaration(t[2], t[4], t[7], t[9])
 
 def p_parameters(t):
@@ -66,6 +66,7 @@ def p_type(t):
     '''
     type : base_type
          | array_type
+         | function_type
     '''
     t[0] = t[1]
 
@@ -145,7 +146,8 @@ def p_literal(t):
         t[0] = s.StringLiteral(t[1])
 
 def p_binary_exp(t):
-    '''binary_exp : exp PLUS exp
+    '''binary_exp : exp SEMICOLON exp
+                    | exp PLUS exp
                     | exp MINUS exp
                     | exp TIMES exp
                     | exp DIVIDE exp
@@ -157,9 +159,8 @@ def p_binary_exp(t):
                     | exp LESS_EQUAL exp
                     | exp GREATER exp
                     | exp GREATER_EQUAL exp
-                    | exp AND exp
                     | exp OR exp
-                    | exp SEMICOLON exp'''
+                    | exp AND exp'''
     t[0] = s.BinaryOp(t[1], t[2], t[3])
 
 def p_unary_exp(t):
@@ -195,10 +196,6 @@ def p_lhs(t):
            | array_access'''
     t[0] = t[1]
 
-def p_array_access(t):
-    '''array_access : lhs LBRACKET exp RBRACKET'''
-    t[0] = s.ArrayAccess(t[1], t[3])
-
 def p_variable_declaration(t):
     '''variable_declaration : LET variable COLON type ASSIGN exp'''
     t[0] = s.VariableDeclaration(t[2], t[4], t[6])
@@ -218,6 +215,10 @@ def p_while_loop(t):
 def p_array_creation(t):
     '''array_creation : NEW type LBRACKET exp BAR exp RBRACKET'''
     t[0] = s.ArrayCreation(t[2], t[4], t[6])
+
+def p_array_access(t):
+    '''array_access : lhs LBRACKET exp RBRACKET'''
+    t[0] = s.ArrayAccess(t[1], t[3])
 
 def p_group(t):
     '''group : LPAREN exp RPAREN'''
