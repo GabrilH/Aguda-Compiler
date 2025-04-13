@@ -1,7 +1,7 @@
 valid-tests
 
-Passed [✔]: 171
-Failed [FAIL]: 46
+Passed [✔]: 176
+Failed [FAIL]: 41
 
 test/valid/46494_arrays/arrays.agu [✔]
 test/valid/46494_check_for_primes/checking_primes.agu [✔]
@@ -49,9 +49,7 @@ test/valid/56269_insertionSort/insertionSort.agu [✔]
 test/valid/56269_multipleAssignment/multipleAssignment.agu [✔]
 test/valid/56269_parentheses/parentheses.agu [✔]
 test/valid/56269_variables/variables.agu [✔]
-test/valid/56307_applyTwiceFunction/applyTwiceFunction.agu [FAIL]
-Syntactic error: at line 2, column 30: Unexpected token '->'
-
+test/valid/56307_applyTwiceFunction/applyTwiceFunction.agu [✔]
 test/valid/56307_arithmeticOperations/arithmeticOperations.agu [✔]
 test/valid/56307_countdownFunction/countdownFunction.agu [✔]
 test/valid/56307_counterFunction/counterFunction.agu [✔]
@@ -64,9 +62,7 @@ test/valid/56307_zeroLengthArray/zeroLengthArray.agu [✔]
 test/valid/56311_boundary_arithmetic/boundary_arithmetic.agu [✔]
 test/valid/56311_empty_array/empty_array.agu [✔]
 test/valid/56311_equals/equals_method.agu [✔]
-test/valid/56311_high_order_function_type/high_order_func_type.agu [FAIL]
-Syntactic error: at line 3, column 24: Unexpected token '->'
-
+test/valid/56311_high_order_function_type/high_order_func_type.agu [✔]
 test/valid/56311_if_inside_if/if_inside_if.agu [✔]
 test/valid/56311_matrix_operations/matrix_operations.agu [✔]
 test/valid/56311_minus_minus/minus_minus.agu [✔]
@@ -147,24 +143,16 @@ test/valid/58185_string_concatenation/string_concatenation.agu [✔]
 test/valid/58185_unit_type_test/unit_type_test.agu [✔]
 test/valid/58185_while_loops/while_loops.agu [✔]
 test/valid/58215_3dArray/3dArray.agu [✔]
-test/valid/58215_addToArrayIndex/addToArrayIndex.agu [FAIL]
-Syntactic error: at line 3, column 44: Unexpected token '->'
-
-test/valid/58215_funWithFunArg/funWithFunArg.agu [FAIL]
-Syntactic error: at line 3, column 16: Unexpected token '->'
-Syntactic error: at line 6, column 17: Unexpected token '->'
-
+test/valid/58215_addToArrayIndex/addToArrayIndex.agu [✔]
+test/valid/58215_funWithFunArg/funWithFunArg.agu [✔]
 test/valid/58215_ifsInsideIfs/ifsInsideIfs.agu [✔]
 test/valid/58215_linha/linha.agu [✔]
 test/valid/58215_minArrAndElseUnit/minArrAndElseUnit.agu [✔]
 test/valid/58215_negAndEven/negAndEven.agu [✔]
 test/valid/58215_scopeArr/scopeArr.agu [FAIL]
-Syntactic error: at line 4, column 46: Unexpected token '->'
 Syntactic error: at line 17, column 25: Unexpected token '='
 
 test/valid/58215_somaSub/somaSub.agu [FAIL]
-Syntactic error: at line 3, column 29: Unexpected token '->'
-Syntactic error: at line 6, column 28: Unexpected token '->'
 Syntactic error: at line 10, column 41: Unexpected token ','
 
 test/valid/58215_unitFunc/unitFunc.agu [FAIL]
@@ -196,9 +184,7 @@ test/valid/58219_reverse_string/reverse_string.agu [✔]
 test/valid/58219_sum_array/sum_array.agu [FAIL]
 Syntactic error: at line 9, column 5: Unexpected token ')'
 
-test/valid/58235_3d_array/3d_array.agu [FAIL]
-Syntactic error: at line 7, column 39: Unexpected token '->'
-
+test/valid/58235_3d_array/3d_array.agu [✔]
 test/valid/58235_complex_booleans/complex_booleans.agu [✔]
 test/valid/58235_condition_with_multiple_exp/condition_with_multiple_exp.agu [✔]
 test/valid/58235_length_of_array_update/length_of_array_update.agu [FAIL]

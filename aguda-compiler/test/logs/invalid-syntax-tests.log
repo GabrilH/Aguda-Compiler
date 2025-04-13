@@ -93,8 +93,7 @@ test/invalid-syntax/58168_invalidIdentifier/58168_invalidIdentifier.agu [✔]
 Syntactic error: at line 4, column 7: Unexpected token '3'
 
 test/invalid-syntax/58168_noBracketsFunc/58168_noBracketsFunc.agu [✔]
-Syntactic error: at line 3, column 26: Unexpected token '->'
-Syntactic error: at line 5, column 5: Unexpected token 's'
+Syntactic error: at line 4, column 5: Unexpected token 'let'
 
 test/invalid-syntax/58168_noBracketsWhile/58168_noBracketsWhile.agu [✔]
 Syntactic error: at line 5, column 3: Unexpected token 'while'

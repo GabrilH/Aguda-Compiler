@@ -1,7 +1,7 @@
 invalid-semantic-tests
 
-Passed [✔]: 3
-Failed [FAIL]: 28
+Passed [✔]: 2
+Failed [FAIL]: 29
 
 test/invalid-semantic/46494_semantic_error_1/undeclared_variable.agu [FAIL]
 Expected error but none found.
@@ -14,9 +14,8 @@ test/invalid-semantic/56269_bad_type/bad_type.agu [FAIL]
 Expected error but none found.
 test/invalid-semantic/56269_wrong_assignment/wrong_assignment.agu [FAIL]
 Expected error but none found.
-test/invalid-semantic/56269_wrong_function_call/wrong_function_call.agu [✔]
-Syntactic error: at line 10, column 14: Unexpected token '->'
-
+test/invalid-semantic/56269_wrong_function_call/wrong_function_call.agu [FAIL]
+Expected error but none found.
 test/invalid-semantic/56311_assigning_value_different_type/assigning_value_different_type.agu [FAIL]
 Expected error but none found.
 test/invalid-semantic/56311_initializer_wrong_type/initializer_wrong_type.agu [FAIL]
