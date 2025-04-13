@@ -82,7 +82,7 @@ The tests should be put separated into three different subdirectories depending 
 
 Each program (valid or invalid) must be included in a distinct folder. Valid test folders should contain two files. For a program `p`, include a `p.agu` (the source code) and a `p.expect` (a txt file with the expected output of program `p`). Folders for invalid tests contain one `.agu` file only. Resulting in the following directory schema:
 
-    aguda-compiler\
+    project_root\
     ├── test\
         ├── invalid-semantic\
         │   ├── tcomp000-while-plus-five0\
