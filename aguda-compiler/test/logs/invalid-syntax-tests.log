@@ -1,7 +1,7 @@
 invalid-syntax-tests
 
-Passed [✔]: 67
-Failed [FAIL]: 26
+Passed [✔]: 68
+Failed [FAIL]: 25
 
 test/invalid-syntax/46494_lexical_error/invalid_char.agu [✔]
 Lexical error: Illegal character '§' at line 3, column 17
@@ -255,8 +255,9 @@ test/invalid-syntax/64371_unterminated_string/unterminated_string.agu [✔]
 Lexical error: Illegal character '"' at line 3, column 19
 Syntactic error: at line 3, column 26: Unexpected token 'world'
 
-test/invalid-syntax/64854_missing_separator/missing_separator.agu [FAIL]
-Expected error but none found.
+test/invalid-syntax/64854_missing_separator/missing_separator.agu [✔]
+Syntactic error: at line 6, column 5: Unexpected token 'set'
+
 test/invalid-syntax/64854_missing_separator_in_while_loop/missing_separator_in_while_loop.agu [✔]
 Syntactic error: at line 8, column 5: Unexpected token 'set'
 

@@ -1,7 +1,7 @@
 valid-tests
 
-Passed [✔]: 176
-Failed [FAIL]: 41
+Passed [✔]: 177
+Failed [FAIL]: 40
 
 test/valid/46494_arrays/arrays.agu [✔]
 test/valid/46494_check_for_primes/checking_primes.agu [✔]
@@ -305,9 +305,7 @@ test/valid/64371_two_sum/two_sum.agu [✔]
 test/valid/64854_add/add.agu [✔]
 test/valid/64854_chess_matrix/chess_matrix.agu [✔]
 test/valid/64854_coin_flip/coin_flip.agu [✔]
-test/valid/64854_heart/heart.agu [FAIL]
-Syntactic error: at line 5, column 5: Unexpected token 'while'
-
+test/valid/64854_heart/heart.agu [✔]
 test/valid/64854_inc/inc.agu [✔]
 test/valid/64854_is_pair/is_pair.agu [✔]
 test/valid/64854_positive_power/positive_power.agu [✔]
