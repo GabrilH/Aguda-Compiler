@@ -147,7 +147,7 @@ The test suit generates three different logs inside the folder `test/logs`, one 
         let between(x, min, max): (Int, Int, Int) -> Bool =
             min < x < max -- syntax error: non associative operator '<'
 
-    Where the professor's parser detects an error, but mine doesn't resulting in the following output in the log:
+    Where the professor's parser detects an error, but mine doesn't. Resulting in the following output in the log:
 
         test/invalid-syntax/64371_non_assoc_operator/non_assoc_operator.agu [FAIL]
         Expected error but none found.

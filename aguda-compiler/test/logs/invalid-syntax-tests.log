@@ -1,7 +1,7 @@
 invalid-syntax-tests
 
-Passed [✔]: 68
-Failed [FAIL]: 25
+Passed [✔]: 72
+Failed [FAIL]: 21
 
 test/invalid-syntax/46494_lexical_error/invalid_char.agu [✔]
 Lexical error: Illegal character '§' at line 3, column 17
@@ -98,12 +98,15 @@ Syntactic error: at line 4, column 5: Unexpected token 'let'
 test/invalid-syntax/58168_noBracketsWhile/58168_noBracketsWhile.agu [✔]
 Syntactic error: at line 5, column 3: Unexpected token 'while'
 
-test/invalid-syntax/58168_typeCheck/58168_typeCheck.agu [FAIL]
-Expected error but none found.
-test/invalid-syntax/58168_undeclaredVar1/58168_undeclaredVar1.agu [FAIL]
-Expected error but none found.
-test/invalid-syntax/58168_undeclaredVar2/58168_undeclaredVar2.agu [FAIL]
-Expected error but none found.
+test/invalid-syntax/58168_typeCheck/58168_missingLetReturnType.agu [✔]
+Syntactic error: at line 3, column 18: Unexpected token '='
+
+test/invalid-syntax/58168_undeclaredVar1/58168_missingLetInfo.agu [✔]
+Syntactic error: at line 7, column 9: Unexpected token '='
+
+test/invalid-syntax/58168_undeclaredVar2/58168_undeclaredVar2.agu [✔]
+Syntactic error: at line 5, column 13: Unexpected token '<'
+
 test/invalid-syntax/58170_invalidIdentifier/invalidIdentifier.agu [✔]
 Syntactic error: at line 3, column 5: Unexpected token '1'
 Syntactic error: at line 5, column 10: Unexpected token 'variable'
@@ -117,8 +120,9 @@ Syntactic error: at line 5, column 5: Unexpected token '='
 test/invalid-syntax/58182_calling_as_zeroary_function/callin_as_zeroary_function.agu [✔]
 Syntactic error: at line 4, column 22: Unexpected token ')'
 
-test/invalid-syntax/58182_missing_semicolon/missing_semicolon.agu [FAIL]
-Expected error but none found.
+test/invalid-syntax/58182_missing_semicolon/missing_semicolon.agu [✔]
+Syntactic error: at line 5, column 5: Unexpected token 'anotherVar'
+
 test/invalid-syntax/58182_nested_function_creation/nested_function_creation.agu [✔]
 Syntactic error: at line 6, column 23: Unexpected token '('
 Syntactic error: at line 10, column 5: Unexpected token ')'

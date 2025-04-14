@@ -1,7 +1,7 @@
 valid-tests
 
-Passed [✔]: 177
-Failed [FAIL]: 40
+Passed [✔]: 178
+Failed [FAIL]: 39
 
 test/valid/46494_arrays/arrays.agu [✔]
 test/valid/46494_check_for_primes/checking_primes.agu [✔]
@@ -100,9 +100,7 @@ test/valid/58166_powerTen/powerTen.agu [✔]
 test/valid/58166_safeIndexCheck/safeIndexCheck.agu [✔]
 test/valid/58166_stringLength/stringLength.agu [✔]
 test/valid/58168_3letsPrint1stValue/3letsPrint1stValue.agu [✔]
-test/valid/58168_addOneValueToArray/addOneValueToArray.agu [FAIL]
-Syntactic error: at line 15, column 11: Unexpected token '['
-
+test/valid/58168_addOneValueToArray/addOneValueToArray.agu [✔]
 test/valid/58168_cubesForEvenNum/cubesForEvenNum.agu [✔]
 test/valid/58168_decrementor/decrementor.agu [✔]
 test/valid/58168_incrementor/incrementor.agu [✔]

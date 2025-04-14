@@ -61,7 +61,6 @@ def p_parameters_tail(t):
     else:
         t[0] = []
 
-# TODO try to add function_type
 def p_type(t):
     '''
     type : base_type

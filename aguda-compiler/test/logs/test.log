@@ -9,7 +9,7 @@ Valid Aguda Programs
   /Users/vv/workspace/aguda-testing/test/valid/46494_recursive_factorial/recursive_factorial.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/46494_simulate_chess_board/simulate_chess.agu [✘]
   /Users/vv/workspace/aguda-testing/test/valid/46494_string_loop/mixing_string_integers_loops.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valarray_operations/array_operations.agu [✘]
+  /Users/vv/workspace/aguda-testing/test/valid/54394_array_operations/array_operations.agu [✘]
   /Users/vv/workspace/aguda-testing/test/valid/54394_bool_array/bool_array.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/54394_clamp/clamp.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/54394_combinations/combinations.agu [✔]
@@ -80,7 +80,7 @@ Valid Aguda Programs
   /Users/vv/workspace/aguda-testing/test/valid/58166_safeIndexCheck/safeIndexCheck.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/58166_stringLength/stringLength.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/58168_3letsPrint1stValue/3letsPrint1stValue.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/58168_addOneValueToArray/addOneValueToArray.agu [✘]
+  /Users/vv/workspace/aguda-testing/test/valid/58168_addOneValueToArray/addOneValueToArray.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/58168_cubesForEvenNum/cubesForEvenNum.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/58168_decrementor/decrementor.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/58168_incrementor/incrementor.agu [✔]
@@ -105,7 +105,7 @@ Valid Aguda Programs
   /Users/vv/workspace/aguda-testing/test/valid/58182_logic_operations/logic_operations.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/58182_nested_function_calls/nested_function_calls.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/58182_overload_print_and_length/overload_print_and_length.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/58182_simple_aic/simple_arithmetic.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/valid/58182_simple_arithmetic/simple_arithmetic.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/58182_transpose_matrix/transpose_matrix.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/58182_while_loop_break/while_loop_break.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/58185_boolean_logic/boolean_logic.agu [✔]
@@ -199,7 +199,7 @@ Valid Aguda Programs
   /Users/vv/workspace/aguda-testing/test/valid/64854_add/add.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/64854_chess_matrix/chess_matrix.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/64854_coin_flip/coin_flip.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/64854_heart/heart.agu [✘]
+  /Users/vv/workspace/aguda-testing/test/valid/64854_heart/heart.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/64854_inc/inc.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/64854_is_pair/is_pair.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/64854_positive_power/positive_power.agu [✔]
@@ -250,10 +250,10 @@ Syntactically Invalid Aguda Programs
   /Users/vv/workspace/aguda-testing/test/invalid-syntax/58166_missingType/missingType.agu [✔]
   /Users/vv/workspace/aguda-testing/test/invalid-syntax/58168_invalidIdentifier/58168_invalidIdentifier.agu [✔]
   /Users/vv/workspace/aguda-testing/test/invalid-syntax/58168_noBracketsFunc/58168_noBracketsFunc.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58168_noBracketsWhile/581noBracketsWhile.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58168_typeCheck/58168_typeCheck.agu [✘]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58168_undeclaredVar1/58168_undeclaredVar1.agu [✘]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58168_undeclaredVar2/58168_undeclaredVar2.agu [✘]
+  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58168_noBracketsWhile/58168_noBracketsWhile.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58168_typeCheck/58168_missingLetReturnType.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58168_undeclaredVar1/58168_missingLetInfo.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58168_undeclaredVar2/58168_undeclaredVar2.agu [✔]
   /Users/vv/workspace/aguda-testing/test/invalid-syntax/58170_invalidIdentifier/invalidIdentifier.agu [✔]
   /Users/vv/workspace/aguda-testing/test/invalid-syntax/58170_missingParen/missingParen.agu [✔]
   /Users/vv/workspace/aguda-testing/test/invalid-syntax/58170_missingSet/missingSet.agu [✔]
@@ -306,7 +306,7 @@ Syntactically Invalid Aguda Programs
   /Users/vv/workspace/aguda-testing/test/invalid-syntax/64371_missing_type_annotation/missing_type_annotation.agu [✔]
   /Users/vv/workspace/aguda-testing/test/invalid-syntax/64371_non_assoc_operator/non_assoc_operator.agu [✔]
   /Users/vv/workspace/aguda-testing/test/invalid-syntax/64371_unterminated_string/unterminated_string.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/64854_missing_separator/missing_separator.agu [✘]
+  /Users/vv/workspace/aguda-testing/test/invalid-syntax/64854_missing_separator/missing_separator.agu [✔]
   /Users/vv/workspace/aguda-testing/test/invalid-syntax/64854_missing_separator_in_while_loop/missing_separator_in_while_loop.agu [✔]
   /Users/vv/workspace/aguda-testing/test/invalid-syntax/64854_non_letter_id/non_letter_id.agu [✔]
   /Users/vv/workspace/aguda-testing/test/invalid-syntax/tcomp000_wrong_comment/wrong_comment.agu [✔]
@@ -350,523 +350,480 @@ Failures:
   1) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/46494_palindromes/palindromes_check.agu
        Parse error at token TokenColon (AlexPn 101 4 18)
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:788:20 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/46494_palindromes/palindromes_check.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/46494_palindromes/palindromes_check.agu/"
 
   test/Spec.hs:41:29: 
   2) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/46494_simulate_chess_board/simulate_chess.agu
        Parse error at token TokenSet (AlexPn 1007 33 5)
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:788:20 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/46494_simulate_chess_board/simulate_chess.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/46494_simulate_chess_board/simulate_chess.agu/"
 
   test/Spec.hs:41:29: 
   3) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/54394_array_operations/array_operations.agu
        Parse error at token TokenIntT (AlexPn 146 5 23)
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:788:20 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/54394_array_operations/array_operations.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/54394_array_operations/array_operations.agu/"
 
   test/Spec.hs:41:29: 
   4) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/54394_semicolon_assignment/semicolon_assignment.agu
        Parse error at token TokenIntL (AlexPn 64 4 17) 4
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:788:20 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/54394_semicolon_assignment/semicolon_assignment.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/54394_semicolon_assignment/semicolon_assignment.agu/"
 
   test/Spec.hs:41:29: 
   5) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/54394_uv_mapping/uv_mapping.agu
        Parse error at token TokenComma (AlexPn 231 7 32)
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:788:20 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/54394_uv_mapping/uv_mapping.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/54394_uv_mapping/uv_mapping.agu/"
 
   test/Spec.hs:41:29: 
   6) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/54394_zip/zip.agu
        Parse error at token TokenArrow (AlexPn 86 5 18)
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:788:20 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/54394_zip/zip.agu/" --seed 79705757
-
-  test/Spec.hs:41:29: 
-  7) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58168_addOneValueToArray/addOneValueToArray.agu
-       Parse error at token TokenLSBracket (AlexPn 346 15 11)
-       CallStack (from HStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
-
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58168_addOneValueToArray/addOneValueToArray.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/54394_zip/zip.agu/"
 
   test/Spec.hs:41:29: 
-  8) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58185_sequencing/sequencing.agu
+  7) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58185_sequencing/sequencing.agu
        Parse error at EOF
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:795:17 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:789:17 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58185_sequencing/sequencing.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58185_sequencing/sequencing.agu/"
 
   test/Spec.hs:41:29: 
-  9) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58215_scopeArr/scopeArr.agu
+  8) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58215_scopeArr/scopeArr.agu
        Parse error at token TokenEq (AlexPn 376 17 25)
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:788:20 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58215_scopeArr/scopeArr.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58215_scopeArr/scopeArr.agu/"
 
   test/Spec.hs:41:29: 
-  10) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58215_somaSub/somaSub.agu
+  9) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58215_somaSub/somaSub.agu
        Parse error at token TokenComma (AlexPn 189 10 41)
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:788:20 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58215_somaSub/somaSub.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58215_somaSub/somaSub.agu/"
 
   test/Spec.hs:41:29: 
-  11) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58215_unitFunc/unitFunc.agu
+  10) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58215_unitFunc/unitFunc.agu
        Parse error at token TokenId (AlexPn 44 3 10) "_"
        CallStack (from HasCallStack):
-         error, called at .staist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:788:20 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58215_unitFunc/unitFunc.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58215_unitFunc/unitFunc.agu/"
 
   test/Spec.hs:41:29: 
-  12) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58219_count_common_elements/count_common_elemts.agu
+  11) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58219_count_common_elements/count_common_elemts.agu
        Parse error at token TokenRParen (AlexPn 379 13 15)
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:788:20 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58219_count_common_elements/count_common_elemts.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58219_count_common_elements/count_common_elemts.agu/"
 
   test/Spec.hs:41:29: 
-  13) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58219_find_array_max_and_min/array_max_min.agu
+  12) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58219_find_array_max_and_min/array_max_min.agu
        Parse error at token TokenElse (AlexPn 136 6 5)
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:788:20 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58219_find_array_max_and_min/array_max_min.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58219_find_array_max_and_min/array_max_min.agu/"
 
   test/Spec.hs:41:29: 
-  14) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58219_find_char/find_char.agu
+  13) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58219_find_char/find_char.agu
        Parse error at token TokenRParen (AlexPn 284 11 9)
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:788:20 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58219_find_char/find_char.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58219_find_char/find_char.agu/"
 
   test/Spec.hs:41:29: 
-  15) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58219_first_unique_character/first_unique_character.agu
-       Parse error at token TokenRPAlexPn 415 19 5)
+  14) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58219_first_unique_character/first_unique_character.agu
+       Parse error at token TokenRParen (AlexPn 415 19 5)
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:788:20 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58219_first_unique_character/first_unique_character.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58219_first_unique_character/first_unique_character.agu/"
 
   test/Spec.hs:41:29: 
-  16) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58219_is_array_sorted/is_array_sorted.agu
+  15) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58219_is_array_sorted/is_array_sorted.agu
        Parse error at token TokenRParen (AlexPn 339 12 13)
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:788:20 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58219_is_array_sorted/is_array_sorted.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58219_is_array_sorted/is_array_sorted.agu/"
 
   test/Spec.hs:41:29: 
-  17) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58219_is_prime/is_prime.agu
+  16) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58219_is_prime/is_prime.agu
        Parse error at token TokenRParen (AlexPn 140 7 3)
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:788:20 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58219_is_prime/is_prime.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58219_is_prime/is_prime.agu/"
 
   test/Spec.hs:41:29: 
-  18) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58219_sum_array/sum_array.agu
+  17) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58219_sum_array/sum_array.agu
        Parse error at token TokenRParen (AlexPn 205 9 5)
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:788:20 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58219_sum_array/sum_array.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58219_sum_array/sum_array.agu/"
 
   test/Spec.hs:41:29: 
-  19) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58235_length_of_array_update/length_of_array_update.agu
+  18) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58235_length_of_array_update/length_of_array_update.agu
        Parse error at token TokenId (AlexPn 43 3 9) "int"
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:788:20 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58235_length_of_array_update/length_of_array_update.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58235_length_of_array_update/length_of_array_update.agu/"
 
   test/Spec.hs:41:29: 
-  20) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58235_n_negative/n_negative.agu
+  19) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58235_n_negative/n_negative.agu
        Parse error at token TokenId (AlexPn 43 3 9) "unit"
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:788:20 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58235_n_negative/n_negative.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58235_n_negative/n_negative.agu/"
 
   test/Spec.hs:41:29: 
-  21) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58235_power_precedence/power_precedence.agu
+  20) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58235_power_precedence/power_precedence.agu
        Parse error at token TokenEq (AlexPn 60 4 11)
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:788:20 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58235_power_precedence/power_precedence.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58235_power_precedence/power_precedence.agu/"
 
   test/Spec.hs:41:29: 
-  22) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58235_while_in_var/while_in_var.agu
+  21) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58235_while_in_var/while_in_var.agu
        Parse error at EOF
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:795:17 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:789:17 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58235_while_in_var/while_in_var.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58235_while_in_var/while_in_var.agu/"
 
   test/Spec.hs:41:29: 
-  23) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58250_celsius_to_fahrenheit/58250_celsius_to_fahrenheit.agu
+  22) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58250_celsius_to_fahrenheit/58250_celsius_to_fahrenheit.agu
        Parse error at token TokenColon (AlexPn 127 4 36)
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:788:20 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58250_celsius_to_fahrenheit/58250_celsius_to_fahrenheit.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58250_celsius_to_fahrenheit/58250_celsius_to_fahrenheit.agu/"
 
   test/Spec.hs:41:29: 
-  24) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58250_circle_area/58250_circle_area.agu
+  23) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58250_circle_area/58250_circle_area.agu
        Parse error at token TokenColon (AlexPn 110 4 28)
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:788:20 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58250_circle_area/58250_circle_area.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58250_circle_area/58250_circle_area.agu/"
 
   test/Spec.hs:41:29: 
-  25) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58250_euros_to_usd/58250_euros_to_usd.agu
+  24) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58250_euros_to_usd/58250_euros_to_usd.agu
        Parse error at token TokenColon (AlexPn 101 4 25)
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:788:20 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58250_euros_to_usd/58250_euros_to_usd.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58250_euros_to_usd/58250_euros_to_usd.agu/"
 
   test/Spec.hs:41:29: 
-  26) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58250_km_to_miles/58250_km_to_miles.agu
+  25) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58250_km_to_miles/58250_km_to_miles.agu
        Parse error at token TokenColon (AlexPn 100 4 21)
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:788:20 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58250_km_to_miles/58250_km_to_miles.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58250_km_to_miles/58250_km_to_miles.agu/"
 
   test/Spec.hs:41:29: 
-  27) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58250_min_element/58250_min_element.agu
+  26) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58250_min_element/58250_min_element.agu
        Parse error at token TokenColon (AlexPn 108 4 22)
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:788:20 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58250_min_element/58250_min_element.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58250_min_element/58250_min_element.agu/"
 
   test/Spec.hs:41:29: 
-  28) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58250_number_cube/58250_number_cube.agu
+  27) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58250_number_cube/58250_number_cube.agu
        Parse error at token TokenColon (AlexPn 95 4 13)
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:788:20 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58250_number_cube/58250_number_cube.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58250_number_cube/58250_number_cube.agu/"
 
   test/Spec.hs:41:29: 
-  29) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58250_positive_negative_sum_difference/58250_positive_negative_sum_difference.agu
+  28) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58250_positive_negative_sum_difference/58250_positive_negative_sum_difference.agu
        Parse error at token TokenColon (AlexPn 232 5 43)
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:788:20 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58250_positive_negative_sum_difference/58250_positive_negative_sum_difference.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58250_positive_negative_sum_difference/58250_positive_negative_sum_difference.agu/"
 
   test/Spec.hs:41:29: 
-  30) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58250_rectangle_perimeter/58250_rectangle_perimeter.agu
+  29) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58250_rectangle_perimeter/58250_rectangle_perimeter.agu
        Parse error at token TokenId (AlexPn 114 4 24) "largura"
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:788:20 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58250_rectangle_perimeter/58250_rectangle_perimeter.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58250_rectangle_perimeter/58250_rectangle_perimeter.agu/"
 
   test/Spec.hs:41:29: 
-  31) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/61015_arithmetic/arithmetic.agu
+  30) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/61015_arithmetic/arithmetic.agu
        Parse error at EOF
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:795:17 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:789:17 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/61015_arithmetic/arithmetic.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/61015_arithmetic/arithmetic.agu/"
 
   test/Spec.hs:41:29: 
-  32) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/61015_boolean/boolean.agu
+  31) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/61015_boolean/boolean.agu
        Parse error at EOF
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:795:17 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:789:17 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/61015_boolean/boolean.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/61015_boolean/boolean.agu/"
 
   test/Spec.hs:41:29: 
-  33) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/61015_empty_array/empty_array.agu
+  32) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/61015_empty_array/empty_array.agu
        Parse error at EOF
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:795:17 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:789:17 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/61015_empty_array/empty_array.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/61015_empty_array/empty_array.agu/"
 
   test/Spec.hs:41:29: 
-  34) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/61015_false_statement/false_statement.agu
+  33) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/61015_false_statement/false_statement.agu
        Parse error at EOF
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:795:17 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:789:17 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/61015_false_statement/false_statement.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/61015_false_statement/false_statement.agu/"
 
   test/Spec.hs:41:29: 
-  35) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/61015_imperative_loop/imperative_loop.agu
+  34) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/61015_imperative_loop/imperative_loop.agu
        Parse error at EOF
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:795:17 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:789:17 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/61015_imperative_loop/imperative_loop.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/61015_imperative_loop/imperative_loop.agu/"
 
   test/Spec.hs:41:29: 
-  36) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/61015_multiple_expressions/multiple_expressions.agu
+  35) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/61015_multiple_expressions/multiple_expressions.agu
        Parse error at token TokenColon (AlexPn 49 3 16)
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:788:20 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/61015_multiple_expressions/multiple_expressions.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/61015_multiple_expressions/multiple_expressions.agu/"
 
   test/Spec.hs:41:29: 
-  37) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/61015_odd_or_even/odd_or_even.agu
+  36) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/61015_odd_or_even/odd_or_even.agu
        Parse error at token TokenColon (AlexPn 53 3 20)
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:788:20 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/61015_odd_or_even/odd_or_even.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/61015_odd_or_even/odd_or_even.agu/"
 
   test/Spec.hs:41:29: 
-  38) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/61015_print_matrix/print_matrix.agu
+  37) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/61015_print_matrix/print_matrix.agu
        Parse error at EOF
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:795:17 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:789:17 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/61015_print_matrix/print_matrix.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/61015_print_matrix/print_matrix.agu/"
 
   test/Spec.hs:41:29: 
-  39) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/61015_recursive_factorial/recursive_factorial.agu
+  38) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/61015_recursive_factorial/recursive_factorial.agu
        Parse error at token TokenColon (AlexPn 51 3 18)
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:788:20 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/61015_recursive_factorial/recursive_factorial.agu/" --seed 7970575pec.hs:41:29: 
-  40) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/61015_unsued_parameter/unused_parameter.agu
-       Parse error at EOF
-       CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:795:17 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
-
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/61015_unsued_parameter/unused_parameter.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/61015_recursive_factorial/recursive_factorial.agu/"
 
   test/Spec.hs:41:29: 
-  41) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/64854_heart/heart.agu
-       Parse error at token TokenWhile (AlexPn 143 5 5)
+  39) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/61015_unsued_parameter/unused_parameter.agu
+       Parse error at EOF
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:789:17 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/64854_heart/heart.agu/" --seed 79705757
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/61015_unsued_parameter/unused_parameter.agu/"
 
   test/Spec.hs:50:18: 
-  42) 
-Syntacticalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-syntax/54394_bad_function_header/bad_function_header.agu
+  40) 
+Syntactically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-syntax/54394_bad_function_header/bad_function_header.agu
        Expected an error but none was thrown.
 
-  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/54394_bad_function_header/bad_function_header.agu/" --seed 79705757
+  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/54394_bad_function_header/bad_function_header.agu/"
 
   test/Spec.hs:50:18: 
-  43) 
+  41) 
 Syntactically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-syntax/54394_missing_variable/missing_variable.agu
        Expected an error but none was thrown.
 
-  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/54394_missing_variable/missing_variable.agu/" --seed 79705757
+  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/54394_missing_variable/missing_variable.agu/"
 
   test/Spec.hs:50:18: 
-  44) 
+  42) 
 Syntactically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-syntax/54394_wrong_modulus_usage/wrong_modulus_usage.agu
        Expected an error but none was thrown.
 
-  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/54394_wrong_modulus_usage/wrong_modulus_usage.agu/" --seed 79705757
+  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/54394_wrong_modulus_usage/wrong_modulus_usage.agu/"
 
   test/Spec.hs:50:18: 
-  45) 
+  43) 
 Syntactically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-syntax/54394_wrong_return_type/wrong_return_type.agu
        Expected an error but none was thrown.
 
-  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/54394_wrong_return_type/wrong_return_type.agu/" --seed 79705757
+  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/54394_wrong_return_type/wrong_return_type.agu/"
 
   test/Spec.hs:50:18: 
-  46) 
+  44) 
 Syntactically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-syntax/56307_incompatibleTypes/incompatibleTypes.agu
        Expected an error but none was thrown.
 
-  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/56307_incompatibleTypes/incompatibleTypes.agu/" --seed 79705757
+  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/56307_incompatibleTypes/incompatibleTypes.agu/"
 
   test/Spec.hs:50:18: 
-  47) 
+  45) 
 Syntactically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-syntax/56307_typeMismatch/typeMismatch.agu
        Expected an error but none was thrown.
 
-  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/56307_typeMismatch/typeMismatch.agu/" --seed 79705757
+  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/56307_typeMismatch/typeMismatch.agu/"
 
   test/Spec.hs:50:18: 
-  48) 
+  46) 
 Syntactically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-syntax/56307_usedUndeclaredVariable/usedUndeclaredVariable.agu
        Expected an error but none was thrown.
 
-  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/56307_usedUndeclaredVariable/usedUndeclaredVariable.agu/" --seed 79705757
+  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/56307_usedUndeclaredVariable/usedUndeclaredVariable.agu/"
 
   test/Spec.hs:50:18: 
-  49) 
-Syntactically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-syntax/58168_typeCheck/58168_typeCheck.agu
-       Expected an error but none was thrown.
-
-  To rerun use: --match "/\nSyntactically Invuda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/58168_typeCheck/58168_typeCheck.agu/" --seed 79705757
-
-  test/Spec.hs:50:18: 
-  50) 
-Syntactically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-syntax/58168_undeclaredVar1/58168_undeclaredVar1.agu
-       Expected an error but none was thrown.
-
-  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/58168_undeclaredVar1/58168_undeclaredVar1.agu/" --seed 79705757
-
-  test/Spec.hs:50:18: 
-  51) 
-Syntactically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-syntax/58168_undeclaredVar2/58168_undeclaredVar2.agu
-       Expected an error but none was thrown.
-
-  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/58168_undeclaredVar2/58168_undeclaredVar2.agu/" --seed 79705757
-
-  test/Spec.hs:50:18: 
-  52) 
+  47) 
 Syntactically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-syntax/58182_missing_semicolon/missing_semicolon.agu
        Expected an error but none was thrown.
 
-  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/58182_missing_semicolon/missing_semicolon.agu/" --seed 79705757
+  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/58182_missing_semicolon/missing_semicolon.agu/"
 
   test/Spec.hs:50:18: 
-  53) 
+  48) 
 Syntactically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-syntax/58185_type_mismatch/type_mismatch.agu
        Expected an error but none was thrown.
 
-  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/58185_type_mismatch/type_mismatch.agu/" --seed 79705757
+  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/58185_type_mismatch/type_mismatch.agu/"
 
   test/Spec.hs:50:18: 
-  54) 
+  49) 
 Syntactically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-syntax/58185_undeclared_variable/undeclared_variable.agu
        Expected an error but none was thrown.
 
-  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/58185_undeclared_variable/undeclared_variable.agu/" --seed 79705757
+  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/58185_undeclared_variable/undeclared_variable.agu/"
 
   test/Spec.hs:50:18: 
-  55) 
+  50) 
 Syntactically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-syntax/58185_wrong_function_parameter/wrong_funtion_parameter.agu
        Expected an error but none was thrown.
 
-  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/58185_wrong_function_parameter/wrong_funtion_parameter.agu/" --seed 79705757
+  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/58185_wrong_function_parameter/wrong_funtion_parameter.agu/"
 
   test/Spec.hs:50:18: 
-  56) 
+  51) 
 Syntactically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-syntax/58215_outOfBounds/outOfBounds.agu
        Expected an error but none was thrown.
 
-  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/58215_outOfBounds/outOfBounds.agu/" --seed 79705757
+  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/58215_outOfBounds/outOfBounds.agu/"
 
   test/Spec.hs:50:18: 
-  57) 
+  52) 
 Syntactically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-syntax/58215_unitInt/unitInt.agu
        Expected an error but none was thrown.
 
-  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/58215_unitInt/unitInt.agu/" --seed 79705757
+  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/58215_unitInt/unitInt.agu/"
 
   test/Spec.hs:50:18: 
-  58) 
+  53) 
 Syntactically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-syntax/58219_invalid_number_of_arguments/invalid_number_of_arguments.agu
        Expected an error but none was thrown.
 
-  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/58219_invalid_number_of_arguments/invalid_number_of_arguments.agu/" --seed 79705757
+  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/58219_invalid_number_of_arguments/invalid_number_of_arguments.agu/"
 
   test/Spec.hs:50:18: 
-  59) 
+  54) 
 Syntactically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-syntax/58219_invalid_return_type/invalid_return_type.agu
        Expected an error but none was thrown.
 
-  To rerun use: --match "/\nSlly Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/58219_invalid_return_type/invalid_return_type.agu/" --seed 79705757
+  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/58219_invalid_return_type/invalid_return_type.agu/"
 
   test/Spec.hs:50:18: 
-  60) 
+  55) 
 Syntactically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-syntax/58235_int_as_bool/int_as_bool.agu
        Expected an error but none was thrown.
 
-  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/58235_int_as_bool/int_as_bool.agu/" --seed 79705757
+  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/58235_int_as_bool/int_as_bool.agu/"
 
   test/Spec.hs:50:18: 
-  61) 
+  56) 
 Syntactically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-syntax/58250_invalid_semantic_type_mismatch/58250_invalid_semantic_type_mismatch.agu
        Expected an error but none was thrown.
 
-  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/58250_invalid_semantic_type_mismatch/58250_invalid_semantic_type_mismatch.agu/" --seed 79705757
+  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/58250_invalid_semantic_type_mismatch/58250_invalid_semantic_type_mismatch.agu/"
 
   test/Spec.hs:50:18: 
-  62) 
+  57) 
 Syntactically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-syntax/58250_invalid_semantic_undeclared_function/58250_invalid_semantic_undeclared_function.agu
        Expected an error but none was thrown.
 
-  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/58250_invalid_semantic_undeclared_function/58250_invalid_semantic_undeclared_function.agu/" --seed 79705757
+  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/58250_invalid_semantic_undeclared_function/58250_invalid_semantic_undeclared_function.agu/"
 
   test/Spec.hs:50:18: 
-  63) 
+  58) 
 Syntactically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-syntax/64361_type_mismatch/type_mismatch.agu
        Expected an error but none was thrown.
 
-  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/64361_type_mismatch/type_mismatch.agu/" --seed 79705757
+  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/64361_type_mismatch/type_mismatch.agu/"
 
   test/Spec.hs:50:18: 
-  64) 
+  59) 
 Syntactically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-syntax/64361_undeclared_variable/undeclared_variable.agu
        Expected an error but none was thrown.
 
-  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/64361_undeclared_variable/undeclared_variable.agu/" --seed 79705757
+  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/64361_undeclared_variable/undeclared_variable.agu/"
 
   test/Spec.hs:50:18: 
-  65) 
+  60) 
 Syntactically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-syntax/64361_wrong_type_return/wrong_type_return.agu
        Expected an error but none was thrown.
 
-  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/64361_wrong_type_return/wrong_type_return.agu/" --seed 79705757
-
-  test/Spec.hs:50:18: 
-  66) 
-Syntactically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-syntax/64854_missing_separator/missing_separator.agu
-       Expected an error but none was thrown.
-
-  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/64854_missing_separator/missing_separator.agu/" --seed 79705757
+  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/64361_wrong_type_return/wrong_type_return.agu/"
 
   test/Spec.hs:41:29: 
-  67) 
+  61) 
 Semantically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-semantic/46494_semantic_error_2/wrong_argument_type.agu
        Parse error at token TokenUnitT (AlexPn 77 5 7)
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:788:20 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/\nSemantically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-semantic/46494_semantic_error_2/wrong_argument_type.agu/" --seed 79705757
+  To rerun use: --match "/\nSemantically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-semantic/46494_semantic_error_2/wrong_argument_type.agu/"
 
   test/Spec.hs:41:29: 
-  68) 
-Semantically Invalid Aguda Programs /Urs/vv/workspace/aguda-testing/test/invalid-semantic/56334_wrongTypeFunction/wrongTypeFunction.agu
+  62) 
+Semantically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-semantic/56334_wrongTypeFunction/wrongTypeFunction.agu
        Parse error at token TokenEq (AlexPn 125 6 13)
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:794:20 in aguda-0.1.0.0-9po6MrmgFoQBYRBjOzWXxt:Parser
+         error, called at .stack-work/dist/aarch64-osx/ghc-9.4.8/build/Parser.hs:788:20 in aguda-0.1.0.0-CZZI4iNF2af1adVwrdkNfZ:Parser
 
-  To rerun use: --match "/\nSemantically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-semantic/56334_wrongTypeFunction/wrongTypeFunction.agu/" --seed 79705757
+  To rerun use: --match "/\nSemantically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-semantic/56334_wrongTypeFunction/wrongTypeFunction.agu/"
 
-Randomized with seed 79705757
+Randomized with seed 1805604666
 
-Finished in 0.0448 seconds
-340 examples, 68 failures
-
+Finished in 0.0737 seconds
+340 examples, 62 failures
