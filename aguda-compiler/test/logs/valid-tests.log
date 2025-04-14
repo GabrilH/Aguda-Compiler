@@ -1,7 +1,7 @@
 valid-tests
 
-Passed [✔]: 178
-Failed [FAIL]: 39
+Passed [✔]: 189
+Failed [FAIL]: 29
 
 test/valid/46494_arrays/arrays.agu [✔]
 test/valid/46494_check_for_primes/checking_primes.agu [✔]
@@ -18,27 +18,16 @@ test/valid/46494_simulate_chess_board/simulate_chess.agu [FAIL]
 Syntactic error: at line 33, column 5: Unexpected token 'set'
 
 test/valid/46494_string_loop/mixing_string_integers_loops.agu [✔]
-test/valid/54394_array_operations/array_operations.agu [FAIL]
-Syntactic error: at line 5, column 23: Unexpected token 'Int'
-Syntactic error: at line 19, column 23: Unexpected token 'Int'
-
+test/valid/54394_array_operations/array_operations.agu [✔]
 test/valid/54394_bool_array/bool_array.agu [✔]
 test/valid/54394_clamp/clamp.agu [✔]
 test/valid/54394_combinations/combinations.agu [✔]
 test/valid/54394_identifier/identifier.agu [✔]
 test/valid/54394_operator_precedence/operator_precedence.agu [✔]
-test/valid/54394_semicolon_assignment/semicolon_assignment.agu [FAIL]
-Syntactic error: at line 4, column 17: Unexpected token '4'
-
+test/valid/54394_semicolon_assignment/semicolon_assignment.agu [✔]
 test/valid/54394_string_printing/string_printing.agu [✔]
-test/valid/54394_uv_mapping/uv_mapping.agu [FAIL]
-Syntactic error: at line 7, column 32: Unexpected token ','
-Syntactic error: at line 14, column 9: Unexpected token 'vec2'
-Syntactic error: at line 18, column 9: Unexpected token 'vec2'
-
-test/valid/54394_zip/zip.agu [FAIL]
-Syntactic error: at line 5, column 18: Unexpected token '->'
-
+test/valid/54394_uv_mapping/uv_mapping.agu [✔]
+test/valid/54394_zip/zip.agu [✔]
 test/valid/56269_ackermann/ackermann.agu [✔]
 test/valid/56269_associativity/associativity.agu [✔]
 test/valid/56269_boolean/boolean.agu [✔]
@@ -133,9 +122,7 @@ test/valid/58185_bubble_sort/bubble_sort.agu [✔]
 test/valid/58185_factorial/factorial.agu [✔]
 test/valid/58185_mutual_recursion/mutual_recursion.agu [✔]
 test/valid/58185_power_operator/power_operator.agu [✔]
-test/valid/58185_sequencing/sequencing.agu [FAIL]
-Syntactic error: at EOF
-
+test/valid/58185_sequencing/sequencing.agu [✔]
 test/valid/58185_simple_arithmetic/simple_arithmetic.agu [✔]
 test/valid/58185_string_concatenation/string_concatenation.agu [✔]
 test/valid/58185_unit_type_test/unit_type_test.agu [✔]
@@ -147,15 +134,9 @@ test/valid/58215_ifsInsideIfs/ifsInsideIfs.agu [✔]
 test/valid/58215_linha/linha.agu [✔]
 test/valid/58215_minArrAndElseUnit/minArrAndElseUnit.agu [✔]
 test/valid/58215_negAndEven/negAndEven.agu [✔]
-test/valid/58215_scopeArr/scopeArr.agu [FAIL]
-Syntactic error: at line 17, column 25: Unexpected token '='
-
-test/valid/58215_somaSub/somaSub.agu [FAIL]
-Syntactic error: at line 10, column 41: Unexpected token ','
-
-test/valid/58215_unitFunc/unitFunc.agu [FAIL]
-Syntactic error: at line 3, column 10: Unexpected token '_'
-
+test/valid/58215_scopeArr/scopeArr.agu [✔]
+test/valid/58215_somaSub/somaSub.agu [✔]
+test/valid/58215_unitFunc/unitFunc.agu [✔]
 test/valid/58219_compare_string_length/compare_string_length.agu [✔]
 test/valid/58219_count_common_elements/count_common_elemts.agu [FAIL]
 Syntactic error: at line 13, column 15: Unexpected token ')'
@@ -185,10 +166,7 @@ Syntactic error: at line 9, column 5: Unexpected token ')'
 test/valid/58235_3d_array/3d_array.agu [✔]
 test/valid/58235_complex_booleans/complex_booleans.agu [✔]
 test/valid/58235_condition_with_multiple_exp/condition_with_multiple_exp.agu [✔]
-test/valid/58235_length_of_array_update/length_of_array_update.agu [FAIL]
-Syntactic error: at line 3, column 9: Unexpected token 'int'
-Syntactic error: at EOF
-
+test/valid/58235_length_of_array_update/length_of_array_update.agu [✔]
 test/valid/58235_matrix_transposed/matrix_transposed.agu [✔]
 test/valid/58235_n_negative/n_negative.agu [FAIL]
 Syntactic error: at line 3, column 9: Unexpected token 'unit'
@@ -198,9 +176,7 @@ test/valid/58235_power_precedence/power_precedence.agu [FAIL]
 Syntactic error: at line 4, column 11: Unexpected token '='
 
 test/valid/58235_unit_as_input_and_output/unit_as_input_and_output.agu [✔]
-test/valid/58235_while_in_var/while_in_var.agu [FAIL]
-Syntactic error: at EOF
-
+test/valid/58235_while_in_var/while_in_var.agu [✔]
 test/valid/58235_while_with_outer_var/while_with_outer_var.agu [✔]
 test/valid/58250_average/58250_average.agu [✔]
 test/valid/58250_basic_addition/58250_basic_addition.agu [✔]
@@ -311,6 +287,7 @@ test/valid/64854_printA/printA.agu [✔]
 test/valid/64854_produce_letter/produce_letter.agu [✔]
 test/valid/64854_switch/switch.agu [✔]
 test/valid/tcomp000_arrayOfUnit/arrayOfUnit.agu [✔]
+test/valid/tcomp000_assoc_eq/assoc_eq.agu [✔]
 test/valid/tcomp000_collatz/collatz.agu [✔]
 test/valid/tcomp000_diagonal/diagonal.agu [✔]
 test/valid/tcomp000_evenOdd/evenOdd.agu [✔]

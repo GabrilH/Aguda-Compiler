@@ -7,7 +7,7 @@ This project is a compiler for the AGUDA programming language, built using PLY. 
 
 ## How to build the compiler
 - **Ensure you have Docker installed and running**
-- **Run the following command** (inside `/aguda-compiler` folder):
+- **Run the following command** (inside project's root folder):
 
         docker-compose build
 
@@ -140,16 +140,4 @@ The test suit generates three different logs inside the folder `test/logs`, one 
 
 ## If your program does not pass all tests, explain why
 
-- My parser currently has the same tests results as the professor's, except for the following (supposedly) syntax invalid test:
-
-        -- Author: 64371, Ricardo Costa
-
-        let between(x, min, max): (Int, Int, Int) -> Bool =
-            min < x < max -- syntax error: non associative operator '<'
-
-    Where the professor's parser detects an error, but mine doesn't. Resulting in the following output in the log:
-
-        test/invalid-syntax/64371_non_assoc_operator/non_assoc_operator.agu [FAIL]
-        Expected error but none found.
-
-    I think this program has a semantic error, but not a syntatic one.
+- My parser currently has the same tests results as the professor's, so the tests that fail are, supposedly, incorrectly written.

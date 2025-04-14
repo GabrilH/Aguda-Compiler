@@ -1,7 +1,7 @@
 invalid-syntax-tests
 
-Passed [✔]: 72
-Failed [FAIL]: 21
+Passed [✔]: 75
+Failed [FAIL]: 15
 
 test/invalid-syntax/46494_lexical_error/invalid_char.agu [✔]
 Lexical error: Illegal character '§' at line 3, column 17
@@ -136,29 +136,25 @@ Syntactic error: at line 5, column 32: Unexpected token ','
 test/invalid-syntax/58185_missing_parenthesis/missing_parenthesis.agu [✔]
 Syntactic error: at line 4, column 9: Unexpected token 'n'
 
-test/invalid-syntax/58185_type_mismatch/type_mismatch.agu [FAIL]
-Expected error but none found.
 test/invalid-syntax/58185_unclosed_string/unclosed_string.agu [✔]
 Lexical error: Illegal character '"' at line 5, column 11
 Syntactic error: at line 5, column 17: Unexpected token 'string'
 
-test/invalid-syntax/58185_undeclared_variable/undeclared_variable.agu [FAIL]
-Expected error but none found.
-test/invalid-syntax/58185_wrong_function_parameter/wrong_funtion_parameter.agu [FAIL]
-Expected error but none found.
 test/invalid-syntax/58215_capitalL/capitalL.agu [✔]
 Syntactic error: at line 3, column 1: Unexpected token 'Let'
 
-test/invalid-syntax/58215_outOfBounds/outOfBounds.agu [FAIL]
-Expected error but none found.
+test/invalid-syntax/58215_outOfBounds/outOfBounds.agu [✔]
+Syntactic error: at line 4, column 18: Unexpected token ']'
+
 test/invalid-syntax/58215_scope/scope.agu [✔]
 Syntactic error: at line 4, column 5: Unexpected token 'let'
 
 test/invalid-syntax/58215_simpleNoName/simpleNoName.agu [✔]
 Syntactic error: at line 4, column 9: Unexpected token 'Int'
 
-test/invalid-syntax/58215_unitInt/unitInt.agu [FAIL]
-Expected error but none found.
+test/invalid-syntax/58215_unitInt/unitInt.agu [✔]
+Syntactic error: at line 4, column 23: Unexpected token 'abc'
+
 test/invalid-syntax/58215_wrongSignal/wrongSignal.agu [✔]
 Syntactic error: at line 4, column 21: Unexpected token '='
 
@@ -179,7 +175,7 @@ Syntactic error: at line 6, column 9: Unexpected token '='
 test/invalid-syntax/58219_wrong_array_initialization/wrong_array_initialization.agu [✔]
 Syntactic error: at line 5, column 32: Unexpected token ','
 
-test/invalid-syntax/58235_id_invalid_start_character/id_invalid_characters.agu [✔]
+test/invalid-syntax/58235_id_invalid_characters/id_invalid_characters.agu [✔]
 Syntactic error: at line 4, column 10: Unexpected token '!'
 
 test/invalid-syntax/58235_id_invalid_start_character/id_invalid_start_character.agu [✔]
@@ -250,11 +246,12 @@ Syntactic error: at line 3, column 9: Unexpected token 'integer'
 
 test/invalid-syntax/64361_wrong_type_return/wrong_type_return.agu [FAIL]
 Expected error but none found.
+test/invalid-syntax/64371_invalid_else/invalid_else.agu [✔]
+Syntactic error: at line 3, column 36: Unexpected token 'else'
+
 test/invalid-syntax/64371_missing_type_annotation/missing_type_annotation.agu [✔]
 Syntactic error: at line 3, column 9: Unexpected token '='
 
-test/invalid-syntax/64371_non_assoc_operator/non_assoc_operator.agu [FAIL]
-Expected error but none found.
 test/invalid-syntax/64371_unterminated_string/unterminated_string.agu [✔]
 Lexical error: Illegal character '"' at line 3, column 19
 Syntactic error: at line 3, column 26: Unexpected token 'world'
