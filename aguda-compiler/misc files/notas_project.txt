@@ -41,4 +41,28 @@ Regras para transformar na AST:
     comparable (Fun...) = False
     comparable _ = True
 
+    Não é possivel meter print e length em sigma0 por terem varios
+    tipos diferentes. Têm que se tratadas de forma especial
+
+    Se declarar um variavel de "print"? Deve dar erro na altura da declaração
+    Dizer que print/length são nomes reservados na "tabela de simbolos"
+
+    Mínimo, ao primeiro erro rebenta:
+    checkAgainst : Ctx -> Exp -> Type -> ()
+    checkAgainst ctx e t | typeof ctx e == t = ()
+                         | otherwise $ error "Expected ''++ stm t ++ "found" ++ typeof ctx e   
+
+    Mensagens erro mais simpaticas, vai acumulando:
+    checkAgainst ctx (cond e1 e2 e3) t2 =
+        let _ = checkAgainst ctx e1 BoolType
+        let _ = checkAgainst ctx e2 t2
+        let _ = checkAgainst ctx e3 t3
+        int2?
+
+    Ter cuidado com wildcards, podem ser dois passados assim, mas caso fossem (x,x) não dá
+    let f(_,_) : (Int, Bool) -> String = ...
+    E os wildcards só podem ser usados nos parâmetros, não se pode tipo:
+    let _ + 3
+
+
 
