@@ -64,5 +64,11 @@ Regras para transformar na AST:
     E os wildcards só podem ser usados nos parâmetros, não se pode tipo:
     let _ + 3
 
+# trabalho 4 ?
 
+    Registos de ativacao:
 
+        utilização de registos:
+            - plano A - tudo em registos (infelizmente muito poucos)
+            - plano B - os que nao cabem, vao para memória (pilha)
+            
