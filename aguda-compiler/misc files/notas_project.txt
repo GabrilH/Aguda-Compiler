@@ -72,3 +72,6 @@ Regras para transformar na AST:
             - plano A - tudo em registos (infelizmente muito poucos)
             - plano B - os que nao cabem, vao para memória (pilha)
             
+        Variaveis que vivem no registo de ativação:
+            - vars passadas por referencia
+            - vars acedidas em funções chamadas por uma dada função
