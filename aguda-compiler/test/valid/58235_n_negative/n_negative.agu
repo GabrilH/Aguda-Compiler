@@ -9,4 +9,4 @@ let _ : unit =
     print(a); print("\n");
     print(b); print("\n");
     print(c); print("\n");
-    print(d);
+    print(d)
