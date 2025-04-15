@@ -12,7 +12,6 @@ reserved = {
     'unit': 'UNIT_LITERAL',
     'true': 'TRUE',
     'false': 'FALSE',
-    'null': 'NULL',
     'new': 'NEW',
     'Int': 'INT_TYPE',
     'Bool': 'BOOL_TYPE',

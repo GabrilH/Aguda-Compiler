@@ -128,15 +128,12 @@ def p_literal(t):
     '''literal : INT_LITERAL
                | TRUE
                | FALSE
-               | NULL
                | UNIT_LITERAL
                | STRING_LITERAL'''
     if t[1] == 'true':
         t[0] = s.BoolLiteral(True)
     elif t[1] == 'false':
         t[0] = s.BoolLiteral(False)
-    elif t[1] == 'null':
-        t[0] = s.NullLiteral()
     elif t[1] == 'unit':
         t[0] = s.UnitLiteral()
     elif isinstance(t[1], int):

@@ -72,12 +72,6 @@ class UnitLiteral(Exp):
     def __str__(self):
         return 'unit'
 
-
-@dataclass
-class NullLiteral(Exp):
-    def __str__(self):
-        return 'null'
-
 @dataclass
 class StringLiteral(Exp):
     value: str
