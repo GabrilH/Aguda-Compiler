@@ -1,7 +1,1 @@
 O operator '!' está em ambos operadores binarios e nos unarios.
-
-Qual a diferença entre o literal unit e o literal null? quando é que cada um deles é usado? Qual é o type de null?
-    - era suposto ser apenas unit
-
-o underscore pode ser usado como placeholder no nome de funções?
-    - pode, mas não será ser possivel chamar a função

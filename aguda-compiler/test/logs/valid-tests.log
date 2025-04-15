@@ -1,7 +1,7 @@
 valid-tests
 
-Passed [✔]: 189
-Failed [FAIL]: 29
+Passed [✔]: 190
+Failed [FAIL]: 28
 
 test/valid/46494_arrays/arrays.agu [✔]
 test/valid/46494_check_for_primes/checking_primes.agu [✔]
@@ -9,14 +9,11 @@ test/valid/46494_counting_numbers/counting__even_numbers.agu [✔]
 test/valid/46494_minimum_value/finding_the_minimum.agu [✔]
 test/valid/46494_odd_even/odd_even_while.agu [✔]
 test/valid/46494_palindromes/palindromes_check.agu [FAIL]
-Syntactic error: at line 4, column 18: Unexpected token ':'
 Syntactic error: at EOF
 
 test/valid/46494_power_function/power_func.agu [✔]
 test/valid/46494_recursive_factorial/recursive_factorial.agu [✔]
-test/valid/46494_simulate_chess_board/simulate_chess.agu [FAIL]
-Syntactic error: at line 33, column 5: Unexpected token 'set'
-
+test/valid/46494_simulate_chess_board/simulate_chess.agu [✔]
 test/valid/46494_string_loop/mixing_string_integers_loops.agu [✔]
 test/valid/54394_array_operations/array_operations.agu [✔]
 test/valid/54394_bool_array/bool_array.agu [✔]
@@ -170,7 +167,6 @@ test/valid/58235_length_of_array_update/length_of_array_update.agu [✔]
 test/valid/58235_matrix_transposed/matrix_transposed.agu [✔]
 test/valid/58235_n_negative/n_negative.agu [FAIL]
 Syntactic error: at line 3, column 9: Unexpected token 'unit'
-Syntactic error: at EOF
 
 test/valid/58235_power_precedence/power_precedence.agu [FAIL]
 Syntactic error: at line 4, column 11: Unexpected token '='
