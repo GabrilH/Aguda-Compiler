@@ -1,3 +1,6 @@
 verificar onde deve ser usado p_variable ou ID
 perguntar as duvidas
 adicionar overloading e todas as possiveis funções de print e length
+fazer um main decente
+
+corrigir parsing p.ex. C:\Users\gmfh\Documents\TComp_Repo\aguda-compiler\test\valid\tcomp000_assoc_eq\assoc_eq.agu

@@ -22,7 +22,7 @@ def add_builtins(ctx: SymbolTable) -> None:
     """
     Adds built-in functions to the symbol table.
     """
-    ctx.insert('print', FunctionType(param_types=[ArrayType(BaseType('Unit'), 1)],
+    ctx.insert('print', FunctionType(param_types=[BaseType('String')],
                                     return_type=BaseType('Unit')))
     ctx.insert('length', FunctionType(param_types=[ArrayType(BaseType('Int'), 1)],
                                     return_type=BaseType('Int')))
@@ -138,11 +138,11 @@ def typeof(ctx: SymbolTable, e:Exp) -> Type:
             
             local_ctx = ctx.enter_scope()
             exp2Type = typeof(local_ctx, exp2)
-            ctx.exit_scope()
+            # TODO ctx.exit_scope()
             
             local_ctx = ctx.enter_scope()
             exp3Type = typeof(local_ctx, exp3)
-            ctx.exit_scope()
+            # TODO ctx.exit_scope()
             
             if exp2Type != exp3Type:
                 raise TypeError(f"Conditional branches have different types: {exp2Type} vs {exp3Type}")
@@ -157,7 +157,7 @@ def typeof(ctx: SymbolTable, e:Exp) -> Type:
             # Enter a new scope for the loop body
             local_ctx = ctx.enter_scope()
             exp2Type = typeof(local_ctx, exp2)
-            ctx.exit_scope()
+            # TODO ctx.exit_scope()
 
             return exp2Type
         
@@ -233,7 +233,7 @@ def typeof(ctx: SymbolTable, e:Exp) -> Type:
                 raise TypeError(f"Function '{name}' body has type {body_type}, expected {type.return_type}")
 
             # Exit the local context TODO: is this needed?
-            # ctx.exit_scope()
+            # TODO ctx.exit_scope()
 
             return BaseType('Unit')
         
