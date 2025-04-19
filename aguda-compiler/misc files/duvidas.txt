@@ -12,3 +12,5 @@ Dúvidas no typing
     - O "type of id" que é mencionado é igual ao type presente na expressão "let id : type = exp1 ; exp2" ?
     - Qual a necessidade de ter um caso específico para quando "let id : type = exp1 ; exp2" ?
         - "exp1 ; exp2" não se vai avaliar para apenas um "exp" ? Que depois é lidado pelo caso base?
+
+    Em que situações é que uma expressão pode não ter um tipo?

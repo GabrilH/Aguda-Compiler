@@ -43,7 +43,6 @@ class ArrayType(Type):
                     self.dimensions == other.dimensions)
         return False
 
-
 @dataclass
 class FunctionType(Type):
     param_types: List[Type]
@@ -66,7 +65,6 @@ class Var(Exp):
 
     def __str__(self):
         return self.name
-
 
 @dataclass
 class IntLiteral(Exp):
