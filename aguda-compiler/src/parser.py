@@ -16,7 +16,8 @@ precedence = (
     ('left', 'PLUS', 'MINUS'),
     ('left', 'TIMES', 'DIVIDE', 'MOD'),
     ('right', 'POWER'),
-    ('right', 'UMINUS', 'NOT')
+    ('right', 'UMINUS', 'NOT'),
+    ('left', 'LBRACKET')
 )
 
 # Grammar rules
