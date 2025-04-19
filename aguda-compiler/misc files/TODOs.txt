@@ -1,3 +1,3 @@
 verificar onde deve ser usado p_variable ou ID
-
-rever syntax FunctionDeclaration
+perguntar as duvidas
+adicionar overloading e todas as possiveis funções de print e length

@@ -14,3 +14,5 @@ Dúvidas no typing
         - "exp1 ; exp2" não se vai avaliar para apenas um "exp" ? Que depois é lidado pelo caso base?
 
     Em que situações é que uma expressão pode não ter um tipo?
+
+    É suposto haver shadowing?
