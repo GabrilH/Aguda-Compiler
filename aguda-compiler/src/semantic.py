@@ -157,10 +157,9 @@ def typeof(ctx: SymbolTable, e:Exp) -> Type:
             
             # Enter a new scope for the loop body
             local_ctx = ctx.enter_scope()
-            exp2Type = typeof(local_ctx, exp2)
-            # TODO ctx.exit_scope()
-
-            return exp2Type
+            typeof(local_ctx, exp2)
+            
+            return BaseType('Unit')
         
         case Assignment(lhs, exp):
             lhsType = typeof(ctx, lhs)
