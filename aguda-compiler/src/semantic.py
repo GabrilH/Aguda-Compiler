@@ -17,6 +17,8 @@ def validate(program: Program) -> None:
             typeof(ctx, stmt)
         else:
             raise TypeError(f"Invalid top-level declaration: {type(stmt)}")
+    
+    print("Program is semantically valid!")
         
 def add_builtins(ctx: SymbolTable) -> None:
     """
@@ -247,6 +249,13 @@ def checkAgainst(ctx: SymbolTable, exp: Exp, type: Type) -> None:
     actual_type = typeof(ctx, exp)
     if actual_type != type:
         raise TypeError(f"Expected type {type}, found {actual_type}, for expression '{exp}'")
+    
+def checkEqualTypes(type1: Type, type2: Type) -> None:
+    """
+    Checks if two types are equal.
+    """
+    if type1 != type2:
+        raise TypeError(f"Expected equal types, found {type1} and {type2}")
 
 
 # def checkAgainst(ctx: SymbolTable, exp: Exp, expected_type: Type) -> None:
