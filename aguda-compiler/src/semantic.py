@@ -65,7 +65,7 @@ def typeof(ctx: SymbolTable, e:Exp) -> Type:
         
         case ArrayAccess(array, index):
             arrayType = typeof(ctx, array)
-            if isinstance(arrayType, ArrayType):
+            if not isinstance(arrayType, ArrayType):
                 raise TypeError(f"Array access requires an array, got {arrayType}")
 
             indexType = typeof(ctx, index)
@@ -75,13 +75,13 @@ def typeof(ctx: SymbolTable, e:Exp) -> Type:
             return arrayType.base_type
         
         case FunctionCall(name, args):
-            if name == 'print':
+            if name.name == 'print':
                 if len(args) != 1:
                     raise TypeError("Print function takes exactly one argument")
                 argType = typeof(ctx, args[0])
                 return BaseType('Unit')
             
-            if name == 'length':
+            if name.name == 'length':
                 if len(args) != 1:
                     raise TypeError("Length function takes exactly one argument")
                 argType = typeof(ctx, args[0])

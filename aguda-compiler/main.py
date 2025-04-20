@@ -215,4 +215,4 @@ def main():
 if __name__ == '__main__':
     main()
     #run_test_suite()
-    #run_single_test(r".\test\valid\54394_clamp\clamp.agu")
+    #run_single_test(r".\test\valid\54394_bool_array\bool_array.agu")
