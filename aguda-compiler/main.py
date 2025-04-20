@@ -213,6 +213,6 @@ def main():
         print("Usage: docker-compose run --rm aguda-compiler [<file_path> | --tests]")
 
 if __name__ == '__main__':
-    #main()
+    main()
     #run_test_suite()
-    run_single_test(r".\test\valid\58182_transpose_matrix\transpose_matrix.agu")
+    #run_single_test(r".\test\valid\58182_transpose_matrix\transpose_matrix.agu")

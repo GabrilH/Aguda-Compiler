@@ -1,4 +1,11 @@
 verificar onde deve ser usado p_variable ou ID
 perguntar as duvidas
 
-corrigir .\test\valid\58182_transpose_matrix\transpose_matrix.agu
+fazer a primeira passagem para colecionar tipos de funções
+(resolve problemas de mutual recursion)
+
+rever os scopes : 64371_reverse_array
+
+adicionar col e line aos erros semanticos
+
+refactor ao typeof parece ter muita coisa
