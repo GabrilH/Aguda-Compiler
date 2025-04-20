@@ -216,11 +216,11 @@ def p_variable_declaration(t):
     t[0] = s.VariableDeclaration(t[2], t[4], t[6])
 
 def p_if_then_else(t):
-    '''if_then_else : IF exp THEN sequence ELSE sequence'''
+    '''if_then_else : IF exp THEN exp ELSE exp'''
     t[0] = s.Conditional(t[2], t[4], t[6])
 
 def p_if_then(t):
-    '''if_then : IF exp THEN sequence'''
+    '''if_then : IF exp THEN exp'''
     t[0] = s.Conditional(t[2], t[4], s.UnitLiteral())
 
 def p_while_loop(t):
