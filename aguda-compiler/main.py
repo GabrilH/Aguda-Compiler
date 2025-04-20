@@ -4,6 +4,7 @@ import io
 import contextlib
 from src.lexer import lexer
 from src.parser import parser, reset_parser
+from src.semantic import validate
 import sys
 
 TEST_DIR = 'test'
@@ -29,7 +30,114 @@ def write_logs(logs, test_type):
 
     print(f"Logs written to {log_path}")
 
-def run_tests(test_dir, valid):
+def syntax_test_run(filepath, valid, print_ast):
+
+    test_log = []
+    
+    with open(filepath, 'r') as f:
+        code = f.read()
+
+    # Reset the parser (for the line counter)
+    reset_parser()
+
+    # Store stdout of parser
+    output_buffer = io.StringIO()
+    try:
+        with contextlib.redirect_stdout(output_buffer):
+            ast = parser.parse(code, lexer=lexer)
+        if print_ast:
+            print(ast)
+        output = output_buffer.getvalue()
+        output = output.strip()
+    except Exception as e:
+        test_log.append(f"{filepath} [EXCEPTION]")
+        test_log.append(str(e))
+
+    if valid:
+        if output == "":
+            # No errors printed -> Test passed
+            test_log.append(f"{filepath} [✔]")
+        else:
+            # Expected no output, but got errors
+            test_log.append(f"{filepath} [FAIL]")
+            test_log.append(output)
+    else:
+        if output == "":
+            # Expected errors, but got none
+            test_log.append(f"{filepath} [FAIL]")
+            test_log.append("Expected error but none found.")
+        else:
+            # Errors printed as expected
+            test_log.append(f"{filepath} [✔]")
+            test_log.append(output)
+    
+    return test_log
+
+def semantic_test_run(filepath, valid, print_ast):
+
+    test_log = []
+    
+    with open(filepath, 'r') as f:
+        code = f.read()
+
+    # Reset the parser (for the line counter)
+    reset_parser()
+
+    # Store stdout of parser
+    output_buffer = io.StringIO()
+    try:
+        with contextlib.redirect_stdout(output_buffer):
+            ast = parser.parse(code, lexer=lexer)
+
+        if print_ast:
+            print(ast)
+        output = output_buffer.getvalue()
+        output = output.strip()
+
+    except Exception as e:
+        test_log.append(f"{filepath} [EXCEPTION]")
+        test_log.append(str(e))
+
+    # If there are syntax errors, exit without semantic validation
+    if output:
+        test_log.append(f"{filepath} [FAIL]")
+        test_log.append(output)
+        return test_log
+
+    # Perform semantic validation if no syntax errors
+    output_buffer = io.StringIO()
+    try:
+        with contextlib.redirect_stdout(output_buffer):
+            validate(ast)
+        output = output_buffer.getvalue()
+        output = output.strip()
+
+    except Exception as e:
+        if valid:
+            test_log.append(f"{filepath} [FAIL]")
+            test_log.append(str(e))
+        else:
+            test_log.append(f"{filepath} [✔]")
+            test_log.append(str(e))
+        return test_log
+
+    if valid:
+        test_log.append(f"{filepath} [✔]")
+        test_log.append(output)
+    else:
+        test_log.append(f"{filepath} [FAIL]")
+        test_log.append("Expected error but none found.")
+
+    return test_log
+
+def run_multiple_tests(test_dir : str, valid : bool, type : int):
+    """
+    Run multiple tests in a directory.
+    :param test_dir: Directory containing the tests
+    :param valid: True if the programs to test are valid, False if they are invalid
+    :param type: 0 for syntax tests, 1 for semantic tests
+    :return: List logs of the tests
+    """
     logs = []
 
     all_files = []
@@ -39,101 +147,61 @@ def run_tests(test_dir, valid):
     all_files.sort()
 
     for filepath in all_files:
-        try:
-            with open(filepath, 'r') as f:
-                code = f.read()
-
-        except Exception as e:
-            logs.append(f"{filepath} [EXCEPTION]")
-            logs.append(str(e))
-
-        # Reset the parser (for the line counter)
-        reset_parser()
-
-        # Store stdout of parser
-        output_buffer = io.StringIO()
-        try:
-            with contextlib.redirect_stdout(output_buffer):
-                parser.parse(code, lexer=lexer)
-            output = output_buffer.getvalue()
-        except Exception as e:
-            logs.append(f"{filepath} [EXCEPTION]")
-            logs.append(str(e))
-
-        if valid:
-            if output.strip() == "":
-                # No errors printed -> Test passed
-                logs.append(f"{filepath} [✔]")
-            else:
-                # Expected no output, but got errors
-                logs.append(f"{filepath} [FAIL]")
-                logs.append(output)
+        if type == 0:
+            test_log = syntax_test_run(filepath, valid)
         else:
-            if output.strip() == "":
-                # Expected errors, but got none
-                logs.append(f"{filepath} [FAIL]")
-                logs.append("Expected error but none found.")
-            else:
-                # Errors printed as expected
-                logs.append(f"{filepath} [✔]")
-                logs.append(output)
+            test_log = semantic_test_run(filepath, valid)
+
+        logs.extend(test_log)
 
     return logs
 
-def run_single_test(filepath):
-    with open(filepath, 'r') as f:
-        code = f.read()
+def run_test_suite():
+    invalid_sem_tests_logs = run_multiple_tests(INVALID_SEM_DIR, valid=False, type=1)
+    write_logs(invalid_sem_tests_logs, "invalid-semantic-tests")
 
-    ast = parser.parse(code)
-    print(ast)
-    try:
-        from src.semantic import validate
-        validate(ast)
-        print("Semantic validation passed.")
-    except Exception as e:
-        print("Semantic validation failed:")
-        print(e)
+    invalid_syn_tests_logs = run_multiple_tests(INVALID_SYN_DIR, valid=False, type=0)
+    write_logs(invalid_syn_tests_logs, "invalid-syntax-tests")
+
+    valid_tests_logs = run_multiple_tests(VALID_DIR, valid=True, type=1)
+    write_logs(valid_tests_logs, "valid-tests")
+
+def run_single_test(filepath):
+    """
+    Run a single test.
+    :param filepath: Path to the test file
+    """
+    if not os.path.isfile(filepath):
+        print(f"File '{filepath}' does not exist.")
+        return
+    if not filepath.endswith('.agu'):
+        print(f"File '{filepath}' is not a .agu file.")
+        return
+    else:
+        print(f"Running test: {filepath}")
+        test_log = semantic_test_run(filepath, valid=True, print_ast=True)
+        print(test_log[1])
 
 def main():
     # If no args, accept stdin as program input
     if len(sys.argv) == 1:
-        print("Write the AGUDA code to be parsed, followed by [ENTER] and Ctrl+D (EOF)")
+        print("Write the AGUDA code to be validated, followed by [ENTER] and Ctrl+D (EOF)")
         code = sys.stdin.read()
-        ast = parser.parse(code)
-        print("Parsed AST:")
-        print("===================================")
-        print(ast)
+        temp_file_path = os.path.join(TEST_DIR, 'temp_input.agu')
+        with open(temp_file_path, 'w', encoding='utf-8') as temp_file:
+            temp_file.write(code)
+        run_single_test(temp_file_path)
+        os.remove(temp_file_path)
     
     elif len(sys.argv) == 2:
-        # If the first argument is --tests, run all tests
-        if sys.argv[1] == "--tests":
-            invalid_sem_tests_logs = run_tests(INVALID_SEM_DIR, valid=True)
-            write_logs(invalid_sem_tests_logs, "invalid-semantic-tests")
-
-            invalid_syn_tests_logs = run_tests(INVALID_SYN_DIR, valid=False)
-            write_logs(invalid_syn_tests_logs, "invalid-syntax-tests")
-
-            valid_tests_logs = run_tests(VALID_DIR, valid=True)
-            write_logs(valid_tests_logs, "valid-tests")
+        # If the first argument is --suite, run all tests
+        if sys.argv[1] == "--suite":
+            print("Running all tests...")
+            run_test_suite()
         
         elif sys.argv[1] == "--help":
             print("Usage: docker-compose run --rm aguda-compiler [<file_path> | --tests]")
             return
-        
-        elif sys.argv[1] == "--validate":
-            print("Write the AGUDA code to be validated semantically, followed by [ENTER] and Ctrl+D (EOF)")
-            code = sys.stdin.read()
-            ast = parser.parse(code)
-            print("Parsed AST:")
-            print("===================================")
-            print(ast)
-            try:
-                from src.semantic import validate
-                validate(ast)
-                print("Semantic validation passed.")
-            except Exception as e:
-                print("Semantic validation failed:")
-                print(e)
         
         # If the first argument is a file path, run that test
         else:
@@ -146,5 +214,6 @@ def main():
         print("Usage: docker-compose run --rm aguda-compiler [<file_path> | --tests]")
 
 if __name__ == '__main__':
-    # main()
-    run_single_test(r".\test\valid\tcomp000_arrayOfUnit\arrayOfUnit.agu")
+    main()
+    #run_test_suite()
+    #run_single_test(r".\test\valid\54394_clamp\clamp.agu")
