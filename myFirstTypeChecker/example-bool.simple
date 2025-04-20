@@ -1,0 +1,3 @@
+let b = true || false in
+let c = b && b || true in
+c || c
