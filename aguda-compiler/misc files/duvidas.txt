@@ -1,12 +1,6 @@
-Dúvidas no typing
 
-    Boa tarde, professor. No enunciado aguda.pdf, tenho duas dúvidas onde diz:
-
-    "The type of array access exp1[exp2] is type if exp1 is of type type[] and exp2 of type Int"
-    - exp1 não poderia ser também de um type "base", i.e., um não-array type? Ou estamos a assumir que os parenteses retos da expressão exp1[exp2] fazem parte do type de exp1?
-
-    "The type of call length(exp1,...,expn) is type if n = 1 and exp1 has a type type[]"
-    - O type de length não deveria ser sempre Int?
+    Onde é que uma sequência de expressões exp;exp;... deverá ser permitida sem o uso necessário de parenteses?
+    Sugestão: apenas após o ASSIGN de cada Top-Level declaration
 
     "The type of variable declaration let id : type = exp is Unit if exp is of type type. Furthermore, if the declaration appears at the left of a semicolon let id : type = exp1 ; exp2, then the type of id is used to validate exp2"
     - O "type of id" que é mencionado é igual ao type presente na expressão "let id : type = exp1 ; exp2" ?

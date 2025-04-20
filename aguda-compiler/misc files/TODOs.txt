@@ -1,4 +1,4 @@
 verificar onde deve ser usado p_variable ou ID
 perguntar as duvidas
 
-corrigir parsing p.ex. C:\Users\gmfh\Documents\TComp_Repo\aguda-compiler\test\valid\tcomp000_assoc_eq\assoc_eq.agu
+corrigir .\test\valid\58182_transpose_matrix\transpose_matrix.agu

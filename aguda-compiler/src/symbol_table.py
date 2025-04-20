@@ -7,10 +7,9 @@ class SymbolTable:
         self.parent : SymbolTable = None
 
     def insert(self, name: str, symbol_type: Type) -> None:
-        # TODO Remove this check to allow shadowing
-        # TODO add overloading
-        if name in self.table:
-            raise NameError(f"Symbol '{name}' is already defined")
+        # TODO Add this check to disallow shadowing
+        # if name in self.table:
+        #     raise NameError(f"Symbol '{name}' is already defined")
         self.table[name] = symbol_type
 
     def lookup(self, name: str) -> Type:

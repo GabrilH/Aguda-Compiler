@@ -88,8 +88,8 @@ def typeof(ctx: SymbolTable, e:Exp) -> Type:
                 if not isinstance(argType, ArrayType):
                     raise TypeError("Length function argument must be an array")
                 # TODO acho que length deve devolver um int
-                # return BaseType('Int')
-                return argType.base_type
+                # return argType.base_type
+                return BaseType('Int')
             
             funcType = typeof(ctx, name)
             if not isinstance(funcType, FunctionType):
@@ -113,7 +113,9 @@ def typeof(ctx: SymbolTable, e:Exp) -> Type:
             if name.name in ['print', 'length']:
                 raise NameError(f"Variable name '{name}' conflicts with built-in function")
             
-            ctx.insert(name.name, type)
+            # Insert the variable into the context only if it is not '_' (wildcard)
+            if name.name != '_':
+                ctx.insert(name.name, type)
             
             # Furthermore, if the declaration appears at the left
             # of a semicolon let id : type = exp1 ; exp2, then the type of id
@@ -170,15 +172,14 @@ def typeof(ctx: SymbolTable, e:Exp) -> Type:
                 raise TypeError(f"Assignment type mismatch: {lhsType} vs {expType}")
 
             return BaseType('Unit')
+        
+        case Sequence(first, rest):
+            typeof(ctx, first)
+            return typeof(ctx, rest)
 
         case BinaryOp(left, operator, right):
             leftType = typeof(ctx, left)
             rightType = typeof(ctx, right)
-
-            if operator == ';':
-                # Ensure exp1 has a type
-                typeof(ctx, left)
-                return rightType
             
             if operator in ['+', '-', '*', '/', '%', '^']:
                 if leftType != BaseType('Int') or rightType != BaseType('Int'):
@@ -203,6 +204,22 @@ def typeof(ctx: SymbolTable, e:Exp) -> Type:
                 raise TypeError(f"Logical negation requires a Bool, got {operandType}")
             return BaseType('Bool')
         
+        case TopLevelVariableDeclaration(name, type, exp):
+            # No variable may be named as print or length
+            if name.name in ['print', 'length']:
+                raise NameError(f"Variable name '{name}' conflicts with built-in function")
+            
+            # Check the type of the expression against the declared type
+            expType = typeof(ctx, exp)
+            if expType != type:
+                raise TypeError(f"Top-level variable '{name}' declared with type {type}, but assigned {expType}")
+            
+            # Insert the variable into the context only if it is not '_' (wildcard)
+            if name.name != '_':
+                ctx.insert(name.name, type)
+                
+            return BaseType('Unit')
+        
         case FunctionDeclaration(name, parameters, type, body):
             # No function may be named as print or length
             if name.name in ['print', 'length']:
@@ -215,7 +232,9 @@ def typeof(ctx: SymbolTable, e:Exp) -> Type:
                 raise TypeError(f"Function '{name}' declared with incorrect number of parameters")
             
             # Allow mutually recursive declarations
-            ctx.insert(name.name, type)
+            # Only insert if name != UNDERSCORE
+            if name.name != '_':
+                ctx.insert(name.name, type)
 
             # Check for duplicate parameter names (except for '_')
             param_names = set()
