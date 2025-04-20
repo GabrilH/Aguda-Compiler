@@ -23,31 +23,35 @@ precedence = (
 # Grammar rules
 
 def p_program(t):
-    '''program : declarations'''
+    '''program : top_level_declarations'''
     t[0] = s.Program(t[1])
 
-def p_declarations(t):
-    '''declarations : declaration declarations_tail'''
+def p_top_level_declarations(t):
+    '''top_level_declarations : top_level_declaration top_level_declarations_tail'''
     if len(t) == 2:
         t[0] = [t[1]]
     else:
         t[0] = [t[1]] + t[2]
 
-def p_declarations_tail(t):
-    '''declarations_tail : declaration declarations_tail
-                         | empty'''
+def p_top_level_declarations_tail(t):
+    '''top_level_declarations_tail : top_level_declaration top_level_declarations_tail
+                                   | empty'''
     if len(t) == 3:
         t[0] = [t[1]] + t[2]
     else:
         t[0] = []
 
-def p_declaration(t):
-    '''declaration : variable_declaration
-                   | function_declaration'''
+def p_top_level_declaration(t):
+    '''top_level_declaration : top_level_variable_declaration
+                             | top_level_function_declaration'''
     t[0] = t[1]
 
-def p_function_declaration(t):
-    '''function_declaration : LET variable LPAREN parameters RPAREN COLON type ASSIGN exp'''
+def p_top_level_variable_declaration(t):
+    '''top_level_variable_declaration : LET variable COLON type ASSIGN sequence'''
+    t[0] = s.TopLevelVariableDeclaration(t[2], t[4], t[6])
+
+def p_top_level_function_declaration(t):
+    '''top_level_function_declaration : LET variable LPAREN parameters RPAREN COLON type ASSIGN sequence'''
     t[0] = s.FunctionDeclaration(t[2], t[4], t[7], t[9])
 
 def p_parameters(t):
@@ -104,6 +108,24 @@ def p_function_type_tail(t):
     else:
         t[0] = []
 
+def p_sequence(t):
+    '''sequence : exp sequence_tail'''
+    if not t[2]:
+        t[0] = t[1]
+    else:
+        t[0] = s.Sequence(t[1], t[2])
+
+def p_sequence_tail(t):
+    '''sequence_tail : SEMICOLON exp sequence_tail
+                     | empty'''
+    if len(t) == 4:
+        if not t[3]:
+            t[0] = t[2]
+        else:
+            t[0] = s.Sequence(t[2], t[3])
+    else:
+        t[0] = None
+
 def p_exp(t):
     '''exp : variable
             | literal
@@ -143,8 +165,7 @@ def p_literal(t):
         t[0] = s.StringLiteral(t[1])
 
 def p_binary_exp(t):
-    '''binary_exp : exp SEMICOLON exp
-                    | exp PLUS exp
+    '''binary_exp : exp PLUS exp
                     | exp MINUS exp
                     | exp TIMES exp
                     | exp DIVIDE exp
@@ -198,11 +219,11 @@ def p_variable_declaration(t):
     t[0] = s.VariableDeclaration(t[2], t[4], t[6])
 
 def p_if_then_else(t):
-    '''if_then_else : IF exp THEN exp ELSE exp'''
+    '''if_then_else : IF exp THEN sequence ELSE sequence'''
     t[0] = s.Conditional(t[2], t[4], t[6])
 
 def p_if_then(t):
-    '''if_then : IF exp THEN exp'''
+    '''if_then : IF exp THEN sequence'''
     t[0] = s.Conditional(t[2], t[4], s.UnitLiteral())
 
 def p_while_loop(t):
@@ -218,7 +239,7 @@ def p_array_access(t):
     t[0] = s.ArrayAccess(t[1], t[3])
 
 def p_group(t):
-    '''group : LPAREN exp RPAREN'''
+    '''group : LPAREN sequence RPAREN'''
     t[0] = t[2]
 
 def p_empty(t):

@@ -93,6 +93,15 @@ class StringLiteral(Exp):
 
     def __str__(self):
         return f'"{self.value}"'
+    
+@dataclass
+class Sequence(Exp):
+    first: Exp
+    rest: Exp
+
+    def __str__(self):
+        #TODO indent no rest?
+        return f'{self.first} ;\n{self.rest}'
 
 @dataclass
 class BinaryOp(Exp):
@@ -101,8 +110,6 @@ class BinaryOp(Exp):
     right: Exp
 
     def __str__(self):
-        if self.operator == ';':
-            return f'{self.left} ;\n{self.right}'
         return f'{self.left} {self.operator} {self.right}'
 
 
@@ -161,7 +168,7 @@ class WhileLoop(Exp):
     body: Exp
 
     def __str__(self):
-        return f'while {self.condition} do\n{indent(self.body)}'
+        return f'while {self.condition} do (\n{indent(self.body)}\n)'
 
 
 @dataclass
@@ -173,6 +180,14 @@ class ArrayCreation(Exp):
     def __str__(self):
         return f'new {self.type} [{self.size} | {self.initial_value}]'
 
+@dataclass
+class TopLevelVariableDeclaration(Declaration):
+    name: Var
+    type: Type
+    value: Exp
+
+    def __str__(self):
+        return f'let {self.name} : {self.type} =\n{indent(self.value)}'
 
 @dataclass
 class VariableDeclaration(Declaration):
@@ -181,7 +196,7 @@ class VariableDeclaration(Declaration):
     value: Exp
 
     def __str__(self):
-        return f'let {self.name} : {self.type} =\n{indent(self.value)}'
+        return f'let {self.name} : {self.type} = {self.value}'
 
 @dataclass
 class FunctionDeclaration(Declaration):

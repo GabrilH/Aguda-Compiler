@@ -12,7 +12,7 @@ def validate(program: Program) -> None:
         if isinstance(stmt, FunctionDeclaration):
             # Validate function declarations
             typeof(ctx, stmt)
-        elif isinstance(stmt, VariableDeclaration):
+        elif isinstance(stmt, TopLevelVariableDeclaration):
             # Validate variable declarations
             typeof(ctx, stmt)
         else:
