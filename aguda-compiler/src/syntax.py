@@ -31,16 +31,14 @@ class BaseType(Type):
 
 @dataclass
 class ArrayType(Type):
-    base_type: Type
-    dimensions: int
+    type: Type
 
     def __str__(self):
-        return f'{self.base_type}' + '[]' * self.dimensions
+        return f'{self.type}' + '[]'
     
     def __eq__(self, other):
         if isinstance(other, ArrayType):
-            return (self.base_type == other.base_type and
-                    self.dimensions == other.dimensions)
+            return self.type == other.type
         return False
 
 @dataclass

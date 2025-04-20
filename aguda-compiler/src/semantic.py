@@ -26,11 +26,11 @@ def add_builtins(ctx: SymbolTable) -> None:
     """
     ctx.insert('print', FunctionType(param_types=[BaseType('String')],
                                     return_type=BaseType('Unit')))
-    ctx.insert('length', FunctionType(param_types=[ArrayType(BaseType('Int'), 1)],
+    ctx.insert('length', FunctionType(param_types=[ArrayType(BaseType('Int'))],
                                     return_type=BaseType('Int')))
     # for base_type in ['Int', 'Bool', 'Unit', 'String']:
     #     ctx.insert('print', FunctionType(BaseType('Unit'), [BaseType(base_type)]))
-    #     ctx.insert('length', FunctionType(BaseType('Int'), [ArrayType(BaseType(base_type), 1)]))
+    #     ctx.insert('length', FunctionType(BaseType('Int'), [ArrayType(BaseType(base_type))]))
 
 def typeof(ctx: SymbolTable, e:Exp) -> Type:
     """
@@ -58,10 +58,7 @@ def typeof(ctx: SymbolTable, e:Exp) -> Type:
             if exp2Type != type:
                 raise TypeError(f"Array initial value must be of type {type}, got {exp2Type}")
             
-            if isinstance(type, ArrayType):
-                return ArrayType(type.base_type, type.dimensions + 1)
-            else:
-                return ArrayType(type, 1)
+            return ArrayType(type)
         
         case ArrayAccess(array, index):
             arrayType = typeof(ctx, array)
@@ -72,7 +69,7 @@ def typeof(ctx: SymbolTable, e:Exp) -> Type:
             if indexType != BaseType('Int'):
                 raise TypeError(f"Array index must be an Int, got {indexType}")
             
-            return arrayType.base_type
+            return arrayType.type
         
         case FunctionCall(name, args):
             if name.name == 'print':
