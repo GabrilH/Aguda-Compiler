@@ -5,6 +5,7 @@ import contextlib
 from src.lexer import lexer
 from src.parser import parser, reset_parser
 from src.semantic import validate
+from src.semantic import validate
 import sys
 
 TEST_DIR = 'test'
