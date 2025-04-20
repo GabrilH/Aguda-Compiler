@@ -116,13 +116,10 @@ def p_sequence(t):
         t[0] = s.Sequence(t[1], t[2])
 
 def p_sequence_tail(t):
-    '''sequence_tail : SEMICOLON exp sequence_tail
+    '''sequence_tail : SEMICOLON sequence
                      | empty'''
-    if len(t) == 4:
-        if not t[3]:
-            t[0] = t[2]
-        else:
-            t[0] = s.Sequence(t[2], t[3])
+    if len(t) == 3:
+        t[0] = t[2]
     else:
         t[0] = None
 
