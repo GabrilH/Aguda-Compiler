@@ -23,6 +23,11 @@ class BaseType(Type):
 
     def __str__(self):
         return self.name
+    
+    def __eq__(self, other):
+        if isinstance(other, BaseType):
+            return self.name == other.name
+        return False
 
 @dataclass
 class ArrayType(Type):
@@ -31,7 +36,12 @@ class ArrayType(Type):
 
     def __str__(self):
         return f'{self.base_type}' + '[]' * self.dimensions
-
+    
+    def __eq__(self, other):
+        if isinstance(other, ArrayType):
+            return (self.base_type == other.base_type and
+                    self.dimensions == other.dimensions)
+        return False
 
 @dataclass
 class FunctionType(Type):
@@ -42,6 +52,12 @@ class FunctionType(Type):
         # TODO talvez não meter () quando apenas um parametro
         params = ', '.join(str(t) for t in self.param_types)
         return f'({params}) -> {self.return_type}'
+    
+    def __eq__(self, other):
+        if isinstance(other, FunctionType):
+            return (self.param_types == other.param_types and
+                    self.return_type == other.return_type)
+        return False
 
 @dataclass
 class Var(Exp):
@@ -49,7 +65,6 @@ class Var(Exp):
 
     def __str__(self):
         return self.name
-
 
 @dataclass
 class IntLiteral(Exp):
@@ -101,7 +116,7 @@ class LogicalNegation(Exp):
 
 @dataclass
 class FunctionCall(Exp):
-    name: str
+    name: Var
     arguments: List[Exp]
 
     def __str__(self):
@@ -161,7 +176,7 @@ class ArrayCreation(Exp):
 
 @dataclass
 class VariableDeclaration(Declaration):
-    name: str
+    name: Var
     type: Type
     value: Exp
 
@@ -170,7 +185,7 @@ class VariableDeclaration(Declaration):
 
 @dataclass
 class FunctionDeclaration(Declaration):
-    name: str
+    name: Var
     parameters: List[Var]
     type: FunctionType
     body: Exp

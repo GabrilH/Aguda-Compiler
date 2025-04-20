@@ -86,6 +86,13 @@ def run_single_test(filepath):
 
     ast = parser.parse(code)
     print(ast)
+    try:
+        from src.semantic import validate
+        validate(ast)
+        print("Semantic validation passed.")
+    except Exception as e:
+        print("Semantic validation failed:")
+        print(e)
 
 def main():
     # If no args, accept stdin as program input
@@ -113,6 +120,21 @@ def main():
             print("Usage: docker-compose run --rm aguda-compiler [<file_path> | --tests]")
             return
         
+        elif sys.argv[1] == "--validate":
+            print("Write the AGUDA code to be validated semantically, followed by [ENTER] and Ctrl+D (EOF)")
+            code = sys.stdin.read()
+            ast = parser.parse(code)
+            print("Parsed AST:")
+            print("===================================")
+            print(ast)
+            try:
+                from src.semantic import validate
+                validate(ast)
+                print("Semantic validation passed.")
+            except Exception as e:
+                print("Semantic validation failed:")
+                print(e)
+        
         # If the first argument is a file path, run that test
         else:
             filepath = sys.argv[1]
@@ -124,4 +146,5 @@ def main():
         print("Usage: docker-compose run --rm aguda-compiler [<file_path> | --tests]")
 
 if __name__ == '__main__':
-    main()
+    # main()
+    run_single_test(r".\test\valid\tcomp000_arrayOfUnit\arrayOfUnit.agu")
