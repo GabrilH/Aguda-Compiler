@@ -1,11 +1,8 @@
 verificar onde deve ser usado p_variable ou ID
 perguntar as duvidas
 
-fazer a primeira passagem para colecionar tipos de funções
-(resolve problemas de mutual recursion)
-
 rever os scopes : 64371_reverse_array
 
-refactor ao typeof parece ter muita coisa
+talvez refactor ao case FunctionDeclaration
 
-mudar o checkAgainst para não ir sempre para checkEqualTypes
+mudar o checkAgainst para não ir sempre para checkEqualTypes -> adicionar casos especificos

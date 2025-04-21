@@ -5,8 +5,11 @@ def checkAgainst(ctx: SymbolTable, exp: Exp, expected_type: Type) -> Type:
     """
     Checks if the expression `exp` matches the expected type `type` in the given context `ctx`.
     """
-    actual_type = typeof(ctx, exp)
-    return checkEqualTypes(exp, actual_type, expected_type)
+    match exp:
+        # TODO more specific checks for each type
+        case _:
+            actual_type = typeof(ctx, exp)
+            return checkEqualTypes(exp, actual_type, expected_type)
     
 def checkEqualTypes(exp: Exp, actual_type: Type, expected_type: Type) -> Type:
     """
