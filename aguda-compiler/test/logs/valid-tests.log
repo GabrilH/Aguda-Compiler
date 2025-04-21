@@ -60,9 +60,9 @@ Program is semantically valid!
 test\valid\56307_shadowingFunction\shadowFunction.agu [✔]
 Program is semantically valid!
 test\valid\56307_sumArrayFunction\sumArrayFunction.agu [FAIL]
-Expected equal types, but got Int and Int[]
+Error: (11, 39) Expected two equal types, found Int[] and Int, for expression '10'
 test\valid\56307_zeroLengthArray\zeroLengthArray.agu [FAIL]
-Expected equal types, but got Int and Int[]
+Error: (2, 40) Expected two equal types, found Int[] and Int, for expression '0'
 test\valid\56311_boundary_arithmetic\boundary_arithmetic.agu [✔]
 Program is semantically valid!
 test\valid\56311_empty_array\empty_array.agu [FAIL]
@@ -151,7 +151,7 @@ else
 test\valid\58166_safeIndexCheck\safeIndexCheck.agu [✔]
 Program is semantically valid!
 test\valid\58166_stringLength\stringLength.agu [FAIL]
-Length function argument must be an array
+Error: (5, 19) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 's'
 test\valid\58168_3letsPrint1stValue\3letsPrint1stValue.agu [✔]
 Program is semantically valid!
 test\valid\58168_addOneValueToArray\addOneValueToArray.agu [FAIL]
@@ -251,15 +251,15 @@ Function 'soma' declared with incorrect number of parameters
 test\valid\58215_unitFunc\unitFunc.agu [FAIL]
 Function 'faz3' declared with incorrect number of parameters
 test\valid\58219_compare_string_length\compare_string_length.agu [FAIL]
-Length function argument must be an array
+Error: (4, 29) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 'str1'
 test\valid\58219_count_common_elements\count_common_elemts.agu [✔]
 Program is semantically valid!
 test\valid\58219_find_array_max_and_min\array_max_min.agu [FAIL]
 Variable 'maxVal' not defined
 test\valid\58219_find_char\find_char.agu [FAIL]
-Length function argument must be an array
+Error: (4, 28) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 'str'
 test\valid\58219_first_unique_character\first_unique_character.agu [FAIL]
-Length function argument must be an array
+Error: (4, 26) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 'str'
 test\valid\58219_is_array_sorted\is_array_sorted.agu [FAIL]
 Error: (6, 5) Conditional branches must have the same type, got Bool and Unit for expression 'if len <= 1 then
   result
@@ -273,7 +273,7 @@ else
 test\valid\58219_logical_operators\logical_operators.agu [FAIL]
 Function 'notOp' declared with incorrect number of parameters
 test\valid\58219_reverse_string\reverse_string.agu [FAIL]
-Length function argument must be an array
+Error: (5, 19) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 's'
 test\valid\58219_sum_array\sum_array.agu [✔]
 Program is semantically valid!
 test\valid\58250_average\58250_average.agu [✔]
@@ -291,7 +291,7 @@ Program is semantically valid!
 test\valid\58250_is_even\58250_is_even.agu [✔]
 Program is semantically valid!
 test\valid\58250_length\58250_length.agu [FAIL]
-Length function argument must be an array
+Error: (5, 26) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 'str'
 test\valid\58250_max_between_2\58250_max_between_2.agu [✔]
 Program is semantically valid!
 test\valid\58250_sum_all_to_n\58250_sum_all_to_n.agu [✔]
@@ -301,7 +301,7 @@ Program is semantically valid!
 test\valid\64361_check_null_value\check_null_value.agu [FAIL]
 Variable 'null' not defined
 test\valid\64361_count_vowels\count_vowels.agu [FAIL]
-Function 'count_vowels' called with incorrect argument types: expected String[], got String
+cannot access local variable 'name' where it is not associated with a value
 test\valid\64361_exponential\exponential.agu [✔]
 Program is semantically valid!
 test\valid\64361_factorial\factorial.agu [✔]
