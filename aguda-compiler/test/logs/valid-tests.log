@@ -34,7 +34,7 @@ Program is semantically valid!
 test\valid\56269_bottomRow\bottomRow.agu [FAIL]
 Variable 'j' not defined
 test\valid\56269_if\if.agu [FAIL]
-Variable 'x' declared with type Bool, but assigned Unit
+Error: (17, 12) Expected two equal types, found Bool and Unit, for expression 'let x : Bool = true'
 test\valid\56269_insertionSort\insertionSort.agu [✔]
 Program is semantically valid!
 test\valid\56269_multipleAssignment\multipleAssignment.agu [✔]
@@ -72,7 +72,7 @@ Variable 'a' not defined
 test\valid\56311_high_order_function_type\high_order_func_type.agu [✔]
 Program is semantically valid!
 test\valid\56311_if_inside_if\if_inside_if.agu [FAIL]
-Error: (4, 8) Conditional branches must have the same type, got Int and Bool for expression 'if x == 4 then
+Error: (4, 8) Expected two equal types, found Bool and Int, for expression 'if x == 4 then
   1
 else
   2 == 1'
@@ -135,7 +135,7 @@ Program is semantically valid!
 test\valid\58166_mathTest\mathTest.agu [✔]
 Program is semantically valid!
 test\valid\58166_maxDistance\maxDistance.agu [FAIL]
-Error: (16, 5) Conditional branches must have the same type, got Int and Unit for expression 'if length(a) == 0 then
+Error: (16, 5) Expected two equal types, found Unit and Int, for expression 'if length(a) == 0 then
   0
 else
   let min : Int = a[0]'
@@ -144,7 +144,7 @@ Program is semantically valid!
 test\valid\58166_pingPong\pingPong.agu [✔]
 Program is semantically valid!
 test\valid\58166_powerTen\powerTen.agu [FAIL]
-Error: (5, 5) Conditional branches must have the same type, got Int and Unit for expression 'if n < 0 then
+Error: (5, 5) Expected two equal types, found Unit and Int, for expression 'if n < 0 then
   0 - 1
 else
   unit'
@@ -155,7 +155,7 @@ Error: (5, 19) Expected instance of <class 'src.syntax.ArrayType'>, found String
 test\valid\58168_3letsPrint1stValue\3letsPrint1stValue.agu [✔]
 Program is semantically valid!
 test\valid\58168_addOneValueToArray\addOneValueToArray.agu [FAIL]
-Variable 'value' declared with type Int, but assigned Bool
+Error: (4, 21) Expected two equal types, found Int and Bool, for expression 'false'
 test\valid\58168_cubesForEvenNum\cubesForEvenNum.agu [✔]
 Program is semantically valid!
 test\valid\58168_decrementor\decrementor.agu [✔]
@@ -261,12 +261,12 @@ Error: (4, 28) Expected instance of <class 'src.syntax.ArrayType'>, found String
 test\valid\58219_first_unique_character\first_unique_character.agu [FAIL]
 Error: (4, 26) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 'str'
 test\valid\58219_is_array_sorted\is_array_sorted.agu [FAIL]
-Error: (6, 5) Conditional branches must have the same type, got Bool and Unit for expression 'if len <= 1 then
+Error: (6, 5) Expected two equal types, found Unit and Bool, for expression 'if len <= 1 then
   result
 else
   let i : Int = 1'
 test\valid\58219_is_prime\is_prime.agu [FAIL]
-Error: (8, 8) Conditional branches must have the same type, got Bool and Unit for expression 'if n % 2 == 0 || n % 3 == 0 then
+Error: (8, 8) Expected two equal types, found Unit and Bool, for expression 'if n % 2 == 0 || n % 3 == 0 then
   false
 else
   let i : Int = 5'
@@ -301,7 +301,7 @@ Program is semantically valid!
 test\valid\64361_check_null_value\check_null_value.agu [FAIL]
 Variable 'null' not defined
 test\valid\64361_count_vowels\count_vowels.agu [FAIL]
-cannot access local variable 'name' where it is not associated with a value
+Error: (17, 24) Expected two equal types, found String[] and String, for expression 'word'
 test\valid\64361_exponential\exponential.agu [✔]
 Program is semantically valid!
 test\valid\64361_factorial\factorial.agu [✔]
@@ -311,7 +311,7 @@ Program is semantically valid!
 test\valid\64361_greatest_common_divisor\greatest_common_divisor.agu [✔]
 Program is semantically valid!
 test\valid\64361_prime_number\prime_number.agu [FAIL]
-Error: (8, 13) Conditional branches must have the same type, got Bool and Unit for expression 'if n % i == 0 then
+Error: (8, 13) Expected two equal types, found Unit and Bool, for expression 'if n % i == 0 then
   false
 else
   unit'
@@ -320,7 +320,7 @@ Program is semantically valid!
 test\valid\64361_sum_function\sum_function.agu [FAIL]
 Variable 'sum_array' not defined
 test\valid\64371_binary_search\binary_search.agu [FAIL]
-Error: (6, 5) Conditional branches must have the same type, got Int and Unit for expression 'if left > right then
+Error: (6, 5) Expected two equal types, found Unit and Int, for expression 'if left > right then
   0 - 1
 else
   let mid : Int = left + right - left / 2'
@@ -337,7 +337,7 @@ Program is semantically valid!
 test\valid\64371_pascals_triangle\pascals_triangle.agu [✔]
 Program is semantically valid!
 test\valid\64371_pyramid\pyramid.agu [FAIL]
-Error: (8, 23) Operator '+' requires Int operands
+Error: (8, 23) Expected two equal types, found Int and String, for expression 'res + str'
 test\valid\64371_reverse_array\reverse_array.agu [✔]
 Program is semantically valid!
 test\valid\64371_two_sum\two_sum.agu [✔]

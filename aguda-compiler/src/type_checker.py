@@ -54,7 +54,6 @@ def typeof(ctx: SymbolTable, exp: Exp) -> Type:
             return ArrayType(type)
         
         case ArrayAccess(exp1, exp2):
-            
             arrayType : ArrayType = checkInstance(ctx, exp1, ArrayType)
             checkAgainst(ctx, exp2, BaseType('Int'))            
             return arrayType.type
@@ -74,31 +73,29 @@ def typeof(ctx: SymbolTable, exp: Exp) -> Type:
                 exp1Type = checkInstance(ctx, exp1, ArrayType)
                 return BaseType('Int')
             
-            funcType = typeof(ctx, id)
-            if not isinstance(funcType, FunctionType):
-                raise TypeError(f"'{id}' is not a function")
+            funcType : FunctionType = checkInstance(ctx, id, FunctionType)
             if len(funcType.param_types) != len(exps):
                 raise TypeError(f"Function '{id}' called with incorrect number of arguments")
             
             for param_type, arg in zip(funcType.param_types, exps):
-                arg_type = typeof(ctx, arg)
-                if param_type != arg_type:
-                    raise TypeError(f"Function '{name}' called with incorrect argument types: expected {param_type}, got {arg_type}")
+                checkAgainst(ctx, arg, param_type)
             
             return funcType.return_type
             
-        case VariableDeclaration(name, type, exp):
-            expType = typeof(ctx, exp)
-            if expType != type:
-                raise TypeError(f"Variable '{name}' declared with type {type}, but assigned {expType}")
+        case VariableDeclaration(id, type, exp):            
+            checkAgainst(ctx, exp, type)
             
             # No variable may be named as print or length
-            if name.name in ['print', 'length']:
-                raise NameError(f"Variable name '{name}' conflicts with built-in function")
+            if id.name in ['print', 'length']:
+                raise NameError(f"Variable name '{id}' conflicts with built-in function")
             
             # Insert the variable into the context only if it is not '_' (wildcard)
-            if name.name != '_':
-                ctx.insert(name.name, type)
+            if id.name != '_':
+                ctx.insert(id.name, type)
+
+            # TODO Furthermore, if the declaration appears at the left
+            # of a semicolon let id : type = exp1 ; exp2, then the type of id
+            # is used to validate exp2
                 
             return BaseType('Unit')
         
@@ -106,40 +103,21 @@ def typeof(ctx: SymbolTable, exp: Exp) -> Type:
             return typeofVar(ctx, name)
         
         case Conditional(exp1, exp2, exp3):
-            exp1Type = typeof(ctx, exp1)
-            if exp1Type != BaseType('Bool'):
-                raise TypeError(f"Error: ({exp.lineno}, {exp.column}) Conditional expression must be a Bool, got {exp1Type}")
-            
-            local_ctx = ctx.enter_scope()
-            exp2Type = typeof(local_ctx, exp2)
-            # TODO ctx.exit_scope()
-            
-            local_ctx = ctx.enter_scope()
-            exp3Type = typeof(local_ctx, exp3)
-            # TODO ctx.exit_scope()
-            
-            if exp2Type != exp3Type:
-                raise TypeError(f"Error: ({exp.lineno}, {exp.column}) Conditional branches must have the same type, got {exp2Type} and {exp3Type} for expression '{exp}'")
-            
+            checkAgainst(ctx, exp1, BaseType('Bool'))
+            exp2Type = typeof(ctx.enter_scope(), exp2)
+            exp3Type = typeof(ctx.enter_scope(), exp3)         
+            checkEqualTypes(exp, exp2Type, exp3Type)          
             return exp2Type
         
         case WhileLoop(exp1, exp2):
-            exp1Type = typeof(ctx, exp1)
-            if exp1Type != BaseType('Bool'):
-                raise TypeError(f"While condition must be a Bool, got {exp1Type}")
-            
-            # Enter a new scope for the loop body
-            local_ctx = ctx.enter_scope()
-            typeof(local_ctx, exp2)
-            
+            checkAgainst(ctx, exp1, BaseType('Bool'))
+            typeof(ctx.enter_scope(), exp2)
             return BaseType('Unit')
         
         case Assignment(lhs, exp):
             lhsType = typeof(ctx, lhs)
             expType = typeof(ctx, exp)
-            if lhsType != expType:
-                raise TypeError(f"Assignment type mismatch: {lhsType} vs {expType}")
-
+            checkEqualTypes(exp, lhsType, expType)
             return BaseType('Unit')
         
         case Sequence(first, rest):
@@ -149,20 +127,17 @@ def typeof(ctx: SymbolTable, exp: Exp) -> Type:
         case BinaryOp(left, operator, right):
             leftType = typeof(ctx, left)
             rightType = typeof(ctx, right)
+            checkEqualTypes(exp, leftType, rightType)
             
             if operator in ['+', '-', '*', '/', '%', '^']:
-                if leftType != BaseType('Int') or rightType != BaseType('Int'):
-                    raise TypeError(f"Error: ({exp.lineno}, {exp.column}) Operator '{operator}' requires Int operands")
+                checkEqualTypes(exp, leftType, BaseType('Int'))
                 return BaseType('Int')
             
             if operator in ['==', '!=', '<', '>', '<=', '>=']:
-                if leftType != rightType:
-                    raise TypeError(f"Error: ({exp.lineno}, {exp.column}) Operator '{operator}' requires operands of the same type")
                 return BaseType('Bool')
             
             if operator in ['&&', '||']:
-                if leftType != BaseType('Bool') or rightType != BaseType('Bool'):
-                    raise TypeError(f"Error: ({exp.lineno}, {exp.column}) Operator '{operator}' requires Bool operands")
+                checkEqualTypes(exp, leftType, BaseType('Bool'))
                 return BaseType('Bool')
             
             raise TypeError(f"Error: ({exp.lineno}, {exp.column}) Unknown operator '{operator}'")
