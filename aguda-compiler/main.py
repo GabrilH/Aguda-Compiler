@@ -3,7 +3,7 @@ import io
 import contextlib
 from src.lexer import lexer
 from src.parser import parser, reset_parser
-from src.semantic import validate
+from src.type_checker import verify
 import sys
 
 TEST_DIR = 'test'
@@ -51,6 +51,7 @@ def syntax_test_run(filepath, valid, print_ast=False):
     except Exception as e:
         test_log.append(f"{filepath} [EXCEPTION]")
         test_log.append(str(e))
+        return test_log
 
     if valid:
         if output == "":
@@ -96,6 +97,7 @@ def semantic_test_run(filepath, valid, print_ast=False):
     except Exception as e:
         test_log.append(f"{filepath} [EXCEPTION]")
         test_log.append(str(e))
+        return test_log
 
     # If there are syntax errors, exit without semantic validation
     if output:
@@ -107,7 +109,7 @@ def semantic_test_run(filepath, valid, print_ast=False):
     output_buffer = io.StringIO()
     try:
         with contextlib.redirect_stdout(output_buffer):
-            validate(ast)
+            verify(ast)
         output = output_buffer.getvalue()
         output = output.strip()
 
