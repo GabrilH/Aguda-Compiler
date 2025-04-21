@@ -24,6 +24,11 @@ precedence = (
 
 def p_program(t):
     '''program : top_level_declarations'''
+    # TODO adicionar se for preciso
+    # program = s.Program(t[1])
+    # program.lineno = t[1][0].lineno if t[1] else 1
+    # program.column = t[1][0].column if t[1] else 1
+    # t[0] = program
     t[0] = s.Program(t[1])
 
 def p_top_level_declarations(t):
@@ -48,11 +53,17 @@ def p_top_level_declaration(t):
 
 def p_top_level_variable_declaration(t):
     '''top_level_variable_declaration : LET variable COLON type ASSIGN sequence'''
-    t[0] = s.TopLevelVariableDeclaration(t[2], t[4], t[6])
+    tl_var_decl = s.TopLevelVariableDeclaration(t[2], t[4], t[6])
+    tl_var_decl.lineno = t.lineno(1)
+    tl_var_decl.column = find_column(t.lexer.lexdata, t.slice[1])
+    t[0] = tl_var_decl
 
 def p_top_level_function_declaration(t):
     '''top_level_function_declaration : LET variable LPAREN parameters RPAREN COLON type ASSIGN sequence'''
-    t[0] = s.FunctionDeclaration(t[2], t[4], t[7], t[9])
+    func_decl = s.FunctionDeclaration(t[2], t[4], t[7], t[9])
+    func_decl.lineno = t.lineno(1)
+    func_decl.column = find_column(t.lexer.lexdata, t.slice[1])
+    t[0] = func_decl
 
 def p_parameters(t):
     '''parameters : variable parameters_tail'''
@@ -81,19 +92,31 @@ def p_base_type(t):
               | UNIT_TYPE
               | BOOL_TYPE
     '''
-    t[0] = s.BaseType(t[1])
+    base_type = s.BaseType(t[1])
+    base_type.lineno = t.lineno(1)
+    base_type.column = find_column(t.lexer.lexdata, t.slice[1])
+    t[0] = base_type
 
 def p_array_type(t):
     'array_type : type LBRACKET RBRACKET'
-    t[0] = s.ArrayType(t[1])
+    array_type = s.ArrayType(t[1])
+    array_type.lineno = t[1].lineno
+    array_type.column = t[1].column
+    t[0] = array_type
 
 def p_function_type(t):
     '''function_type : type ARROW type
                      | LPAREN type function_type_tail RPAREN ARROW type'''
     if len(t) == 4:
-        t[0] = s.FunctionType([t[1]], t[3])
+        func_type = s.FunctionType([t[1]], t[3])
+        func_type.lineno = t.lineno(2)
+        func_type.column = find_column(t.lexer.lexdata, t.slice[2])
+        t[0] = func_type
     else:
-        t[0] = s.FunctionType([t[2]] + t[3], t[6])
+        func_type = s.FunctionType([t[2]] + t[3], t[6])
+        func_type.lineno = t.lineno(5)
+        func_type.column = find_column(t.lexer.lexdata, t.slice[5])
+        t[0] = func_type
 
 def p_function_type_tail(t):
     '''function_type_tail : COMMA type function_type_tail
@@ -108,7 +131,10 @@ def p_sequence(t):
     if not t[2]:
         t[0] = t[1]
     else:
-        t[0] = s.Sequence(t[1], t[2])
+        sequence = s.Sequence(t[1], t[2])
+        sequence.lineno = t[1].lineno
+        sequence.column = t[1].column
+        t[0] = sequence
 
 def p_sequence_tail(t):
     '''sequence_tail : SEMICOLON sequence
@@ -137,7 +163,10 @@ def p_exp(t):
 def p_variable(t):
     '''variable : ID
                 | UNDERSCORE'''
-    t[0] = s.Var(t[1])
+    variable = s.Var(t[1])
+    variable.lineno = t.lineno(1)
+    variable.column = find_column(t.lexer.lexdata, t.slice[1])
+    t[0] = variable
 
 def p_literal(t):
     '''literal : INT_LITERAL
@@ -146,15 +175,19 @@ def p_literal(t):
                | UNIT_LITERAL
                | STRING_LITERAL'''
     if t[1] == 'true':
-        t[0] = s.BoolLiteral(True)
+        literal = s.BoolLiteral(True)
     elif t[1] == 'false':
-        t[0] = s.BoolLiteral(False)
+        literal = s.BoolLiteral(False)
     elif t[1] == 'unit':
-        t[0] = s.UnitLiteral()
+        literal = s.UnitLiteral()
     elif isinstance(t[1], int):
-        t[0] = s.IntLiteral(t[1])
+        literal = s.IntLiteral(t[1])
     else:
-        t[0] = s.StringLiteral(t[1])
+        literal = s.StringLiteral(t[1])
+
+    literal.lineno = t.lineno(1)
+    literal.column = find_column(t.lexer.lexdata, t.slice[1])
+    t[0] = literal
 
 def p_binary_exp(t):
     '''binary_exp : exp PLUS exp
@@ -180,13 +213,23 @@ def p_unary_exp(t):
     '''unary_exp : MINUS exp %prec UMINUS
                  | NOT exp'''
     if t[1] == '-':
+        unary_exp = s.BinaryOp(s.IntLiteral(0), '-', t[2])
+        unary_exp.lineno = t.lineno(1)
+        unary_exp.column = find_column(t.lexer.lexdata, t.slice[1])
         t[0] = s.BinaryOp(s.IntLiteral(0), '-', t[2])
     else:
-        t[0] = s.LogicalNegation(t[2])
+        unary_exp = s.LogicalNegation(t[2])
+        unary_exp.lineno = t.lineno(1)
+        unary_exp.column = find_column(t.lexer.lexdata, t.slice[1])
+
+    t[0] = unary_exp
 
 def p_function_call(t):
     '''function_call : variable LPAREN arguments RPAREN'''
-    t[0] = s.FunctionCall(t[1], t[3])
+    func_call = s.FunctionCall(t[1], t[3])
+    func_call.lineno = t[1].lineno
+    func_call.column = t[1].column
+    t[0] = func_call
 
 def p_arguments(t):
     '''arguments : exp arguments_tail'''
@@ -202,7 +245,10 @@ def p_arguments_tail(t):
 
 def p_assignment(t):
     '''assignment : SET lhs ASSIGN exp'''
-    t[0] = s.Assignment(t[2], t[4])
+    assign = s.Assignment(t[2], t[4])
+    assign.lineno = t.lineno(1)
+    assign.column = find_column(t.lexer.lexdata, t.slice[1])
+    t[0] = assign
 
 def p_lhs(t):
     '''lhs : variable
@@ -211,7 +257,10 @@ def p_lhs(t):
 
 def p_variable_declaration(t):
     '''variable_declaration : LET variable COLON type ASSIGN exp'''
-    t[0] = s.VariableDeclaration(t[2], t[4], t[6])
+    var_decl = s.VariableDeclaration(t[2], t[4], t[6])
+    var_decl.lineno = t.lineno(1)
+    var_decl.column = find_column(t.lexer.lexdata, t.slice[1])
+    t[0] = var_decl
 
 def p_if_then_else(t):
     '''if_then_else : IF exp THEN exp ELSE exp'''
@@ -229,15 +278,24 @@ def p_if_then(t):
 
 def p_while_loop(t):
     '''while_loop : WHILE exp DO exp'''
-    t[0] = s.WhileLoop(t[2], t[4])
+    while_loop = s.WhileLoop(t[2], t[4])
+    while_loop.lineno = t.lineno(1)
+    while_loop.column = find_column(t.lexer.lexdata, t.slice[1])
+    t[0] = while_loop
 
 def p_array_creation(t):
     '''array_creation : NEW type LBRACKET exp BAR exp RBRACKET'''
-    t[0] = s.ArrayCreation(t[2], t[4], t[6])
+    array_creation = s.ArrayCreation(t[2], t[4], t[6])
+    array_creation.lineno = t.lineno(1)
+    array_creation.column = find_column(t.lexer.lexdata, t.slice[1])
+    t[0] = array_creation
 
 def p_array_access(t):
     '''array_access : lhs LBRACKET exp RBRACKET'''
-    t[0] = s.ArrayAccess(t[1], t[3])
+    array_access = s.ArrayAccess(t[1], t[3])
+    array_access.lineno = t.lineno(2)
+    array_access.column = find_column(t.lexer.lexdata, t.slice[2])
+    t[0] = array_access
 
 def p_group(t):
     '''group : LPAREN sequence RPAREN'''

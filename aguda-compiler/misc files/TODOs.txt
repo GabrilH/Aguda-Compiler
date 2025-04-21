@@ -6,6 +6,4 @@ fazer a primeira passagem para colecionar tipos de funções
 
 rever os scopes : 64371_reverse_array
 
-adicionar col e line aos erros semanticos (nas produções do parser)
-
 refactor ao typeof parece ter muita coisa
