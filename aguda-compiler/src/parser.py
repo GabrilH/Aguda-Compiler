@@ -171,7 +171,10 @@ def p_binary_exp(t):
                     | exp GREATER_EQUAL exp
                     | exp OR exp
                     | exp AND exp'''
-    t[0] = s.BinaryOp(t[1], t[2], t[3])
+    binOp = s.BinaryOp(t[1], t[2], t[3])
+    binOp.lineno = t.lineno(2)
+    binOp.column = find_column(t.lexer.lexdata, t.slice[2])
+    t[0] = binOp
 
 def p_unary_exp(t):
     '''unary_exp : MINUS exp %prec UMINUS
@@ -212,11 +215,17 @@ def p_variable_declaration(t):
 
 def p_if_then_else(t):
     '''if_then_else : IF exp THEN exp ELSE exp'''
-    t[0] = s.Conditional(t[2], t[4], t[6])
+    cond = s.Conditional(t[2], t[4], t[6])
+    cond.lineno = t.lineno(1)
+    cond.column = find_column(t.lexer.lexdata, t.slice[1])
+    t[0] = cond
 
 def p_if_then(t):
     '''if_then : IF exp THEN exp'''
-    t[0] = s.Conditional(t[2], t[4], s.UnitLiteral())
+    cond = s.Conditional(t[2], t[4], s.UnitLiteral())
+    cond.lineno = t.lineno(1)
+    cond.column = find_column(t.lexer.lexdata, t.slice[1])
+    t[0] = cond
 
 def p_while_loop(t):
     '''while_loop : WHILE exp DO exp'''

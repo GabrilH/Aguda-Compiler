@@ -3,7 +3,8 @@ from dataclasses import dataclass
 from typing import List, Union
 
 class ASTNode(ABC):
-    pass
+    lineno: int = None
+    column: int = None
 
 class Declaration(ASTNode):
     pass
