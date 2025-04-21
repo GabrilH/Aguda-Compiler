@@ -7,3 +7,5 @@ fazer a primeira passagem para colecionar tipos de funções
 rever os scopes : 64371_reverse_array
 
 refactor ao typeof parece ter muita coisa
+
+mudar o checkAgainst para não ir sempre para checkEqualTypes

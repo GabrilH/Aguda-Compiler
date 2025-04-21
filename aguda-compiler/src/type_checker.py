@@ -24,11 +24,22 @@ def checkInstance(ctx: SymbolTable, exp: Exp, expected_class: type) -> Type:
     if not isinstance(actual_type, expected_class):
         raise TypeError(f"Error: ({exp.lineno}, {exp.column}) Expected instance of {expected_class}, found {actual_type}, for expression '{exp}'")
     return actual_type
+
+def checkBuiltInConflict(exp: Exp, name: str) -> None:
+    """
+    Checks if the name conflicts with built-in functions.
+    """
+    if name in ['print', 'length']:
+        raise NameError(f"Error: ({exp.lineno}, {exp.column}) Name '{name}' conflicts with built-in function")
+
+def insertIntoCtx(ctx: SymbolTable, name: str, type: Type) -> None:
+    if name != '_':
+        ctx.insert(name, type)
     
-def typeofVar(ctx: SymbolTable, name: str) -> Type:
+def typeofVar(ctx: SymbolTable, exp: Exp, name: str) -> Type:
     varType = ctx.lookup(name)
     if varType is None:
-        raise NameError(f"Variable '{name}' not defined")
+        raise NameError(f"Error: ({exp.lineno}, {exp.column}) Variable '{name}' not found in the current context")
     return varType
     
 def typeof(ctx: SymbolTable, exp: Exp) -> Type:
@@ -61,46 +72,38 @@ def typeof(ctx: SymbolTable, exp: Exp) -> Type:
         case FunctionCall(id, exps):
             if id.name == 'print':
                 if len(exps) != 1:
-                    raise TypeError("Print function takes exactly one argument")
+                    raise TypeError(f"Error: ({exp.lineno}, {exp.column}) Print function takes exactly one argument")
                 exp1 = exps[0]
                 typeof(ctx, exp1)
                 return BaseType('Unit')
             
             if id.name == 'length':
                 if len(exps) != 1:
-                    raise TypeError("Length function takes exactly one argument")
+                    raise TypeError(f"Error: ({exp.lineno}, {exp.column}) Length function takes exactly one argument")
                 exp1 = exps[0]
-                exp1Type = checkInstance(ctx, exp1, ArrayType)
+                checkInstance(ctx, exp1, ArrayType)
                 return BaseType('Int')
             
             funcType : FunctionType = checkInstance(ctx, id, FunctionType)
             if len(funcType.param_types) != len(exps):
-                raise TypeError(f"Function '{id}' called with incorrect number of arguments")
+                raise TypeError(f"Error: ({exp.lineno}, {exp.column}) Function '{id}' called with incorrect number of arguments")
             
             for param_type, arg in zip(funcType.param_types, exps):
                 checkAgainst(ctx, arg, param_type)
             
             return funcType.return_type
             
-        case VariableDeclaration(id, type, exp):            
+        case VariableDeclaration(id, type, exp) | TopLevelVariableDeclaration(id, type, exp):           
             checkAgainst(ctx, exp, type)
-            
-            # No variable may be named as print or length
-            if id.name in ['print', 'length']:
-                raise NameError(f"Variable name '{id}' conflicts with built-in function")
-            
-            # Insert the variable into the context only if it is not '_' (wildcard)
-            if id.name != '_':
-                ctx.insert(id.name, type)
-
+            checkBuiltInConflict(exp, id.name)          
+            insertIntoCtx(ctx, id.name, type)
             # TODO Furthermore, if the declaration appears at the left
             # of a semicolon let id : type = exp1 ; exp2, then the type of id
             # is used to validate exp2
-                
             return BaseType('Unit')
         
         case Var(name):
-            return typeofVar(ctx, name)
+            return typeofVar(ctx, exp, name)
         
         case Conditional(exp1, exp2, exp3):
             checkAgainst(ctx, exp1, BaseType('Bool'))
@@ -139,67 +142,34 @@ def typeof(ctx: SymbolTable, exp: Exp) -> Type:
             if operator in ['&&', '||']:
                 checkEqualTypes(exp, leftType, BaseType('Bool'))
                 return BaseType('Bool')
-            
-            raise TypeError(f"Error: ({exp.lineno}, {exp.column}) Unknown operator '{operator}'")
         
         case LogicalNegation(operand):
-            operandType = typeof(ctx, operand)
-            if operandType != BaseType('Bool'):
-                raise TypeError(f"Logical negation requires a Bool, got {operandType}")
+            checkAgainst(ctx, operand, BaseType('Bool'))
             return BaseType('Bool')
         
-        case FunctionDeclaration(name, parameters, type, body):
-            # No function may be named as print or length
-            if name.name in ['print', 'length']:
-                raise NameError(f"Function name '{name}' conflicts with built-in function")
-
-            if not isinstance(type, FunctionType):
-                raise TypeError(f"Function '{name}' must have a function type, got {type}")
-            
+        case FunctionDeclaration(id, parameters, type, body):
+            checkBuiltInConflict(exp, id.name)
+            checkInstance(ctx, id, FunctionType)
             if len(parameters) != len(type.param_types):
-                raise TypeError(f"Function '{name}' declared with incorrect number of parameters")
-            
-            # Allow mutually recursive declarations
-            # Only insert if name != UNDERSCORE
-            if name.name != '_':
-                ctx.insert(name.name, type)
+                raise TypeError(f"Error: ({exp.lineno}, {exp.column}) Function '{id}' declared with incorrect number of parameters")
+            insertIntoCtx(ctx, id.name, type)
 
             # Check for duplicate parameter names (except for '_')
             param_names = set()
             for param in parameters:
                 if param.name != '_' and param.name in param_names:
-                    raise NameError(f"Duplicate parameter name '{param.name}' in function '{name}'")
+                    raise NameError(f"Error: ({exp.lineno}, {exp.column}) Duplicate parameter name '{param.name}' in function '{id.name}'")
                 param_names.add(param.name)
 
             # Augment the context with parameter types
             local_ctx = ctx.enter_scope()
             for param, param_type in zip(parameters, type.param_types):
-                local_ctx.insert(param.name, param_type)
+                insertIntoCtx(local_ctx, param.name, param_type)
             
-            # Check the body of the function
-            body_type = typeof(local_ctx, body)
-            if body_type != type.return_type:
-                raise TypeError(f"Function '{name}' body has type {body_type}, expected {type.return_type}")
-
-            # Exit the local context TODO: is this needed?
-            # TODO ctx.exit_scope()
-
-        case TopLevelVariableDeclaration(name, type, exp):
-            # No variable may be named as print or length
-            if name.name in ['print', 'length']:
-                raise NameError(f"Variable name '{name}' conflicts with built-in function")
-            
-            # Check the type of the expression against the declared type
-            expType = typeof(ctx, exp)
-            if expType != type:
-                raise TypeError(f"Top-level variable '{name}' declared with type {type}, but assigned {expType}")
-            
-            # Insert the variable into the context only if it is not '_' (wildcard)
-            if name.name != '_':
-                ctx.insert(name.name, type)
+            checkAgainst(local_ctx, body, type.return_type)
         
         case _:
-            raise TypeError(f"Unknown AST node type: {type(exp)}")
+            raise TypeError(f"Error: ({exp.lineno}, {exp.column}) Unknown expression type '{type(exp)}'")
         
 def second_pass(ctx: SymbolTable, program: Program) -> None:
     """
@@ -217,20 +187,15 @@ def first_pass(ctx: SymbolTable, node: ASTNode) -> None:
             for decl in declarations:
                 first_pass(ctx, decl)
 
-        case FunctionDeclaration(name, _, type, _):
-            if name.name in ['print', 'length']:
-                raise NameError(f"Function name '{name}' conflicts with built-in function")
+        case FunctionDeclaration(id, _, type, _):
+            checkBuiltInConflict(node, id.name)
+            if id.name != '_':
+                ctx.insert(id.name, type)
 
-            if name.name != '_':
-                ctx.insert(name.name, type)
-
-        case TopLevelVariableDeclaration(name, type, _):
-            if name.name in ['print', 'length']:
-                raise NameError(f"Variable name '{name}' conflicts with built-in function")
-
-            if name.name != '_':
-                ctx.insert(name.name, type)
-
+        case TopLevelVariableDeclaration(id, type, _):
+            checkBuiltInConflict(node, id.name)
+            if id.name != '_':
+                ctx.insert(id.name, type)
         case _:
             return
 

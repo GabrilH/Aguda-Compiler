@@ -10,7 +10,7 @@ Program is semantically valid!
 test\valid\54394_clamp\clamp.agu [✔]
 Program is semantically valid!
 test\valid\54394_combinations\combinations.agu [FAIL]
-Function 'fac' called with incorrect number of arguments
+Error: (10, 15) Function 'fac' called with incorrect number of arguments
 test\valid\54394_identifier\identifier.agu [✔]
 Program is semantically valid!
 test\valid\54394_operator_precedence\operator_precedence.agu [✔]
@@ -22,7 +22,7 @@ Program is semantically valid!
 test\valid\54394_uv_mapping\uv_mapping.agu [✔]
 Program is semantically valid!
 test\valid\54394_zip\zip.agu [FAIL]
-Variable 'lenght' not defined
+Error: (6, 33) Variable 'lenght' not found in the current context
 test\valid\56269_ackermann\ackermann.agu [✔]
 Program is semantically valid!
 test\valid\56269_associativity\associativity.agu [✔]
@@ -32,7 +32,7 @@ Program is semantically valid!
 test\valid\56269_boolean\boolean.agu [✔]
 Program is semantically valid!
 test\valid\56269_bottomRow\bottomRow.agu [FAIL]
-Variable 'j' not defined
+Error: (16, 11) Variable 'j' not found in the current context
 test\valid\56269_if\if.agu [FAIL]
 Error: (17, 12) Expected two equal types, found Bool and Unit, for expression 'let x : Bool = true'
 test\valid\56269_insertionSort\insertionSort.agu [✔]
@@ -66,9 +66,9 @@ Error: (2, 40) Expected two equal types, found Int[] and Int, for expression '0'
 test\valid\56311_boundary_arithmetic\boundary_arithmetic.agu [✔]
 Program is semantically valid!
 test\valid\56311_empty_array\empty_array.agu [FAIL]
-Variable 'empty_matrix' not defined
+Error: (9, 11) Variable 'empty_matrix' not found in the current context
 test\valid\56311_equals\equals_method.agu [FAIL]
-Variable 'a' not defined
+Error: (4, 5) Variable 'a' not found in the current context
 test\valid\56311_high_order_function_type\high_order_func_type.agu [✔]
 Program is semantically valid!
 test\valid\56311_if_inside_if\if_inside_if.agu [FAIL]
@@ -77,23 +77,32 @@ Error: (4, 8) Expected two equal types, found Bool and Int, for expression 'if x
 else
   2 == 1'
 test\valid\56311_matrix_operations\matrix_operations.agu [FAIL]
-Variable 'error' not defined
+Error: (14, 9) Variable 'error' not found in the current context
 test\valid\56311_minus_minus\minus_minus.agu [✔]
 Program is semantically valid!
 test\valid\56311_shadow_variables\shadow_variables.agu [FAIL]
-Top-level variable 'shadowTest' declared with type Int, but assigned Unit
+Error: (4, 5) Expected two equal types, found Int and Unit, for expression 'let x : Int = 2 ;
+let x : Int = 4'
 test\valid\56311_while_loop_with_empty_body\while_loop_with_empty_body.agu [✔]
 Program is semantically valid!
 test\valid\56311_while_loop_with_mutations\while_loop_with_mutations.agu [✔]
 Program is semantically valid!
 test\valid\56332_array_sum\array_sum.agu [FAIL]
-Top-level variable 'a' declared with type Int[], but assigned Unit
+Error: (12, 17) Expected two equal types, found Int[] and Unit, for expression 'new Int [5 | 10] ;
+let _ : Unit = print(arraySum(a))'
 test\valid\56332_array_update\array_update.agu [FAIL]
 Syntactic error: at line 10, column 27: Unexpected token ';'
 test\valid\56332_count_even_in_array\count_even_in_array.agu [FAIL]
 Syntactic error: at line 13, column 50: Unexpected token ';'
 test\valid\56332_count_negatives_on_matrix\count_negatives_on_matrix.agu [FAIL]
-Top-level variable 'matrix' declared with type Int[][], but assigned Unit
+Error: (18, 24) Expected two equal types, found Int[][] and Unit, for expression 'new Int[] [5 | new Int [5 | 0]] ;
+set matrix[0][1] = 0 - 1 ;
+set matrix[1][3] = 0 - 4 ;
+set matrix[2][0] = 0 - 9 ;
+set matrix[3][4] = 0 - 2 ;
+set matrix[4][4] = 0 - 7 ;
+set matrix[2][4] = 0 - 8 ;
+let _ : Unit = print(countNegatives(matrix))'
 test\valid\56332_dec_to_zero\dec_to_zero.agu [✔]
 Program is semantically valid!
 test\valid\56332_factorial_in_aguda\factorial_in_aguda.agu [✔]
@@ -107,7 +116,7 @@ Program is semantically valid!
 test\valid\56332_simple_sum\simple_sum.agu [✔]
 Program is semantically valid!
 test\valid\56334_bubbleSort\bubbleSort.agu [FAIL]
-Variable 'swapValue' not defined
+Error: (24, 30) Variable 'swapValue' not found in the current context
 test\valid\56334_countOccurrences\countOccurrences.agu [✔]
 Program is semantically valid!
 test\valid\56334_factorial\factorial.agu [✔]
@@ -119,7 +128,10 @@ Program is semantically valid!
 test\valid\56334_listSum\listSum.agu [✔]
 Program is semantically valid!
 test\valid\56334_map\map.agu [FAIL]
-Function 'buildArray' body has type Unit, expected Int[]
+Error: (4, 5) Expected two equal types, found Int[] and Unit, for expression 'let array : Int[] = new Int [3 | 0] ;
+set array[0] = 2 ;
+set array[1] = 4 ;
+set array[2] = 7'
 test\valid\56334_max\max.agu [✔]
 Program is semantically valid!
 test\valid\56334_palindrome\palindrome.agu [✔]
@@ -169,7 +181,7 @@ Program is semantically valid!
 test\valid\58168_sumNumInArray\sumNumInArray.agu [✔]
 Program is semantically valid!
 test\valid\58168_sumOfMinAndOfMaxOfArray\sumOfMinAndOfMaxOfArray.agu [FAIL]
-Variable 'i' not defined
+Error: (15, 10) Variable 'i' not found in the current context
 test\valid\58168_sumTwoNumbers\sumTwoNumbers.agu [✔]
 Program is semantically valid!
 test\valid\58170_arrayBounds\arrayBounds.agu [✔]
@@ -227,13 +239,13 @@ Program is semantically valid!
 test\valid\58185_string_concatenation\string_concatenation.agu [✔]
 Program is semantically valid!
 test\valid\58185_unit_type_test\unit_type_test.agu [FAIL]
-Variable 'i' not defined
+Error: (5, 26) Variable 'i' not found in the current context
 test\valid\58185_while_loops\while_loops.agu [✔]
 Program is semantically valid!
 test\valid\58215_3dArray\3dArray.agu [✔]
 Program is semantically valid!
 test\valid\58215_addToArrayIndex\addToArrayIndex.agu [FAIL]
-Function 'addToArrayIndex' declared with incorrect number of parameters
+Error: (3, 1) Function 'addToArrayIndex' declared with incorrect number of parameters
 test\valid\58215_funWithFunArg\funWithFunArg.agu [✔]
 Program is semantically valid!
 test\valid\58215_ifsInsideIfs\ifsInsideIfs.agu [✔]
@@ -241,21 +253,21 @@ Program is semantically valid!
 test\valid\58215_linha\linha.agu [✔]
 Program is semantically valid!
 test\valid\58215_minArrAndElseUnit\minArrAndElseUnit.agu [FAIL]
-Function 'minValInArr' declared with incorrect number of parameters
+Error: (3, 1) Function 'minValInArr' declared with incorrect number of parameters
 test\valid\58215_negAndEven\negAndEven.agu [✔]
 Program is semantically valid!
 test\valid\58215_scopeArr\scopeArr.agu [FAIL]
-Function 'setDiag2dArray' declared with incorrect number of parameters
+Error: (4, 1) Function 'setDiag2dArray' declared with incorrect number of parameters
 test\valid\58215_somaSub\somaSub.agu [FAIL]
-Function 'soma' declared with incorrect number of parameters
+Error: (3, 1) Function 'soma' declared with incorrect number of parameters
 test\valid\58215_unitFunc\unitFunc.agu [FAIL]
-Function 'faz3' declared with incorrect number of parameters
+Error: (3, 1) Function 'faz3' declared with incorrect number of parameters
 test\valid\58219_compare_string_length\compare_string_length.agu [FAIL]
 Error: (4, 29) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 'str1'
 test\valid\58219_count_common_elements\count_common_elemts.agu [✔]
 Program is semantically valid!
 test\valid\58219_find_array_max_and_min\array_max_min.agu [FAIL]
-Variable 'maxVal' not defined
+Error: (11, 25) Variable 'maxVal' not found in the current context
 test\valid\58219_find_char\find_char.agu [FAIL]
 Error: (4, 28) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 'str'
 test\valid\58219_first_unique_character\first_unique_character.agu [FAIL]
@@ -271,7 +283,7 @@ Error: (8, 8) Expected two equal types, found Unit and Bool, for expression 'if 
 else
   let i : Int = 5'
 test\valid\58219_logical_operators\logical_operators.agu [FAIL]
-Function 'notOp' declared with incorrect number of parameters
+Error: (9, 1) Function 'notOp' declared with incorrect number of parameters
 test\valid\58219_reverse_string\reverse_string.agu [FAIL]
 Error: (5, 19) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 's'
 test\valid\58219_sum_array\sum_array.agu [✔]
@@ -299,7 +311,7 @@ Program is semantically valid!
 test\valid\64361_array_sum\array_sum.agu [✔]
 Program is semantically valid!
 test\valid\64361_check_null_value\check_null_value.agu [FAIL]
-Variable 'null' not defined
+Error: (4, 13) Variable 'null' not found in the current context
 test\valid\64361_count_vowels\count_vowels.agu [FAIL]
 Error: (17, 24) Expected two equal types, found String[] and String, for expression 'word'
 test\valid\64361_exponential\exponential.agu [✔]
@@ -318,7 +330,7 @@ else
 test\valid\64361_reverse_array\reverse_array.agu [✔]
 Program is semantically valid!
 test\valid\64361_sum_function\sum_function.agu [FAIL]
-Variable 'sum_array' not defined
+Error: (21, 11) Variable 'sum_array' not found in the current context
 test\valid\64371_binary_search\binary_search.agu [FAIL]
 Error: (6, 5) Expected two equal types, found Unit and Int, for expression 'if left > right then
   0 - 1
@@ -349,15 +361,17 @@ Program is semantically valid!
 test\valid\64854_coin_flip\coin_flip.agu [✔]
 Program is semantically valid!
 test\valid\64854_heart\heart.agu [FAIL]
-Variable 'i' not defined
+Error: (5, 11) Variable 'i' not found in the current context
 test\valid\64854_inc\inc.agu [FAIL]
-Top-level variable 'i' declared with type Int, but assigned Unit
+Error: (3, 15) Expected two equal types, found Int and Unit, for expression '0 ;
+set i = i + 1 ;
+print(i)'
 test\valid\64854_is_pair\is_pair.agu [✔]
 Program is semantically valid!
 test\valid\64854_positive_power\positive_power.agu [✔]
 Program is semantically valid!
 test\valid\64854_printA\printA.agu [FAIL]
-Function 'printA' body has type Unit, expected String
+Error: (4, 5) Expected two equal types, found String and Unit, for expression 'print("a")'
 test\valid\64854_produce_letter\produce_letter.agu [✔]
 Program is semantically valid!
 test\valid\64854_switch\switch.agu [✔]
