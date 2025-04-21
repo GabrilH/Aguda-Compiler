@@ -1,53 +1,41 @@
 from src.syntax import *
 from src.symbol_table import SymbolTable
                 
-def checkAgainst(ctx: SymbolTable, exp: Exp, expected_type: Type) -> None:
+def checkAgainst(ctx: SymbolTable, exp: Exp, expected_type: Type) -> Type:
     """
     Checks if the expression `exp` matches the expected type `type` in the given context `ctx`.
     """
     actual_type = typeof(ctx, exp)
-    checkEqualTypes(actual_type, expected_type)
+    return checkEqualTypes(exp, actual_type, expected_type)
     
-def checkEqualTypes(actual_type: Type, expected_type: Type) -> None:
+def checkEqualTypes(exp: Exp, actual_type: Type, expected_type: Type) -> Type:
     """
     Checks if two types are equal or compatible.
     """
     if actual_type != expected_type:
-        raise TypeError(f"Expected equal types, but got {actual_type} and {expected_type}")
+        raise TypeError(f"Error: ({exp.lineno}, {exp.column}) Expected two equal types, found {expected_type} and {actual_type}, for expression '{exp}'")
+    return actual_type
     
-def checkInstance(node: ASTNode, expected_class: type) -> None:
+def checkInstance(ctx: SymbolTable, exp: Exp, expected_class: type) -> Type:
     """
-    Checks if the node is an instance of the expected class.
+    Checks if the expression `exp` is an instance of the expected class `expected_class`.
     """
-    if not isinstance(node, expected_class):
-        raise TypeError(f"Expected instance of {expected_class}, but got {type(node)}")
+    actual_type = typeof(ctx, exp)
+    if not isinstance(actual_type, expected_class):
+        raise TypeError(f"Error: ({exp.lineno}, {exp.column}) Expected instance of {expected_class}, found {actual_type}, for expression '{exp}'")
+    return actual_type
     
-def typeof(ctx: SymbolTable, node: ASTNode) -> Type:
+def typeofVar(ctx: SymbolTable, name: str) -> Type:
+    varType = ctx.lookup(name)
+    if varType is None:
+        raise NameError(f"Variable '{name}' not defined")
+    return varType
+    
+def typeof(ctx: SymbolTable, exp: Exp) -> Type:
     """
-    Second pass: Determines the type of the expression `node` in the given context `ctx`.
+    Determines the type of the expression `exp` in the given context `ctx`.
     """
-    match node:
-        case Program(declarations):
-            for decl in declarations:
-                typeof(ctx, decl)
-            return BaseType('Unit')
-        
-        case TopLevelVariableDeclaration(name, type, exp):
-            # No variable may be named as print or length
-            if name.name in ['print', 'length']:
-                raise NameError(f"Variable name '{name}' conflicts with built-in function")
-            
-            # Check the type of the expression against the declared type
-            expType = typeof(ctx, exp)
-            if expType != type:
-                raise TypeError(f"Top-level variable '{name}' declared with type {type}, but assigned {expType}")
-            
-            # Insert the variable into the context only if it is not '_' (wildcard)
-            if name.name != '_':
-                ctx.insert(name.name, type)
-                
-            return BaseType('Unit')
-
+    match exp:        
         case IntLiteral():
             return BaseType('Int')
         
@@ -67,34 +55,32 @@ def typeof(ctx: SymbolTable, node: ASTNode) -> Type:
         
         case ArrayAccess(exp1, exp2):
             
-            arrayType = typeof(ctx, exp1)
-            checkInstance(arrayType, ArrayType)
+            arrayType : ArrayType = checkInstance(ctx, exp1, ArrayType)
             checkAgainst(ctx, exp2, BaseType('Int'))            
             return arrayType.type
         
-        case FunctionCall(name, args):
-            if name.name == 'print':
-                if len(args) != 1:
+        case FunctionCall(id, exps):
+            if id.name == 'print':
+                if len(exps) != 1:
                     raise TypeError("Print function takes exactly one argument")
-                argType = typeof(ctx, args[0])
+                exp1 = exps[0]
+                typeof(ctx, exp1)
                 return BaseType('Unit')
             
-            if name.name == 'length':
-                if len(args) != 1:
+            if id.name == 'length':
+                if len(exps) != 1:
                     raise TypeError("Length function takes exactly one argument")
-                argType = typeof(ctx, args[0])
-                if not isinstance(argType, ArrayType):
-                    raise TypeError("Length function argument must be an array")
-
+                exp1 = exps[0]
+                exp1Type = checkInstance(ctx, exp1, ArrayType)
                 return BaseType('Int')
             
-            funcType = typeof(ctx, name)
+            funcType = typeof(ctx, id)
             if not isinstance(funcType, FunctionType):
-                raise TypeError(f"'{name}' is not a function")
-            if len(funcType.param_types) != len(args):
-                raise TypeError(f"Function '{name}' called with incorrect number of arguments")
+                raise TypeError(f"'{id}' is not a function")
+            if len(funcType.param_types) != len(exps):
+                raise TypeError(f"Function '{id}' called with incorrect number of arguments")
             
-            for param_type, arg in zip(funcType.param_types, args):
+            for param_type, arg in zip(funcType.param_types, exps):
                 arg_type = typeof(ctx, arg)
                 if param_type != arg_type:
                     raise TypeError(f"Function '{name}' called with incorrect argument types: expected {param_type}, got {arg_type}")
@@ -117,15 +103,12 @@ def typeof(ctx: SymbolTable, node: ASTNode) -> Type:
             return BaseType('Unit')
         
         case Var(name):
-            varType = ctx.lookup(name)
-            if varType is None:
-                raise NameError(f"Variable '{name}' not defined")
-            return varType
+            return typeofVar(ctx, name)
         
         case Conditional(exp1, exp2, exp3):
             exp1Type = typeof(ctx, exp1)
             if exp1Type != BaseType('Bool'):
-                raise TypeError(f"Error: ({node.lineno}, {node.column}) Conditional expression must be a Bool, got {exp1Type}")
+                raise TypeError(f"Error: ({exp.lineno}, {exp.column}) Conditional expression must be a Bool, got {exp1Type}")
             
             local_ctx = ctx.enter_scope()
             exp2Type = typeof(local_ctx, exp2)
@@ -136,7 +119,7 @@ def typeof(ctx: SymbolTable, node: ASTNode) -> Type:
             # TODO ctx.exit_scope()
             
             if exp2Type != exp3Type:
-                raise TypeError(f"Error: ({node.lineno}, {node.column}) Conditional branches must have the same type, got {exp2Type} and {exp3Type} for expression '{node}'")
+                raise TypeError(f"Error: ({exp.lineno}, {exp.column}) Conditional branches must have the same type, got {exp2Type} and {exp3Type} for expression '{exp}'")
             
             return exp2Type
         
@@ -169,20 +152,20 @@ def typeof(ctx: SymbolTable, node: ASTNode) -> Type:
             
             if operator in ['+', '-', '*', '/', '%', '^']:
                 if leftType != BaseType('Int') or rightType != BaseType('Int'):
-                    raise TypeError(f"Error: ({node.lineno}, {node.column}) Operator '{operator}' requires Int operands")
+                    raise TypeError(f"Error: ({exp.lineno}, {exp.column}) Operator '{operator}' requires Int operands")
                 return BaseType('Int')
             
             if operator in ['==', '!=', '<', '>', '<=', '>=']:
                 if leftType != rightType:
-                    raise TypeError(f"Error: ({node.lineno}, {node.column}) Operator '{operator}' requires operands of the same type")
+                    raise TypeError(f"Error: ({exp.lineno}, {exp.column}) Operator '{operator}' requires operands of the same type")
                 return BaseType('Bool')
             
             if operator in ['&&', '||']:
                 if leftType != BaseType('Bool') or rightType != BaseType('Bool'):
-                    raise TypeError(f"Error: ({node.lineno}, {node.column}) Operator '{operator}' requires Bool operands")
+                    raise TypeError(f"Error: ({exp.lineno}, {exp.column}) Operator '{operator}' requires Bool operands")
                 return BaseType('Bool')
             
-            raise TypeError(f"Error: ({node.lineno}, {node.column}) Unknown operator '{operator}'")
+            raise TypeError(f"Error: ({exp.lineno}, {exp.column}) Unknown operator '{operator}'")
         
         case LogicalNegation(operand):
             operandType = typeof(ctx, operand)
@@ -226,11 +209,29 @@ def typeof(ctx: SymbolTable, node: ASTNode) -> Type:
             # Exit the local context TODO: is this needed?
             # TODO ctx.exit_scope()
 
-            return BaseType('Unit')
+        case TopLevelVariableDeclaration(name, type, exp):
+            # No variable may be named as print or length
+            if name.name in ['print', 'length']:
+                raise NameError(f"Variable name '{name}' conflicts with built-in function")
+            
+            # Check the type of the expression against the declared type
+            expType = typeof(ctx, exp)
+            if expType != type:
+                raise TypeError(f"Top-level variable '{name}' declared with type {type}, but assigned {expType}")
+            
+            # Insert the variable into the context only if it is not '_' (wildcard)
+            if name.name != '_':
+                ctx.insert(name.name, type)
         
         case _:
-            raise TypeError(f"Unknown AST node type: {type(node)}")
-
+            raise TypeError(f"Unknown AST node type: {type(exp)}")
+        
+def second_pass(ctx: SymbolTable, program: Program) -> None:
+    """
+    Second pass of semantic analysis: checks the types of function bodies
+    """
+    for decl in program.declarations:
+        typeof(ctx, decl)
     
 def first_pass(ctx: SymbolTable, node: ASTNode) -> None:
     """
@@ -275,5 +276,5 @@ def verify(ast: ASTNode) -> None:
     ctx = SymbolTable()
     add_builtins(ctx)  # Add built-in functions to the context
     first_pass(ctx, ast)  # first pass
-    typeof(ctx, ast)  # second pass
+    second_pass(ctx, ast)  # second pass
     print("Program is semantically valid!")
