@@ -3,6 +3,8 @@ perguntar as duvidas
 
 rever os scopes : 64371_reverse_array
 
+erro no stor mas a mim nao: test\valid\64371_reverse_array\reverse_array.agu
+
 talvez refactor ao case FunctionDeclaration
 
 mudar o checkAgainst para não ir sempre para checkEqualTypes -> adicionar casos especificos
