@@ -1,7 +1,7 @@
 valid-tests
 
-Passed [✔]: 131
-Failed [FAIL]: 49
+Passed [✔]: 133
+Failed [FAIL]: 47
 
 test\valid\54394_array_operations\array_operations.agu [✔]
 Program is semantically valid!
@@ -60,9 +60,9 @@ Program is semantically valid!
 test\valid\56307_shadowingFunction\shadowFunction.agu [✔]
 Program is semantically valid!
 test\valid\56307_sumArrayFunction\sumArrayFunction.agu [FAIL]
-Array initial value must be of type Int[], got Int
+Expected equal types, but got Int and Int[]
 test\valid\56307_zeroLengthArray\zeroLengthArray.agu [FAIL]
-Array initial value must be of type Int[], got Int
+Expected equal types, but got Int and Int[]
 test\valid\56311_boundary_arithmetic\boundary_arithmetic.agu [✔]
 Program is semantically valid!
 test\valid\56311_empty_array\empty_array.agu [FAIL]
@@ -72,7 +72,10 @@ Variable 'a' not defined
 test\valid\56311_high_order_function_type\high_order_func_type.agu [✔]
 Program is semantically valid!
 test\valid\56311_if_inside_if\if_inside_if.agu [FAIL]
-Conditional branches have different types: Int vs Bool
+Error: (4, 8) Conditional branches must have the same type, got Int and Bool for expression 'if x == 4 then
+  1
+else
+  2 == 1'
 test\valid\56311_matrix_operations\matrix_operations.agu [FAIL]
 Variable 'error' not defined
 test\valid\56311_minus_minus\minus_minus.agu [✔]
@@ -84,13 +87,13 @@ Program is semantically valid!
 test\valid\56311_while_loop_with_mutations\while_loop_with_mutations.agu [✔]
 Program is semantically valid!
 test\valid\56332_array_sum\array_sum.agu [FAIL]
-Variable 'a' not defined
+Top-level variable 'a' declared with type Int[], but assigned Unit
 test\valid\56332_array_update\array_update.agu [FAIL]
 Syntactic error: at line 10, column 27: Unexpected token ';'
 test\valid\56332_count_even_in_array\count_even_in_array.agu [FAIL]
 Syntactic error: at line 13, column 50: Unexpected token ';'
 test\valid\56332_count_negatives_on_matrix\count_negatives_on_matrix.agu [FAIL]
-Variable 'matrix' not defined
+Top-level variable 'matrix' declared with type Int[][], but assigned Unit
 test\valid\56332_dec_to_zero\dec_to_zero.agu [✔]
 Program is semantically valid!
 test\valid\56332_factorial_in_aguda\factorial_in_aguda.agu [✔]
@@ -132,13 +135,19 @@ Program is semantically valid!
 test\valid\58166_mathTest\mathTest.agu [✔]
 Program is semantically valid!
 test\valid\58166_maxDistance\maxDistance.agu [FAIL]
-Conditional branches have different types: Int vs Unit
+Error: (16, 5) Conditional branches must have the same type, got Int and Unit for expression 'if length(a) == 0 then
+  0
+else
+  let min : Int = a[0]'
 test\valid\58166_modTest\modTest.agu [✔]
 Program is semantically valid!
 test\valid\58166_pingPong\pingPong.agu [✔]
 Program is semantically valid!
 test\valid\58166_powerTen\powerTen.agu [FAIL]
-Conditional branches have different types: Int vs Unit
+Error: (5, 5) Conditional branches must have the same type, got Int and Unit for expression 'if n < 0 then
+  0 - 1
+else
+  unit'
 test\valid\58166_safeIndexCheck\safeIndexCheck.agu [✔]
 Program is semantically valid!
 test\valid\58166_stringLength\stringLength.agu [FAIL]
@@ -207,8 +216,8 @@ test\valid\58185_bubble_sort\bubble_sort.agu [✔]
 Program is semantically valid!
 test\valid\58185_factorial\factorial.agu [✔]
 Program is semantically valid!
-test\valid\58185_mutual_recursion\mutual_recursion.agu [FAIL]
-Variable 'odd' not defined
+test\valid\58185_mutual_recursion\mutual_recursion.agu [✔]
+Program is semantically valid!
 test\valid\58185_power_operator\power_operator.agu [✔]
 Program is semantically valid!
 test\valid\58185_sequencing\sequencing.agu [✔]
@@ -252,9 +261,15 @@ Length function argument must be an array
 test\valid\58219_first_unique_character\first_unique_character.agu [FAIL]
 Length function argument must be an array
 test\valid\58219_is_array_sorted\is_array_sorted.agu [FAIL]
-Conditional branches have different types: Bool vs Unit
+Error: (6, 5) Conditional branches must have the same type, got Bool and Unit for expression 'if len <= 1 then
+  result
+else
+  let i : Int = 1'
 test\valid\58219_is_prime\is_prime.agu [FAIL]
-Conditional branches have different types: Bool vs Unit
+Error: (8, 8) Conditional branches must have the same type, got Bool and Unit for expression 'if n % 2 == 0 || n % 3 == 0 then
+  false
+else
+  let i : Int = 5'
 test\valid\58219_logical_operators\logical_operators.agu [FAIL]
 Function 'notOp' declared with incorrect number of parameters
 test\valid\58219_reverse_string\reverse_string.agu [FAIL]
@@ -296,13 +311,19 @@ Program is semantically valid!
 test\valid\64361_greatest_common_divisor\greatest_common_divisor.agu [✔]
 Program is semantically valid!
 test\valid\64361_prime_number\prime_number.agu [FAIL]
-Conditional branches have different types: Bool vs Unit
+Error: (8, 13) Conditional branches must have the same type, got Bool and Unit for expression 'if n % i == 0 then
+  false
+else
+  unit'
 test\valid\64361_reverse_array\reverse_array.agu [✔]
 Program is semantically valid!
 test\valid\64361_sum_function\sum_function.agu [FAIL]
 Variable 'sum_array' not defined
 test\valid\64371_binary_search\binary_search.agu [FAIL]
-Conditional branches have different types: Int vs Unit
+Error: (6, 5) Conditional branches must have the same type, got Int and Unit for expression 'if left > right then
+  0 - 1
+else
+  let mid : Int = left + right - left / 2'
 test\valid\64371_bubble_sort\bubble_sort.agu [✔]
 Program is semantically valid!
 test\valid\64371_even_fibonnaci_numbers\even_fibonnaci_numbers.agu [✔]
@@ -316,7 +337,7 @@ Program is semantically valid!
 test\valid\64371_pascals_triangle\pascals_triangle.agu [✔]
 Program is semantically valid!
 test\valid\64371_pyramid\pyramid.agu [FAIL]
-Operator '+' requires Int operands
+Error: (8, 23) Operator '+' requires Int operands
 test\valid\64371_reverse_array\reverse_array.agu [✔]
 Program is semantically valid!
 test\valid\64371_two_sum\two_sum.agu [✔]
@@ -330,7 +351,7 @@ Program is semantically valid!
 test\valid\64854_heart\heart.agu [FAIL]
 Variable 'i' not defined
 test\valid\64854_inc\inc.agu [FAIL]
-Variable 'i' not defined
+Top-level variable 'i' declared with type Int, but assigned Unit
 test\valid\64854_is_pair\is_pair.agu [✔]
 Program is semantically valid!
 test\valid\64854_positive_power\positive_power.agu [✔]
@@ -349,8 +370,8 @@ test\valid\tcomp000_collatz\collatz.agu [✔]
 Program is semantically valid!
 test\valid\tcomp000_diagonal\diagonal.agu [✔]
 Program is semantically valid!
-test\valid\tcomp000_evenOdd\evenOdd.agu [FAIL]
-Variable 'odd' not defined
+test\valid\tcomp000_evenOdd\evenOdd.agu [✔]
+Program is semantically valid!
 test\valid\tcomp000_expIf\expif.agu [✔]
 Program is semantically valid!
 test\valid\tcomp000_if_then_if\if_then_if.agu [✔]
