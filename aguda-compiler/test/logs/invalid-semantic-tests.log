@@ -8,20 +8,28 @@ Error: (5, 1) Function 'sum' declared with incorrect number of parameters
 Error: (5, 30) unresolved symbol: n
 Error: (5, 32) Expected two equal types; found Int and None, for expression 'n + x'
 Error: (5, 32) Expected two equal types; found Int and None, for expression 'n + x'
-Error: (7, 15) Function call 'sum("a", "b")' has 2 arguments, expected 1
+Error: (5, 32) Expected type 'Int', found type 'Int' for expression 'n + x'
+...and 1 more errors.
 test\invalid-semantic\56269_wrong_assignment\wrong_assignment.agu [✔]
 Error: (6, 17) Expected two equal types; found Int and String, for expression '"aaaa"'
+Error: (6, 3) Expected type 'Int', found type 'Int' for expression 'let a : Int = "aaaa" ;
+a'
 test\invalid-semantic\56269_wrong_function_call\wrong_function_call.agu [✔]
+Error: (7, 24) Expected two equal types; found Int[] and Int[][], for expression 'a'
+Error: (6, 3) Expected type 'Int', found type 'Int' for expression 'let a : Int[][] = new Int[] [n | new Int [n | 0]] ;
+let j : Int = length(a) ;
+j'
 Error: (11, 5) Function call 'wrongCall(1, 2)' has 2 arguments, expected 1
-Error: (11, 5) Expected two equal types; found (Unit) -> Int and Int, for expression 'wrongCall(1, 2)'
 test\invalid-semantic\56307_incompatibleTypes\incompatibleTypes.agu [✔]
 Error: (3, 11) Expected two equal types; found String and Int, for expression 'a + b + "extra"'
+Error: (3, 11) Expected type 'Int', found type 'Int' for expression 'a + b + "extra"'
 test\invalid-semantic\56307_typeMismatch\typeMismatch.agu [✔]
 Error: (2, 23) Expected two equal types; found Int and String, for expression '"hello"'
 test\invalid-semantic\56307_usedUndeclaredVariable\usedUndeclaredVariable.agu [✔]
 Error: (2, 27) unresolved symbol: x
 Error: (2, 29) Expected two equal types; found Int and None, for expression 'x + 5'
 Error: (2, 29) Expected two equal types; found Int and None, for expression 'x + 5'
+Error: (2, 29) Expected type 'Int', found type 'Int' for expression 'x + 5'
 test\invalid-semantic\56311_assigning_value_different_type\assigning_value_different_type.agu [✔]
 Error: (5, 15) Expected two equal types; found Int and Bool, for expression 'true'
 test\invalid-semantic\56311_initializer_wrong_type\initializer_wrong_type.agu [✔]
@@ -30,60 +38,109 @@ test\invalid-semantic\56311_variable_not_declared.agu\variable_not_declared.agu 
 Error: (5, 15) unresolved symbol: y
 Error: (5, 17) Expected two equal types; found Int and None, for expression 'y + 1'
 Error: (5, 17) Expected two equal types; found Int and None, for expression 'y + 1'
+Error: (5, 17) Expected type 'Int', found type 'Int' for expression 'y + 1'
 test\invalid-semantic\56332_missing_function_argument\missing_function_argument.agu [✔]
+Error: (2, 40) Expected type 'Int', found type 'Int' for expression 'n + m'
 Error: (3, 20) Function call 'add(5)' has 1 arguments, expected 2
 test\invalid-semantic\56332_type_mismatch_addition\type_mismatch_addition.agu [✔]
 Error: (2, 20) Expected two equal types; found Int and Bool, for expression 'true + 2'
 Error: (2, 20) Expected two equal types; found Int and Bool, for expression 'true + 2'
-test\invalid-semantic\56332_wrong_return_type\wrong_return_type.agu [✔]
-Error: (3, 15) Expected two equal types; found Int and Unit, for expression 'retornaUnit(5)'
+Error: (2, 20) Expected type 'Int', found type 'Int' for expression 'true + 2'
+test\invalid-semantic\56332_wrong_return_type\wrong_return_type.agu [FAIL]
+Expected error but none found.
 test\invalid-semantic\56334_typeCheckError\typeCheckError.agu [✔]
 Error: (3, 15) Expected two equal types; found Int and String, for expression '"2"'
 test\invalid-semantic\56334_undeclaredVariable\undeclaredVariable.agu [✔]
 Error: (3, 15) unresolved symbol: y
 Error: (3, 17) Expected two equal types; found Int and None, for expression 'y + 5'
 Error: (3, 17) Expected two equal types; found Int and None, for expression 'y + 5'
+Error: (3, 17) Expected type 'Int', found type 'Int' for expression 'y + 5'
 test\invalid-semantic\56334_wrongParamsFunction\wrongParamsFunction.agu [✔]
+Error: (5, 10) Expected type 'Bool', found type 'Bool' for expression 'x <= y'
+Error: (4, 5) Expected type 'Int', found type 'Int' for expression 'let max : Int = 0 ;
+if x <= y then
+  set max = y
+else
+  set max = x ;
+max'
 Error: (9, 5) Function call 'max(2, 3, 4)' has 3 arguments, expected 2
-test\invalid-semantic\58166_outOfBounds\outOfBounds.agu [FAIL]
-Expected error but none found.
+test\invalid-semantic\58166_outOfBounds\outOfBounds.agu [✔]
+Error: (5, 5) Expected type 'Unit', found type 'Unit' for expression 'let arr : Int[] = new Int [5 | 15] ;
+let x : Int = arr[9] ;
+print(x)'
 test\invalid-semantic\58166_sumIntBool\sumIntBool.agu [✔]
 Error: (7, 26) Expected two equal types; found Bool and Int, for expression 'x + val'
+Error: (7, 26) Expected type 'Int', found type 'Int' for expression 'x + val'
+Error: (5, 5) Expected type 'Unit', found type 'Unit' for expression 'let x : Int = 50 ;
+let val : Bool = true ;
+let result : Int = x + val ;
+print(result)'
 test\invalid-semantic\58166_wrongPara\wrongPara.agu [✔]
+Error: (6, 13) Expected type 'Bool', found type 'Bool' for expression '(
+  n % d
+) == 0'
 Error: (11, 25) Function call 'modTest(x)' has 1 arguments, expected 2
+Error: (9, 5) Expected type 'Unit', found type 'Unit' for expression 'let x : Int = 50 ;
+let y : Int = 5 ;
+let result : Bool = modTest(x) ;
+print(result)'
 test\invalid-semantic\58170_typeMismatch\typeMismatch.agu [✔]
 Error: (4, 17) Expected two equal types; found Int and String, for expression '"Hello"'
+Error: (4, 3) Expected type 'Unit', found type 'Unit' for expression 'let x : Int = "Hello" ;
+print(x)'
 test\invalid-semantic\58170_wrongCondition\wrongCondition.agu [✔]
 Error: (5, 6) Expected two equal types; found Bool and Int, for expression 'x'
+Error: (4, 3) Expected type 'Unit', found type 'Unit' for expression 'let x : Int = 5 ;
+if x then
+  print("x is true")
+else
+  unit'
 test\invalid-semantic\58170_wrongIndexType\wrongIndexType.agu [✔]
 Error: (6, 13) Expected two equal types; found Int and Bool, for expression 'index'
+Error: (4, 3) Expected type 'Unit', found type 'Unit' for expression 'let arr : Int[] = new Int [5 | 0] ;
+let index : Bool = true ;
+print(arr[index])'
 test\invalid-semantic\58182_add_int_to _string\add_int_to_string.agu [✔]
 Error: (3, 39) Expected two equal types; found Int and String, for expression '"Hello" + 123'
 Error: (3, 39) Expected two equal types; found Int and String, for expression '"Hello" + 123'
-Error: (3, 39) Expected two equal types; found String and Int, for expression '"Hello" + 123'
+Error: (3, 39) Expected type 'String', found type 'Int' for expression '"Hello" + 123'
 test\invalid-semantic\58182_undeclared_var\undeclared_var.agu [✔]
 Error: (3, 27) unresolved symbol: x
 Error: (3, 29) Expected two equal types; found Int and None, for expression 'x + 1'
 Error: (3, 29) Expected two equal types; found Int and None, for expression 'x + 1'
+Error: (3, 29) Expected type 'Int', found type 'Int' for expression 'x + 1'
 test\invalid-semantic\58182_wrong_return_type\wrong_return_type.agu [✔]
-Error: (3, 43) Expected two equal types; found Bool and Int, for expression 'n + 2'
+Error: (3, 43) Expected type 'Bool', found type 'Int' for expression 'n + 2'
 test\invalid-semantic\58185_type_mismatch\type_mismatch.agu [✔]
 Error: (6, 5) Expected two equal types; found Bool and Int, for expression 'set x = true'
+Error: (5, 5) Expected type 'Unit', found type 'Unit' for expression 'let x : Int = 5 ;
+set x = true'
 test\invalid-semantic\58185_undeclared_variable\undeclared_variable.agu [✔]
 Error: (6, 15) unresolved symbol: n
 Error: (6, 13) Expected two equal types; found None and Int, for expression 'x + n'
+Error: (5, 5) Expected type 'Unit', found type 'Unit' for expression 'let x : Int = 1 ;
+print(x + n)'
 test\invalid-semantic\58185_wrong_function_parameter\wrong_funtion_parameter.agu [✔]
+Error: (5, 7) Expected type 'Bool', found type 'Bool' for expression 'n > 0'
 Error: (8, 22) Expected two equal types; found Int and Bool, for expression 'true'
 test\invalid-semantic\64361_type_mismatch\type_mismatch.agu [✔]
-Error: (4, 24) Expected two equal types; found String and Int, for expression 'n + m'
-Error: (4, 5) Expected two equal types; found Int and String, for expression 'let x : String = n + m ;
+Error: (4, 24) Expected type 'String', found type 'Int' for expression 'n + m'
+Error: (4, 5) Expected type 'Int', found type 'String' for expression 'let x : String = n + m ;
 x'
 test\invalid-semantic\64361_undeclared_variable\undeclared_variable.agu [✔]
+Error: (5, 13) Expected type 'Bool', found type 'Bool' for expression 'n > 0'
 Error: (6, 19) unresolved symbol: su
 Error: (6, 22) Expected two equal types; found Int and None, for expression 'su + 1'
 Error: (6, 22) Expected two equal types; found Int and None, for expression 'su + 1'
+Error: (4, 5) Expected type 'Int', found type 'Int' for expression 'let sum : Int = m ;
+while n > 0 do (
+  set sum = su + 1 ;
+  set n = n - 1
+) ;
+sum'
 test\invalid-semantic\64361_wrong_type_return\wrong_type_return.agu [✔]
-Error: (4, 5) Expected two equal types; found String and Bool, for expression 'if x > 2 then
+Error: (4, 10) Expected type 'Bool', found type 'Bool' for expression 'x > 2'
+Error: (4, 5) Expected type 'String', found type 'Bool' for expression 'if x > 2 then
   true
 else
   false'
@@ -91,15 +148,30 @@ test\invalid-semantic\64371_arg_type_mismatch\arg_type_mismatch.agu [✔]
 Error: (3, 1) Function 'add' declared with incorrect number of parameters
 Error: (3, 33) unresolved symbol: y
 Error: (3, 31) Expected two equal types; found None and Int, for expression 'x + y'
+Error: (3, 31) Expected type 'Int', found type 'Int' for expression 'x + y'
 test\invalid-semantic\64371_invalid_array_index_type\invalid_array_index_type.agu [✔]
 Error: (5, 13) Expected two equal types; found Int and String, for expression '"0"'
+Error: (4, 5) Expected type 'Unit', found type 'Unit' for expression 'let arr : Int[] = new Int [5 | 0] ;
+set arr["0"] = 1'
 test\invalid-semantic\64371_variable_not_in_scope\variable_not_in_scope.agu [✔]
+Error: (6, 32) Expected type 'Bool', found type 'Bool' for expression 'n % 2 == 0'
+Error: (5, 21) Expected type 'Bool', found type 'Bool' for expression '(
+  let even : Bool = n % 2 == 0 ;
+  !even
+)'
 Error: (10, 11) unresolved symbol: even
+Error: (4, 5) Expected type 'Unit', found type 'Unit' for expression 'let n : Int = 13 ;
+let odd : Bool = (
+  let even : Bool = n % 2 == 0 ;
+  !even
+) ;
+print(odd) ;
+print(even)'
 test\invalid-semantic\64854_adding_string_int\adding_string_int.agu [✔]
 Error: (6, 22) Expected two equal types; found Int and String, for expression 'a + x'
 Error: (6, 22) Expected two equal types; found Int and String, for expression 'a + x'
-Error: (6, 22) Expected two equal types; found String and Int, for expression 'a + x'
-Error: (3, 18) Expected two equal types; found String and Unit, for expression '"a" ;
+Error: (6, 22) Expected type 'String', found type 'Int' for expression 'a + x'
+Error: (3, 18) Expected type 'String', found type 'Unit' for expression '"a" ;
 let x : Int = 1 ;
 let res : String = a + x'
 test\invalid-semantic\64854_type_check\type_check.agu [✔]
@@ -108,8 +180,13 @@ test\invalid-semantic\64854_undeclared_variable\undeclared_variable.agu [✔]
 Error: (4, 15) unresolved symbol: y
 Error: (4, 17) Expected two equal types; found Int and None, for expression 'y + 1'
 Error: (4, 17) Expected two equal types; found Int and None, for expression 'y + 1'
+Error: (4, 17) Expected type 'Int', found type 'Int' for expression 'y + 1'
 test\invalid-semantic\tcomp000-branches-diff-types\branches-diff-types.agu [✔]
 Error: (2, 3) Expected two equal types; found Int and Unit, for expression 'if true then
+  unit
+else
+  5'
+Error: (2, 3) Expected type 'Unit', found type 'Unit' for expression 'if true then
   unit
 else
   5'
@@ -118,5 +195,8 @@ Error: (3, 34) Expected two equal types; found Int and Unit, for expression '(
   while false do 5
 ) + 5'
 Error: (3, 34) Expected two equal types; found Int and Unit, for expression '(
+  while false do 5
+) + 5'
+Error: (3, 34) Expected type 'Int', found type 'Int' for expression '(
   while false do 5
 ) + 5'

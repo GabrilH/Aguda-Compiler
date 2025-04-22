@@ -30,21 +30,37 @@ class ErrorLogger:
     def get_errors(self):
         return self.messages
                 
-def checkAgainst(ctx: SymbolTable, exp: Exp, expected_type: Type) -> None:
+def checkAgainst(ctx: SymbolTable, match_exp: Exp, expected_type: Type) -> None:
     """
     Checks if the expression `exp` matches the expected type `type` in the given context `ctx`.
     """
-    match exp:
+    match match_exp:
         # TODO more specific checks for each type
-        # case Var(name):
-        #     actual_type = typeofVar(ctx, name)
-        #     checkEqualTypes(exp, actual_type, expected_type)
+        case IntLiteral() | BoolLiteral() | UnitLiteral() | StringLiteral():
+            actual_type = typeof(ctx, match_exp)
+            checkEqualTypes(match_exp, actual_type, expected_type)
+
+        case ArrayCreation(type, exp1, exp2):
+            checkAgainst(ctx, exp1, BaseType('Int'))
+            checkAgainst(ctx, exp2, type)
+
+        case ArrayAccess(exp1, exp2):
+            checkInstance(ctx, exp1, ArrayType)
+            checkAgainst(ctx, exp2, BaseType('Int'))
+
+        case FunctionCall(id, exps):
+            funcType = typeof(ctx, id)
+            checkInstance(ctx, id, FunctionType)
+            checkArguments(ctx, match_exp, exps, funcType)
+    
+        case Var(name):
+            actual_type = typeofVar(ctx, match_exp, name)
+            checkEqualTypes(match_exp, actual_type, expected_type)
         
-        # case BinaryOp(left, operator, right):
-        #     pass
         case _:
-            actual_type = typeof(ctx, exp)
-            checkEqualTypes(exp, actual_type, expected_type)
+            logger.log(f"Expected type '{expected_type}', found type '{typeof(ctx, match_exp)}' for expression '{match_exp}'", match_exp.lineno, match_exp.column)
+            # actual_type = typeof(ctx, match_exp)
+            # checkEqualTypes(match_exp, actual_type, expected_type)
         
 def checkArguments(ctx: SymbolTable, matched_exp: Exp, exps: List[Exp], function_type: FunctionType) -> None:
     """

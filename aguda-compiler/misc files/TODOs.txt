@@ -14,3 +14,7 @@ Comando para correr ficheiro local:
 docker-compose run --rm -v C:\Users\gmfh\Documents\TComp_Repo\aguda-compiler\array_operations.agu:/app/local_file.agu aguda-compiler /app/local_file.agu
 
 Mudar no main quando se deve receber exceptions ou nao
+
+Logs com erros iguais
+
+checkAgainst tem que usar expected_type

@@ -1,124 +1,306 @@
 valid-tests
 
-Passed [✔]: 136
-Failed [FAIL]: 44
+Passed [✔]: 0
+Failed [FAIL]: 180
 
-test\valid\54394_array_operations\array_operations.agu [✔]
-Program is semantically valid!
-test\valid\54394_bool_array\bool_array.agu [✔]
-Program is semantically valid!
-test\valid\54394_clamp\clamp.agu [✔]
-Program is semantically valid!
+test\valid\54394_array_operations\array_operations.agu [FAIL]
+Error: (5, 35) Expected type 'Int', found type 'Int' for expression 'len + 1'
+Error: (7, 13) Expected type 'Bool', found type 'Bool' for expression 'j < len + 1'
+Error: (8, 15) Expected type 'Bool', found type 'Bool' for expression 'j == i'
+Error: (11, 31) Expected type 'Bool', found type 'Bool' for expression 'j > i'
+Error: (11, 46) Expected type 'Int', found type 'Int' for expression 'j + 1'
+...and 6 more errors.
+test\valid\54394_bool_array\bool_array.agu [FAIL]
+Error: (10, 17) Expected type 'Bool', found type 'Bool' for expression 'i < s && acc'
+Error: (6, 5) Expected type 'Bool', found type 'Bool' for expression 'set a[1] = !a[2] ;
+let acc : Bool = true ;
+let i : Int = 0 ;
+while i < s && acc do (
+  set acc = acc && a[i] ;
+  set i = i + 1
+) ;
+acc'
+test\valid\54394_clamp\clamp.agu [FAIL]
+Error: (4, 10) Expected type 'Bool', found type 'Bool' for expression 'n > v'
+Error: (4, 5) Expected type 'Int', found type 'Int' for expression 'if n > v then
+  v
+else
+  n'
+Error: (8, 10) Expected type 'Bool', found type 'Bool' for expression 'n < v'
+Error: (8, 5) Expected type 'Int', found type 'Int' for expression 'if n < v then
+  v
+else
+  n'
 test\valid\54394_combinations\combinations.agu [FAIL]
-Error: (10, 15) Function call 'fac(6, 2)' has 2 arguments, expected 1
-test\valid\54394_identifier\identifier.agu [✔]
-Program is semantically valid!
-test\valid\54394_operator_precedence\operator_precedence.agu [✔]
-Program is semantically valid!
-test\valid\54394_semicolon_assignment\semicolon_assignment.agu [✔]
-Program is semantically valid!
-test\valid\54394_string_printing\string_printing.agu [✔]
-Program is semantically valid!
-test\valid\54394_uv_mapping\uv_mapping.agu [✔]
-Program is semantically valid!
+Error: (4, 9) Expected type 'Bool', found type 'Bool' for expression 'n == 0'
+Error: (4, 34) Expected type 'Int', found type 'Int' for expression 'n - 1'
+Error: (4, 5) Expected type 'Int', found type 'Int' for expression 'if n == 0 then
+  1
+else
+  n * fac(n - 1)'
+Error: (8, 30) Expected type 'Int', found type 'Int' for expression 'n - k'
+Error: (8, 13) Expected type 'Int', found type 'Int' for expression 'fac(n) / (
+  fac(k) * fac(n - k)
+)'
+...and 1 more errors.
+test\valid\54394_identifier\identifier.agu [FAIL]
+Error: (5, 9) Expected type 'Unit', found type 'Unit' for expression 'while false do (
+  let this_is_a_long_name_for_some_reason : String = "'My name is Jeff'"
+)'
+Error: (4, 5) Expected type 'Unit', found type 'Unit' for expression 'let len'gth________ : Unit = while false do (
+  let this_is_a_long_name_for_some_reason : String = "'My name is Jeff'"
+)'
+test\valid\54394_operator_precedence\operator_precedence.agu [FAIL]
+Error: (3, 45) Expected type 'Int', found type 'Int' for expression '(
+  0 - 2 + 4 * 3 - 2 ^ 3 + 11
+) % 5 + 6 / 0 - 3'
+test\valid\54394_semicolon_assignment\semicolon_assignment.agu [FAIL]
+Error: (5, 13) Expected type 'Bool', found type 'Bool' for expression 'y < 10'
+Error: (4, 5) Expected type 'Int', found type 'Int' for expression 'let y : Int = 4 ;
+while y < 10 do (
+  set y = y + 4
+) ;
+y'
+test\valid\54394_string_printing\string_printing.agu [FAIL]
+Error: (7, 13) Expected type 'Bool', found type 'Bool' for expression 'i < n'
+Error: (6, 5) Expected type 'Unit', found type 'Unit' for expression 'let i : Int = 0 ;
+while i < n do (
+  print(s) ;
+  set i = i + 1
+)'
+test\valid\54394_uv_mapping\uv_mapping.agu [FAIL]
+Error: (7, 5) Expected type 'Int[]', found type 'Int[]' for expression 'let out : Int[] = new Int [2 | 0] ;
+set out[0] = x ;
+set out[1] = y ;
+out'
+Error: (14, 14) Expected type 'Int', found type 'Int' for expression '100 - uv[1]'
+Error: (18, 20) Expected type 'Int', found type 'Int' for expression '100 - uv[0]'
 test\valid\54394_zip\zip.agu [FAIL]
 Error: (6, 33) unresolved symbol: lenght
 Error: (6, 33) unresolved symbol: lenght
 Error: (6, 33) Expected instance of <class 'src.syntax.FunctionType'>, found None, for expression 'lenght'
 Error: (-1, -1) Unexpected error during semantic analysis: 'NoneType' object has no attribute 'param_types'
-test\valid\56269_ackermann\ackermann.agu [✔]
-Program is semantically valid!
-test\valid\56269_associativity\associativity.agu [✔]
-Program is semantically valid!
-test\valid\56269_booleanSequence\booleanSequence.agu [✔]
-Program is semantically valid!
-test\valid\56269_boolean\boolean.agu [✔]
-Program is semantically valid!
+test\valid\56269_ackermann\ackermann.agu [FAIL]
+Error: (6, 8) Expected type 'Bool', found type 'Bool' for expression 'm == 0'
+Error: (8, 15) Expected type 'Bool', found type 'Bool' for expression 'n == 0'
+Error: (9, 20) Expected type 'Int', found type 'Int' for expression 'm - 1'
+Error: (11, 11) Expected type 'Int', found type 'Int' for expression 'm - 1'
+Error: (11, 25) Expected type 'Int', found type 'Int' for expression 'n - 1'
+...and 1 more errors.
+test\valid\56269_associativity\associativity.agu [FAIL]
+Error: (6, 19) Expected type 'Int', found type 'Int' for expression '2 ^ 0 - 3 ^ 2'
+Error: (6, 3) Expected type 'Int', found type 'Int' for expression 'let i : Int = 2 ^ 0 - 3 ^ 2 ;
+i'
+test\valid\56269_booleanSequence\booleanSequence.agu [FAIL]
+Error: (4, 23) Expected type 'String', found type 'Bool' for expression 'false && true || true'
+test\valid\56269_boolean\boolean.agu [FAIL]
+Error: (4, 5) Expected type 'Bool', found type 'Bool' for expression 'if true then
+  true
+else
+  false'
 test\valid\56269_bottomRow\bottomRow.agu [FAIL]
-Error: (16, 11) unresolved symbol: j
-Error: (16, 13) Expected two equal types; found Int and None, for expression 'j < length(a[0])'
-Error: (17, 18) unresolved symbol: j
-Error: (17, 18) Expected two equal types; found Int and None, for expression 'j'
-Error: (18, 11) unresolved symbol: j
-...and 4 more errors.
+Error: (6, 11) Expected type 'Bool', found type 'Bool' for expression 'i < n'
+Error: (7, 13) Expected type 'Int', found type 'Int' for expression 'n - 1'
+Error: (7, 13) Expected type 'Int', found type 'Int' for expression 'n - 1'
+Error: (4, 3) Expected type 'Int[][]', found type 'Int[][]' for expression 'let a : Int[][] = new Int[] [n | new Int [n | 0]] ;
+let i : Int = 0 ;
+while i < n do (
+  set a[n - 1][i] = 1 ;
+  set i = i + 1
+) ;
+a'
+Error: (15, 11) Expected type 'Bool', found type 'Bool' for expression 'i < length(a)'
+...and 11 more errors.
 test\valid\56269_if\if.agu [FAIL]
-Error: (17, 12) Expected two equal types; found Bool and Unit, for expression 'let x : Bool = true'
-Error: (16, 11) Expected two equal types; found Bool and Unit, for expression 'let x : Bool = let x : Bool = true'
-Error: (15, 10) Expected two equal types; found Bool and Unit, for expression 'let x : Bool = let x : Bool = let x : Bool = true'
-Error: (14, 9) Expected two equal types; found Bool and Unit, for expression 'let x : Bool = let x : Bool = let x : Bool = let x : Bool = true'
-Error: (13, 8) Expected two equal types; found Bool and Unit, for expression 'let x : Bool = let x : Bool = let x : Bool = let x : Bool = let x : Bool = true'
-...and 13 more errors.
-test\valid\56269_insertionSort\insertionSort.agu [✔]
-Program is semantically valid!
-test\valid\56269_multipleAssignment\multipleAssignment.agu [✔]
-Program is semantically valid!
-test\valid\56269_parentheses\parentheses.agu [✔]
-Program is semantically valid!
-test\valid\56269_variables\variables.agu [✔]
-Program is semantically valid!
-test\valid\56307_applyTwiceFunction\applyTwiceFunction.agu [✔]
-Program is semantically valid!
-test\valid\56307_arithmeticOperations\arithmeticOperations.agu [✔]
-Program is semantically valid!
-test\valid\56307_countdownFunction\countdownFunction.agu [✔]
-Program is semantically valid!
-test\valid\56307_counterFunction\counterFunction.agu [✔]
-Program is semantically valid!
-test\valid\56307_factorialFunction\factorialFunction.agu [✔]
-Program is semantically valid!
-test\valid\56307_maxFunction\maxFunction.agu [✔]
-Program is semantically valid!
-test\valid\56307_powerFunction\powerFunction.agu [✔]
-Program is semantically valid!
-test\valid\56307_shadowingFunction\shadowFunction.agu [✔]
-Program is semantically valid!
+Error: (17, 12) Expected type 'Bool', found type 'Unit' for expression 'let x : Bool = true'
+Error: (16, 11) Expected type 'Bool', found type 'Unit' for expression 'let x : Bool = let x : Bool = true'
+Error: (15, 10) Expected type 'Bool', found type 'Unit' for expression 'let x : Bool = let x : Bool = let x : Bool = true'
+Error: (14, 9) Expected type 'Bool', found type 'Unit' for expression 'let x : Bool = let x : Bool = let x : Bool = let x : Bool = true'
+Error: (13, 8) Expected type 'Bool', found type 'Unit' for expression 'let x : Bool = let x : Bool = let x : Bool = let x : Bool = let x : Bool = true'
+...and 15 more errors.
+test\valid\56269_insertionSort\insertionSort.agu [FAIL]
+Error: (7, 11) Expected type 'Bool', found type 'Bool' for expression 'i < length(a)'
+Error: (9, 21) Expected type 'Int', found type 'Int' for expression 'i - 1'
+Error: (10, 18) Expected type 'Bool', found type 'Bool' for expression 'k >= 0 && a[k] > key'
+Error: (11, 15) Expected type 'Int', found type 'Int' for expression 'k + 1'
+Error: (14, 13) Expected type 'Int', found type 'Int' for expression 'k + 1'
+...and 2 more errors.
+test\valid\56269_multipleAssignment\multipleAssignment.agu [FAIL]
+Error: (4, 3) Expected type 'Unit', found type 'Unit' for expression 'let x : Int = 1 ;
+set x = x + 1 ;
+set x = x * 3 ;
+set x = x - 2 ;
+print(x)'
+test\valid\56269_parentheses\parentheses.agu [FAIL]
+Error: (4, 17) Expected type 'String', found type 'Int' for expression '(
+  1 + 2
+) * 3'
+test\valid\56269_variables\variables.agu [FAIL]
+Error: (5, 21) Expected type 'Int', found type 'Int' for expression 'x + 2'
+Error: (4, 5) Expected type 'Int', found type 'Int' for expression 'let x : Int = 1 ;
+let y : Int = x + 2 ;
+y * 2 * x * x'
+test\valid\56307_applyTwiceFunction\applyTwiceFunction.agu [FAIL]
+Error: (5, 36) Expected type 'Int', found type 'Int' for expression 'n + 1'
+test\valid\56307_arithmeticOperations\arithmeticOperations.agu [FAIL]
+Error: (6, 11) Expected type 'Bool', found type 'Bool' for expression 'i <= n'
+Error: (4, 3) Expected type 'Int', found type 'Int' for expression 'let s : Int = 0 ;
+let i : Int = 1 ;
+while i <= n do (
+  set s = s + i ;
+  set i = i + 1
+) ;
+s'
+Error: (13, 5) Expected type 'Int', found type 'Int' for expression 'a * b'
+Error: (16, 3) Expected type 'Int', found type 'Int' for expression 'let s : Int = sumUp(n) ;
+let p : Int = product(n, m) ;
+s + p'
+test\valid\56307_countdownFunction\countdownFunction.agu [FAIL]
+Error: (3, 11) Expected type 'Bool', found type 'Bool' for expression 'n > 0'
+Error: (3, 3) Expected type 'Unit', found type 'Unit' for expression 'while n > 0 do (
+  print(n) ;
+  set n = n - 1
+) ;
+print("Go back to work!\n")'
+test\valid\56307_counterFunction\counterFunction.agu [FAIL]
+Error: (4, 11) Expected type 'Bool', found type 'Bool' for expression 'n > 0'
+Error: (3, 3) Expected type 'Int', found type 'Int' for expression 'let counter : Int = 0 ;
+while n > 0 do (
+  set counter = counter + 1 ;
+  set n = n - 1
+) ;
+counter'
+test\valid\56307_factorialFunction\factorialFunction.agu [FAIL]
+Error: (3, 8) Expected type 'Bool', found type 'Bool' for expression 'n == 0'
+Error: (3, 41) Expected type 'Int', found type 'Int' for expression 'n - 1'
+Error: (3, 3) Expected type 'Int', found type 'Int' for expression 'if n == 0 then
+  1
+else
+  n * factorial(n - 1)'
+test\valid\56307_maxFunction\maxFunction.agu [FAIL]
+Error: (3, 8) Expected type 'Bool', found type 'Bool' for expression 'a >= b'
+Error: (3, 3) Expected type 'Int', found type 'Int' for expression 'if a >= b then
+  a
+else
+  b'
+test\valid\56307_powerFunction\powerFunction.agu [FAIL]
+Error: (3, 11) Expected type 'String', found type 'Int' for expression '2 ^ 3 ^ 2'
+test\valid\56307_shadowingFunction\shadowFunction.agu [FAIL]
+Error: (3, 19) Expected type 'Int', found type 'Int' for expression 'x + 10'
+Error: (4, 19) Expected type 'Int', found type 'Int' for expression 'y * 2'
+Error: (3, 3) Expected type 'Int', found type 'Int' for expression 'let y : Int = x + 10 ;
+let x : Int = y * 2 ;
+x'
 test\valid\56307_sumArrayFunction\sumArrayFunction.agu [FAIL]
+Error: (5, 11) Expected type 'Bool', found type 'Bool' for expression 'i < length(arr)'
+Error: (3, 3) Expected type 'Int', found type 'Int' for expression 'let sum : Int = 0 ;
+let i : Int = 0 ;
+while i < length(arr) do (
+  set sum = sum + arr[i] ;
+  set i = i + 1
+) ;
+sum'
 Error: (11, 39) Expected two equal types; found Int[] and Int, for expression '10'
-Error: (11, 24) Expected two equal types; found Int[] and Int[][], for expression 'new Int[] [5 | 10]'
 test\valid\56307_zeroLengthArray\zeroLengthArray.agu [FAIL]
 Error: (2, 40) Expected two equal types; found Int[] and Int, for expression '0'
-Error: (2, 25) Expected two equal types; found Int[] and Int[][], for expression 'new Int[] [0 | 0]'
-test\valid\56311_boundary_arithmetic\boundary_arithmetic.agu [✔]
-Program is semantically valid!
+test\valid\56311_boundary_arithmetic\boundary_arithmetic.agu [FAIL]
+Error: (4, 20) Expected type 'Int', found type 'Int' for expression '0 - 2147483648'
+Error: (6, 33) Expected type 'Int', found type 'Int' for expression 'minInt + 1 - 1'
+Error: (11, 11) Expected two equal types; found String and Int, for expression 'edgeMath'
 test\valid\56311_empty_array\empty_array.agu [FAIL]
 Error: (9, 11) unresolved symbol: empty_matrix
+Error: (8, 5) Expected type 'Unit', found type 'Unit' for expression 'print(empty_array) ;
+print(empty_matrix)'
 test\valid\56311_equals\equals_method.agu [FAIL]
 Error: (4, 5) unresolved symbol: a
 Error: (4, 10) unresolved symbol: b
-test\valid\56311_high_order_function_type\high_order_func_type.agu [✔]
-Program is semantically valid!
+Error: (4, 7) Expected type 'Bool', found type 'Bool' for expression 'a == b'
+test\valid\56311_high_order_function_type\high_order_func_type.agu [FAIL]
+Error: (7, 7) Expected type 'Int', found type 'Int' for expression 'x * 2'
+Error: (13, 11) Expected two equal types; found String and Int, for expression 'result'
 test\valid\56311_if_inside_if\if_inside_if.agu [FAIL]
+Error: (4, 13) Expected type 'Bool', found type 'Bool' for expression 'x == 4'
 Error: (4, 8) Expected two equal types; found Bool and Int, for expression 'if x == 4 then
   1
 else
   2 == 1'
-Error: (4, 8) Expected two equal types; found Bool and Int, for expression 'if x == 4 then
+Error: (4, 8) Expected type 'Bool', found type 'Int' for expression 'if x == 4 then
   1
 else
   2 == 1'
+Error: (4, 5) Expected type 'String', found type 'String' for expression 'if if x == 4 then
+  1
+else
+  2 == 1 then
+  "It WORKED"
+else
+  "IT WORKED ALSO"'
+Error: (7, 5) Expected type 'Unit', found type 'Unit' for expression 'print(func(4)) ;
+print(func(3))'
 test\valid\56311_matrix_operations\matrix_operations.agu [FAIL]
+Error: (6, 13) Expected type 'Bool', found type 'Bool' for expression 'i < n'
+Error: (4, 5) Expected type 'Int[][]', found type 'Int[][]' for expression 'let matrix : Int[][] = new Int[] [n | new Int [n | 0]] ;
+let i : Int = 0 ;
+while i < n do (
+  set matrix[i][i] = 1 ;
+  set i = i + 1
+) ;
+matrix'
+Error: (13, 23) Expected type 'Bool', found type 'Bool' for expression 'length(mat[0]) != length(vec)'
 Error: (14, 9) unresolved symbol: error
 Error: (14, 9) unresolved symbol: error
-Error: (14, 9) Expected instance of <class 'src.syntax.FunctionType'>, found None, for expression 'error'
-Error: (-1, -1) Unexpected error during semantic analysis: 'NoneType' object has no attribute 'param_types'
-test\valid\56311_minus_minus\minus_minus.agu [✔]
-Program is semantically valid!
+...and 2 more errors.
+test\valid\56311_minus_minus\minus_minus.agu [FAIL]
+Error: (3, 15) Expected type 'Int', found type 'Int' for expression '0 - (
+  0 - 4
+)'
+Error: (6, 11) Expected two equal types; found String and Int, for expression 'x'
 test\valid\56311_shadow_variables\shadow_variables.agu [FAIL]
-Error: (4, 5) Expected two equal types; found Int and Unit, for expression 'let x : Int = 2 ;
+Error: (4, 5) Expected type 'Int', found type 'Unit' for expression 'let x : Int = 2 ;
 let x : Int = 4'
-test\valid\56311_while_loop_with_empty_body\while_loop_with_empty_body.agu [✔]
-Program is semantically valid!
-test\valid\56311_while_loop_with_mutations\while_loop_with_mutations.agu [✔]
-Program is semantically valid!
+Error: (8, 11) Expected two equal types; found String and Int, for expression 'shadowTest'
+test\valid\56311_while_loop_with_empty_body\while_loop_with_empty_body.agu [FAIL]
+Error: (4, 5) Expected type 'Unit', found type 'Unit' for expression 'while true do print(n)'
+test\valid\56311_while_loop_with_mutations\while_loop_with_mutations.agu [FAIL]
+Error: (4, 13) Expected type 'Bool', found type 'Bool' for expression 'n > 0'
+Error: (4, 5) Expected type 'Unit', found type 'Unit' for expression 'while n > 0 do (
+  print(n) ;
+  set n = n - 1
+)'
 test\valid\56332_array_sum\array_sum.agu [FAIL]
-Error: (12, 17) Expected two equal types; found Int[] and Unit, for expression 'new Int [5 | 10] ;
+Error: (6, 13) Expected type 'Bool', found type 'Bool' for expression 'i < length(a)'
+Error: (4, 5) Expected type 'Int', found type 'Int' for expression 'let i : Int = 0 ;
+let acc : Int = 0 ;
+while i < length(a) do (
+  set acc = acc + a[i] ;
+  set i = i + 1
+) ;
+acc'
+Error: (12, 17) Expected type 'Int[]', found type 'Unit' for expression 'new Int [5 | 10] ;
 let _ : Unit = print(arraySum(a))'
 test\valid\56332_array_update\array_update.agu [FAIL]
 Syntactic error: at line 10, column 27: Unexpected token ';'
 test\valid\56332_count_even_in_array\count_even_in_array.agu [FAIL]
 Syntactic error: at line 13, column 50: Unexpected token ';'
 test\valid\56332_count_negatives_on_matrix\count_negatives_on_matrix.agu [FAIL]
-Error: (18, 24) Expected two equal types; found Int[][] and Unit, for expression 'new Int[] [5 | new Int [5 | 0]] ;
+Error: (7, 13) Expected type 'Bool', found type 'Bool' for expression 'i < length(m)'
+Error: (9, 17) Expected type 'Bool', found type 'Bool' for expression 'j < length(m[0])'
+Error: (10, 24) Expected type 'Bool', found type 'Bool' for expression 'm[i][j] < 0'
+Error: (5, 5) Expected type 'Int', found type 'Int' for expression 'let i : Int = 0 ;
+let count : Int = 0 ;
+while i < length(m) do (
+  let j : Int = 0 ;
+  while j < length(m[0]) do (
+    if m[i][j] < 0 then
+      set count = count + 1
+    else
+      unit ;
+    set j = j + 1
+  ) ;
+  set i = i + 1
+) ;
+count'
+Error: (18, 24) Expected type 'Int[][]', found type 'Unit' for expression 'new Int[] [5 | new Int [5 | 0]] ;
 set matrix[0][1] = 0 - 1 ;
 set matrix[1][3] = 0 - 4 ;
 set matrix[2][0] = 0 - 9 ;
@@ -126,390 +308,1505 @@ set matrix[3][4] = 0 - 2 ;
 set matrix[4][4] = 0 - 7 ;
 set matrix[2][4] = 0 - 8 ;
 let _ : Unit = print(countNegatives(matrix))'
-test\valid\56332_dec_to_zero\dec_to_zero.agu [✔]
-Program is semantically valid!
-test\valid\56332_factorial_in_aguda\factorial_in_aguda.agu [✔]
-Program is semantically valid!
-test\valid\56332_if_then_else_printing_string\if_then_else_printing_string.agu [✔]
-Program is semantically valid!
+test\valid\56332_dec_to_zero\dec_to_zero.agu [FAIL]
+Error: (5, 10) Expected type 'Bool', found type 'Bool' for expression 'n == 0 - 1'
+Error: (8, 21) Expected type 'Int', found type 'Int' for expression 'n - 1'
+Error: (5, 5) Expected type 'Unit', found type 'Unit' for expression 'if n == 0 - 1 then
+  unit
+else
+  (
+    print(n) ;
+    decToZero(n - 1)
+  )'
+test\valid\56332_factorial_in_aguda\factorial_in_aguda.agu [FAIL]
+Error: (3, 10) Expected type 'Bool', found type 'Bool' for expression 'n == 0'
+Error: (3, 43) Expected type 'Int', found type 'Int' for expression 'n - 1'
+Error: (3, 5) Expected type 'Int', found type 'Int' for expression 'if n == 0 then
+  1
+else
+  n * factorial(n - 1)'
+test\valid\56332_if_then_else_printing_string\if_then_else_printing_string.agu [FAIL]
+Error: (3, 10) Expected type 'Bool', found type 'Bool' for expression 'n >= 0'
+Error: (3, 5) Expected type 'String', found type 'String' for expression 'if n >= 0 then
+  "positivo"
+else
+  "negativo"'
 test\valid\56332_min_elem_of_array\min_elem_of_array.agu [FAIL]
 Syntactic error: at line 11, column 48: Unexpected token ';'
-test\valid\56332_precedence_calc\precedence_calc.agu [✔]
-Program is semantically valid!
-test\valid\56332_simple_sum\simple_sum.agu [✔]
-Program is semantically valid!
-test\valid\56334_bubbleSort\bubbleSort.agu [✔]
-Program is semantically valid!
-test\valid\56334_countOccurrences\countOccurrences.agu [✔]
-Program is semantically valid!
-test\valid\56334_factorial\factorial.agu [✔]
-Program is semantically valid!
-test\valid\56334_fibonacci\fibonacci.agu [✔]
-Program is semantically valid!
-test\valid\56334_helloWorld\helloWorld.agu [✔]
-Program is semantically valid!
-test\valid\56334_listSum\listSum.agu [✔]
-Program is semantically valid!
-test\valid\56334_map\map.agu [✔]
-Program is semantically valid!
-test\valid\56334_max\max.agu [✔]
-Program is semantically valid!
-test\valid\56334_palindrome\palindrome.agu [✔]
-Program is semantically valid!
-test\valid\56334_reverseArray\reverseArray.agu [✔]
-Program is semantically valid!
-test\valid\58166_booleanConfusion\booleanConfusion.agu [✔]
-Program is semantically valid!
-test\valid\58166_digits\digits.agu [✔]
-Program is semantically valid!
-test\valid\58166_invertArray\invertArray.agu [✔]
-Program is semantically valid!
-test\valid\58166_mathTest\mathTest.agu [✔]
-Program is semantically valid!
-test\valid\58166_maxDistance\maxDistance.agu [FAIL]
-Error: (16, 5) Expected two equal types; found Unit and Int, for expression 'if length(a) == 0 then
+test\valid\56332_precedence_calc\precedence_calc.agu [FAIL]
+Error: (2, 25) Expected type 'String', found type 'Int' for expression '12 + 3 * 4 ^ 2'
+test\valid\56332_simple_sum\simple_sum.agu [FAIL]
+Error: (2, 40) Expected type 'Int', found type 'Int' for expression 'a + b'
+test\valid\56334_bubbleSort\bubbleSort.agu [FAIL]
+Error: (4, 5) Expected type 'Int[]', found type 'Int[]' for expression 'let array : Int[] = new Int [10 | 0] ;
+set array[0] = 3 ;
+set array[1] = 2 ;
+set array[2] = 4 ;
+set array[3] = 7 ;
+set array[4] = 1 ;
+set array[5] = 6 ;
+set array[6] = 8 ;
+set array[7] = 9 ;
+set array[8] = 2 ;
+set array[9] = 5 ;
+array'
+Error: (20, 13) Expected type 'Bool', found type 'Bool' for expression 'i < length(array) - 1'
+Error: (21, 30) Expected type 'Int', found type 'Int' for expression 'i + 1'
+Error: (21, 21) Expected type 'Bool', found type 'Bool' for expression 'array[i] > array[i + 1]'
+Error: (23, 35) Expected type 'Int', found type 'Int' for expression 'i + 1'
+...and 2 more errors.
+test\valid\56334_countOccurrences\countOccurrences.agu [FAIL]
+Error: (4, 5) Expected type 'Int[]', found type 'Int[]' for expression 'let array : Int[] = new Int [5 | 0] ;
+set array[0] = 2 ;
+set array[1] = 1 ;
+set array[2] = 3 ;
+set array[3] = 2 ;
+set array[4] = 5 ;
+array'
+Error: (15, 13) Expected type 'Bool', found type 'Bool' for expression 'i < length(array)'
+Error: (16, 21) Expected type 'Bool', found type 'Bool' for expression 'array[i] == n'
+Error: (13, 5) Expected type 'Int', found type 'Int' for expression 'let i : Int = 0 ;
+let occurrences : Int = 0 ;
+while i < length(array) do (
+  if array[i] == n then
+    (
+      set occurrences = occurrences + 1
+    )
+  else
+    unit ;
+  set i = i + 1
+) ;
+occurrences'
+test\valid\56334_factorial\factorial.agu [FAIL]
+Error: (4, 10) Expected type 'Bool', found type 'Bool' for expression 'n <= 1'
+Error: (4, 43) Expected type 'Int', found type 'Int' for expression 'n - 1'
+Error: (4, 5) Expected type 'Int', found type 'Int' for expression 'if n <= 1 then
+  1
+else
+  n * factorial(n - 1)'
+test\valid\56334_fibonacci\fibonacci.agu [FAIL]
+Error: (4, 10) Expected type 'Bool', found type 'Bool' for expression 'n == 0'
+Error: (4, 32) Expected type 'Bool', found type 'Bool' for expression 'n == 1'
+Error: (4, 61) Expected type 'Int', found type 'Int' for expression 'n - 1'
+Error: (4, 78) Expected type 'Int', found type 'Int' for expression 'n - 2'
+Error: (4, 5) Expected type 'Int', found type 'Int' for expression 'if n == 0 then
   0
 else
-  let min : Int = a[0]'
-Error: (21, 19) unresolved symbol: min
-Error: (21, 17) Expected two equal types; found None and Int, for expression 'a[i] < min'
-Error: (21, 32) unresolved symbol: min
-Error: (21, 28) Expected two equal types; found Int and None, for expression 'set min = a[i]'
-...and 2 more errors.
-test\valid\58166_modTest\modTest.agu [✔]
-Program is semantically valid!
-test\valid\58166_pingPong\pingPong.agu [✔]
-Program is semantically valid!
+  if n == 1 then
+    1
+  else
+    (
+      Fibonacci(n - 1) + Fibonacci(n - 2)
+    )'
+test\valid\56334_helloWorld\helloWorld.agu [FAIL]
+Error: (5, 13) Expected type 'Bool', found type 'Bool' for expression 'i < 2'
+Error: (6, 14) Expected type 'Bool', found type 'Bool' for expression 'i == 0'
+Error: (9, 18) Expected type 'Bool', found type 'Bool' for expression 'i == 1'
+Error: (4, 5) Expected type 'Unit', found type 'Unit' for expression 'let i : Int = 0 ;
+while i < 2 do (
+  if i == 0 then
+    print("Hello")
+  else
+    if i == 1 then
+      print("World")
+    else
+      unit
+)'
+test\valid\56334_listSum\listSum.agu [FAIL]
+Error: (6, 13) Expected type 'Bool', found type 'Bool' for expression 'i < length(array)'
+Error: (4, 5) Expected type 'Int[]', found type 'Int[]' for expression 'let array : Int[] = new Int [10 | 0] ;
+let i : Int = 0 ;
+while i < length(array) do (
+  set array[i] = i * 3 ;
+  set i = i + 1
+) ;
+array'
+Error: (15, 13) Expected type 'Bool', found type 'Bool' for expression 'i < length(n)'
+Error: (13, 5) Expected type 'Int', found type 'Int' for expression 'let i : Int = length(n) ;
+let result : Int = 0 ;
+while i < length(n) do (
+  set result = result + n[i] ;
+  set i = i + 1
+) ;
+result'
+test\valid\56334_map\map.agu [FAIL]
+Error: (4, 5) Expected type 'Int[]', found type 'Int[]' for expression 'let array : Int[] = new Int [3 | 0] ;
+set array[0] = 2 ;
+set array[1] = 4 ;
+set array[2] = 7 ;
+array'
+Error: (12, 13) Expected type 'Bool', found type 'Bool' for expression 'i < length(array)'
+Error: (11, 5) Expected type 'Int[]', found type 'Int[]' for expression 'let i : Int = 0 ;
+while i < length(array) do (
+  set array[i] = array[i] * n ;
+  set i = i + 1
+) ;
+array'
+test\valid\56334_max\max.agu [FAIL]
+Error: (4, 5) Expected type 'Int[]', found type 'Int[]' for expression 'let array : Int[] = new Int [10 | 0] ;
+set array[0] = 3 ;
+set array[1] = 2 ;
+set array[2] = 4 ;
+set array[3] = 7 ;
+set array[4] = 1 ;
+set array[5] = 6 ;
+set array[6] = 8 ;
+set array[7] = 9 ;
+set array[8] = 2 ;
+set array[9] = 5 ;
+array'
+Error: (20, 13) Expected type 'Bool', found type 'Bool' for expression 'i < length(n)'
+Error: (21, 16) Expected type 'Bool', found type 'Bool' for expression 'max < n[i]'
+Error: (18, 5) Expected type 'Int', found type 'Int' for expression 'let i : Int = 0 ;
+let max : Int = 0 ;
+while i < length(n) do (
+  if max < n[i] then
+    (
+      set max = n[i]
+    )
+  else
+    unit ;
+  set i = i + 1
+) ;
+max'
+test\valid\56334_palindrome\palindrome.agu [FAIL]
+Error: (4, 5) Expected type 'Int[]', found type 'Int[]' for expression 'let array : Int[] = new Int [5 | 0] ;
+set array[0] = 1 ;
+set array[1] = 2 ;
+set array[2] = 3 ;
+set array[3] = 2 ;
+set array[4] = 1 ;
+array'
+Error: (14, 29) Expected type 'Int', found type 'Int' for expression 'length(n) - 1'
+Error: (16, 13) Expected type 'Bool', found type 'Bool' for expression 'i < j'
+Error: (13, 5) Expected type 'Bool', found type 'Bool' for expression 'let i : Int = 0 ;
+let j : Int = length(n) - 1 ;
+let result : Bool = true ;
+while i < j do (
+  set result = result && n[i] == n[j] ;
+  set i = i + 1 ;
+  set j = j - 1
+) ;
+result'
+test\valid\56334_reverseArray\reverseArray.agu [FAIL]
+Error: (6, 13) Expected type 'Bool', found type 'Bool' for expression 'i < length(array)'
+Error: (4, 5) Expected type 'Int[]', found type 'Int[]' for expression 'let array : Int[] = new Int [10 | 0] ;
+let i : Int = 0 ;
+while i < length(array) do (
+  set array[i] = i ;
+  set i = i + 1
+) ;
+array'
+Error: (15, 13) Expected type 'Bool', found type 'Bool' for expression 'i < length(n)'
+Error: (16, 43) Expected type 'Int', found type 'Int' for expression 'length(n) - 1 - i'
+Error: (13, 5) Expected type 'Int[]', found type 'Int[]' for expression 'let resultArray : Int[] = new Int [length(n) | 0] ;
+let i : Int = 0 ;
+while i < length(n) do (
+  set resultArray[i] = n[length(n) - 1 - i] ;
+  set i = i + 1
+) ;
+resultArray'
+test\valid\58166_booleanConfusion\booleanConfusion.agu [FAIL]
+Error: (6, 21) Expected type 'Bool', found type 'Bool' for expression '(
+  a
+)'
+Error: (6, 20) Expected type 'Bool', found type 'Bool' for expression '!(
+  a
+)'
+Error: (7, 21) Expected type 'Bool', found type 'Bool' for expression '(
+  b
+)'
+Error: (7, 20) Expected type 'Bool', found type 'Bool' for expression '!(
+  b
+)'
+Error: (8, 20) Expected type 'Bool', found type 'Bool' for expression '(
+  a && b
+)'
+...and 8 more errors.
+test\valid\58166_digits\digits.agu [FAIL]
+Error: (4, 24) Expected type 'Bool', found type 'Bool' for expression 'n < 0'
+Error: (4, 19) Expected type 'Int', found type 'Int' for expression 'if n < 0 then
+  0 - n
+else
+  n'
+Error: (5, 10) Expected type 'Bool', found type 'Bool' for expression 'm < 10'
+Error: (5, 40) Expected type 'Int', found type 'Int' for expression 'm / 10'
+Error: (4, 5) Expected type 'Int', found type 'Int' for expression 'let m : Int = if n < 0 then
+  0 - n
+else
+  n ;
+if m < 10 then
+  1
+else
+  1 + digits(m / 10)'
+test\valid\58166_invertArray\invertArray.agu [FAIL]
+Error: (6, 11) Expected type 'Bool', found type 'Bool' for expression 'i < length(arr)'
+Error: (7, 37) Expected type 'Int', found type 'Int' for expression 'length(arr) - 1 - i'
+Error: (4, 3) Expected type 'Int[]', found type 'Int[]' for expression 'let newArr : Int[] = new Int [length(arr) | 0] ;
+let i : Int = 0 ;
+while i < length(arr) do (
+  let pos : Int = length(arr) - 1 - i ;
+  set newArr[i] = arr[pos] ;
+  set i = i + 1
+) ;
+newArr'
+Error: (14, 3) Expected type 'Unit', found type 'Unit' for expression 'let arr : Int[] = new Int [7 | 0] ;
+set arr[0] = 16 ;
+set arr[1] = 27 ;
+set arr[2] = 9 ;
+set arr[3] = 31 ;
+set arr[4] = 45 ;
+set arr[5] = 3 ;
+set arr[6] = 29 ;
+print(invertArray(arr))'
+test\valid\58166_mathTest\mathTest.agu [FAIL]
+Error: (4, 13) Expected type 'Bool', found type 'Bool' for expression '(
+  1 + 1
+) == 3'
+Error: (7, 11) Expected two equal types; found String and (Unit) -> Bool, for expression 'mathTest'
+test\valid\58166_maxDistance\maxDistance.agu [FAIL]
+Error: (6, 13) Expected type 'Bool', found type 'Bool' for expression 'i < length(a)'
+Error: (4, 5) Expected type 'Int[]', found type 'Int[]' for expression 'let a : Int[] = new Int [4 | 1] ;
+let i : Int = 0 ;
+while i < length(a) do (
+  set a[i] = a[i] + (
+    (
+      i + 1
+    ) * 3
+  ) ;
+  set i = i + 1
+) ;
+a'
+Error: (13, 14) Expected type 'Bool', found type 'Bool' for expression 'x - y < 0'
+Error: (13, 5) Expected type 'Int', found type 'Int' for expression 'if x - y < 0 then
+  0 - (
+    x - y
+  )
+else
+  x - y'
+Error: (16, 18) Expected type 'Bool', found type 'Bool' for expression 'length(a) == 0'
+...and 12 more errors.
+test\valid\58166_modTest\modTest.agu [FAIL]
+Error: (4, 13) Expected type 'Bool', found type 'Bool' for expression '(
+  n % d
+) == 0'
+Error: (7, 5) Expected type 'Unit', found type 'Unit' for expression 'let a : Int = 253540 ;
+let b : Int = 27 ;
+let c : Int = 2025 ;
+let d : Int = 2077 ;
+let k : Int = 5 ;
+print(modTest(a, k)) ;
+print("\n") ;
+print(modTest(b, k)) ;
+print("\n") ;
+print(modTest(c, k)) ;
+print("\n") ;
+print(modTest(d, k))'
+test\valid\58166_pingPong\pingPong.agu [FAIL]
+Error: (5, 13) Expected type 'Bool', found type 'Bool' for expression 'i < (
+  2 * n
+)'
+Error: (7, 32) Expected type 'Bool', found type 'Bool' for expression '(
+  i < n && j < i
+) || (
+  i > n && j < (
+    2 * n - i - 1
+  )
+)'
+Error: (4, 5) Expected type 'Unit', found type 'Unit' for expression 'let i : Int = 0 ;
+while i < (
+  2 * n
+) do (
+  let j : Int = 0 ;
+  while (
+    i < n && j < i
+  ) || (
+    i > n && j < (
+      2 * n - i - 1
+    )
+  ) do (
+    print(" ") ;
+    set j = j + 1
+  ) ;
+  print("o") ;
+  print("\n") ;
+  set i = i + 1
+)'
+Error: (18, 5) Expected type 'Unit', found type 'Unit' for expression 'print("--- Ping Pong ---") ;
+print("\n") ;
+pingPong(5)'
 test\valid\58166_powerTen\powerTen.agu [FAIL]
+Error: (5, 10) Expected type 'Bool', found type 'Bool' for expression 'n < 0'
 Error: (5, 5) Expected two equal types; found Unit and Int, for expression 'if n < 0 then
   0 - 1
 else
   unit'
-test\valid\58166_safeIndexCheck\safeIndexCheck.agu [✔]
-Program is semantically valid!
+Error: (6, 10) Expected type 'Bool', found type 'Bool' for expression 'n == 0'
+Error: (6, 43) Expected type 'Int', found type 'Int' for expression 'n - 1'
+Error: (5, 5) Expected type 'Int', found type 'Int' for expression 'if n < 0 then
+  0 - 1
+else
+  unit ;
+if n == 0 then
+  1
+else
+  10 * powerTen(n - 1)'
+test\valid\58166_safeIndexCheck\safeIndexCheck.agu [FAIL]
+Error: (4, 12) Expected type 'Bool', found type 'Bool' for expression 'n >= 0 && n < length(a)'
 test\valid\58166_stringLength\stringLength.agu [FAIL]
 Error: (5, 19) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 's'
+Error: (5, 22) Expected type 'Bool', found type 'Bool' for expression 'length(s) == 0'
 Error: (6, 19) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 's'
 Error: (6, 36) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 's'
-Error: (7, 19) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 's'
-Error: (7, 37) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 's'
-test\valid\58168_3letsPrint1stValue\3letsPrint1stValue.agu [✔]
-Program is semantically valid!
+Error: (6, 26) Expected type 'Bool', found type 'Bool' for expression 'length(s) > 0 && length(s) < 5'
+...and 6 more errors.
+test\valid\58168_3letsPrint1stValue\3letsPrint1stValue.agu [FAIL]
+Error: (4, 3) Expected type 'Unit', found type 'Unit' for expression 'let a : Int = 0 ;
+let b : Int = 1 ;
+let c : Int = 2 ;
+print(a)'
 test\valid\58168_addOneValueToArray\addOneValueToArray.agu [FAIL]
 Error: (4, 21) Expected two equal types; found Int and Bool, for expression 'false'
+Error: (5, 38) Expected type 'Int', found type 'Int' for expression 'length(a) + 1'
+Error: (7, 11) Expected type 'Bool', found type 'Bool' for expression 'i < length(c)'
+Error: (8, 7) Expected type 'Bool', found type 'Bool' for expression 'i < length(a)'
 Error: (11, 7) unresolved symbol: result
-Error: (11, 3) Expected two equal types; found Bool and None, for expression 'set result = true'
-Error: (12, 3) unresolved symbol: result
-Error: (4, 3) Expected two equal types; found Bool and None, for expression 'let value : Int = false ;
-let c : Int[] = new Int [length(a) + 1 | 0] ;
+...and 5 more errors.
+test\valid\58168_cubesForEvenNum\cubesForEvenNum.agu [FAIL]
+Error: (4, 12) Expected type 'Bool', found type 'Bool' for expression 'n % 2 == 0'
+Error: (4, 3) Expected type 'Int', found type 'Int' for expression 'if n % 2 == 0 then
+  set n = n * n * n
+else
+  unit ;
+n'
+test\valid\58168_decrementor\decrementor.agu [FAIL]
+Error: (4, 5) Expected type 'Int', found type 'Int' for expression 'set n = n - 1 ;
+n'
+test\valid\58168_incrementor\incrementor.agu [FAIL]
+Error: (4, 5) Expected type 'Int', found type 'Int' for expression 'set n = n + 1 ;
+n'
+test\valid\58168_minusTwoNumbers\minusTwoNumbers.agu [FAIL]
+Error: (4, 20) Expected type 'Int', found type 'Int' for expression 'a - b'
+Error: (4, 4) Expected type 'Int', found type 'Int' for expression 'let c : Int = a - b ;
+c'
+test\valid\58168_numOfEvenNumInArray\numOfEvenNumInArray.agu [FAIL]
+Error: (6, 11) Expected type 'Bool', found type 'Bool' for expression 'i < length(a)'
+Error: (7, 14) Expected type 'Bool', found type 'Bool' for expression 'a[i] % 2 == 0'
+Error: (4, 3) Expected type 'Int', found type 'Int' for expression 'let value : Int = 0 ;
 let i : Int = 0 ;
-while i < length(c) do (
-  if i < length(a) then
-    set c[i] = a[i]
+while i < length(a) do (
+  if a[i] % 2 == 0 then
+    set value = value + 1
   else
-    set c[i] = b ;
+    unit ;
   set i = i + 1
 ) ;
-set result = true ;
-result'
-...and 1 more errors.
-test\valid\58168_cubesForEvenNum\cubesForEvenNum.agu [✔]
-Program is semantically valid!
-test\valid\58168_decrementor\decrementor.agu [✔]
-Program is semantically valid!
-test\valid\58168_incrementor\incrementor.agu [✔]
-Program is semantically valid!
-test\valid\58168_minusTwoNumbers\minusTwoNumbers.agu [✔]
-Program is semantically valid!
-test\valid\58168_numOfEvenNumInArray\numOfEvenNumInArray.agu [✔]
-Program is semantically valid!
-test\valid\58168_sumNumInArray\sumNumInArray.agu [✔]
-Program is semantically valid!
+value'
+test\valid\58168_sumNumInArray\sumNumInArray.agu [FAIL]
+Error: (6, 11) Expected type 'Bool', found type 'Bool' for expression 'i < length(a)'
+Error: (4, 3) Expected type 'Int', found type 'Int' for expression 'let b : Int = 0 ;
+let i : Int = 0 ;
+while i < length(a) do (
+  set b = b + a[i] ;
+  set i = i + 1
+) ;
+b'
 test\valid\58168_sumOfMinAndOfMaxOfArray\sumOfMinAndOfMaxOfArray.agu [FAIL]
+Error: (6, 11) Expected type 'Bool', found type 'Bool' for expression 'i < length(a)'
+Error: (7, 10) Expected type 'Bool', found type 'Bool' for expression 'a[i] < min'
+Error: (4, 3) Expected type 'Int', found type 'Int' for expression 'let min : Int = 9999 ;
+let i : Int = 0 ;
+while i < length(a) do (
+  if a[i] < min then
+    set min = a[i]
+  else
+    unit ;
+  set i = i + 1
+) ;
+min'
 Error: (15, 10) unresolved symbol: i
 Error: (15, 12) Expected two equal types; found Int and None, for expression 'i < length(b)'
-Error: (16, 5) unresolved symbol: a
-Error: (16, 5) unresolved symbol: a
-Error: (16, 5) Expected instance of <class 'src.syntax.ArrayType'>, found None, for expression 'a'
+...and 7 more errors.
+test\valid\58168_sumTwoNumbers\sumTwoNumbers.agu [FAIL]
+Error: (4, 19) Expected type 'Int', found type 'Int' for expression 'a + b'
+Error: (4, 3) Expected type 'Int', found type 'Int' for expression 'let c : Int = a + b ;
+c'
+test\valid\58170_arrayBounds\arrayBounds.agu [FAIL]
+Error: (4, 17) Expected type 'Bool', found type 'Bool' for expression 'index >= 0 && index < length(arr)'
+Error: (4, 3) Expected type 'Int', found type 'Int' for expression 'if index >= 0 && index < length(arr) then
+  arr[index]
+else
+  0 - 1'
+Error: (10, 3) Expected type 'Unit', found type 'Unit' for expression 'let arr : Int[] = new Int [3 | 0] ;
+set arr[0] = 10 ;
+set arr[1] = 20 ;
+set arr[2] = 30 ;
+print("Valid index: ") ;
+print(safeGet(arr, 1)) ;
+print("\n") ;
+print("Invalid index: ") ;
+print(safeGet(arr, 3)) ;
+print("\n")'
+test\valid\58170_categorizeNumbers\categorizeNumbers.agu [FAIL]
+Error: (5, 29) Expected type 'Bool', found type 'Bool' for expression 'n % 2 == 0'
+Error: (6, 29) Expected type 'Bool', found type 'Bool' for expression 'n > 0'
+Error: (7, 24) Expected type 'Bool', found type 'Bool' for expression 'n > 100'
+Error: (16, 12) Expected type 'Bool', found type 'Bool' for expression 'n == 0'
+Error: (23, 16) Expected type 'Bool', found type 'Bool' for expression 'n % 5 == 0'
+...and 6 more errors.
+test\valid\58170_complexWhile\complexWhile.agu [FAIL]
+Error: (8, 15) Expected type 'Bool', found type 'Bool' for expression 'a < b && (
+  a % 3 != 0 || b % 5 != 0
+)'
+Error: (4, 3) Expected type 'Unit', found type 'Unit' for expression 'let a : Int = 1 ;
+let b : Int = 10 ;
+let c : Int = 0 ;
+while a < b && (
+  a % 3 != 0 || b % 5 != 0
+) do (
+  print("a = ") ;
+  print(a) ;
+  print(", b = ") ;
+  print(b) ;
+  print("\n") ;
+  set a = a + 1 ;
+  set b = b - 1 ;
+  set c = c + 1
+) ;
+print("Loop executed ") ;
+print(c) ;
+print(" times\n") ;
+print("Final values: a = ") ;
+print(a) ;
+print(", b = ") ;
+print(b) ;
+print("\n")'
+test\valid\58170_factorial\factorial.agu [FAIL]
+Error: (4, 8) Expected type 'Bool', found type 'Bool' for expression 'n <= 1'
+Error: (4, 41) Expected type 'Int', found type 'Int' for expression 'n - 1'
+Error: (4, 3) Expected type 'Int', found type 'Int' for expression 'if n <= 1 then
+  1
+else
+  n * factorial(n - 1)'
+test\valid\58170_manyParams\manyParams.agu [FAIL]
+Error: (4, 17) Expected type 'Int', found type 'Int' for expression 'a + b + c + d + e'
+Error: (7, 3) Expected type 'Unit', found type 'Unit' for expression 'let result : Int = manyParams(1, 2, 3, 4, 5) ;
+print("Sum of parameters: ") ;
+print(result) ;
+print("\n")'
+test\valid\58170_nestedCalls\nestedCalls.agu [FAIL]
+Error: (3, 28) Expected type 'Int', found type 'Int' for expression 'x + 1'
+Error: (4, 28) Expected type 'Int', found type 'Int' for expression 'x * 2'
+Error: (5, 28) Expected type 'Int', found type 'Int' for expression 'x - 3'
+Error: (8, 3) Expected type 'Unit', found type 'Unit' for expression 'let result : Int = f(g(h(f(g(h(5)))))) ;
+print("Result of nested calls: ") ;
+print(result) ;
+print("\n")'
+test\valid\58170_opWithoutParen\opWithoutParen.agu [FAIL]
+Error: (4, 35) Expected type 'Int', found type 'Int' for expression '2 + 3 * 4 ^ 2 / 2 - 1'
+Error: (5, 19) Expected type 'Int', found type 'Int' for expression '3 * 0 - 2 ^ 2'
+Error: (6, 24) Expected type 'Bool', found type 'Bool' for expression '!true || false && true'
+Error: (4, 3) Expected type 'Unit', found type 'Unit' for expression 'let a : Int = 2 + 3 * 4 ^ 2 / 2 - 1 ;
+let b : Int = 3 * 0 - 2 ^ 2 ;
+let c : Bool = !true || false && true ;
+print("a = ") ;
+print(a) ;
+print("\n") ;
+print("b = ") ;
+print(b) ;
+print("\n") ;
+print("c = ") ;
+print(c) ;
+print("\n")'
+test\valid\58170_pyramid\pyramid.agu [FAIL]
+Error: (6, 11) Expected type 'Bool', found type 'Bool' for expression 'i <= rows'
+Error: (9, 28) Expected type 'Int', found type 'Int' for expression 'rows - i'
+Error: (10, 17) Expected type 'Bool', found type 'Bool' for expression 'space > 0'
+Error: (15, 13) Expected type 'Bool', found type 'Bool' for expression 'j <= 2 * i - 1'
+Error: (4, 3) Expected type 'Unit', found type 'Unit' for expression 'let i : Int = 1 ;
+while i <= rows do (
+  let j : Int = 1 ;
+  let space : Int = rows - i ;
+  while space > 0 do (
+    print(" ") ;
+    set space = space - 1
+  ) ;
+  while j <= 2 * i - 1 do (
+    print("*") ;
+    set j = j + 1
+  ) ;
+  print("\n") ;
+  set i = i + 1
+)'
+...and 1 more errors.
+test\valid\58170_sameNameVar\sameNameVar.agu [FAIL]
+Error: (6, 3) Expected type 'Int', found type 'Int' for expression 'let x : Int = 20 ;
+x'
+Error: (10, 5) Expected type 'Unit', found type 'Unit' for expression 'print(x) ;
+print("\n") ;
+print(otherX(unit)) ;
+print("\n") ;
+print(x) ;
+print("\n")'
+test\valid\58170_shiftRight\shiftRight.agu [FAIL]
+Error: (5, 8) Expected type 'Bool', found type 'Bool' for expression 'n <= 1'
+Error: (6, 28) Expected type 'Int', found type 'Int' for expression 'n - 1'
+Error: (7, 21) Expected type 'Int', found type 'Int' for expression 'n - 1'
+Error: (9, 13) Expected type 'Bool', found type 'Bool' for expression 'i > 0'
+Error: (10, 26) Expected type 'Int', found type 'Int' for expression 'i - 1'
 ...and 3 more errors.
-test\valid\58168_sumTwoNumbers\sumTwoNumbers.agu [✔]
-Program is semantically valid!
-test\valid\58170_arrayBounds\arrayBounds.agu [✔]
-Program is semantically valid!
-test\valid\58170_categorizeNumbers\categorizeNumbers.agu [✔]
-Program is semantically valid!
-test\valid\58170_complexWhile\complexWhile.agu [✔]
-Program is semantically valid!
-test\valid\58170_factorial\factorial.agu [✔]
-Program is semantically valid!
-test\valid\58170_manyParams\manyParams.agu [✔]
-Program is semantically valid!
-test\valid\58170_nestedCalls\nestedCalls.agu [✔]
-Program is semantically valid!
-test\valid\58170_opWithoutParen\opWithoutParen.agu [✔]
-Program is semantically valid!
-test\valid\58170_pyramid\pyramid.agu [✔]
-Program is semantically valid!
-test\valid\58170_sameNameVar\sameNameVar.agu [✔]
-Program is semantically valid!
-test\valid\58170_shiftRight\shiftRight.agu [✔]
-Program is semantically valid!
-test\valid\58182_fibonacci\fibonacci.agu [✔]
-Program is semantically valid!
-test\valid\58182_fibonacci_memoization\fibonacci_memoization.agu [✔]
-Program is semantically valid!
-test\valid\58182_function_unit_type\function_unit_type.agu [✔]
-Program is semantically valid!
-test\valid\58182_logic_operations\logic_operations.agu [✔]
-Program is semantically valid!
-test\valid\58182_nested_function_calls\nested_function_calls.agu [✔]
-Program is semantically valid!
-test\valid\58182_overload_print_and_length\overload_print_and_length.agu [✔]
-Program is semantically valid!
-test\valid\58182_simple_arithmetic\simple_arithmetic.agu [✔]
-Program is semantically valid!
-test\valid\58182_transpose_matrix\transpose_matrix.agu [✔]
-Program is semantically valid!
-test\valid\58182_while_loop_break\while_loop_break.agu [✔]
-Program is semantically valid!
-test\valid\58185_boolean_logic\boolean_logic.agu [✔]
-Program is semantically valid!
-test\valid\58185_bubble_sort\bubble_sort.agu [✔]
-Program is semantically valid!
-test\valid\58185_factorial\factorial.agu [✔]
-Program is semantically valid!
-test\valid\58185_mutual_recursion\mutual_recursion.agu [✔]
-Program is semantically valid!
-test\valid\58185_power_operator\power_operator.agu [✔]
-Program is semantically valid!
-test\valid\58185_sequencing\sequencing.agu [✔]
-Program is semantically valid!
-test\valid\58185_simple_arithmetic\simple_arithmetic.agu [✔]
-Program is semantically valid!
-test\valid\58185_string_concatenation\string_concatenation.agu [✔]
-Program is semantically valid!
+test\valid\58182_fibonacci\fibonacci.agu [FAIL]
+Error: (4, 10) Expected type 'Bool', found type 'Bool' for expression 'n <= 1'
+Error: (7, 21) Expected type 'Int', found type 'Int' for expression 'n - 1'
+Error: (7, 40) Expected type 'Int', found type 'Int' for expression 'n - 2'
+Error: (4, 5) Expected type 'Int', found type 'Int' for expression 'if n <= 1 then
+  n
+else
+  fibonacci(n - 1) + fibonacci(n - 2)'
+test\valid\58182_fibonacci_memoization\fibonacci_memoization.agu [FAIL]
+Error: (5, 10) Expected type 'Bool', found type 'Bool' for expression 'n == 0'
+Error: (6, 15) Expected type 'Bool', found type 'Bool' for expression 'n == 1'
+Error: (9, 20) Expected type 'Bool', found type 'Bool' for expression 'memo[n] == 0 - 1'
+Error: (11, 39) Expected type 'Int', found type 'Int' for expression 'n - 1'
+Error: (11, 64) Expected type 'Int', found type 'Int' for expression 'n - 2'
+...and 4 more errors.
+test\valid\58182_function_unit_type\function_unit_type.agu [FAIL]
+Error: (6, 5) Expected type 'Unit', found type 'Unit' for expression 'let result : Int = unitFunction(unit) ;
+print(result)'
+test\valid\58182_logic_operations\logic_operations.agu [FAIL]
+Error: (11, 26) Expected type 'Bool', found type 'Bool' for expression '(
+  a && b
+)'
+Error: (13, 26) Expected type 'Bool', found type 'Bool' for expression '(
+  (
+    a || b
+  ) && c
+)'
+Error: (16, 13) Expected type 'Bool', found type 'Bool' for expression 'i < length(operations)'
+Error: (4, 5) Expected type 'Unit', found type 'Unit' for expression 'let a : Bool = true ;
+let b : Bool = false ;
+let c : Bool = true ;
+let operations : Bool[] = new Bool [5 | false] ;
+set operations[0] = a && (
+  b || c
+) ;
+set operations[1] = (
+  a && b
+) || c ;
+set operations[2] = !(
+  a && b
+) || (
+  b && c
+) ;
+set operations[3] = !a && b ;
+set operations[4] = !(
+  (
+    a || b
+  ) && c
+) ;
+let i : Int = 0 ;
+while i < length(operations) do (
+  print(operations[i]) ;
+  print("\n") ;
+  set i = i + 1
+)'
+test\valid\58182_nested_function_calls\nested_function_calls.agu [FAIL]
+Error: (3, 33) Expected type 'Int', found type 'Int' for expression 'x + 1'
+Error: (8, 5) Expected type 'Unit', found type 'Unit' for expression 'let result : Int = addTwo(5) ;
+print(result)'
+test\valid\58182_overload_print_and_length\overload_print_and_length.agu [FAIL]
+Error: (9, 40) Expected type 'Int', found type 'Int' for expression '0 - 1'
+Error: (6, 5) Expected type 'Unit', found type 'Unit' for expression 'let intValue : Int = 1 ;
+let boolValue : Bool = true ;
+let stringValue : String = "AGUDA" ;
+let intArray : Int[] = new Int [3 | 0 - 1] ;
+let boolArray : Bool[] = new Bool [2 | false] ;
+print("Integer: ") ;
+print(intValue) ;
+print("\nBoolean: ") ;
+print(boolValue) ;
+print("\nString: ") ;
+print(stringValue) ;
+print("\nLength of intArray: ") ;
+print(length(intArray)) ;
+print("\nLength of boolArray: ") ;
+print(length(boolArray))'
+test\valid\58182_simple_arithmetic\simple_arithmetic.agu [FAIL]
+Error: (4, 23) Expected type 'Int', found type 'Int' for expression '5 + 0 - 3'
+Error: (7, 32) Expected type 'Int', found type 'Int' for expression '0 - 10 - 2'
+Error: (10, 27) Expected type 'Int', found type 'Int' for expression '4 * 5 ^ 0'
+Error: (13, 29) Expected type 'Int', found type 'Int' for expression '20 / 3'
+Error: (16, 30) Expected type 'Int', found type 'Int' for expression '20 % 4'
+...and 2 more errors.
+test\valid\58182_transpose_matrix\transpose_matrix.agu [FAIL]
+Error: (9, 13) Expected type 'Bool', found type 'Bool' for expression 'i < length(matrix)'
+Error: (11, 17) Expected type 'Bool', found type 'Bool' for expression 'j < length(matrix[0])'
+Error: (7, 5) Expected type 'Unit', found type 'Unit' for expression 'let num : Int = 1 ;
+let i : Int = 0 ;
+while i < length(matrix) do (
+  let j : Int = 0 ;
+  while j < length(matrix[0]) do (
+    if mode then
+      (
+        print(matrix[i][j]) ;
+        print(" ")
+      )
+    else
+      (
+        set matrix[i][j] = num ;
+        set num = num + 1
+      ) ;
+    set j = j + 1
+  ) ;
+  if mode then
+    (
+      print("\n")
+    )
+  else
+    unit ;
+  set i = i + 1
+)'
+Error: (32, 27) Expected two equal types; found Int[] and Int[][], for expression 'matrix'
+Error: (36, 11) Expected type 'Bool', found type 'Bool' for expression 'i < rows'
+...and 3 more errors.
+test\valid\58182_while_loop_break\while_loop_break.agu [FAIL]
+Error: (9, 21) Expected type 'Bool', found type 'Bool' for expression 'i < limit && flag'
+Error: (10, 14) Expected type 'Bool', found type 'Bool' for expression 'i == breakCondition'
+Error: (4, 5) Expected type 'Unit', found type 'Unit' for expression 'let i : Int = 0 ;
+let limit : Int = 10 ;
+let breakCondition : Int = 5 ;
+let flag : Bool = true ;
+while i < limit && flag do (
+  if i == breakCondition then
+    set flag = false
+  else
+    (
+      print(i) ;
+      print(" ") ;
+      set i = i + 1
+    )
+)'
+test\valid\58185_boolean_logic\boolean_logic.agu [FAIL]
+Error: (5, 5) Expected type 'Unit', found type 'Unit' for expression 'if b then
+  print(true)
+else
+  print(false)'
+Error: (12, 20) Expected type 'Bool', found type 'Bool' for expression 'true && true'
+Error: (16, 20) Expected type 'Bool', found type 'Bool' for expression 'true && false'
+Error: (20, 20) Expected type 'Bool', found type 'Bool' for expression 'true || false'
+Error: (24, 21) Expected type 'Bool', found type 'Bool' for expression 'false || false'
+...and 3 more errors.
+test\valid\58185_bubble_sort\bubble_sort.agu [FAIL]
+Error: (5, 5) Expected type 'Unit', found type 'Unit' for expression 'let temp : Int = arr[i] ;
+set arr[i] = arr[j] ;
+set arr[j] = temp'
+Error: (11, 13) Expected type 'Bool', found type 'Bool' for expression 'i < length(arr) - 1'
+Error: (13, 17) Expected type 'Bool', found type 'Bool' for expression 'j < length(arr) - i - 1'
+Error: (14, 30) Expected type 'Int', found type 'Int' for expression 'j + 1'
+Error: (14, 23) Expected type 'Bool', found type 'Bool' for expression 'arr[j] > arr[j + 1]'
+...and 5 more errors.
+test\valid\58185_factorial\factorial.agu [FAIL]
+Error: (5, 10) Expected type 'Bool', found type 'Bool' for expression 'n <= 1'
+Error: (5, 43) Expected type 'Int', found type 'Int' for expression 'n - 1'
+Error: (5, 5) Expected type 'Int', found type 'Int' for expression 'if n <= 1 then
+  1
+else
+  n * factorial(n - 1)'
+test\valid\58185_mutual_recursion\mutual_recursion.agu [FAIL]
+Error: (5, 21) Expected type 'Int', found type 'Int' for expression 'x - 1'
+Error: (5, 12) Expected type 'Bool', found type 'Bool' for expression 'x == 0 || odd(x - 1)'
+Error: (8, 22) Expected type 'Int', found type 'Int' for expression 'x - 1'
+Error: (8, 12) Expected type 'Bool', found type 'Bool' for expression 'x != 0 && even(x - 1)'
+Error: (11, 5) Expected type 'Unit', found type 'Unit' for expression 'print(n) ;
+print(" is ") ;
+if even(n) then
+  print("even")
+else
+  print("odd") ;
+print("\n")'
+...and 1 more errors.
+test\valid\58185_power_operator\power_operator.agu [FAIL]
+Error: (5, 5) Expected type 'Unit', found type 'Unit' for expression 'print("2^3 = ") ;
+print(2 ^ 3) ;
+print("\n") ;
+print("2^3^2 = 2^(3^2) = 2^9 = ") ;
+print(2 ^ 3 ^ 2) ;
+print("\n") ;
+print("2^-3 = ") ;
+print(2 ^ 0 - 3) ;
+print("\n") ;
+print("3*2^2 = 3*4 = ") ;
+print(3 * 2 ^ 2) ;
+print("\n") ;
+print("2^2*3 = 4*3 = ") ;
+print(2 ^ 2 * 3)'
+test\valid\58185_sequencing\sequencing.agu [FAIL]
+Error: (5, 5) Expected type 'Int', found type 'Int' for expression 'a ;
+b ;
+a'
+Error: (8, 5) Expected type 'Int', found type 'Int' for expression 'a ;
+b ;
+c'
+Error: (11, 5) Expected type 'Unit', found type 'Unit' for expression 'print("Value of returnFirst(1, 2): ") ;
+print(returnFirst(1, 2)) ;
+print("\n") ;
+print("Value of returnLast(10, 20, 30): ") ;
+print(returnLast(10, 20, 30))'
+test\valid\58185_simple_arithmetic\simple_arithmetic.agu [FAIL]
+Error: (6, 5) Expected type 'Unit', found type 'Unit' for expression 'print("10 + 5 = ") ;
+print(10 + 5) ;
+print("\n") ;
+print("10 - 5 = ") ;
+print(10 - 5) ;
+print("\n") ;
+print("10 * 5 = ") ;
+print(10 * 5) ;
+print("\n") ;
+print("10 / 5 = ") ;
+print(10 / 5) ;
+print("\n") ;
+print("10 % 3 = ") ;
+print(10 % 3)'
+test\valid\58185_string_concatenation\string_concatenation.agu [FAIL]
+Error: (5, 5) Expected type 'Unit', found type 'Unit' for expression 'print("Hello, ") ;
+print(firstName) ;
+print(" ") ;
+print(lastName) ;
+print("!")'
+Error: (12, 5) Expected type 'Unit', found type 'Unit' for expression 'printName("Cristiano", "Ronaldo") ;
+print("\n") ;
+printName("Lionel", "Messi")'
 test\valid\58185_unit_type_test\unit_type_test.agu [FAIL]
 Error: (5, 26) unresolved symbol: i
 Error: (5, 28) Expected two equal types; found Int and None, for expression 'i > 0'
+Error: (5, 28) Expected type 'Bool', found type 'Bool' for expression 'i > 0'
 Error: (6, 15) unresolved symbol: i
 Error: (8, 13) unresolved symbol: i
-Error: (8, 17) unresolved symbol: i
-...and 3 more errors.
-test\valid\58185_while_loops\while_loops.agu [✔]
-Program is semantically valid!
-test\valid\58215_3dArray\3dArray.agu [✔]
-Program is semantically valid!
+...and 7 more errors.
+test\valid\58185_while_loops\while_loops.agu [FAIL]
+Error: (6, 13) Expected type 'Bool', found type 'Bool' for expression 'i < n'
+Error: (8, 17) Expected type 'Bool', found type 'Bool' for expression 'j <= i'
+Error: (5, 5) Expected type 'Unit', found type 'Unit' for expression 'let i : Int = 0 ;
+while i < n do (
+  let j : Int = 0 ;
+  while j <= i do (
+    print("* ") ;
+    set j = j + 1
+  ) ;
+  print("\n") ;
+  set i = i + 1
+)'
+test\valid\58215_3dArray\3dArray.agu [FAIL]
+Error: (4, 5) Expected type 'Unit', found type 'Unit' for expression 'let a : Int[][][] = new Int[][] [4 | new Int[] [4 | new Int [4 | 0]]] ;
+set a[2][2][2] = 5 ;
+set a[3][3][3] = 0 - 2 ;
+print(a[1][1][1] + a[2][2][2] + a[3][3][3])'
 test\valid\58215_addToArrayIndex\addToArrayIndex.agu [FAIL]
 Error: (3, 1) Function 'addToArrayIndex' declared with incorrect number of parameters
 Error: (4, 11) unresolved symbol: i
 Error: (4, 11) Expected two equal types; found Int and None, for expression 'i'
 Error: (4, 18) unresolved symbol: i
 Error: (4, 18) Expected two equal types; found Int and None, for expression 'i'
-...and 5 more errors.
-test\valid\58215_funWithFunArg\funWithFunArg.agu [✔]
-Program is semantically valid!
-test\valid\58215_ifsInsideIfs\ifsInsideIfs.agu [✔]
-Program is semantically valid!
-test\valid\58215_linha\linha.agu [✔]
-Program is semantically valid!
+...and 6 more errors.
+test\valid\58215_funWithFunArg\funWithFunArg.agu [FAIL]
+Error: (7, 11) Expected two equal types; found String and Int, for expression '2'
+test\valid\58215_ifsInsideIfs\ifsInsideIfs.agu [FAIL]
+Error: (4, 5) Expected type 'Unit', found type 'Unit' for expression 'if true then
+  if false then
+    print("ta' mal")
+  else
+    if true then
+      print("ta' bem")
+    else
+      print("ta' mal")
+else
+  unit'
+test\valid\58215_linha\linha.agu [FAIL]
+Error: (5, 13) Expected type 'Bool', found type 'Bool' for expression 'i < n'
+Error: (4, 5) Expected type 'Unit', found type 'Unit' for expression 'let i : Int = 0 ;
+while i < n do (
+  print("*\n") ;
+  set i = i - 1
+)'
 test\valid\58215_minArrAndElseUnit\minArrAndElseUnit.agu [FAIL]
 Error: (3, 1) Function 'minValInArr' declared with incorrect number of parameters
 Error: (6, 15) unresolved symbol: size
 Error: (6, 13) Expected two equal types; found None and Int, for expression 'i < size'
-Error: (20, 5) Print function takes exactly one argument
-test\valid\58215_negAndEven\negAndEven.agu [✔]
-Program is semantically valid!
+Error: (6, 13) Expected type 'Bool', found type 'Bool' for expression 'i < size'
+Error: (7, 16) Expected type 'Bool', found type 'Bool' for expression 'min < a[i]'
+...and 3 more errors.
+test\valid\58215_negAndEven\negAndEven.agu [FAIL]
+Error: (4, 11) Expected type 'Bool', found type 'Bool' for expression 'x < 0 && x % 2 == 0'
+Error: (7, 23) Expected type 'Int', found type 'Int' for expression '0 - 7'
+Error: (7, 5) Expected type 'Unit', found type 'Unit' for expression 'if nrNegativoEPar(0 - 7) then
+  print("epah yha, nao devia")
+else
+  print("nao e' par")'
 test\valid\58215_scopeArr\scopeArr.agu [FAIL]
 Error: (4, 1) Function 'setDiag2dArray' declared with incorrect number of parameters
 Error: (7, 15) unresolved symbol: size
 Error: (7, 13) Expected two equal types; found None and Int, for expression 'i < size'
+Error: (7, 13) Expected type 'Bool', found type 'Bool' for expression 'i < size'
 Error: (9, 14) Expected instance of <class 'src.syntax.ArrayType'>, found Int, for expression 'a[i]'
-Error: (-1, -1) Unexpected error during semantic analysis: 'BaseType' object has no attribute 'type'
+...and 1 more errors.
 test\valid\58215_somaSub\somaSub.agu [FAIL]
 Error: (3, 1) Function 'soma' declared with incorrect number of parameters
 Error: (4, 9) unresolved symbol: y
 Error: (4, 7) Expected two equal types; found None and Int, for expression 'x + y'
-Error: (4, 7) Expected two equal types; found (Int) -> Int and Int, for expression 'x + y'
+Error: (4, 7) Expected type '(Int) -> Int', found type 'Int' for expression 'x + y'
 Error: (6, 1) Function 'sub' declared with incorrect number of parameters
 ...and 5 more errors.
 test\valid\58215_unitFunc\unitFunc.agu [FAIL]
 Error: (3, 1) Function 'faz3' declared with incorrect number of parameters
-Error: (4, 5) Expected two equal types; found (Int) -> Int and Int, for expression 'if true then
+Error: (4, 5) Expected type '(Int) -> Int', found type 'Int' for expression 'if true then
   3
 else
   3'
 Error: (7, 11) Function call 'faz3(unit, 7)' has 2 arguments, expected 1
 test\valid\58219_compare_string_length\compare_string_length.agu [FAIL]
-Error: (4, 29) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 'str1'
-Error: (5, 29) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 'str2'
-test\valid\58219_count_common_elements\count_common_elemts.agu [✔]
-Program is semantically valid!
+Error: (4, 29) Expected two equal types; found Int[] and String, for expression 'str1'
+Error: (5, 29) Expected two equal types; found Int[] and String, for expression 'str2'
+Error: (6, 13) Expected type 'Bool', found type 'Bool' for expression 'len1 < len2'
+Error: (7, 17) Expected type 'Bool', found type 'Bool' for expression 'len1 > len2'
+Error: (4, 5) Expected type 'Int', found type 'Int' for expression 'let len1 : Int = length(str1) ;
+let len2 : Int = length(str2) ;
+if len1 < len2 then
+  0 - 1
+else
+  (
+    if len1 > len2 then
+      1
+    else
+      0
+  )'
+...and 1 more errors.
+test\valid\58219_count_common_elements\count_common_elemts.agu [FAIL]
+Error: (6, 11) Expected type 'Bool', found type 'Bool' for expression 'i < n1'
+Error: (9, 18) Expected type 'Bool', found type 'Bool' for expression 'j < n2 && !found'
+Error: (10, 18) Expected type 'Bool', found type 'Bool' for expression 'arr1[i] == arr2[j]'
+Error: (14, 10) Expected type 'Bool', found type 'Bool' for expression '!found'
+Error: (1, 66) Expected type 'Int', found type 'Int' for expression '(
+  let count : Int = 0 ;
+  let n1 : Int = length(arr1) ;
+  let n2 : Int = length(arr2) ;
+  let i : Int = 0 ;
+  while i < n1 do (
+    let j : Int = 0 ;
+    let found : Bool = false ;
+    while j < n2 && !found do (
+      if arr1[i] == arr2[j] then
+        (
+          set count = count + 1 ;
+          set found = true
+        )
+      else
+        unit ;
+      if !found then
+        (
+          set j = j + 1
+        )
+      else
+        unit
+    ) ;
+    set i = i + 1
+  ) ;
+  count
+)'
+...and 1 more errors.
 test\valid\58219_find_array_max_and_min\array_max_min.agu [FAIL]
+Error: (4, 20) Expected type 'Bool', found type 'Bool' for expression 'length(arr) == 0'
+Error: (10, 17) Expected type 'Bool', found type 'Bool' for expression 'i < length(arr)'
 Error: (11, 25) unresolved symbol: maxVal
 Error: (11, 23) Expected two equal types; found None and Int, for expression 'arr[i] > maxVal'
-Error: (11, 41) unresolved symbol: maxVal
-Error: (11, 37) Expected two equal types; found Int and None, for expression 'set maxVal = arr[i]'
-Error: (16, 15) unresolved symbol: maxVal
-...and 5 more errors.
+Error: (11, 23) Expected type 'Bool', found type 'Bool' for expression 'arr[i] > maxVal'
+...and 14 more errors.
 test\valid\58219_find_char\find_char.agu [FAIL]
-Error: (4, 28) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 'str'
+Error: (4, 28) Expected two equal types; found Int[] and String, for expression 'str'
+Error: (6, 24) Expected type 'Int', found type 'Int' for expression '0 - 1'
+Error: (7, 13) Expected type 'Bool', found type 'Bool' for expression 'i < len'
 Error: (8, 12) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 'str'
 Error: (-1, -1) Unexpected error during semantic analysis: 'BaseType' object has no attribute 'type'
 test\valid\58219_first_unique_character\first_unique_character.agu [FAIL]
-Error: (4, 26) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 'str'
+Error: (4, 26) Expected two equal types; found Int[] and String, for expression 'str'
+Error: (6, 22) Expected type 'Int', found type 'Int' for expression '0 - 1'
+Error: (8, 17) Expected type 'Bool', found type 'Bool' for expression 'i < len && result == 0 - 1'
+Error: (12, 13) Expected type 'Bool', found type 'Bool' for expression 'j < len'
 Error: (13, 20) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 'str'
-Error: (-1, -1) Unexpected error during semantic analysis: 'BaseType' object has no attribute 'type'
+...and 1 more errors.
 test\valid\58219_is_array_sorted\is_array_sorted.agu [FAIL]
+Error: (6, 12) Expected type 'Bool', found type 'Bool' for expression 'len <= 1'
 Error: (6, 5) Expected two equal types; found Unit and Bool, for expression 'if len <= 1 then
   result
 else
   let i : Int = 1'
 Error: (10, 15) unresolved symbol: i
 Error: (10, 17) Expected two equal types; found Int and None, for expression 'i < len'
-Error: (11, 20) unresolved symbol: i
-Error: (11, 20) Expected two equal types; found Int and None, for expression 'i'
-...and 10 more errors.
+Error: (10, 17) Expected type 'Bool', found type 'Bool' for expression 'i < len'
+...and 16 more errors.
 test\valid\58219_is_prime\is_prime.agu [FAIL]
+Error: (4, 8) Expected type 'Bool', found type 'Bool' for expression 'n <= 1'
+Error: (6, 13) Expected type 'Bool', found type 'Bool' for expression 'n <= 3'
+Error: (8, 22) Expected type 'Bool', found type 'Bool' for expression 'n % 2 == 0 || n % 3 == 0'
 Error: (8, 8) Expected two equal types; found Unit and Bool, for expression 'if n % 2 == 0 || n % 3 == 0 then
   false
 else
   let i : Int = 5'
 Error: (14, 11) unresolved symbol: i
-Error: (14, 15) unresolved symbol: i
-Error: (14, 13) Expected two equal types; found Int and None, for expression 'i * i'
-Error: (15, 14) unresolved symbol: i
-...and 9 more errors.
+...and 16 more errors.
 test\valid\58219_logical_operators\logical_operators.agu [FAIL]
+Error: (4, 3) Expected type 'Bool', found type 'Bool' for expression 'if a then
+  b
+else
+  false'
+Error: (7, 3) Expected type 'Bool', found type 'Bool' for expression 'if a then
+  true
+else
+  b'
 Error: (9, 1) Function 'notOp' declared with incorrect number of parameters
+Error: (10, 3) Expected type 'Bool', found type 'Bool' for expression 'if a then
+  false
+else
+  true'
 Error: (17, 9) Function call 'notOp(true)' has 1 arguments, expected 2
-Error: (18, 9) Function call 'notOp(false)' has 1 arguments, expected 2
+...and 2 more errors.
 test\valid\58219_reverse_string\reverse_string.agu [FAIL]
 Error: (5, 19) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 's'
+Error: (5, 10) Expected type 'Bool', found type 'Bool' for expression 'i < length(s)'
 Error: (6, 5) Function call 'reverse(s, i + 1)' has 2 arguments, expected 1
 Error: (7, 11) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 's'
 Error: (-1, -1) Unexpected error during semantic analysis: 'BaseType' object has no attribute 'type'
-test\valid\58219_sum_array\sum_array.agu [✔]
-Program is semantically valid!
-test\valid\58250_average\58250_average.agu [✔]
-Program is semantically valid!
-test\valid\58250_basic_addition\58250_basic_addition.agu [✔]
-Program is semantically valid!
-test\valid\58250_calculate_operations\58250_calculate_operations.agu [✔]
-Program is semantically valid!
-test\valid\58250_check_value\58250_check_value.agu [✔]
-Program is semantically valid!
-test\valid\58250_cube\58250_cube.agu [✔]
-Program is semantically valid!
-test\valid\58250_divide_two_numbers\58250_divide_two_numbers.agu [✔]
-Program is semantically valid!
-test\valid\58250_is_even\58250_is_even.agu [✔]
-Program is semantically valid!
+test\valid\58219_sum_array\sum_array.agu [FAIL]
+Error: (6, 13) Expected type 'Bool', found type 'Bool' for expression 'i < length(arr)'
+Error: (4, 5) Expected type 'Int', found type 'Int' for expression 'let i : Int = 0 ;
+let sum : Int = 0 ;
+while i < length(arr) do (
+  set sum = sum + arr[i] ;
+  set i = i + 1
+) ;
+sum'
+Error: (13, 5) Expected type 'Unit', found type 'Unit' for expression 'let numbers : Int[] = new Int [5 | 0] ;
+set numbers[0] = 1 ;
+set numbers[1] = 2 ;
+set numbers[2] = 3 ;
+set numbers[3] = 4 ;
+set numbers[4] = 5 ;
+print(sumArray(numbers))'
+test\valid\58250_average\58250_average.agu [FAIL]
+Error: (5, 23) Expected type 'Int', found type 'Int' for expression '(
+  a + b + c + d + e
+) / 5'
+Error: (10, 11) Expected two equal types; found String and Int, for expression 'result'
+test\valid\58250_basic_addition\58250_basic_addition.agu [FAIL]
+Error: (5, 22) Expected type 'Int', found type 'Int' for expression 'a + b'
+Error: (8, 11) Expected two equal types; found String and Int, for expression 'result'
+test\valid\58250_calculate_operations\58250_calculate_operations.agu [FAIL]
+Error: (5, 23) Expected type 'Int', found type 'Int' for expression 'a * b'
+Error: (6, 23) Expected type 'Int', found type 'Int' for expression 'c * d'
+Error: (7, 26) Expected type 'Int', found type 'Int' for expression 'mult1 - mult2'
+Error: (8, 27) Expected type 'Int', found type 'Int' for expression 'sub1 + e'
+Error: (5, 3) Expected type 'Int', found type 'Int' for expression 'let mult1 : Int = a * b ;
+let mult2 : Int = c * d ;
+let sub1 : Int = mult1 - mult2 ;
+let result : Int = sub1 + e ;
+result'
+...and 2 more errors.
+test\valid\58250_check_value\58250_check_value.agu [FAIL]
+Error: (5, 8) Expected type 'Bool', found type 'Bool' for expression 'n > 0'
+Error: (5, 3) Expected type 'String', found type 'String' for expression 'if n > 0 then
+  "Positive"
+else
+  "Negative"'
+Error: (7, 34) Expected type 'Int', found type 'Int' for expression '0 - 5'
+test\valid\58250_cube\58250_cube.agu [FAIL]
+Error: (5, 9) Expected type 'Int', found type 'Int' for expression 'n * n * n'
+Error: (10, 11) Expected two equal types; found String and Int, for expression 'result'
+Error: (15, 11) Expected two equal types; found String and Int, for expression 'final_result'
+test\valid\58250_divide_two_numbers\58250_divide_two_numbers.agu [FAIL]
+Error: (5, 5) Expected type 'Int', found type 'Int' for expression 'a / b'
+Error: (10, 11) Expected two equal types; found String and Int, for expression 'result'
+test\valid\58250_is_even\58250_is_even.agu [FAIL]
+Error: (5, 9) Expected type 'Bool', found type 'Bool' for expression 'n % 2 == 0'
+Error: (10, 11) Expected two equal types; found String and Bool, for expression 'result'
 test\valid\58250_length\58250_length.agu [FAIL]
-Error: (5, 26) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 'str'
-test\valid\58250_max_between_2\58250_max_between_2.agu [✔]
-Program is semantically valid!
-test\valid\58250_sum_all_to_n\58250_sum_all_to_n.agu [✔]
-Program is semantically valid!
-test\valid\64361_array_sum\array_sum.agu [✔]
-Program is semantically valid!
+Error: (5, 26) Expected two equal types; found Int[] and String, for expression 'str'
+Error: (5, 3) Expected type 'Int', found type 'Int' for expression 'let len : Int = length(str) ;
+len'
+Error: (11, 11) Expected two equal types; found String and Int, for expression 'result'
+test\valid\58250_max_between_2\58250_max_between_2.agu [FAIL]
+Error: (5, 8) Expected type 'Bool', found type 'Bool' for expression 'a > b'
+Error: (5, 3) Expected type 'Int', found type 'Int' for expression 'if a > b then
+  a
+else
+  b'
+Error: (10, 11) Expected two equal types; found String and Int, for expression 'result'
+test\valid\58250_sum_all_to_n\58250_sum_all_to_n.agu [FAIL]
+Error: (7, 11) Expected type 'Bool', found type 'Bool' for expression 'i <= n'
+Error: (5, 3) Expected type 'Int', found type 'Int' for expression 'let sum : Int = 0 ;
+let i : Int = 1 ;
+while i <= n do (
+  set sum = sum + i ;
+  set i = i + 1
+) ;
+sum'
+Error: (16, 11) Expected two equal types; found String and Int, for expression 'result'
+test\valid\64361_array_sum\array_sum.agu [FAIL]
+Error: (6, 13) Expected type 'Bool', found type 'Bool' for expression 'i < length(matrix)'
+Error: (8, 17) Expected type 'Bool', found type 'Bool' for expression 'j < length(matrix[i])'
+Error: (4, 5) Expected type 'Int', found type 'Int' for expression 'let total : Int = 0 ;
+let i : Int = 0 ;
+while i < length(matrix) do (
+  let j : Int = 0 ;
+  while j < length(matrix[i]) do (
+    set total = total + matrix[i][j] ;
+    set j = j + 1
+  ) ;
+  set i = i + 1
+) ;
+total'
+Error: (23, 15) Expected type 'Bool', found type 'Bool' for expression 'result == 10'
+Error: (17, 5) Expected type 'Unit', found type 'Unit' for expression 'let matrix : Int[][] = new Int[] [2 | new Int [2 | 0]] ;
+set matrix[0][0] = 1 ;
+set matrix[0][1] = 2 ;
+set matrix[1][0] = 3 ;
+set matrix[1][1] = 4 ;
+let result : Int = sumMatrix(matrix) ;
+if result == 10 then
+  print("Matrix sum is correct")
+else
+  print("Matrix sum is incorrect")'
 test\valid\64361_check_null_value\check_null_value.agu [FAIL]
 Error: (4, 13) unresolved symbol: null
 Error: (4, 10) Expected two equal types; found None and Int, for expression 'x == null'
+Error: (4, 10) Expected type 'Bool', found type 'Bool' for expression 'x == null'
+Error: (4, 5) Expected type 'Unit', found type 'Unit' for expression 'if x == null then
+  print("x is null")
+else
+  print("x is not null")'
 Error: (10, 24) unresolved symbol: null
-Error: (10, 24) Expected two equal types; found Int and None, for expression 'null'
+...and 2 more errors.
 test\valid\64361_count_vowels\count_vowels.agu [FAIL]
+Error: (6, 13) Expected type 'Bool', found type 'Bool' for expression 'i < length'
+Error: (8, 61) Expected type 'Bool', found type 'Bool' for expression 'ch == "a" || ch == "e" || ch == "i" || ch == "o" || ch == "u"'
+Error: (4, 5) Expected type 'Int', found type 'Int' for expression 'let count : Int = 0 ;
+let i : Int = 0 ;
+while i < length do (
+  let ch : String = str[i] ;
+  if ch == "a" || ch == "e" || ch == "i" || ch == "o" || ch == "u" then
+    (
+      set count = count + 1
+    )
+  else
+    unit ;
+  set i = i + 1
+) ;
+count'
 Error: (17, 24) Expected two equal types; found String[] and String, for expression 'word'
 Error: (20, 24) Expected two equal types; found String[] and String, for expression 'sentence'
-test\valid\64361_exponential\exponential.agu [✔]
-Program is semantically valid!
-test\valid\64361_factorial\factorial.agu [✔]
-Program is semantically valid!
-test\valid\64361_fibonacci\fibonacci.agu [✔]
-Program is semantically valid!
-test\valid\64361_greatest_common_divisor\greatest_common_divisor.agu [✔]
-Program is semantically valid!
+...and 1 more errors.
+test\valid\64361_exponential\exponential.agu [FAIL]
+Error: (4, 31) Expected type 'Int', found type 'Int' for expression 'length(arr) - 1'
+Error: (7, 13) Expected type 'Bool', found type 'Bool' for expression 'i >= 0'
+Error: (4, 5) Expected type 'Int', found type 'Int' for expression 'let i : Int = length(arr) - 1 ;
+let result : Int = arr[i] ;
+set i = i - 1 ;
+while i >= 0 do (
+  set result = arr[i] ^ result ;
+  set i = i - 1
+) ;
+result'
+Error: (14, 5) Expected type 'Unit', found type 'Unit' for expression 'let numbers : Int[] = new Int [3 | 0] ;
+set numbers[0] = 3 ;
+set numbers[1] = 2 ;
+set numbers[2] = 2 ;
+print(chained_power(numbers))'
+test\valid\64361_factorial\factorial.agu [FAIL]
+Error: (4, 10) Expected type 'Bool', found type 'Bool' for expression 'n == 0'
+Error: (4, 38) Expected type 'Int', found type 'Int' for expression 'n - 1'
+Error: (4, 5) Expected type 'Int', found type 'Int' for expression 'if n == 0 then
+  1
+else
+  n * fact(n - 1)'
+Error: (7, 5) Expected type 'Unit', found type 'Unit' for expression 'print(fact(5)) ;
+print(fact(0)) ;
+print(fact(7))'
+test\valid\64361_fibonacci\fibonacci.agu [FAIL]
+Error: (4, 10) Expected type 'Bool', found type 'Bool' for expression 'n == 0'
+Error: (6, 14) Expected type 'Bool', found type 'Bool' for expression 'n == 1'
+Error: (7, 20) Expected type 'Int', found type 'Int' for expression 'n - 1'
+Error: (7, 33) Expected type 'Int', found type 'Int' for expression 'n - 2'
+Error: (4, 5) Expected type 'Int', found type 'Int' for expression 'if n == 0 then
+  0
+else
+  (
+    if n == 1 then
+      1
+    else
+      fib(n - 1) + fib(n - 2)
+  )'
+...and 1 more errors.
+test\valid\64361_greatest_common_divisor\greatest_common_divisor.agu [FAIL]
+Error: (4, 13) Expected type 'Bool', found type 'Bool' for expression 'b != 0'
+Error: (4, 5) Expected type 'Int', found type 'Int' for expression 'while b != 0 do (
+  let temp : Int = b ;
+  set b = a % b ;
+  set a = temp
+) ;
+a'
+Error: (12, 5) Expected type 'Unit', found type 'Unit' for expression 'print(mdc(48, 18)) ;
+print(mdc(101, 103)) ;
+print(mdc(56, 98))'
 test\valid\64361_prime_number\prime_number.agu [FAIL]
+Error: (4, 10) Expected type 'Bool', found type 'Bool' for expression 'n < 2'
+Error: (7, 21) Expected type 'Bool', found type 'Bool' for expression 'i * i <= n'
+Error: (8, 22) Expected type 'Bool', found type 'Bool' for expression 'n % i == 0'
 Error: (8, 13) Expected two equal types; found Unit and Bool, for expression 'if n % i == 0 then
   false
 else
   unit'
-test\valid\64361_reverse_array\reverse_array.agu [✔]
-Program is semantically valid!
+Error: (4, 5) Expected type 'Bool', found type 'Bool' for expression 'if n < 2 then
+  false
+else
+  (
+    let i : Int = 2 ;
+    while i * i <= n do (
+      if n % i == 0 then
+        false
+      else
+        unit ;
+      set i = i + 1
+    ) ;
+    true
+  )'
+...and 1 more errors.
+test\valid\64361_reverse_array\reverse_array.agu [FAIL]
+Error: (5, 24) Expected type 'Int', found type 'Int' for expression 'size - 1'
+Error: (6, 13) Expected type 'Bool', found type 'Bool' for expression 'i < j'
+Error: (4, 5) Expected type 'Int[]', found type 'Int[]' for expression 'let i : Int = 0 ;
+let j : Int = size - 1 ;
+while i < j do (
+  let temp : Int = arr[i] ;
+  set arr[i] = arr[j] ;
+  set arr[j] = temp ;
+  set i = i + 1 ;
+  set j = j - 1
+) ;
+arr'
+Error: (16, 5) Expected type 'Unit', found type 'Unit' for expression 'let numbers : Int[] = new Int [5 | 0] ;
+set numbers[0] = 1 ;
+set numbers[1] = 2 ;
+set numbers[2] = 3 ;
+set numbers[3] = 4 ;
+set numbers[4] = 5 ;
+let reversed : Int[] = reverse_array(numbers, 5) ;
+print(reversed[0]) ;
+print(reversed[1]) ;
+print(reversed[2]) ;
+print(reversed[3]) ;
+print(reversed[4])'
 test\valid\64361_sum_function\sum_function.agu [FAIL]
+Error: (7, 13) Expected type 'Bool', found type 'Bool' for expression 'i < length(arr)'
+Error: (5, 5) Expected type 'Int', found type 'Int' for expression 'let sum : Int = 0 ;
+let i : Int = 0 ;
+while i < length(arr) do (
+  set sum = sum + arr[i] ;
+  set i = i + 1
+) ;
+sum'
 Error: (21, 11) unresolved symbol: sum_array
 Error: (21, 11) unresolved symbol: sum_array
 Error: (21, 11) Expected instance of <class 'src.syntax.FunctionType'>, found None, for expression 'sum_array'
-Error: (-1, -1) Unexpected error during semantic analysis: 'NoneType' object has no attribute 'param_types'
-test\valid\64371_binary_search\binary_search.agu [✔]
-Program is semantically valid!
-test\valid\64371_bubble_sort\bubble_sort.agu [✔]
-Program is semantically valid!
-test\valid\64371_even_fibonnaci_numbers\even_fibonnaci_numbers.agu [✔]
-Program is semantically valid!
-test\valid\64371_greatest_common_divisor\greatest_common_divisor.agu [✔]
-Program is semantically valid!
-test\valid\64371_index_of\index_of.agu [✔]
-Program is semantically valid!
-test\valid\64371_multiples_3_or_5\multiples_3_or_5.agu [✔]
-Program is semantically valid!
-test\valid\64371_pascals_triangle\pascals_triangle.agu [✔]
-Program is semantically valid!
+...and 1 more errors.
+test\valid\64371_binary_search\binary_search.agu [FAIL]
+Error: (6, 13) Expected type 'Bool', found type 'Bool' for expression 'left > right'
+Error: (9, 29) Expected type 'Int', found type 'Int' for expression 'left + (
+  right - left
+) / 2'
+Error: (10, 21) Expected type 'Bool', found type 'Bool' for expression 'arr[mid] == val'
+Error: (13, 25) Expected type 'Bool', found type 'Bool' for expression 'arr[mid] < val'
+Error: (14, 39) Expected type 'Int', found type 'Int' for expression 'mid + 1'
+...and 5 more errors.
+test\valid\64371_bubble_sort\bubble_sort.agu [FAIL]
+Error: (7, 13) Expected type 'Bool', found type 'Bool' for expression 'i < n'
+Error: (9, 17) Expected type 'Bool', found type 'Bool' for expression 'j < n - i - 1'
+Error: (10, 31) Expected type 'Int', found type 'Int' for expression 'j + 1'
+Error: (10, 23) Expected type 'Bool', found type 'Bool' for expression 'arr[j] > arr[j + 1]'
+Error: (12, 36) Expected type 'Int', found type 'Int' for expression 'j + 1'
+...and 5 more errors.
+test\valid\64371_even_fibonnaci_numbers\even_fibonnaci_numbers.agu [FAIL]
+Error: (10, 13) Expected type 'Bool', found type 'Bool' for expression 'j < 4000000'
+Error: (11, 18) Expected type 'Bool', found type 'Bool' for expression 'j % 2 == 0'
+Error: (7, 5) Expected type 'Unit', found type 'Unit' for expression 'let res : Int = 0 ;
+let i : Int = 1 ;
+let j : Int = 2 ;
+while j < 4000000 do (
+  if j % 2 == 0 then
+    set res = res + j
+  else
+    unit ;
+  let tmp : Int = i ;
+  set i = j ;
+  set j = tmp + j
+) ;
+print(res)'
+test\valid\64371_greatest_common_divisor\greatest_common_divisor.agu [FAIL]
+Error: (4, 41) Expected type 'Bool', found type 'Bool' for expression 'b == 0'
+Error: (4, 67) Expected type 'Int', found type 'Int' for expression 'a % b'
+Error: (4, 36) Expected type 'Int', found type 'Int' for expression 'if b == 0 then
+  a
+else
+  gcd(b, a % b)'
+Error: (7, 5) Expected type 'Unit', found type 'Unit' for expression 'let a : Int = 60 ;
+let b : Int = 24 ;
+let res : Int = gcd(a, b) ;
+print(res)'
+test\valid\64371_index_of\index_of.agu [FAIL]
+Error: (5, 22) Expected type 'Int', found type 'Int' for expression '0 - 1'
+Error: (9, 19) Expected type 'Bool', found type 'Bool' for expression 'i < len && continue'
+Error: (10, 19) Expected type 'Bool', found type 'Bool' for expression 'arr[i] == x'
+Error: (5, 5) Expected type 'Int', found type 'Int' for expression 'let index : Int = 0 - 1 ;
+let i : Int = 0 ;
+let len : Int = length(arr) ;
+let continue : Bool = true ;
+while i < len && continue do (
+  if arr[i] == x then
+    (
+      set index = i ;
+      set continue = false
+    )
+  else
+    unit ;
+  set i = i + 1
+) ;
+index'
+Error: (22, 13) Expected type 'Bool', found type 'Bool' for expression 'i < n'
+...and 1 more errors.
+test\valid\64371_multiples_3_or_5\multiples_3_or_5.agu [FAIL]
+Error: (9, 13) Expected type 'Bool', found type 'Bool' for expression 'i < 1000'
+Error: (10, 23) Expected type 'Bool', found type 'Bool' for expression 'i % 3 == 0 || i % 5 == 0'
+Error: (7, 5) Expected type 'Unit', found type 'Unit' for expression 'let res : Int = 0 ;
+let i : Int = 0 ;
+while i < 1000 do (
+  if i % 3 == 0 || i % 5 == 0 then
+    set res = res + i
+  else
+    unit ;
+  set i = i + 1
+) ;
+print(res)'
+test\valid\64371_pascals_triangle\pascals_triangle.agu [FAIL]
+Error: (7, 15) Expected type 'Bool', found type 'Bool' for expression 'row < height'
+Error: (9, 20) Expected type 'Bool', found type 'Bool' for expression 'row == 0'
+Error: (11, 47) Expected type 'Int', found type 'Int' for expression 'row + 1'
+Error: (13, 27) Expected type 'Bool', found type 'Bool' for expression 'col < row'
+Error: (14, 49) Expected type 'Int', found type 'Int' for expression 'row - 1'
+...and 9 more errors.
 test\valid\64371_pyramid\pyramid.agu [FAIL]
 Syntactic error: at line 8, column 24: Unexpected token '+'
 Syntactic error: at line 19, column 52: Unexpected token '+'
-test\valid\64371_reverse_array\reverse_array.agu [✔]
-Program is semantically valid!
-test\valid\64371_two_sum\two_sum.agu [✔]
-Program is semantically valid!
-test\valid\64854_add\add.agu [✔]
-Program is semantically valid!
-test\valid\64854_chess_matrix\chess_matrix.agu [✔]
-Program is semantically valid!
-test\valid\64854_coin_flip\coin_flip.agu [✔]
-Program is semantically valid!
+test\valid\64371_reverse_array\reverse_array.agu [FAIL]
+Error: (5, 13) Expected type 'Bool', found type 'Bool' for expression 'left < right'
+Error: (9, 32) Expected type 'Int', found type 'Int' for expression 'left + 1'
+Error: (9, 43) Expected type 'Int', found type 'Int' for expression 'right - 1'
+Error: (5, 5) Expected type 'Unit', found type 'Unit' for expression 'if left < right then
+  (
+    let tmp : Int = arr[left] ;
+    set arr[left] = arr[right] ;
+    set arr[right] = tmp ;
+    reverseArray(arr, left + 1, right - 1)
+  )
+else
+  unit'
+Error: (16, 13) Expected type 'Bool', found type 'Bool' for expression 'i < n'
+...and 4 more errors.
+test\valid\64371_two_sum\two_sum.agu [FAIL]
+Error: (8, 34) Expected type 'Int', found type 'Int' for expression '0 - 1'
+Error: (11, 21) Expected type 'Bool', found type 'Bool' for expression 'i < n - 1 && continue'
+Error: (12, 24) Expected type 'Int', found type 'Int' for expression 'i + 1'
+Error: (13, 21) Expected type 'Bool', found type 'Bool' for expression 'j < n && continue'
+Error: (14, 34) Expected type 'Bool', found type 'Bool' for expression 'nums[i] + nums[j] == target'
+...and 2 more errors.
+test\valid\64854_add\add.agu [FAIL]
+Error: (4, 23) Expected type 'Int', found type 'Int' for expression 'a + b'
+Error: (4, 5) Expected type 'Int', found type 'Int' for expression 'let sum : Int = a + b ;
+sum'
+test\valid\64854_chess_matrix\chess_matrix.agu [FAIL]
+Error: (6, 13) Expected type 'Bool', found type 'Bool' for expression 'i < n'
+Error: (8, 17) Expected type 'Bool', found type 'Bool' for expression 'j < n'
+Error: (9, 28) Expected type 'Bool', found type 'Bool' for expression '(
+  i + j
+) % 2 == 0'
+Error: (4, 5) Expected type 'Int[][]', found type 'Int[][]' for expression 'let board : Int[][] = new Int[] [n | new Int [n | 0]] ;
+let i : Int = 0 ;
+while i < n do (
+  let j : Int = 0 ;
+  while j < n do (
+    if (
+      i + j
+    ) % 2 == 0 then
+      set board[i][j] = 1
+    else
+      unit ;
+    set j = j + 1
+  ) ;
+  set i = i + 1
+) ;
+board'
+Error: (17, 29) Expected two equal types; found Int[] and Int[][], for expression 'board'
+...and 3 more errors.
+test\valid\64854_coin_flip\coin_flip.agu [FAIL]
+Error: (4, 14) Expected type 'Bool', found type 'Bool' for expression 'n % 2 == 1'
+Error: (4, 5) Expected type 'String', found type 'String' for expression 'if n % 2 == 1 then
+  "tails"
+else
+  "heads"'
 test\valid\64854_heart\heart.agu [FAIL]
 Error: (5, 11) unresolved symbol: i
 Error: (5, 13) Expected two equal types; found Int and None, for expression 'i < length(heart_matrix)'
+Error: (5, 13) Expected type 'Bool', found type 'Bool' for expression 'i < length(heart_matrix)'
 Error: (6, 12) unresolved symbol: i
 Error: (6, 14) Expected two equal types; found Int and None, for expression 'i == 0'
-Error: (7, 12) unresolved symbol: i
-...and 30 more errors.
+...and 46 more errors.
 test\valid\64854_inc\inc.agu [FAIL]
-Error: (3, 15) Expected two equal types; found Int and Unit, for expression '0 ;
+Error: (3, 15) Expected type 'Int', found type 'Unit' for expression '0 ;
 set i = i + 1 ;
 print(i)'
-test\valid\64854_is_pair\is_pair.agu [✔]
-Program is semantically valid!
-test\valid\64854_positive_power\positive_power.agu [✔]
-Program is semantically valid!
+test\valid\64854_is_pair\is_pair.agu [FAIL]
+Error: (4, 14) Expected type 'Bool', found type 'Bool' for expression 'x % 2 == 0'
+Error: (4, 5) Expected type 'Bool', found type 'Bool' for expression 'if x % 2 == 0 then
+  true
+else
+  false'
+test\valid\64854_positive_power\positive_power.agu [FAIL]
+Error: (4, 10) Expected type 'Bool', found type 'Bool' for expression 'k <= 0'
+Error: (4, 32) Expected type 'Bool', found type 'Bool' for expression 'p <= 0'
+Error: (4, 5) Expected type 'Int', found type 'Int' for expression 'if k <= 0 then
+  1
+else
+  if p <= 0 then
+    0
+  else
+    p ^ k'
 test\valid\64854_printA\printA.agu [FAIL]
-Error: (4, 5) Expected two equal types; found String and Unit, for expression 'print("a")'
 Error: (7, 12) unresolved symbol: _
 Error: (7, 12) Expected two equal types; found Unit and None, for expression '_'
-Error: (7, 5) Expected two equal types; found Unit and String, for expression 'printA(_)'
-test\valid\64854_produce_letter\produce_letter.agu [✔]
-Program is semantically valid!
-test\valid\64854_switch\switch.agu [✔]
-Program is semantically valid!
-test\valid\tcomp000_arrayOfUnit\arrayOfUnit.agu [✔]
-Program is semantically valid!
-test\valid\tcomp000_assoc_eq\assoc_eq.agu [✔]
-Program is semantically valid!
-test\valid\tcomp000_collatz\collatz.agu [✔]
-Program is semantically valid!
-test\valid\tcomp000_diagonal\diagonal.agu [✔]
-Program is semantically valid!
-test\valid\tcomp000_evenOdd\evenOdd.agu [✔]
-Program is semantically valid!
-test\valid\tcomp000_expIf\expif.agu [✔]
-Program is semantically valid!
-test\valid\tcomp000_if_then_if\if_then_if.agu [✔]
-Program is semantically valid!
-test\valid\tcomp000_letOfLet\letOfLet.agu [✔]
-Program is semantically valid!
-test\valid\tcomp000_lookupRec\lookupRec.agu [✔]
-Program is semantically valid!
-test\valid\tcomp000_lookup\lookup.agu [✔]
-Program is semantically valid!
-test\valid\tcomp000_powers\powers.agu [✔]
-Program is semantically valid!
+test\valid\64854_produce_letter\produce_letter.agu [FAIL]
+Error: (4, 5) Expected type 'String', found type 'String' for expression 'let l : String = letter ;
+l'
+Error: (8, 5) Expected type 'Unit', found type 'Unit' for expression 'let a : String = "a" ;
+print(produceLetter(a))'
+test\valid\64854_switch\switch.agu [FAIL]
+Error: (4, 5) Expected type 'Bool', found type 'Bool' for expression '!boolean'
+test\valid\tcomp000_arrayOfUnit\arrayOfUnit.agu [FAIL]
+Error: (4, 25) Expected type 'Bool', found type 'Bool' for expression 'n > 0'
+Error: (4, 17) Expected type 'Unit', found type 'Unit' for expression 'while n > 0 do set n = n - 1'
+test\valid\tcomp000_assoc_eq\assoc_eq.agu [FAIL]
+Error: (4, 3) Expected type 'Unit', found type 'Unit' for expression 'let b : Bool = true ;
+print(true == b == (
+  false || true
+))'
+test\valid\tcomp000_collatz\collatz.agu [FAIL]
+Error: (6, 12) Expected type 'Bool', found type 'Bool' for expression 'n % 2 == 0'
+Error: (6, 3) Expected type 'Int', found type 'Int' for expression 'if n % 2 == 0 then
+  n / 2
+else
+  3 * n + 1'
+Error: (9, 12) Expected type 'Bool', found type 'Bool' for expression 'f(n) != 0'
+Error: (9, 36) Expected type 'Int', found type 'Int' for expression 'n - 1'
+Error: (9, 3) Expected type 'Unit', found type 'Unit' for expression 'if f(n) != 0 then
+  conjecture(n - 1)
+else
+  unit'
+...and 1 more errors.
+test\valid\tcomp000_diagonal\diagonal.agu [FAIL]
+Error: (6, 11) Expected type 'Bool', found type 'Bool' for expression 'i < length(a)'
+Error: (4, 3) Expected type 'Int[][]', found type 'Int[][]' for expression 'let a : Int[][] = new Int[] [n | new Int [n | 0]] ;
+let i : Int = 0 ;
+while i < length(a) do set a[i][i] = 1 ;
+a'
+Error: (12, 11) Expected type 'Bool', found type 'Bool' for expression 'i < length(a)'
+Error: (14, 13) Expected type 'Bool', found type 'Bool' for expression 'j < length(a[0])'
+Error: (11, 3) Expected type 'Unit', found type 'Unit' for expression 'let i : Int = 0 ;
+while i < length(a) do (
+  let j : Int = 0 ;
+  while j < length(a[0]) do (
+    print(a[i][j]) ;
+    print(" ") ;
+    set j = j + 1
+  ) ;
+  print("\n") ;
+  set i = i + 1
+)'
+test\valid\tcomp000_evenOdd\evenOdd.agu [FAIL]
+Error: (4, 19) Expected type 'Int', found type 'Int' for expression 'x - 1'
+Error: (4, 10) Expected type 'Bool', found type 'Bool' for expression 'x == 0 || odd(x - 1)'
+Error: (7, 20) Expected type 'Int', found type 'Int' for expression 'x - 1'
+Error: (7, 10) Expected type 'Bool', found type 'Bool' for expression 'x != 0 || even(x - 1)'
+test\valid\tcomp000_expIf\expif.agu [FAIL]
+Error: (6, 6) Expected type 'Bool', found type 'Bool' for expression '(
+  if ola then
+    ola
+  else
+    ola
+)'
+Error: (6, 3) Expected type 'Bool', found type 'Bool' for expression 'if (
+  if ola then
+    ola
+  else
+    ola
+) then
+  (
+    if ola then
+      ola
+    else
+      ola
+  )
+else
+  (
+    if ola then
+      ola
+    else
+      ola
+  )'
+test\valid\tcomp000_if_then_if\if_then_if.agu [FAIL]
+Error: (4, 3) Expected type 'Unit', found type 'Unit' for expression 'if true then
+  if false then
+    unit
+  else
+    unit
+else
+  unit'
+test\valid\tcomp000_letOfLet\letOfLet.agu [FAIL]
+Error: (70, 68) Expected type 'Unit', found type 'Unit' for expression 'let x : Int = 5'
+Error: (69, 67) Expected type 'Unit', found type 'Unit' for expression 'let x : Unit = let x : Int = 5'
+Error: (68, 66) Expected type 'Unit', found type 'Unit' for expression 'let x : Unit = let x : Unit = let x : Int = 5'
+Error: (67, 65) Expected type 'Unit', found type 'Unit' for expression 'let x : Unit = let x : Unit = let x : Unit = let x : Int = 5'
+Error: (66, 64) Expected type 'Unit', found type 'Unit' for expression 'let x : Unit = let x : Unit = let x : Unit = let x : Unit = let x : Int = 5'
+...and 62 more errors.
+test\valid\tcomp000_lookupRec\lookupRec.agu [FAIL]
+Error: (4, 41) Expected type 'Int', found type 'Int' for expression 'n - 1'
+Error: (4, 10) Expected type 'Bool', found type 'Bool' for expression 'n >= 0 && (
+  a[n] == x || look(x, a, n - 1)
+)'
+Error: (7, 24) Expected type 'Int', found type 'Int' for expression 'length(a) - 1'
+test\valid\tcomp000_lookup\lookup.agu [FAIL]
+Error: (6, 11) Expected type 'Bool', found type 'Bool' for expression 'i < length(a)'
+Error: (7, 13) Expected type 'Bool', found type 'Bool' for expression 'a[i] == x'
+Error: (4, 3) Expected type 'Bool', found type 'Bool' for expression 'let result : Bool = false ;
+let i : Int = 0 ;
+while i < length(a) do (
+  if a[i] == x then
+    set result = true
+  else
+    unit ;
+  set i = i + 1
+) ;
+result'
+test\valid\tcomp000_powers\powers.agu [FAIL]
+Error: (6, 11) Expected type 'Bool', found type 'Bool' for expression 'i < n'
+Error: (4, 3) Expected type 'Int[]', found type 'Int[]' for expression 'let a : Int[] = new Int [n | 0] ;
+let i : Int = 0 ;
+while i < n do (
+  set a[i] = i * i ;
+  set i = i + 1
+) ;
+a'
