@@ -1,7 +1,7 @@
 invalid-semantic-tests
 
-Passed [✔]: 37
-Failed [FAIL]: 1
+Passed [✔]: 36
+Failed [FAIL]: 2
 
 test\invalid-semantic\56269_bad_type\bad_type.agu [✔]
 Error: (5, 1) Function 'sum' declared with incorrect number of parameters
@@ -94,8 +94,8 @@ Error: (3, 33) unresolved symbol: y
 Error: (3, 31) Expected two equal types; found None and Int, for expression 'x + y'
 test\invalid-semantic\64371_invalid_array_index_type\invalid_array_index_type.agu [✔]
 Error: (5, 13) Expected two equal types; found Int and String, for expression '"0"'
-test\invalid-semantic\64371_variable_not_in_scope\variable_not_in_scope.agu [✔]
-Error: (6, 9) Expected two equal types; found Bool and Unit, for expression 'let even : Bool = n % 2 == 0'
+test\invalid-semantic\64371_variable_not_in_scope\variable_not_in_scope.agu [FAIL]
+Expected error but none found.
 test\invalid-semantic\64854_adding_string_int\adding_string_int.agu [✔]
 Error: (6, 22) Expected two equal types; found Int and String, for expression 'a + x'
 Error: (6, 22) Expected two equal types; found Int and String, for expression 'a + x'

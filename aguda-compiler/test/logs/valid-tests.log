@@ -1,7 +1,7 @@
 valid-tests
 
-Passed [✔]: 133
-Failed [FAIL]: 47
+Passed [✔]: 136
+Failed [FAIL]: 44
 
 test\valid\54394_array_operations\array_operations.agu [✔]
 Program is semantically valid!
@@ -136,9 +136,8 @@ test\valid\56332_precedence_calc\precedence_calc.agu [✔]
 Program is semantically valid!
 test\valid\56332_simple_sum\simple_sum.agu [✔]
 Program is semantically valid!
-test\valid\56334_bubbleSort\bubbleSort.agu [FAIL]
-Error: (24, 30) unresolved symbol: swapValue
-Error: (24, 13) Expected two equal types; found None and Int, for expression 'set array[i + 1] = swapValue'
+test\valid\56334_bubbleSort\bubbleSort.agu [✔]
+Program is semantically valid!
 test\valid\56334_countOccurrences\countOccurrences.agu [✔]
 Program is semantically valid!
 test\valid\56334_factorial\factorial.agu [✔]
@@ -149,11 +148,8 @@ test\valid\56334_helloWorld\helloWorld.agu [✔]
 Program is semantically valid!
 test\valid\56334_listSum\listSum.agu [✔]
 Program is semantically valid!
-test\valid\56334_map\map.agu [FAIL]
-Error: (4, 5) Expected two equal types; found Int[] and Unit, for expression 'let array : Int[] = new Int [3 | 0] ;
-set array[0] = 2 ;
-set array[1] = 4 ;
-set array[2] = 7'
+test\valid\56334_map\map.agu [✔]
+Program is semantically valid!
 test\valid\56334_max\max.agu [✔]
 Program is semantically valid!
 test\valid\56334_palindrome\palindrome.agu [✔]
@@ -441,16 +437,8 @@ test\valid\64361_sum_function\sum_function.agu [FAIL]
 Error: (21, 11) unresolved symbol: sum_array
 Error: (21, 11) Expected instance of <class 'src.syntax.FunctionType'>, found None, for expression 'sum_array'
 Error: (-1, -1) Unexpected error during semantic analysis: 'NoneType' object has no attribute 'param_types'
-test\valid\64371_binary_search\binary_search.agu [FAIL]
-Error: (6, 5) Expected two equal types; found Unit and Int, for expression 'if left > right then
-  0 - 1
-else
-  let mid : Int = left + right - left / 2'
-Error: (10, 16) unresolved symbol: mid
-Error: (10, 16) Expected two equal types; found Int and None, for expression 'mid'
-Error: (11, 13) unresolved symbol: mid
-Error: (13, 20) unresolved symbol: mid
-...and 9 more errors.
+test\valid\64371_binary_search\binary_search.agu [✔]
+Program is semantically valid!
 test\valid\64371_bubble_sort\bubble_sort.agu [✔]
 Program is semantically valid!
 test\valid\64371_even_fibonnaci_numbers\even_fibonnaci_numbers.agu [✔]
@@ -464,10 +452,8 @@ Program is semantically valid!
 test\valid\64371_pascals_triangle\pascals_triangle.agu [✔]
 Program is semantically valid!
 test\valid\64371_pyramid\pyramid.agu [FAIL]
-Error: (8, 23) Expected two equal types; found Int and String, for expression 'res + str'
-Error: (8, 9) Expected two equal types; found Int and String, for expression 'set res = res + str'
-Error: (19, 51) Expected two equal types; found Int and String, for expression 'repeatStr(" ", spaces) + repeatStr("*", stars)'
-Error: (19, 51) Expected two equal types; found String and Int, for expression 'repeatStr(" ", spaces) + repeatStr("*", stars)'
+Syntactic error: at line 8, column 24: Unexpected token '+'
+Syntactic error: at line 19, column 52: Unexpected token '+'
 test\valid\64371_reverse_array\reverse_array.agu [✔]
 Program is semantically valid!
 test\valid\64371_two_sum\two_sum.agu [✔]

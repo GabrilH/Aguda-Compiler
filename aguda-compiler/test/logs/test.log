@@ -2,19 +2,19 @@ Valid Aguda Programs
   /Users/vv/workspace/aguda-testing/test/valid/54394_array_operations/array_operations.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/54394_bool_array/bool_array.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/54394_clamp/clamp.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/54394_combinations/combinations.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/valid/54394_combinations/combinations.agu [✘]
   /Users/vv/workspace/aguda-testing/test/valid/54394_identifier/identifier.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/54394_operator_precedence/operator_precedence.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/54394_semicolon_assignment/semicolon_assignment.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/54394_string_printing/string_printing.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/54394_uv_mapping/uv_mapping.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/54394_zip/zip.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/valid/54394_zip/zip.agu [✘]
   /Users/vv/workspace/aguda-testing/test/valid/56269_ackermann/ackermann.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/56269_associativity/associativity.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/56269_boolean/boolean.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/56269_booleanSequence/booleanSequence.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/56269_bottomRow/bottomRow.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/56269_if/if.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/valid/56269_bottomRow/bottomRow.agu [✘]
+  /Users/vv/workspace/aguda-testing/test/valid/56269_if/if.agu [✘]
   /Users/vv/workspace/aguda-testing/test/valid/56269_insertionSort/insertionSort.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/56269_multipleAssignment/multipleAssignment.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/56269_parentheses/parentheses.agu [✔]
@@ -27,26 +27,26 @@ Valid Aguda Programs
   /Users/vv/workspace/aguda-testing/test/valid/56307_maxFunction/maxFunction.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/56307_powerFunction/powerFunction.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/56307_shadowingFunction/shadowFunction.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/56307_sumArrayFunction/sumArrayFunction.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/56307_zeroLengthArray/zeroLengthArray.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/valid/56307_sumArrayFunction/sumArrayFunction.agu [✘]
+  /Users/vv/workspace/aguda-testing/test/valid/56307_zeroLengthArray/zeroLengthArray.agu [✘]
   /Users/vv/workspace/aguda-testing/test/valid/56311_boundary_arithmetic/boundary_arithmetic.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/56311_empty_array/empty_array.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/56311_equals/equals_method.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/valid/56311_empty_array/empty_array.agu [✘]
+  /Users/vv/workspace/aguda-testing/test/valid/56311_equals/equals_method.agu [✘]
   /Users/vv/workspace/aguda-testing/test/valid/56311_high_order_function_type/high_order_func_type.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/56311_if_inside_if/if_inside_if.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/56311_matrix_operations/matrix_operations.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/valid/56311_if_inside_if/if_inside_if.agu [✘]
+  /Users/vv/workspace/aguda-testing/test/valid/56311_matrix_operations/matrix_operations.agu [✘]
   /Users/vv/workspace/aguda-testing/test/valid/56311_minus_minus/minus_minus.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/56311_shadow_variables/shadow_variables.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/valid/56311_shadow_variables/shadow_variables.agu [✘]
   /Users/vv/workspace/aguda-testing/test/valid/56311_while_loop_with_empty_body/while_loop_with_empty_body.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/56311_while_loop_with_mutations/while_loop_with_mutations.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/56332_array_sum/array_sum.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/56332_array_update/array_update.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/56332_count_even_in_array/count_even_in_array.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/56332_count_negatives_on_matrix/count_negatives_on_matrix.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/valid/56332_array_sum/array_sum.agu [✘]
+  /Users/vv/workspace/aguda-testing/test/valid/56332_array_update/array_update.agu [✘]
+  /Users/vv/workspace/aguda-testing/test/valid/56332_count_even_in_array/count_even_in_array.agu [✘]
+  /Users/vv/workspace/aguda-testing/test/valid/56332_count_negatives_on_matrix/count_negatives_on_matrix.agu [✘]
   /Users/vv/workspace/aguda-testing/test/valid/56332_dec_to_zero/dec_to_zero.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/56332_factorial_in_aguda/factorial_in_aguda.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/56332_if_then_else_printing_string/if_then_else_printing_string.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/56332_min_elem_of_array/min_elem_of_array.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/valid/56332_min_elem_of_array/min_elem_of_array.agu [✘]
   /Users/vv/workspace/aguda-testing/test/valid/56332_precedence_calc/precedence_calc.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/56332_simple_sum/simple_sum.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/56334_bubbleSort/bubbleSort.agu [✔]
@@ -63,21 +63,21 @@ Valid Aguda Programs
   /Users/vv/workspace/aguda-testing/test/valid/58166_digits/digits.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/58166_invertArray/invertArray.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/58166_mathTest/mathTest.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/58166_maxDistance/maxDistance.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/valid/58166_maxDistance/maxDistance.agu [✘]
   /Users/vv/workspace/aguda-testing/test/valid/58166_modTest/modTest.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/58166_pingPong/pingPong.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/58166_powerTen/powerTen.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/valid/58166_powerTen/powerTen.agu [✘]
   /Users/vv/workspace/aguda-testing/test/valid/58166_safeIndexCheck/safeIndexCheck.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/58166_stringLength/stringLength.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/valid/58166_stringLength/stringLength.agu [✘]
   /Users/vv/workspace/aguda-testing/test/valid/58168_3letsPrint1stValue/3letsPrint1stValue.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/58168_addOneValueToArray/addOneValueToArray.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/valid/58168_addOneValueToArray/addOneValueToArray.agu [✘]
   /Users/vv/workspace/aguda-testing/test/valid/58168_cubesForEvenNum/cubesForEvenNum.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/58168_decrementor/decrementor.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/58168_incrementor/incrementor.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/58168_minusTwoNumbers/minusTwoNumbers.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/58168_numOfEvenNumInArray/numOfEvenNumInArray.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/58168_sumNumInArray/sumNumInArray.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/58168_sumOfMinAndOfMaxOfArray/sumOfMinAndOfMaxOfArray.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/valid/58168_sumOfMinAndOfMaxOfArray/sumOfMinAndOfMaxOfArray.agu [✘]
   /Users/vv/workspace/aguda-testing/test/valid/58168_sumTwoNumbers/sumTwoNumbers.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/58170_arrayBounds/arrayBounds.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/58170_categorizeNumbers/categorizeNumbers.agu [✔]
@@ -106,28 +106,28 @@ Valid Aguda Programs
   /Users/vv/workspace/aguda-testing/test/valid/58185_sequencing/sequencing.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/58185_simple_arithmetic/simple_arithmetic.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/58185_string_concatenation/string_concatenation.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/58185_unit_type_test/unit_type_test.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/valid/58185_unit_type_test/unit_type_test.agu [✘]
   /Users/vv/workspace/aguda-testing/test/valid/58185_while_loops/while_loops.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/58215_3dArray/3dArray.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/58215_addToArrayIndex/addToArrayIndex.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/valid/58215_addToArrayIndex/addToArrayIndex.agu [✘]
   /Users/vv/workspace/aguda-testing/test/valid/58215_funWithFunArg/funWithFunArg.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/58215_ifsInsideIfs/ifsInsideIfs.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/58215_linha/linha.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/58215_minArrAndElseUnit/minArrAndElseUnit.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/valid/58215_minArrAndElseUnit/minArrAndElseUnit.agu [✘]
   /Users/vv/workspace/aguda-testing/test/valid/58215_negAndEven/negAndEven.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/58215_scopeArr/scopeArr.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/58215_somaSub/somaSub.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/58215_unitFunc/unitFunc.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/58219_compare_string_length/compare_string_length.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/58219_count_common_elements/count_common_elemts.agu [✘]
+  /Users/vv/workspace/aguda-testing/test/valid/58215_scopeArr/scopeArr.agu [✘]
+  /Users/vv/workspace/aguda-testing/test/valid/58215_somaSub/somaSub.agu [✘]
+  /Users/vv/workspace/aguda-testing/test/valid/58215_unitFunc/unitFunc.agu [✘]
+  /Users/vv/workspace/aguda-testing/test/valid/58219_compare_string_length/compare_string_length.agu [✘]
+  /Users/vv/workspace/aguda-testing/test/valid/58219_count_common_elements/count_common_elemts.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/58219_find_array_max_and_min/array_max_min.agu [✘]
   /Users/vv/workspace/aguda-testing/test/valid/58219_find_char/find_char.agu [✘]
   /Users/vv/workspace/aguda-testing/test/valid/58219_first_unique_character/first_unique_character.agu [✘]
   /Users/vv/workspace/aguda-testing/test/valid/58219_is_array_sorted/is_array_sorted.agu [✘]
   /Users/vv/workspace/aguda-testing/test/valid/58219_is_prime/is_prime.agu [✘]
-  /Users/vv/workspace/aguda-testing/test/valid/58219_logical_operators/logical_operators.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/58219_reverse_string/reverse_string.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/58219_sum_array/sum_array.agu [✘]
+  /Users/vv/workspace/aguda-testing/test/valid/58219_logical_operators/logical_operators.agu [✘]
+  /Users/vv/workspace/aguda-testing/test/valid/58219_reverse_string/reverse_string.agu [✘]
+  /Users/vv/workspace/aguda-testing/test/valid/58219_sum_array/sum_array.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/58250_average/58250_average.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/58250_basic_addition/58250_basic_addition.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/58250_calculate_operations/58250_calculate_operations.agu [✔]
@@ -135,19 +135,19 @@ Valid Aguda Programs
   /Users/vv/workspace/aguda-testing/test/valid/58250_cube/58250_cube.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/58250_divide_two_numbers/58250_divide_two_numbers.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/58250_is_even/58250_is_even.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/58250_length/58250_length.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/valid/58250_length/58250_length.agu [✘]
   /Users/vv/workspace/aguda-testing/test/valid/58250_max_between_2/58250_max_between_2.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/58250_sum_all_to_n/58250_sum_all_to_n.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/64361_array_sum/array_sum.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/64361_check_null_value/check_null_value.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/64361_count_vowels/count_vowels.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/valid/64361_check_null_value/check_null_value.agu [✘]
+  /Users/vv/workspace/aguda-testing/test/valid/64361_count_vowels/count_vowels.agu [✘]
   /Users/vv/workspace/aguda-testing/test/valid/64361_exponential/exponential.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/64361_factorial/factorial.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/64361_fibonacci/fibonacci.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/64361_greatest_common_divisor/greatest_common_divisor.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/64361_prime_number/prime_number.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/valid/64361_prime_number/prime_number.agu [✘]
   /Users/vv/workspace/aguda-testing/test/valid/64361_reverse_array/reverse_array.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/64361_sum_function/sum_function.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/valid/64361_sum_function/sum_function.agu [✘]
   /Users/vv/workspace/aguda-testing/test/valid/64371_binary_search/binary_search.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/64371_bubble_sort/bubble_sort.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/64371_even_fibonnaci_numbers/even_fibonnaci_numbers.agu [✔]
@@ -155,17 +155,17 @@ Valid Aguda Programs
   /Users/vv/workspace/aguda-testing/test/valid/64371_index_of/index_of.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/64371_multiples_3_or_5/multiples_3_or_5.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/64371_pascals_triangle/pascals_triangle.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/64371_pyramid/pyramid.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/valid/64371_pyramid/pyramid.agu [✘]
   /Users/vv/workspace/aguda-testing/test/valid/64371_reverse_array/reverse_array.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/64371_two_sum/two_sum.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/64854_add/add.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/64854_chess_matrix/chess_matrix.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/64854_coin_flip/coin_flip.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/64854_heart/heart.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/64854_inc/inc.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/valid/64854_heart/heart.agu [✘]
+  /Users/vv/workspace/aguda-testing/test/valid/64854_inc/inc.agu [✘]
   /Users/vv/workspace/aguda-testing/test/valid/64854_is_pair/is_pair.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/64854_positive_power/positive_power.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/valid/64854_printA/printA.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/valid/64854_printA/printA.agu [✘]
   /Users/vv/workspace/aguda-testing/test/valid/64854_produce_letter/produce_letter.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/64854_switch/switch.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/tcomp000_arrayOfUnit/arrayOfUnit.agu [✔]
@@ -180,77 +180,13 @@ Valid Aguda Programs
   /Users/vv/workspace/aguda-testing/test/valid/tcomp000_lookupRec/lookupRec.agu [✔]
   /Users/vv/workspace/aguda-testing/test/valid/tcomp000_powers/powers.agu [✔]
 
-Syntactically Invalid Aguda Programs
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/54394_bad_if_statement/bad_if_statement.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/54394_let_misspelled/let_misspelled.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/56269_bad_assignment/bad_assignment.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/56269_bad_operator/bad_operator.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/56269_wrong_variable/wrong_variable.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/56307_extraClosingParenthesis/extraClosingParenthesis.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/56307_incompatibleTypes/incompatibleTypes.agu [✘]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/56307_missingColon/missingColon.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/56307_typeMismatch/typeMismatch.agu [✘]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/56307_unterminatedLiteralString/unterminatedLiteralString.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/56307_usedUndeclaredVariable/usedUndeclaredVariable.agu [✘]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/56311_double_semicolons/double_semicolons.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/56311_invalid_character/invalid_character.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/56311_missing_character/missing_character.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/56332_lexical_error_string_in_a_int/lexical_error_string_in_a_int.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/56332_syntax_missing_then_in_if/syntax_missing_then_in_if.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/56332_syntax_unexpected_times/56332_syntax_unexpected_times.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/56334_invalidCharacter/invalidCharacter.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/56334_missingEquals/missingEquals.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/56334_missingThen/missingThen.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58166_lexicalProb/lexicalProb.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58166_missingThen/missingThen.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58166_missingType/missingType.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58168_invalidIdentifier/58168_invalidIdentifier.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58168_noBracketsFunc/58168_noBracketsFunc.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58168_noBracketsWhile/58168_noBracketsWhile.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58168_typeCheck/58168_missingLetReturnType.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58168_undeclaredVar1/58168_missingLetInfo.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58168_undeclaredVar2/58168_undeclaredVar2.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58170_invalidIdentifier/invalidIdentifier.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58170_missingParen/missingParen.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58170_missingSet/missingSet.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58182_calling_as_zeroary_function/callin_as_zeroary_function.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58182_missing_semicolon/missing_semicolon.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58182_nested_function_creation/nested_function_creation.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58182_non_capitalized_int/non_capitalized_int.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58185_invalid_array_syntax/invalid_array_syntax.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58185_missing_parenthesis/missing_parenthesis.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58185_unclosed_string/unclosed_string.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58215_capitalL/capitalL.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58215_outOfBounds/outOfBounds.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58215_scope/scope.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58215_simpleNoName/simpleNoName.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58215_unitInt/unitInt.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58215_wrongSignal/wrongSignal.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58219_invalid_char/invalid_char.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58219_invalid_number_of_arguments/invalid_number_of_arguments.agu [✘]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58219_invalid_return_type/invalid_return_type.agu [✘]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58219_missing_parantheses/missing_parantheses.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58219_undeclared_variable/undeclared_variable.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58219_wrong_array_initialization/wrong_array_initialization.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58250_invalid_lexical/58250_invalid_lexical.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58250_invalid_semantic_function_call/58250_invalid_semantic_function_call.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58250_invalid_syntax_invalid_assignment/58250_invalid_syntax_invalid_assignment.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/58250_invalid_syntax_missing_parentheses/58250_invalid_syntax_missing_parentheses.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/64361_then_keyword_missing/then_keyword_missing.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/64361_wrong_two_dots_placement/wrong_two_dots_placement.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/64361_wrong_type_keyword/wrong_type_keyword.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/64371_invalid_else/invalid_else.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/64371_missing_type_annotation/missing_type_annotation.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/64371_unterminated_string/unterminated_string.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/64854_missing_separator/missing_separator.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/64854_missing_separator_in_while_loop/missing_separator_in_while_loop.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/64854_non_letter_id/non_letter_id.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-syntax/tcomp000_wrong_comment/wrong_comment.agu [✔]
-
 Semantically Invalid Aguda Programs
   /Users/vv/workspace/aguda-testing/test/invalid-semantic/56269_bad_type/bad_type.agu [✔]
   /Users/vv/workspace/aguda-testing/test/invalid-semantic/56269_wrong_assignment/wrong_assignment.agu [✔]
   /Users/vv/workspace/aguda-testing/test/invalid-semantic/56269_wrong_function_call/wrong_function_call.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/invalid-semantic/56307_incompatibleTypes/incompatibleTypes.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/invalid-semantic/56307_typeMismatch/typeMismatch.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/invalid-semantic/56307_usedUndeclaredVariable/usedUndeclaredVariable.agu [✔]
   /Users/vv/workspace/aguda-testing/test/invalid-semantic/56311_assigning_value_different_type/assigning_value_different_type.agu [✔]
   /Users/vv/workspace/aguda-testing/test/invalid-semantic/56311_initializer_wrong_type/initializer_wrong_type.agu [✔]
   /Users/vv/workspace/aguda-testing/test/invalid-semantic/56311_variable_not_declared.agu/variable_not_declared.agu [✔]
@@ -259,8 +195,8 @@ Semantically Invalid Aguda Programs
   /Users/vv/workspace/aguda-testing/test/invalid-semantic/56332_wrong_return_type/wrong_return_type.agu [✔]
   /Users/vv/workspace/aguda-testing/test/invalid-semantic/56334_typeCheckError/typeCheckError.agu [✔]
   /Users/vv/workspace/aguda-testing/test/invalid-semantic/56334_undeclaredVariable/undeclaredVariable.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-semantic/56334_wrongTypeFunction/wrongTypeFunction.agu [✘]
-  /Users/vv/workspace/aguda-testing/test/invalid-semantic/58166_outOfBounds/outOfBounds.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/invalid-semantic/56334_wrongParamsFunction/wrongParamsFunction.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/invalid-semantic/58166_outOfBounds/outOfBounds.agu [✘]
   /Users/vv/workspace/aguda-testing/test/invalid-semantic/58166_sumIntBool/sumIntBool.agu [✔]
   /Users/vv/workspace/aguda-testing/test/invalid-semantic/58166_wrongPara/wrongPara.agu [✔]
   /Users/vv/workspace/aguda-testing/test/invalid-semantic/58170_typeMismatch/typeMismatch.agu [✔]
@@ -281,111 +217,441 @@ Semantically Invalid Aguda Programs
   /Users/vv/workspace/aguda-testing/test/invalid-semantic/64854_adding_string_int/adding_string_int.agu [✔]
   /Users/vv/workspace/aguda-testing/test/invalid-semantic/64854_type_check/type_check.agu [✔]
   /Users/vv/workspace/aguda-testing/test/invalid-semantic/64854_undeclared_variable/undeclared_variable.agu [✔]
-  /Users/vv/workspace/aguda-testing/test/invalid-semantic/tcomp000-while-plus-five0/while-plus-five.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/invalid-semantic/tcomp000-branches-diff-types/branches-diff-types.agu [✔]
+  /Users/vv/workspace/aguda-testing/test/invalid-semantic/tcomp000-while-plus-five/while-plus-five.agu [✔]
 
 Failures:
 
   test/Spec.hs:41:29: 
-  1) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58219_count_common_elements/count_common_elemts.agu
-       Parse error at token TokenRParen (13,15)
+  1) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/54394_combinations/combinations.agu
+       (3,19): expected arguments of types [Int], found [Int,Int] for expression
+       fac(6, 2)
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:838:20 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Parser
+         error, called at src/Validation.hs:129:17 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58219_count_common_elements/count_common_elemts.agu/" --seed 1204285955
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/54394_combinations/combinations.agu/" --seed 1343233341
 
   test/Spec.hs:41:29: 
-  2) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58219_find_array_max_and_min/array_max_min.agu
-       Parse error at token TokenElse (6,5)
+  2) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/54394_zip/zip.agu
+       (6,33): unresolved symbol: lenght
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:838:20 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Parser
+         error, called at src/Validation.hs:120:16 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58219_find_array_max_and_min/array_max_min.agu/" --seed 1204285955
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/54394_zip/zip.agu/" --seed 1343233341
 
   test/Spec.hs:41:29: 
-  3) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58219_find_char/find_char.agu
-       Parse error at token TokenRParen (11,9)
+  3) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/56269_bottomRow/bottomRow.agu
+       (16,11): unresolved symbol: j
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:838:20 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Parser
+         error, called at src/Validation.hs:120:16 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58219_find_char/find_char.agu/" --seed 1204285955
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/56269_bottomRow/bottomRow.agu/" --seed 1343233341
 
   test/Spec.hs:41:29: 
-  4) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58219_first_unique_character/first_unique_character.agu
-       Parse error at token TokenRParen (19,5)
+  4) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/56269_if/if.agu
+       (17,12): expected type Bool, found type Unit for expression
+       let x : Bool = True
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:838:20 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Parser
+         error, called at src/Validation.hs:106:10 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58219_first_unique_character/first_unique_character.agu/" --seed 1204285955
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/56269_if/if.agu/" --seed 1343233341
 
   test/Spec.hs:41:29: 
-  5) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58219_is_array_sorted/is_array_sorted.agu
-       Parse error at token TokenRParen (12,13)
+  5) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/56307_sumArrayFunction/sumArrayFunction.agu
+       (11,39): expected type Int[], found type Int for expression
+       10
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:838:20 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Parser
+         error, called at src/Validation.hs:106:10 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58219_is_array_sorted/is_array_sorted.agu/" --seed 1204285955
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/56307_sumArrayFunction/sumArrayFunction.agu/" --seed 1343233341
 
   test/Spec.hs:41:29: 
-  6) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58219_is_prime/is_prime.agu
-       Parse error at token TokenRParen (7,3)
+  6) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/56307_zeroLengthArray/zeroLengthArray.agu
+       (2,40): expected type Int[], found type Int for expression
+       0
        CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:838:20 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Parser
+         error, called at src/Validation.hs:106:10 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58219_is_prime/is_prime.agu/" --seed 1204285955
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/56307_zeroLengthArray/zeroLengthArray.agu/" --seed 1343233341
 
   test/Spec.hs:41:29: 
-  7) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58219_sum_array/sum_array.agu
-       Parse error at token TokenRParen (9,5)
+  7) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/56311_empty_array/empty_array.agu
+       (9,11): unresolved symbol: empty_matrix
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:120:16 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/56311_empty_array/empty_array.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  8) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/56311_equals/equals_method.agu
+       (4,5): unresolved symbol: a
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:120:16 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/56311_equals/equals_method.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  9) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/56311_if_inside_if/if_inside_if.agu
+       (4,23): expected type Bool, found type Int for expression
+       1
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:106:10 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/56311_if_inside_if/if_inside_if.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  10) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/56311_matrix_operations/matrix_operations.agu
+       (14,9): unresolved symbol: error
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:120:16 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/56311_matrix_operations/matrix_operations.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  11) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/56311_shadow_variables/shadow_variables.agu
+       (4,20): expected type Int, found type Unit for expression
+       let x : Int = 2 ;
+       let x : Int = 4
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:106:10 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/56311_shadow_variables/shadow_variables.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  12) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/56332_array_sum/array_sum.agu
+       (12,33): expected type Int[], found type Unit for expression
+       new Int [5 | 10] ;
+       let _ : Unit = print(arraySum(a))
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:106:10 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/56332_array_sum/array_sum.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  13) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/56332_array_update/array_update.agu
+       (2,32): expected type Int[], found type Unit for expression
+       new Int [3 | 0] ;
+       set a[0] = 100 ;
+       set a[1] = 2 ;
+       set a[2] = 404 ;
+       let _ : Unit = print(a[0] ;
+       a[1] ;
+       a[2])
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:106:10 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/56332_array_update/array_update.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  14) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/56332_count_even_in_array/count_even_in_array.agu
+       (13,50): expected type Int[], found type Int for expression
+       14 ;
+       2 ;
+       10 ;
+       33 ;
+       88 ;
+       1
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:106:10 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/56332_count_even_in_array/count_even_in_array.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  15) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/56332_count_negatives_on_matrix/count_negatives_on_matrix.agu
+       (18,55): expected type Int[][], found type Unit for expression
+       new Int[] [5 | new Int [5 | 0]] ;
+       set matrix[0][1] = 0 - 1 ;
+       set matrix[1][3] = 0 - 4 ;
+       set matrix[2][0] = 0 - 9 ;
+       set matrix[3][4] = 0 - 2 ;
+       set matrix[4][4] = 0 - 7 ;
+       set matrix[2][4] = 0 - 8 ;
+       let _ : Unit = print(countNegatives(matrix))
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:106:10 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/56332_count_negatives_on_matrix/count_negatives_on_matrix.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  16) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/56332_min_elem_of_array/min_elem_of_array.agu
+       (11,48): expected type Int[], found type Int for expression
+       0 ;
+       0 - 1 ;
+       10 ;
+       0 ;
+       0 - 50 ;
+       100
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:106:10 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/56332_min_elem_of_array/min_elem_of_array.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  17) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58166_maxDistance/maxDistance.agu
+       (16,28): Expected two equal types; found Int and Unit for expression
+       if length(a) == 0 then
+         0
+       else
+         let min : Int = a[0]
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:135:17 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58166_maxDistance/maxDistance.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  18) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58166_powerTen/powerTen.agu
+       (5,19): Expected two equal types; found Int and Unit for expression
+       if n < 0 then
+         0 - 1
+       else
+         unit
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:135:17 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58166_powerTen/powerTen.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  19) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58166_stringLength/stringLength.agu
+       (3,24): expected an array type; found String for expression
+       length(s)
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:124:19 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58166_stringLength/stringLength.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  20) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58168_addOneValueToArray/addOneValueToArray.agu
+       (4,21): expected type Int, found type Bool for expression
+       False
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:106:10 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58168_addOneValueToArray/addOneValueToArray.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  21) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58168_sumOfMinAndOfMaxOfArray/sumOfMinAndOfMaxOfArray.agu
+       (15,10): unresolved symbol: i
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:120:16 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58168_sumOfMinAndOfMaxOfArray/sumOfMinAndOfMaxOfArray.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  22) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58185_unit_type_test/unit_type_test.agu
+       (5,26): unresolved symbol: i
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:120:16 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58185_unit_type_test/unit_type_test.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  23) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58215_addToArrayIndex/addToArrayIndex.agu
+       (3,1): number of params does not match type in function declaration "addToArrayIndex"
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:29:3 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58215_addToArrayIndex/addToArrayIndex.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  24) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58215_minArrAndElseUnit/minArrAndElseUnit.agu
+       (3,1): number of params does not match type in function declaration "minValInArr"
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:29:3 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58215_minArrAndElseUnit/minArrAndElseUnit.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  25) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58215_scopeArr/scopeArr.agu
+       (4,1): number of params does not match type in function declaration "setDiag2dArray"
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:29:3 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58215_scopeArr/scopeArr.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  26) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58215_somaSub/somaSub.agu
+       (3,1): number of params does not match type in function declaration "soma"
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:29:3 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58215_somaSub/somaSub.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  27) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58215_unitFunc/unitFunc.agu
+       (3,1): number of params does not match type in function declaration "faz3"
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:29:3 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58215_unitFunc/unitFunc.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  28) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58219_compare_string_length/compare_string_length.agu
+       (3,35): expected an array type; found String for expression
+       length(str1)
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:124:19 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58219_compare_string_length/compare_string_length.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  29) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58219_find_array_max_and_min/array_max_min.agu
+       (11,25): unresolved symbol: maxVal
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:120:16 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58219_find_array_max_and_min/array_max_min.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  30) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58219_find_char/find_char.agu
+       (3,29): expected an array type; found String for expression
+       length(str)
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:124:19 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58219_find_char/find_char.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  31) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58219_first_unique_character/first_unique_character.agu
+       (3,27): expected an array type; found String for expression
+       length(str)
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:124:19 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58219_first_unique_character/first_unique_character.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  32) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58219_is_array_sorted/is_array_sorted.agu
+       (5,18): Expected two equal types; found Bool and Unit for expression
+       if len <= 1 then
+         result
+       else
+         let i : Int = 1
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:135:17 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58219_is_array_sorted/is_array_sorted.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  33) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58219_is_prime/is_prime.agu
+       (9,5): Expected two equal types; found Bool and Unit for expression
+       if n % 2 == 0 || n % 3 == 0 then
+         False
+       else
+         let i : Int = 5
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:135:17 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58219_is_prime/is_prime.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  34) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58219_logical_operators/logical_operators.agu
+       (9,1): number of params does not match type in function declaration "notOp"
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:29:3 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58219_logical_operators/logical_operators.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  35) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58219_reverse_string/reverse_string.agu
+       (3,18): expected an array type; found String for expression
+       length(s)
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:124:19 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58219_reverse_string/reverse_string.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  36) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/58250_length/58250_length.agu
+       (4,27): expected an array type; found String for expression
+       length(str)
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:124:19 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58250_length/58250_length.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  37) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/64361_check_null_value/check_null_value.agu
+       (4,13): unresolved symbol: null
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:120:16 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/64361_check_null_value/check_null_value.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  38) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/64361_count_vowels/count_vowels.agu
+       (3,34): expected arguments of types [String[],Int], found [String,Int] for expression
+       count_vowels(word, 5)
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:129:17 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/64361_count_vowels/count_vowels.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  39) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/64361_prime_number/prime_number.agu
+       (8,32): Expected two equal types; found Bool and Unit for expression
+       if n % i == 0 then
+         False
+       else
+         unit
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:135:17 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/64361_prime_number/prime_number.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  40) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/64361_sum_function/sum_function.agu
+       (21,11): unresolved symbol: sum_array
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:120:16 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/64361_sum_function/sum_function.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  41) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/64371_pyramid/pyramid.agu
+       Parse error at token TokenPlus (8,24)
        CallStack (from HasCallStack):
          error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:838:20 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Parser
 
-  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/58219_sum_array/sum_array.agu/" --seed 1204285955
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/64371_pyramid/pyramid.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  42) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/64854_heart/heart.agu
+       (5,11): unresolved symbol: i
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:120:16 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/64854_heart/heart.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  43) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/64854_inc/inc.agu
+       (3,17): expected type Int, found type Unit for expression
+       0 ;
+       set i = i + 1 ;
+       print(i)
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:106:10 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/64854_inc/inc.agu/" --seed 1343233341
+
+  test/Spec.hs:41:29: 
+  44) Valid Aguda Programs /Users/vv/workspace/aguda-testing/test/valid/64854_printA/printA.agu
+       (4,5): expected type String, found type Unit for expression
+       print("a")
+       CallStack (from HasCallStack):
+         error, called at src/Validation.hs:106:10 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Validation
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/aguda-testing/test/valid/64854_printA/printA.agu/" --seed 1343233341
 
   test/Spec.hs:50:18: 
-  8) 
-Syntactically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-syntax/56307_incompatibleTypes/incompatibleTypes.agu
+  45) 
+Semantically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-semantic/58166_outOfBounds/outOfBounds.agu
        Expected an error but none was thrown.
 
-  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/56307_incompatibleTypes/incompatibleTypes.agu/" --seed 1204285955
+  To rerun use: --match "/\nSemantically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-semantic/58166_outOfBounds/outOfBounds.agu/" --seed 1343233341
 
-  test/Spec.hs:50:18: 
-  9) 
-Syntactically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-syntax/56307_typeMismatch/typeMismatch.agu
-       Expected an error but none was thrown.
+Randomized with seed 1343233341
 
-  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/56307_typeMismatch/typeMismatch.agu/" --seed 1204285955
+Finished in 0.0493 seconds
+218 examples, 45 failures
 
-  test/Spec.hs:50:18: 
-  10) 
-Syntactically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-syntax/56307_usedUndeclaredVariable/usedUndeclaredVariable.agu
-       Expected an error but none was thrown.
 
-  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/56307_usedUndeclaredVariable/usedUndeclaredVariable.agu/" --seed 1204285955
-
-  test/Spec.hs:50:18: 
-  11) 
-Syntactically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-syntax/58219_invalid_number_of_arguments/invalid_number_of_arguments.agu
-       Expected an error but none was thrown.
-
-  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/58219_invalid_number_of_arguments/invalid_number_of_arguments.agu/" --seed 1204285955
-
-  test/Spec.hs:50:18: 
-  12) 
-Syntactically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-syntax/58219_invalid_return_type/invalid_return_type.agu
-       Expected an error but none was thrown.
-
-  To rerun use: --match "/\nSyntactically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-syntax/58219_invalid_return_type/invalid_return_type.agu/" --seed 1204285955
-
-  test/Spec.hs:41:29: 
-  13) 
-Semantically Invalid Aguda Programs /Users/vv/workspace/aguda-testing/test/invalid-semantic/56334_wrongTypeFunction/wrongTypeFunction.agu
-       Parse error at token TokenEq (6,13)
-       CallStack (from HasCallStack):
-         error, called at .stack-work/dist/aarch64-osx/ghc-9.8.4/build/Parser.hs:838:20 in aguda-0.1.0.0-57VQB4rAia7F1XJavYFf9J:Parser
-
-  To rerun use: --match "/\nSemantically Invalid Aguda Programs//Users/vv/workspace/aguda-testing/test/invalid-semantic/56334_wrongTypeFunction/wrongTypeFunction.agu/" --seed 1204285955
-
-Randomized with seed 1204285955
-
-Finished in 0.0336 seconds
-279 examples, 13 failures
