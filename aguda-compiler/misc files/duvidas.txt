@@ -6,4 +6,13 @@
     "The type of variable declaration let id : type = exp is Unit if exp is of type type. Furthermore, if the declaration appears at the left of a semicolon let id : type = exp1 ; exp2, then the type of id is used to validate exp2"
     - Qual a necessidade de ter um caso específico para quando "let id : type = exp1 ; exp2" ? O type de sequential composition já não trata dessa situação?
 
-    Em que situações é que uma expressão pode não ter um tipo?
+    Onde se deve abrir novo scope
+
+    Exemplos de programas com mais de um erro
+
+    Esclarecimentos sobre o docker:
+        - O professor disse que os testes não precisam vir no Docker, como é suposto o container ter acesso aos testes?
+            - assumir que existe o diretório ../aguda-testing e fazer mount do volume quando se faz build do docker container
+            - OU receber como argumento de docker run o full path para /aguda-testing e só aí fazer mount do volume (flag -v)
+
+    é suposto haver shadowing?

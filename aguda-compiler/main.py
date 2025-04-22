@@ -3,7 +3,7 @@ import io
 import contextlib
 from src.lexer import lexer
 from src.parser import parser, reset_parser
-from src.type_checker import verify
+from src.type_checker import SemanticError, verify
 import sys
 
 TEST_DIR = 'test'
@@ -110,18 +110,24 @@ def semantic_test_run(filepath, valid, print_ast=False):
     try:
         with contextlib.redirect_stdout(output_buffer):
             verify(ast)
-        output = output_buffer.getvalue()
-        output = output.strip()
 
-    except Exception as e:
+    except SemanticError as e:
+        output = output_buffer.getvalue().strip()
         if valid:
             test_log.append(f"{filepath} [FAIL]")
-            test_log.append(str(e))
+            test_log.append(output)
         else:
             test_log.append(f"{filepath} [✔]")
-            test_log.append(str(e))
+            test_log.append(output)
+        return test_log    
+        
+    except Exception as e:
+        output = output_buffer.getvalue().strip()
+        test_log.append(f"{filepath} [EXCEPTION]")
+        test_log.append(str(e))
         return test_log
-
+    
+    output = output_buffer.getvalue().strip()
     if valid:
         test_log.append(f"{filepath} [✔]")
         test_log.append(output)
@@ -217,4 +223,4 @@ def main():
 if __name__ == '__main__':
     main()
     #run_test_suite()
-    #run_single_test(r".\test\valid\58182_transpose_matrix\transpose_matrix.agu")
+    #run_single_test(r".\test\valid\54394_zip\zip.agu")
