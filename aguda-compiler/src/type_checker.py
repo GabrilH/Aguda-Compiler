@@ -30,15 +30,21 @@ class ErrorLogger:
     def get_errors(self):
         return self.messages
                 
-def checkAgainst(ctx: SymbolTable, exp: Exp, expected_type: Type) -> Type:
+def checkAgainst(ctx: SymbolTable, exp: Exp, expected_type: Type) -> None:
     """
     Checks if the expression `exp` matches the expected type `type` in the given context `ctx`.
     """
     match exp:
         # TODO more specific checks for each type
+        # case Var(name):
+        #     actual_type = typeofVar(ctx, name)
+        #     checkEqualTypes(exp, actual_type, expected_type)
+        
+        # case BinaryOp(left, operator, right):
+        #     pass
         case _:
             actual_type = typeof(ctx, exp)
-            return checkEqualTypes(exp, actual_type, expected_type)
+            checkEqualTypes(exp, actual_type, expected_type)
         
 def checkArguments(ctx: SymbolTable, matched_exp: Exp, exps: List[Exp], function_type: FunctionType) -> None:
     """
@@ -51,22 +57,21 @@ def checkArguments(ctx: SymbolTable, matched_exp: Exp, exps: List[Exp], function
         for exp, expected_type in zip(exps, expected_types):
             checkAgainst(ctx, exp, expected_type)
     
-def checkEqualTypes(exp: Exp, actual_type: Type, expected_type: Type) -> Type:
+def checkEqualTypes(exp: Exp, actual_type: Type, expected_type: Type) -> None:
     """
     Checks if two types are equal or compatible.
     """
+    # TODO deve receber exp ou n?
     if actual_type != expected_type:
         logger.log(f"Expected two equal types; found {expected_type} and {actual_type}, for expression '{exp}'", exp.lineno, exp.column)
-    return actual_type
     
-def checkInstance(ctx: SymbolTable, exp: Exp, expected_class: type) -> Type:
+def checkInstance(ctx: SymbolTable, exp: Exp, expected_class: type) -> None:
     """
     Checks if the expression `exp` is an instance of the expected class `expected_class`.
     """
     actual_type = typeof(ctx, exp)
     if not isinstance(actual_type, expected_class):
         logger.log(f"Expected instance of {expected_class}, found {actual_type}, for expression '{exp}'", exp.lineno, exp.column)
-    return actual_type
 
 def checkBuiltInConflict(exp: Exp, name: str) -> None:
     """
@@ -80,6 +85,7 @@ def insertIntoCtx(ctx: SymbolTable, name: str, type: Type) -> None:
         ctx.insert(name, type)
     
 def typeofVar(ctx: SymbolTable, exp: Exp, name: str) -> Type:
+    # TODO deve receber exp ou n?
     varType = ctx.lookup(name)
     if varType is None:
         logger.log(f"unresolved symbol: {name}", exp.lineno, exp.column)
@@ -108,9 +114,10 @@ def typeof(ctx: SymbolTable, match_exp: Exp) -> Type:
             return ArrayType(type)
         
         case ArrayAccess(exp1, exp2):
-            arrayType : ArrayType = checkInstance(ctx, exp1, ArrayType)
+            exp1Type = typeof(ctx, exp1)
+            checkInstance(ctx, exp1, ArrayType)
             checkAgainst(ctx, exp2, BaseType('Int'))            
-            return arrayType.type
+            return exp1Type.type
         
         case FunctionCall(id, exps):
             if id.name == 'print':
@@ -127,7 +134,8 @@ def typeof(ctx: SymbolTable, match_exp: Exp) -> Type:
                 checkInstance(ctx, exp1, ArrayType)
                 return BaseType('Int')
             
-            funcType : FunctionType = checkInstance(ctx, id, FunctionType)
+            funcType = typeof(ctx, id)
+            checkInstance(ctx, id, FunctionType)
             checkArguments(ctx, match_exp, exps, funcType)
             
             return funcType.return_type
