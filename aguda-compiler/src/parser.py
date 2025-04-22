@@ -299,7 +299,10 @@ def p_array_access(t):
 
 def p_group(t):
     '''group : LPAREN sequence RPAREN'''
-    t[0] = t[2]
+    group = s.Group(t[2])
+    group.lineno = t.lineno(1)
+    group.column = find_column(t.lexer.lexdata, t.slice[1])
+    t[0] = group
 
 def p_empty(t):
     '''empty :'''

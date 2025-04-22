@@ -199,6 +199,9 @@ def typeof(ctx: SymbolTable, match_exp: Exp) -> Type:
                 insertIntoCtx(local_ctx, param.name, param_type)
             
             checkAgainst(local_ctx, body, type.return_type)
+
+        case Group(exp):
+            return typeof(ctx.enter_scope(), exp)
         
         case _:
             logger.log(f"Unknown expression type '{type(match_exp)}'", match_exp.lineno, match_exp.column)

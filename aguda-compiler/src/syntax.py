@@ -138,6 +138,12 @@ class ArrayAccess(Exp):
     def __str__(self):
         return f'{self.array}[{self.index}]'
 
+@dataclass
+class Group(Exp):
+    exp: Exp
+
+    def __str__(self):
+        return f'(\n{indent(self.exp)}\n)'
 
 @dataclass
 class Assignment(ASTNode):
@@ -167,7 +173,7 @@ class WhileLoop(Exp):
     body: Exp
 
     def __str__(self):
-        return f'while {self.condition} do (\n{indent(self.body)}\n)'
+        return f'while {self.condition} do {self.body}'
 
 
 @dataclass
