@@ -13,7 +13,7 @@ precedence = (
     ('left', 'AND'),
     ('left', 'EQUALS', 'NOT_EQUALS'),
     ('left', 'LESS', 'LESS_EQUAL', 'GREATER', 'GREATER_EQUAL'),
-    ('left', 'PLUS', 'MINUS'),
+    ('left', 'PLUS', 'MINUS', 'STRING_CONCAT'),
     ('left', 'TIMES', 'DIVIDE', 'MOD'),
     ('right', 'POWER'),
     ('right', 'UMINUS', 'NOT'),
@@ -203,7 +203,8 @@ def p_binary_exp(t):
                     | exp GREATER exp
                     | exp GREATER_EQUAL exp
                     | exp OR exp
-                    | exp AND exp'''
+                    | exp AND exp
+                    | exp STRING_CONCAT exp'''
     binOp = s.BinaryOp(t[1], t[2], t[3])
     binOp.lineno = t.lineno(2)
     binOp.column = find_column(t.lexer.lexdata, t.slice[2])

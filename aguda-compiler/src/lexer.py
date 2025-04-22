@@ -25,7 +25,7 @@ tokens = [
     'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'MOD', 'POWER',
     'EQUALS', 'NOT_EQUALS', 'LESS', 'LESS_EQUAL', 'GREATER', 'GREATER_EQUAL',
     'AND', 'OR', 'NOT', 'LPAREN', 'RPAREN', 'LBRACKET', 'RBRACKET', 'COMMA', 'SEMICOLON',
-    'BAR', 'ARROW', 'COLON', 'UNDERSCORE', 'ASSIGN'
+    'BAR', 'ARROW', 'COLON', 'UNDERSCORE', 'ASSIGN', 'STRING_CONCAT'
 ] + list(reserved.values())
 
 # Token regular expressions
@@ -55,6 +55,7 @@ t_ARROW = r'->'
 t_COLON = r':'
 t_UNDERSCORE = r'_'
 t_ASSIGN = r'='
+t_STRING_CONCAT = r'\+\+'
 
 # Identifier rule
 def t_ID(t):

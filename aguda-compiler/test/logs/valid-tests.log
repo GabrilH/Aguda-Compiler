@@ -1,7 +1,7 @@
 valid-tests
 
-Passed [✔]: 136
-Failed [FAIL]: 44
+Passed [✔]: 137
+Failed [FAIL]: 43
 
 test\valid\54394_array_operations\array_operations.agu [✔]
 Program is semantically valid!
@@ -811,9 +811,8 @@ test\valid\64371_pascals_triangle\pascals_triangle.agu [✔]
 Program is semantically valid!
 
 
-test\valid\64371_pyramid\pyramid.agu [FAIL]
-Syntactic error: at line 8, column 24: Unexpected token '+'
-Syntactic error: at line 19, column 52: Unexpected token '+'
+test\valid\64371_pyramid\pyramid.agu [✔]
+Program is semantically valid!
 
 
 test\valid\64371_reverse_array\reverse_array.agu [✔]

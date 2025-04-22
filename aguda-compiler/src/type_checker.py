@@ -276,6 +276,11 @@ def typeof(ctx: SymbolTable, match_exp: Exp) -> Type:
                 checkAgainst(ctx, left, BaseType('Bool'))
                 checkAgainst(ctx, right, BaseType('Bool'))
                 return BaseType('Bool')
+            
+            if operator == '++':
+                checkAgainst(ctx, left, BaseType('String'))
+                checkAgainst(ctx, right, BaseType('String'))
+                return BaseType('String')
         
         case LogicalNegation(operand):
             checkAgainst(ctx, operand, BaseType('Bool'))
