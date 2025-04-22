@@ -23,6 +23,7 @@ test\valid\54394_uv_mapping\uv_mapping.agu [✔]
 Program is semantically valid!
 test\valid\54394_zip\zip.agu [FAIL]
 Error: (6, 33) unresolved symbol: lenght
+Error: (6, 33) unresolved symbol: lenght
 Error: (6, 33) Expected instance of <class 'src.syntax.FunctionType'>, found None, for expression 'lenght'
 Error: (-1, -1) Unexpected error during semantic analysis: 'NoneType' object has no attribute 'param_types'
 test\valid\56269_ackermann\ackermann.agu [✔]
@@ -96,6 +97,7 @@ Error: (4, 8) Expected two equal types; found Bool and Int, for expression 'if x
 else
   2 == 1'
 test\valid\56311_matrix_operations\matrix_operations.agu [FAIL]
+Error: (14, 9) unresolved symbol: error
 Error: (14, 9) unresolved symbol: error
 Error: (14, 9) Expected instance of <class 'src.syntax.FunctionType'>, found None, for expression 'error'
 Error: (-1, -1) Unexpected error during semantic analysis: 'NoneType' object has no attribute 'param_types'
@@ -227,9 +229,9 @@ test\valid\58168_sumOfMinAndOfMaxOfArray\sumOfMinAndOfMaxOfArray.agu [FAIL]
 Error: (15, 10) unresolved symbol: i
 Error: (15, 12) Expected two equal types; found Int and None, for expression 'i < length(b)'
 Error: (16, 5) unresolved symbol: a
+Error: (16, 5) unresolved symbol: a
 Error: (16, 5) Expected instance of <class 'src.syntax.ArrayType'>, found None, for expression 'a'
-Error: (16, 7) unresolved symbol: i
-...and 2 more errors.
+...and 3 more errors.
 test\valid\58168_sumTwoNumbers\sumTwoNumbers.agu [✔]
 Program is semantically valid!
 test\valid\58170_arrayBounds\arrayBounds.agu [✔]
@@ -434,6 +436,7 @@ else
 test\valid\64361_reverse_array\reverse_array.agu [✔]
 Program is semantically valid!
 test\valid\64361_sum_function\sum_function.agu [FAIL]
+Error: (21, 11) unresolved symbol: sum_array
 Error: (21, 11) unresolved symbol: sum_array
 Error: (21, 11) Expected instance of <class 'src.syntax.FunctionType'>, found None, for expression 'sum_array'
 Error: (-1, -1) Unexpected error during semantic analysis: 'NoneType' object has no attribute 'param_types'
