@@ -127,7 +127,7 @@ def checkAgainst(ctx: SymbolTable, match_exp: Exp, expected_type: Type) -> None:
             checkAgainst(ctx, exp, expected_type)
 
         case _:
-            logger.log(f"Expected type '{expected_type}', found type '{typeof(ctx, match_exp)}' for expression '{match_exp}'", match_exp.lineno, match_exp.column)
+            logger.log(f"Expected type '{expected_type}', found type '{typeof(ctx, match_exp)}' for expression \n'{match_exp}'", match_exp.lineno, match_exp.column)
             # actual_type = typeof(ctx, match_exp)
             # checkEqualTypes(match_exp, actual_type, expected_type)
         
@@ -148,7 +148,7 @@ def checkEqualTypes(exp: Exp, actual_type: Type, expected_type: Type) -> None:
     """
     # TODO deve receber exp ou n?
     if actual_type != expected_type:
-        logger.log(f"Expected two equal types; found {expected_type} and {actual_type}, for expression '{exp}'", exp.lineno, exp.column)
+        logger.log(f"Expected two equal types; found {expected_type} and {actual_type}, for expression \n'{exp}'", exp.lineno, exp.column)
     
 def checkInstance(ctx: SymbolTable, exp: Exp, expected_class: type) -> None:
     """
@@ -156,7 +156,7 @@ def checkInstance(ctx: SymbolTable, exp: Exp, expected_class: type) -> None:
     """
     actual_type = typeof(ctx, exp)
     if not isinstance(actual_type, expected_class):
-        logger.log(f"Expected instance of {expected_class}, found {actual_type}, for expression '{exp}'", exp.lineno, exp.column)
+        logger.log(f"Expected instance of {expected_class}, found {actual_type}, for expression \n'{exp}'", exp.lineno, exp.column)
 
 def checkBuiltInConflict(exp: Exp, name: str) -> None:
     """
@@ -285,7 +285,7 @@ def typeof(ctx: SymbolTable, match_exp: Exp) -> Type:
             checkBuiltInConflict(match_exp, id.name)
             checkInstance(ctx, id, FunctionType)
             if len(parameters) != len(type.param_types):
-                logger.log(f"Function '{id.name}' declared with incorrect number of parameters", match_exp.lineno, match_exp.column)
+                logger.log(f"number of params does not match type in function declaration '{id.name}'", match_exp.lineno, match_exp.column)
             insertIntoCtx(ctx, id.name, type)
 
             # Check for duplicate parameter names (except for '_')

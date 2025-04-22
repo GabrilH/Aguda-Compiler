@@ -46,8 +46,7 @@ def syntax_test_run(filepath, valid, print_ast=False):
             ast = parser.parse(code, lexer=lexer)
         if print_ast:
             print(ast)
-        output = output_buffer.getvalue()
-        output = output.strip()
+        output = output_buffer.getvalue().strip()
     except Exception as e:
         test_log.append(f"{filepath} [EXCEPTION]")
         test_log.append(str(e))
@@ -91,8 +90,7 @@ def semantic_test_run(filepath, valid, print_ast=False):
 
         if print_ast:
             print(ast)
-        output = output_buffer.getvalue()
-        output = output.strip()
+        output = output_buffer.getvalue().strip()
 
     except Exception as e:
         test_log.append(f"{filepath} [EXCEPTION]")
@@ -134,7 +132,7 @@ def semantic_test_run(filepath, valid, print_ast=False):
     else:
         test_log.append(f"{filepath} [FAIL]")
         test_log.append("Expected error but none found.")
-
+    
     return test_log
 
 def run_multiple_tests(test_dir : str, valid : bool, type : int):
@@ -156,8 +154,10 @@ def run_multiple_tests(test_dir : str, valid : bool, type : int):
     for filepath in all_files:
         if type == 0:
             test_log = syntax_test_run(filepath, valid)
+            test_log.append("\n")
         else:
             test_log = semantic_test_run(filepath, valid)
+            test_log.append("\n")
 
         logs.extend(test_log)
 
