@@ -1,5 +1,22 @@
 Comando para correr ficheiro local:
 docker-compose run --rm -v C:\Users\gmfh\Documents\TComp_Repo\aguda-compiler\array_operations.agu:/app/local_file.agu aguda-compiler /app/local_file.agu
+Adicionar string concat ++
 
-test\valid\56311_shadow_variables\shadow_variables.agu
-test\valid\56332_array_sum\array_sum.agu
+Só aparece a ultima exp:
+    - test\valid\56311_shadow_variables\shadow_variables.agu
+    - test\valid\56332_array_sum\array_sum.agu
+    - test\valid\56332_count_even_in_array\count_even_in_array.agu
+
+errors duplicados:
+    - test\valid\56332_count_even_in_array\count_even_in_array.agus
+
+if no inicio (no meu) no stor ( sitio do erro):
+    - test\valid\58166_maxDistance\maxDistance.agu
+    - test\valid\58166_powerTen\powerTen.agu
+
+tem goofy print expected two equals quando devia ser arguments of types...
+    - test\valid\64361_count_vowels\count_vowels.agu
+
+devia ser expected type Int found type Unit
+    - test\valid\64854_inc\inc.agu
+    - cena parecida: test\valid\64854_printA\printA.agu
