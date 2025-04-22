@@ -109,8 +109,6 @@ Error: (5, 6) Expected two equal types; found Bool and Int, for expression
 test\invalid-semantic\58170_wrongIndexType\wrongIndexType.agu [✔]
 Error: (6, 13) Expected two equal types; found Int and Bool, for expression 
 'index'
-Error: (6, 13) Expected two equal types; found Int and Bool, for expression 
-'index'
 
 
 test\invalid-semantic\58182_add_int_to _string\add_int_to_string.agu [✔]
@@ -140,14 +138,9 @@ test\invalid-semantic\58185_undeclared_variable\undeclared_variable.agu [✔]
 Error: (6, 15) unresolved symbol: n
 Error: (6, 15) Expected two equal types; found Int and None, for expression 
 'n'
-Error: (6, 15) unresolved symbol: n
-Error: (6, 15) Expected two equal types; found Int and None, for expression 
-'n'
 
 
 test\invalid-semantic\58185_wrong_function_parameter\wrong_funtion_parameter.agu [✔]
-Error: (8, 22) Expected type 'Int', found type 'Bool' for expression 
-'true'
 Error: (8, 22) Expected type 'Int', found type 'Bool' for expression 
 'true'
 

@@ -59,8 +59,8 @@ def checkAgainst(ctx: SymbolTable, match_exp: Exp, expected_type: Type) -> None:
                 if len(exps) != 1:
                     logger.log(f"Print function takes exactly one argument", match_exp.lineno, match_exp.column)
                 else:
-                    # TODO is this needed?
-                    checkAgainst(ctx, exps[0], typeof(ctx, exps[0]))
+                    exp1 = exps[0]
+                    typeof(ctx, exp1)
                 checkEqualTypes(match_exp, BaseType('Unit'), expected_type)
             
             elif id.name == 'length':

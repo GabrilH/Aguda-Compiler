@@ -85,7 +85,7 @@ Error: (14, 9) Expected type 'Bool', found type 'Unit' for expression
 'let x : Bool = let x : Bool = let x : Bool = let x : Bool = true'
 Error: (13, 8) Expected type 'Bool', found type 'Unit' for expression 
 'let x : Bool = let x : Bool = let x : Bool = let x : Bool = let x : Bool = true'
-...and 19 more errors.
+...and 13 more errors.
 
 
 test\valid\56269_insertionSort\insertionSort.agu [✔]
@@ -152,7 +152,6 @@ Program is semantically valid!
 
 test\valid\56311_empty_array\empty_array.agu [FAIL]
 Error: (9, 11) unresolved symbol: empty_matrix
-Error: (9, 11) unresolved symbol: empty_matrix
 
 
 test\valid\56311_equals\equals_method.agu [FAIL]
@@ -209,8 +208,6 @@ a[2])'
 test\valid\56332_count_even_in_array\count_even_in_array.agu [FAIL]
 Error: (13, 71) Expected type 'Int[]', found type 'Int' for expression 
 '1'
-Error: (13, 71) Expected type 'Int[]', found type 'Int' for expression 
-'1'
 
 
 test\valid\56332_count_negatives_on_matrix\count_negatives_on_matrix.agu [FAIL]
@@ -231,8 +228,6 @@ Program is semantically valid!
 
 
 test\valid\56332_min_elem_of_array\min_elem_of_array.agu [FAIL]
-Error: (11, 70) Expected type 'Int[]', found type 'Int' for expression 
-'100'
 Error: (11, 70) Expected type 'Int[]', found type 'Int' for expression 
 '100'
 
@@ -593,7 +588,6 @@ Error: (4, 18) Expected type '(Int) -> Int', found type 'Int' for expression
 Error: (4, 25) Expected type '(Int) -> Int', found type 'Int' for expression 
 '3'
 Error: (7, 11) Function call 'faz3(unit, 7)' has 2 arguments, expected 1
-Error: (7, 11) Function call 'faz3(unit, 7)' has 2 arguments, expected 1
 
 
 test\valid\58219_compare_string_length\compare_string_length.agu [FAIL]
@@ -615,7 +609,7 @@ Error: (11, 41) unresolved symbol: maxVal
 Error: (11, 37) Expected two equal types; found Int and None, for expression 
 'set maxVal = arr[i]'
 Error: (16, 15) unresolved symbol: maxVal
-...and 7 more errors.
+...and 5 more errors.
 
 
 test\valid\58219_find_char\find_char.agu [FAIL]
@@ -667,7 +661,6 @@ Error: (14, 15) Expected two equal types; found Int and None, for expression
 test\valid\58219_logical_operators\logical_operators.agu [FAIL]
 Error: (9, 1) number of params does not match type in function declaration 'notOp'
 Error: (17, 9) Function call 'notOp(true)' has 1 arguments, expected 2
-Error: (18, 9) Function call 'notOp(false)' has 1 arguments, expected 2
 Error: (18, 9) Function call 'notOp(false)' has 1 arguments, expected 2
 
 
@@ -741,8 +734,6 @@ Error: (10, 24) Expected two equal types; found Int and None, for expression
 test\valid\64361_count_vowels\count_vowels.agu [FAIL]
 Error: (17, 24) Expected two equal types; found String[] and String, for expression 
 'word'
-Error: (20, 24) Expected two equal types; found String[] and String, for expression 
-'sentence'
 Error: (20, 24) Expected two equal types; found String[] and String, for expression 
 'sentence'
 
