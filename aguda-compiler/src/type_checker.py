@@ -40,44 +40,97 @@ def checkAgainst(ctx: SymbolTable, match_exp: Exp, expected_type: Type) -> None:
             actual_type = typeof(ctx, match_exp)
             checkEqualTypes(match_exp, actual_type, expected_type)
 
+        case ArrayCreation(type, exp1, exp2):
+            checkAgainst(ctx, exp1, BaseType('Int'))
+            checkAgainst(ctx, exp2, type)
+            checkEqualTypes(match_exp, ArrayType(type), expected_type)
+
+        case ArrayAccess(exp1, exp2):
+            checkInstance(ctx, exp1, ArrayType)
+            checkAgainst(ctx, exp2, BaseType('Int'))
+            actual_type = typeof(ctx, exp1).type
+            checkEqualTypes(match_exp, actual_type, expected_type)
+
+        case FunctionCall(id, exps):
+            if id.name == 'print':
+                if len(exps) != 1:
+                    logger.log(f"Print function takes exactly one argument", match_exp.lineno, match_exp.column)
+                else:
+                    # TODO is this needed?
+                    checkAgainst(ctx, exps[0], typeof(ctx, exps[0]))
+                checkEqualTypes(match_exp, BaseType('Unit'), expected_type)
+            
+            elif id.name == 'length':
+                if len(exps) != 1:
+                    logger.log(f"Length function takes exactly one argument", match_exp.lineno, match_exp.column)
+                else:
+                    checkInstance(ctx, exps[0], ArrayType)
+                checkEqualTypes(match_exp, BaseType('Int'), expected_type)
+            
+            else:
+                funcType = typeof(ctx, id)
+                checkInstance(ctx, id, FunctionType)
+                checkArguments(ctx, match_exp, exps, funcType)
+                checkEqualTypes(match_exp, funcType.return_type, expected_type)
+
+        case VariableDeclaration(id, type, exp) | TopLevelVariableDeclaration(id, type, exp):
+            checkAgainst(ctx, exp, type)
+            checkBuiltInConflict(match_exp, id.name)
+            insertIntoCtx(ctx, id.name, type)
+            checkEqualTypes(match_exp, BaseType('Unit'), expected_type)
+
         case Var(name):
             actual_type = typeofVar(ctx, match_exp, name)
             checkEqualTypes(match_exp, actual_type, expected_type)
+        
+        case Conditional(exp1, exp2, exp3):
+            checkAgainst(ctx, exp1, BaseType('Bool'))
+            checkAgainst(ctx, exp2, expected_type)
+            checkAgainst(ctx, exp3, expected_type)
+
+        case WhileLoop(exp1, exp2):
+            checkAgainst(ctx, exp1, BaseType('Bool'))
+            typeof(ctx.enter_scope(), exp2)
+            checkEqualTypes(match_exp, BaseType('Unit'), expected_type)
+
+        case Assignment(lhs, exp):
+            lhsType = typeof(ctx, lhs)
+            checkAgainst(ctx, exp, lhsType)
+            checkEqualTypes(match_exp, BaseType('Unit'), expected_type)
+
+        case Sequence(first, rest):
+            typeof(ctx, first)
+            checkAgainst(ctx, rest, expected_type)
 
         case BinaryOp(left, operator, right):
 
             if operator in ['+', '-', '*', '/', '%', '^']:
-                checkAgainst(ctx, left, expected_type)
-                checkAgainst(ctx, right, expected_type)
+                checkAgainst(ctx, left, BaseType('Int'))
+                checkAgainst(ctx, right, BaseType('Int'))
+                checkEqualTypes(match_exp, BaseType('Int'), expected_type)
             
             if operator in ['==', '!=', '<', '>', '<=', '>=']:
                 leftType = typeof(ctx, left)
                 rightType = typeof(ctx, right)
                 checkEqualTypes(match_exp, leftType, rightType)
-                #TODO expected_type ?
+                checkEqualTypes(match_exp, BaseType('Bool'), expected_type)
             
             if operator in ['&&', '||']:
-                checkAgainst(ctx, left, expected_type)
-                checkAgainst(ctx, right, expected_type)
+                checkAgainst(ctx, left, BaseType('Bool'))
+                checkAgainst(ctx, right, BaseType('Bool'))
+                checkEqualTypes(match_exp, BaseType('Bool'), expected_type)
 
+        case LogicalNegation(operand):
+            checkAgainst(ctx, operand, BaseType('Bool'))
+            checkEqualTypes(match_exp, BaseType('Bool'), expected_type)
 
-        case ArrayCreation(type, exp1, exp2):
-            checkAgainst(ctx, exp1, BaseType('Int'))
-            checkAgainst(ctx, exp2, type)
-
-        case ArrayAccess(exp1, exp2):
-            checkInstance(ctx, exp1, ArrayType)
-            checkAgainst(ctx, exp2, BaseType('Int'))
-
-        # case FunctionCall(id, exps):
-        #     funcType = typeof(ctx, id)
-        #     checkInstance(ctx, id, FunctionType)
-        #     checkArguments(ctx, match_exp, exps, funcType)
+        case Group(exp):
+            checkAgainst(ctx, exp, expected_type)
 
         case _:
-            # logger.log(f"Expected type '{expected_type}', found type '{typeof(ctx, match_exp)}' for expression '{match_exp}'", match_exp.lineno, match_exp.column)
-            actual_type = typeof(ctx, match_exp)
-            checkEqualTypes(match_exp, actual_type, expected_type)
+            logger.log(f"Expected type '{expected_type}', found type '{typeof(ctx, match_exp)}' for expression '{match_exp}'", match_exp.lineno, match_exp.column)
+            # actual_type = typeof(ctx, match_exp)
+            # checkEqualTypes(match_exp, actual_type, expected_type)
         
 def checkArguments(ctx: SymbolTable, matched_exp: Exp, exps: List[Exp], function_type: FunctionType) -> None:
     """
