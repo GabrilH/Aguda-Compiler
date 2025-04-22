@@ -8,7 +8,8 @@ Só aparece a ultima exp:
     - test\valid\56332_count_even_in_array\count_even_in_array.agu
 
 errors duplicados:
-    - test\valid\56332_count_even_in_array\count_even_in_array.agus
+    - \test\valid\54394_zip\zip.agu
+        - por causa de no checkAgainst FunctionCall ser chamado typeof e dentro do checkInstance tambem
 
 if no inicio (no meu) no stor ( sitio do erro):
     - test\valid\58166_maxDistance\maxDistance.agu

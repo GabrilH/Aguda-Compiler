@@ -30,6 +30,29 @@ class ErrorLogger:
     def get_errors(self):
         return self.messages
                 
+def checkEqualTypes(exp: Exp, actual_type: Type, expected_type: Type) -> None:
+    """
+    Checks if two types are equal or compatible.
+    """
+    # TODO deve receber exp ou n?
+    if actual_type != expected_type:
+        logger.log(f"Expected two equal types; found {expected_type} and {actual_type}, for expression \n'{exp}'", exp.lineno, exp.column)
+    
+def checkInstance(ctx: SymbolTable, exp: Exp, expected_class: type) -> None:
+    """
+    Checks if the expression `exp` is an instance of the expected class `expected_class`.
+    """
+    actual_type = typeof(ctx, exp)
+    if not isinstance(actual_type, expected_class):
+        logger.log(f"Expected instance of {expected_class}, found {actual_type}, for expression \n'{exp}'", exp.lineno, exp.column)
+
+def checkBuiltInConflict(exp: Exp, name: str) -> None:
+    """
+    Checks if the name conflicts with built-in functions.
+    """
+    if name in ['print', 'length']:
+        logger.log(f"Name '{name}' conflicts with built-in function", exp.lineno, exp.column)
+
 def checkAgainst(ctx: SymbolTable, match_exp: Exp, expected_type: Type) -> None:
     """
     Checks if the expression `exp` matches the expected type `type` in the given context `ctx`.
@@ -51,8 +74,8 @@ def checkAgainst(ctx: SymbolTable, match_exp: Exp, expected_type: Type) -> None:
         case (ArrayAccess(exp1, exp2), _):
             checkInstance(ctx, exp1, ArrayType)
             checkAgainst(ctx, exp2, BaseType('Int'))
-            actual_type = typeof(ctx, exp1).type
-            checkEqualTypes(match_exp, actual_type, expected_type)
+            actual_type : ArrayType = typeof(ctx, exp1)
+            checkEqualTypes(match_exp, actual_type.type, expected_type)
 
         case (FunctionCall(id, exps), _):
             if id.name == 'print':
@@ -141,29 +164,6 @@ def checkArguments(ctx: SymbolTable, matched_exp: Exp, exps: List[Exp], function
     else:
         for exp, expected_type in zip(exps, expected_types):
             checkAgainst(ctx, exp, expected_type)
-    
-def checkEqualTypes(exp: Exp, actual_type: Type, expected_type: Type) -> None:
-    """
-    Checks if two types are equal or compatible.
-    """
-    # TODO deve receber exp ou n?
-    if actual_type != expected_type:
-        logger.log(f"Expected two equal types; found {expected_type} and {actual_type}, for expression \n'{exp}'", exp.lineno, exp.column)
-    
-def checkInstance(ctx: SymbolTable, exp: Exp, expected_class: type) -> None:
-    """
-    Checks if the expression `exp` is an instance of the expected class `expected_class`.
-    """
-    actual_type = typeof(ctx, exp)
-    if not isinstance(actual_type, expected_class):
-        logger.log(f"Expected instance of {expected_class}, found {actual_type}, for expression \n'{exp}'", exp.lineno, exp.column)
-
-def checkBuiltInConflict(exp: Exp, name: str) -> None:
-    """
-    Checks if the name conflicts with built-in functions.
-    """
-    if name in ['print', 'length']:
-        logger.log(f"Name '{name}' conflicts with built-in function", exp.lineno, exp.column)
 
 def insertIntoCtx(ctx: SymbolTable, name: str, type: Type) -> None:
     if name != '_':
