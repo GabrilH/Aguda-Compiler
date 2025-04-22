@@ -10,7 +10,7 @@ Program is semantically valid!
 test\valid\54394_clamp\clamp.agu [✔]
 Program is semantically valid!
 test\valid\54394_combinations\combinations.agu [FAIL]
-Error: (10, 15) Function 'fac' called with incorrect number of arguments
+Error: (10, 15) Function call 'fac(6, 2)' has 2 arguments, expected 1
 test\valid\54394_identifier\identifier.agu [✔]
 Program is semantically valid!
 test\valid\54394_operator_precedence\operator_precedence.agu [✔]
@@ -329,14 +329,14 @@ Error: (4, 9) unresolved symbol: y
 Error: (4, 7) Expected two equal types; found None and Int, for expression 'x + y'
 Error: (4, 7) Expected two equal types; found (Int) -> Int and Int, for expression 'x + y'
 Error: (6, 1) Function 'sub' declared with incorrect number of parameters
-...and 9 more errors.
+...and 5 more errors.
 test\valid\58215_unitFunc\unitFunc.agu [FAIL]
 Error: (3, 1) Function 'faz3' declared with incorrect number of parameters
 Error: (4, 5) Expected two equal types; found (Int) -> Int and Int, for expression 'if true then
   3
 else
   3'
-Error: (7, 11) Function 'faz3' called with incorrect number of arguments
+Error: (7, 11) Function call 'faz3(unit, 7)' has 2 arguments, expected 1
 test\valid\58219_compare_string_length\compare_string_length.agu [FAIL]
 Error: (4, 29) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 'str1'
 Error: (5, 29) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 'str2'
@@ -379,11 +379,11 @@ Error: (15, 14) unresolved symbol: i
 ...and 9 more errors.
 test\valid\58219_logical_operators\logical_operators.agu [FAIL]
 Error: (9, 1) Function 'notOp' declared with incorrect number of parameters
-Error: (17, 9) Function 'notOp' called with incorrect number of arguments
-Error: (18, 9) Function 'notOp' called with incorrect number of arguments
+Error: (17, 9) Function call 'notOp(true)' has 1 arguments, expected 2
+Error: (18, 9) Function call 'notOp(false)' has 1 arguments, expected 2
 test\valid\58219_reverse_string\reverse_string.agu [FAIL]
 Error: (5, 19) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 's'
-Error: (6, 5) Function 'reverse' called with incorrect number of arguments
+Error: (6, 5) Function call 'reverse(s, i + 1)' has 2 arguments, expected 1
 Error: (7, 11) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 's'
 Error: (-1, -1) Unexpected error during semantic analysis: 'BaseType' object has no attribute 'type'
 test\valid\58219_sum_array\sum_array.agu [✔]

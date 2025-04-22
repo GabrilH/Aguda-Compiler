@@ -8,12 +8,11 @@ Error: (5, 1) Function 'sum' declared with incorrect number of parameters
 Error: (5, 30) unresolved symbol: n
 Error: (5, 32) Expected two equal types; found Int and None, for expression 'n + x'
 Error: (5, 32) Expected two equal types; found Int and None, for expression 'n + x'
-Error: (7, 15) Function 'sum' called with incorrect number of arguments
-...and 1 more errors.
+Error: (7, 15) Function call 'sum("a", "b")' has 2 arguments, expected 1
 test\invalid-semantic\56269_wrong_assignment\wrong_assignment.agu [✔]
 Error: (6, 17) Expected two equal types; found Int and String, for expression '"aaaa"'
 test\invalid-semantic\56269_wrong_function_call\wrong_function_call.agu [✔]
-Error: (11, 5) Function 'wrongCall' called with incorrect number of arguments
+Error: (11, 5) Function call 'wrongCall(1, 2)' has 2 arguments, expected 1
 Error: (11, 5) Expected two equal types; found (Unit) -> Int and Int, for expression 'wrongCall(1, 2)'
 test\invalid-semantic\56307_incompatibleTypes\incompatibleTypes.agu [✔]
 Error: (3, 11) Expected two equal types; found String and Int, for expression 'a + b + "extra"'
@@ -32,7 +31,7 @@ Error: (5, 15) unresolved symbol: y
 Error: (5, 17) Expected two equal types; found Int and None, for expression 'y + 1'
 Error: (5, 17) Expected two equal types; found Int and None, for expression 'y + 1'
 test\invalid-semantic\56332_missing_function_argument\missing_function_argument.agu [✔]
-Error: (3, 20) Function 'add' called with incorrect number of arguments
+Error: (3, 20) Function call 'add(5)' has 1 arguments, expected 2
 test\invalid-semantic\56332_type_mismatch_addition\type_mismatch_addition.agu [✔]
 Error: (2, 20) Expected two equal types; found Int and Bool, for expression 'true + 2'
 Error: (2, 20) Expected two equal types; found Int and Bool, for expression 'true + 2'
@@ -45,13 +44,13 @@ Error: (3, 15) unresolved symbol: y
 Error: (3, 17) Expected two equal types; found Int and None, for expression 'y + 5'
 Error: (3, 17) Expected two equal types; found Int and None, for expression 'y + 5'
 test\invalid-semantic\56334_wrongParamsFunction\wrongParamsFunction.agu [✔]
-Error: (9, 5) Function 'max' called with incorrect number of arguments
+Error: (9, 5) Function call 'max(2, 3, 4)' has 3 arguments, expected 2
 test\invalid-semantic\58166_outOfBounds\outOfBounds.agu [FAIL]
 Expected error but none found.
 test\invalid-semantic\58166_sumIntBool\sumIntBool.agu [✔]
 Error: (7, 26) Expected two equal types; found Bool and Int, for expression 'x + val'
 test\invalid-semantic\58166_wrongPara\wrongPara.agu [✔]
-Error: (11, 25) Function 'modTest' called with incorrect number of arguments
+Error: (11, 25) Function call 'modTest(x)' has 1 arguments, expected 2
 test\invalid-semantic\58170_typeMismatch\typeMismatch.agu [✔]
 Error: (4, 17) Expected two equal types; found Int and String, for expression '"Hello"'
 test\invalid-semantic\58170_wrongCondition\wrongCondition.agu [✔]

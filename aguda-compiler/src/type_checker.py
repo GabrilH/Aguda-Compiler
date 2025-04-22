@@ -39,6 +39,17 @@ def checkAgainst(ctx: SymbolTable, exp: Exp, expected_type: Type) -> Type:
         case _:
             actual_type = typeof(ctx, exp)
             return checkEqualTypes(exp, actual_type, expected_type)
+        
+def checkArguments(ctx: SymbolTable, matched_exp: Exp, exps: List[Exp], function_type: FunctionType) -> None:
+    """
+    Checks if the arguments `exps` match the expected types in `expected_types`.
+    """
+    expected_types = function_type.param_types
+    if len(exps) != len(expected_types):
+        logger.log(f"Function call '{matched_exp}' has {len(exps)} arguments, expected {len(expected_types)}", matched_exp.lineno, matched_exp.column)
+    else:
+        for exp, expected_type in zip(exps, expected_types):
+            checkAgainst(ctx, exp, expected_type)
     
 def checkEqualTypes(exp: Exp, actual_type: Type, expected_type: Type) -> Type:
     """
@@ -117,11 +128,7 @@ def typeof(ctx: SymbolTable, match_exp: Exp) -> Type:
                 return BaseType('Int')
             
             funcType : FunctionType = checkInstance(ctx, id, FunctionType)
-            if len(funcType.param_types) != len(exps):
-                logger.log(f"Function '{id.name}' called with incorrect number of arguments", match_exp.lineno, match_exp.column)
-            
-            for param_type, arg in zip(funcType.param_types, exps):
-                checkAgainst(ctx, arg, param_type)
+            checkArguments(ctx, match_exp, exps, funcType)
             
             return funcType.return_type
             
