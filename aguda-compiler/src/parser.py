@@ -232,11 +232,11 @@ def p_function_call(t):
     t[0] = func_call
 
 def p_arguments(t):
-    '''arguments : exp arguments_tail'''
+    '''arguments : sequence arguments_tail'''
     t[0] = [t[1]] + t[2]
 
 def p_arguments_tail(t):
-    '''arguments_tail : COMMA exp arguments_tail
+    '''arguments_tail : COMMA sequence arguments_tail
                       | empty'''
     if len(t) == 4:
         t[0] = [t[2]] + t[3]
@@ -284,7 +284,7 @@ def p_while_loop(t):
     t[0] = while_loop
 
 def p_array_creation(t):
-    '''array_creation : NEW type LBRACKET exp BAR exp RBRACKET'''
+    '''array_creation : NEW type LBRACKET exp BAR sequence RBRACKET'''
     array_creation = s.ArrayCreation(t[2], t[4], t[6])
     array_creation.lineno = t.lineno(1)
     array_creation.column = find_column(t.lexer.lexdata, t.slice[1])
