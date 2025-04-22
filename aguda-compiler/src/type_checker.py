@@ -34,24 +34,27 @@ def checkAgainst(ctx: SymbolTable, match_exp: Exp, expected_type: Type) -> None:
     """
     Checks if the expression `exp` matches the expected type `type` in the given context `ctx`.
     """
-    match match_exp:
-        # TODO more specific checks for each type
-        case IntLiteral() | BoolLiteral() | UnitLiteral() | StringLiteral():
-            actual_type = typeof(ctx, match_exp)
-            checkEqualTypes(match_exp, actual_type, expected_type)
+    match (match_exp, expected_type):
+        case (IntLiteral(), BaseType('Int')):
+            pass
+        case (BoolLiteral(), BaseType('Bool')):
+            pass
+        case (UnitLiteral(), BaseType('Unit')):
+            pass
+        case (StringLiteral(), BaseType('String')):
+            pass
 
-        case ArrayCreation(type, exp1, exp2):
+        case (ArrayCreation(type, exp1, exp2), ArrayType()):
             checkAgainst(ctx, exp1, BaseType('Int'))
             checkAgainst(ctx, exp2, type)
-            checkEqualTypes(match_exp, ArrayType(type), expected_type)
 
-        case ArrayAccess(exp1, exp2):
+        case (ArrayAccess(exp1, exp2), _):
             checkInstance(ctx, exp1, ArrayType)
             checkAgainst(ctx, exp2, BaseType('Int'))
             actual_type = typeof(ctx, exp1).type
             checkEqualTypes(match_exp, actual_type, expected_type)
 
-        case FunctionCall(id, exps):
+        case (FunctionCall(id, exps), _):
             if id.name == 'print':
                 if len(exps) != 1:
                     logger.log(f"Print function takes exactly one argument", match_exp.lineno, match_exp.column)
@@ -73,36 +76,33 @@ def checkAgainst(ctx: SymbolTable, match_exp: Exp, expected_type: Type) -> None:
                 checkArguments(ctx, match_exp, exps, funcType)
                 checkEqualTypes(match_exp, funcType.return_type, expected_type)
 
-        case VariableDeclaration(id, type, exp) | TopLevelVariableDeclaration(id, type, exp):
+        case (VariableDeclaration(id, type, exp),BaseType('Unit')) | (TopLevelVariableDeclaration(id, type, exp),BaseType('Unit')):
             checkAgainst(ctx, exp, type)
             checkBuiltInConflict(match_exp, id.name)
             insertIntoCtx(ctx, id.name, type)
-            checkEqualTypes(match_exp, BaseType('Unit'), expected_type)
 
-        case Var(name):
+        case (Var(name),_):
             actual_type = typeofVar(ctx, match_exp, name)
             checkEqualTypes(match_exp, actual_type, expected_type)
         
-        case Conditional(exp1, exp2, exp3):
+        case (Conditional(exp1, exp2, exp3), _):
             checkAgainst(ctx, exp1, BaseType('Bool'))
             checkAgainst(ctx, exp2, expected_type)
             checkAgainst(ctx, exp3, expected_type)
 
-        case WhileLoop(exp1, exp2):
+        case (WhileLoop(exp1, exp2), BaseType('Unit')):
             checkAgainst(ctx, exp1, BaseType('Bool'))
             typeof(ctx.enter_scope(), exp2)
-            checkEqualTypes(match_exp, BaseType('Unit'), expected_type)
 
-        case Assignment(lhs, exp):
+        case (Assignment(lhs, exp), BaseType('Unit')):
             lhsType = typeof(ctx, lhs)
             checkAgainst(ctx, exp, lhsType)
-            checkEqualTypes(match_exp, BaseType('Unit'), expected_type)
 
-        case Sequence(first, rest):
+        case (Sequence(first, rest), _):
             typeof(ctx, first)
             checkAgainst(ctx, rest, expected_type)
 
-        case BinaryOp(left, operator, right):
+        case (BinaryOp(left, operator, right), _):
 
             if operator in ['+', '-', '*', '/', '%', '^']:
                 checkAgainst(ctx, left, BaseType('Int'))
@@ -120,11 +120,10 @@ def checkAgainst(ctx: SymbolTable, match_exp: Exp, expected_type: Type) -> None:
                 checkAgainst(ctx, right, BaseType('Bool'))
                 checkEqualTypes(match_exp, BaseType('Bool'), expected_type)
 
-        case LogicalNegation(operand):
+        case (LogicalNegation(operand), BaseType('Bool')):
             checkAgainst(ctx, operand, BaseType('Bool'))
-            checkEqualTypes(match_exp, BaseType('Bool'), expected_type)
 
-        case Group(exp):
+        case (Group(exp), _):
             checkAgainst(ctx, exp, expected_type)
 
         case _:

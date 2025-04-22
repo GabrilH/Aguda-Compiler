@@ -42,11 +42,11 @@ Error: (17, 18) Expected two equal types; found Int and None, for expression 'j'
 Error: (18, 11) unresolved symbol: j
 ...and 3 more errors.
 test\valid\56269_if\if.agu [FAIL]
-Error: (17, 12) Expected two equal types; found Bool and Unit, for expression 'let x : Bool = true'
-Error: (16, 11) Expected two equal types; found Bool and Unit, for expression 'let x : Bool = let x : Bool = true'
-Error: (15, 10) Expected two equal types; found Bool and Unit, for expression 'let x : Bool = let x : Bool = let x : Bool = true'
-Error: (14, 9) Expected two equal types; found Bool and Unit, for expression 'let x : Bool = let x : Bool = let x : Bool = let x : Bool = true'
-Error: (13, 8) Expected two equal types; found Bool and Unit, for expression 'let x : Bool = let x : Bool = let x : Bool = let x : Bool = let x : Bool = true'
+Error: (17, 12) Expected type 'Bool', found type 'Unit' for expression 'let x : Bool = true'
+Error: (16, 11) Expected type 'Bool', found type 'Unit' for expression 'let x : Bool = let x : Bool = true'
+Error: (15, 10) Expected type 'Bool', found type 'Unit' for expression 'let x : Bool = let x : Bool = let x : Bool = true'
+Error: (14, 9) Expected type 'Bool', found type 'Unit' for expression 'let x : Bool = let x : Bool = let x : Bool = let x : Bool = true'
+Error: (13, 8) Expected type 'Bool', found type 'Unit' for expression 'let x : Bool = let x : Bool = let x : Bool = let x : Bool = let x : Bool = true'
 ...and 19 more errors.
 test\valid\56269_insertionSort\insertionSort.agu [✔]
 Program is semantically valid!
@@ -73,11 +73,9 @@ Program is semantically valid!
 test\valid\56307_shadowingFunction\shadowFunction.agu [✔]
 Program is semantically valid!
 test\valid\56307_sumArrayFunction\sumArrayFunction.agu [FAIL]
-Error: (11, 39) Expected two equal types; found Int[] and Int, for expression '10'
-Error: (11, 24) Expected two equal types; found Int[] and Int[][], for expression 'new Int[] [5 | 10]'
+Error: (11, 39) Expected type 'Int[]', found type 'Int' for expression '10'
 test\valid\56307_zeroLengthArray\zeroLengthArray.agu [FAIL]
-Error: (2, 40) Expected two equal types; found Int[] and Int, for expression '0'
-Error: (2, 25) Expected two equal types; found Int[] and Int[][], for expression 'new Int[] [0 | 0]'
+Error: (2, 40) Expected type 'Int[]', found type 'Int' for expression '0'
 test\valid\56311_boundary_arithmetic\boundary_arithmetic.agu [✔]
 Program is semantically valid!
 test\valid\56311_empty_array\empty_array.agu [FAIL]
@@ -89,7 +87,7 @@ Error: (4, 10) unresolved symbol: b
 test\valid\56311_high_order_function_type\high_order_func_type.agu [✔]
 Program is semantically valid!
 test\valid\56311_if_inside_if\if_inside_if.agu [FAIL]
-Error: (4, 23) Expected two equal types; found Bool and Int, for expression '1'
+Error: (4, 23) Expected type 'Bool', found type 'Int' for expression '1'
 test\valid\56311_matrix_operations\matrix_operations.agu [FAIL]
 Error: (14, 9) unresolved symbol: error
 Error: (14, 9) unresolved symbol: error
@@ -98,19 +96,19 @@ Error: (-1, -1) Unexpected error during semantic analysis: 'NoneType' object has
 test\valid\56311_minus_minus\minus_minus.agu [✔]
 Program is semantically valid!
 test\valid\56311_shadow_variables\shadow_variables.agu [FAIL]
-Error: (5, 5) Expected two equal types; found Int and Unit, for expression 'let x : Int = 4'
+Error: (5, 5) Expected type 'Int', found type 'Unit' for expression 'let x : Int = 4'
 test\valid\56311_while_loop_with_empty_body\while_loop_with_empty_body.agu [✔]
 Program is semantically valid!
 test\valid\56311_while_loop_with_mutations\while_loop_with_mutations.agu [✔]
 Program is semantically valid!
 test\valid\56332_array_sum\array_sum.agu [FAIL]
-Error: (13, 1) Expected two equal types; found Int[] and Unit, for expression 'let _ : Unit = print(arraySum(a))'
+Error: (13, 1) Expected type 'Int[]', found type 'Unit' for expression 'let _ : Unit = print(arraySum(a))'
 test\valid\56332_array_update\array_update.agu [FAIL]
 Syntactic error: at line 10, column 27: Unexpected token ';'
 test\valid\56332_count_even_in_array\count_even_in_array.agu [FAIL]
 Syntactic error: at line 13, column 50: Unexpected token ';'
 test\valid\56332_count_negatives_on_matrix\count_negatives_on_matrix.agu [FAIL]
-Error: (30, 1) Expected two equal types; found Int[][] and Unit, for expression 'let _ : Unit = print(countNegatives(matrix))'
+Error: (30, 1) Expected type 'Int[][]', found type 'Unit' for expression 'let _ : Unit = print(countNegatives(matrix))'
 test\valid\56332_dec_to_zero\dec_to_zero.agu [✔]
 Program is semantically valid!
 test\valid\56332_factorial_in_aguda\factorial_in_aguda.agu [✔]
@@ -181,7 +179,7 @@ Error: (7, 37) Expected instance of <class 'src.syntax.ArrayType'>, found String
 test\valid\58168_3letsPrint1stValue\3letsPrint1stValue.agu [✔]
 Program is semantically valid!
 test\valid\58168_addOneValueToArray\addOneValueToArray.agu [FAIL]
-Error: (4, 21) Expected two equal types; found Int and Bool, for expression 'false'
+Error: (4, 21) Expected type 'Int', found type 'Bool' for expression 'false'
 Error: (11, 7) unresolved symbol: result
 Error: (11, 3) Expected two equal types; found Bool and None, for expression 'set result = true'
 Error: (12, 3) unresolved symbol: result
@@ -308,8 +306,8 @@ Error: (6, 1) Function 'sub' declared with incorrect number of parameters
 ...and 5 more errors.
 test\valid\58215_unitFunc\unitFunc.agu [FAIL]
 Error: (3, 1) Function 'faz3' declared with incorrect number of parameters
-Error: (4, 18) Expected two equal types; found (Int) -> Int and Int, for expression '3'
-Error: (4, 25) Expected two equal types; found (Int) -> Int and Int, for expression '3'
+Error: (4, 18) Expected type '(Int) -> Int', found type 'Int' for expression '3'
+Error: (4, 25) Expected type '(Int) -> Int', found type 'Int' for expression '3'
 Error: (7, 11) Function call 'faz3(unit, 7)' has 2 arguments, expected 1
 Error: (7, 11) Function call 'faz3(unit, 7)' has 2 arguments, expected 1
 test\valid\58219_compare_string_length\compare_string_length.agu [FAIL]

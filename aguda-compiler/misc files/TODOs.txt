@@ -1,20 +1,5 @@
-verificar onde deve ser usado p_variable ou ID
-perguntar as duvidas
-
-rever os scopes : 64371_reverse_array
-rever os scopes : test\invalid-semantic\64371_variable_not_in_scope\variable_not_in_scope.agu
-
-erro no stor mas a mim nao: test\valid\64371_reverse_array\reverse_array.agu
-
-talvez refactor ao case FunctionDeclaration
-
-mudar o checkAgainst para não ir sempre para checkEqualTypes -> adicionar casos especificos
-
 Comando para correr ficheiro local:
 docker-compose run --rm -v C:\Users\gmfh\Documents\TComp_Repo\aguda-compiler\array_operations.agu:/app/local_file.agu aguda-compiler /app/local_file.agu
 
-Mudar no main quando se deve receber exceptions ou nao
-
-Logs com erros iguais
-
-checkAgainst tem que usar expected_type
+test\valid\56311_shadow_variables\shadow_variables.agu
+test\valid\56332_array_sum\array_sum.agu
