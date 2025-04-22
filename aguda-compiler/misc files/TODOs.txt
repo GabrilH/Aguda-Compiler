@@ -2,6 +2,7 @@ verificar onde deve ser usado p_variable ou ID
 perguntar as duvidas
 
 rever os scopes : 64371_reverse_array
+rever os scopes : test\invalid-semantic\64371_variable_not_in_scope\variable_not_in_scope.agu
 
 erro no stor mas a mim nao: test\valid\64371_reverse_array\reverse_array.agu
 
