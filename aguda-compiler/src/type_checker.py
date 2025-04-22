@@ -40,6 +40,27 @@ def checkAgainst(ctx: SymbolTable, match_exp: Exp, expected_type: Type) -> None:
             actual_type = typeof(ctx, match_exp)
             checkEqualTypes(match_exp, actual_type, expected_type)
 
+        case Var(name):
+            actual_type = typeofVar(ctx, match_exp, name)
+            checkEqualTypes(match_exp, actual_type, expected_type)
+
+        case BinaryOp(left, operator, right):
+
+            if operator in ['+', '-', '*', '/', '%', '^']:
+                checkAgainst(ctx, left, expected_type)
+                checkAgainst(ctx, right, expected_type)
+            
+            if operator in ['==', '!=', '<', '>', '<=', '>=']:
+                leftType = typeof(ctx, left)
+                rightType = typeof(ctx, right)
+                checkEqualTypes(match_exp, leftType, rightType)
+                #TODO expected_type ?
+            
+            if operator in ['&&', '||']:
+                checkAgainst(ctx, left, expected_type)
+                checkAgainst(ctx, right, expected_type)
+
+
         case ArrayCreation(type, exp1, exp2):
             checkAgainst(ctx, exp1, BaseType('Int'))
             checkAgainst(ctx, exp2, type)
@@ -48,19 +69,15 @@ def checkAgainst(ctx: SymbolTable, match_exp: Exp, expected_type: Type) -> None:
             checkInstance(ctx, exp1, ArrayType)
             checkAgainst(ctx, exp2, BaseType('Int'))
 
-        case FunctionCall(id, exps):
-            funcType = typeof(ctx, id)
-            checkInstance(ctx, id, FunctionType)
-            checkArguments(ctx, match_exp, exps, funcType)
-    
-        case Var(name):
-            actual_type = typeofVar(ctx, match_exp, name)
-            checkEqualTypes(match_exp, actual_type, expected_type)
-        
+        # case FunctionCall(id, exps):
+        #     funcType = typeof(ctx, id)
+        #     checkInstance(ctx, id, FunctionType)
+        #     checkArguments(ctx, match_exp, exps, funcType)
+
         case _:
-            logger.log(f"Expected type '{expected_type}', found type '{typeof(ctx, match_exp)}' for expression '{match_exp}'", match_exp.lineno, match_exp.column)
-            # actual_type = typeof(ctx, match_exp)
-            # checkEqualTypes(match_exp, actual_type, expected_type)
+            # logger.log(f"Expected type '{expected_type}', found type '{typeof(ctx, match_exp)}' for expression '{match_exp}'", match_exp.lineno, match_exp.column)
+            actual_type = typeof(ctx, match_exp)
+            checkEqualTypes(match_exp, actual_type, expected_type)
         
 def checkArguments(ctx: SymbolTable, matched_exp: Exp, exps: List[Exp], function_type: FunctionType) -> None:
     """
@@ -191,19 +208,21 @@ def typeof(ctx: SymbolTable, match_exp: Exp) -> Type:
             return typeof(ctx, rest)
 
         case BinaryOp(left, operator, right):
-            leftType = typeof(ctx, left)
-            rightType = typeof(ctx, right)
-            checkEqualTypes(match_exp, leftType, rightType)
-            
+
             if operator in ['+', '-', '*', '/', '%', '^']:
-                checkEqualTypes(match_exp, leftType, BaseType('Int'))
+                checkAgainst(ctx, left, BaseType('Int'))
+                checkAgainst(ctx, right, BaseType('Int'))
                 return BaseType('Int')
             
             if operator in ['==', '!=', '<', '>', '<=', '>=']:
+                leftType = typeof(ctx, left)
+                rightType = typeof(ctx, right)
+                checkEqualTypes(match_exp, leftType, rightType)
                 return BaseType('Bool')
             
             if operator in ['&&', '||']:
-                checkEqualTypes(match_exp, leftType, BaseType('Bool'))
+                checkAgainst(ctx, left, BaseType('Bool'))
+                checkAgainst(ctx, right, BaseType('Bool'))
                 return BaseType('Bool')
         
         case LogicalNegation(operand):
