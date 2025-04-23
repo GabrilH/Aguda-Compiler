@@ -29,7 +29,7 @@ def write_logs(logs, test_type):
 
     print(f"Logs written to {log_path}")
 
-def syntax_test_run(filepath, valid, print_ast=False):
+def syntax_test_run(filepath, valid):
 
     test_log = []
     
@@ -44,96 +44,62 @@ def syntax_test_run(filepath, valid, print_ast=False):
     try:
         with contextlib.redirect_stdout(output_buffer):
             ast = parser.parse(code, lexer=lexer)
-        if print_ast:
-            print(ast)
-        output = output_buffer.getvalue().strip()
     except Exception as e:
         test_log.append(f"{filepath} [EXCEPTION]")
         test_log.append(str(e))
-        return test_log
+        return test_log, ast
 
+    output = output_buffer.getvalue().strip()
     if valid:
         if output == "":
             # No errors printed -> Test passed
             test_log.append(f"{filepath} [✔]")
         else:
-            # Expected no output, but got errors
+            # Found errors -> Test failed
             test_log.append(f"{filepath} [FAIL]")
             test_log.append(output)
     else:
         if output == "":
-            # Expected errors, but got none
+            # Expected errors, but got none -> Test failed
             test_log.append(f"{filepath} [FAIL]")
             test_log.append("Expected error but none found.")
         else:
-            # Errors printed as expected
+            # Expected errors and got them -> Test passed
             test_log.append(f"{filepath} [✔]")
             test_log.append(output)
     
-    return test_log
+    return test_log, ast
 
-def semantic_test_run(filepath, valid, print_ast=False):
+def semantic_test_run(filepath, valid):
 
-    test_log = []
-    
-    with open(filepath, 'r') as f:
-        code = f.read()
-
-    # Reset the parser (for the line counter)
-    reset_parser()
-
-    # Store stdout of parser
-    output_buffer = io.StringIO()
-    try:
-        with contextlib.redirect_stdout(output_buffer):
-            ast = parser.parse(code, lexer=lexer)
-
-        if print_ast:
-            print(ast)
-        output = output_buffer.getvalue().strip()
-
-    except Exception as e:
-        test_log.append(f"{filepath} [EXCEPTION]")
-        test_log.append(str(e))
-        return test_log
+    syntax_log, ast = syntax_test_run(filepath, True)
 
     # If there are syntax errors, exit without semantic validation
-    if output:
-        test_log.append(f"{filepath} [FAIL]")
-        test_log.append(output)
-        return test_log
+    if any("[FAIL]" in line or "[EXCEPTION]" in line for line in syntax_log):
+        return syntax_log, ast
 
-    # Perform semantic validation if no syntax errors
+    test_log = []
+
     output_buffer = io.StringIO()
     try:
         with contextlib.redirect_stdout(output_buffer):
             verify(ast)
-
     except SemanticError as e:
-        output = output_buffer.getvalue().strip()
-        if valid:
-            test_log.append(f"{filepath} [FAIL]")
-            test_log.append(output)
-        else:
-            test_log.append(f"{filepath} [✔]")
-            test_log.append(output)
-        return test_log    
+        pass_status = "[✔]" if not valid else "[FAIL]"
+        test_log.append(f"{filepath} {pass_status}")
+        test_log.append(output_buffer.getvalue().strip())
+        return test_log, ast    
         
     except Exception as e:
-        output = output_buffer.getvalue().strip()
         test_log.append(f"{filepath} [EXCEPTION]")
         test_log.append(str(e))
-        return test_log
+        return test_log, ast
     
-    output = output_buffer.getvalue().strip()
-    if valid:
-        test_log.append(f"{filepath} [✔]")
-        test_log.append(output)
-    else:
-        test_log.append(f"{filepath} [FAIL]")
-        test_log.append("Expected error but none found.")
+    pass_status = "[✔]" if valid else "[FAIL]"
+    test_log.append(f"{filepath} {pass_status}")
+    test_log.append(output_buffer.getvalue().strip() if valid else "Expected error but none found.")
     
-    return test_log
+    return test_log, ast
 
 def run_multiple_tests(test_dir : str, valid : bool, type : int):
     """
@@ -153,10 +119,10 @@ def run_multiple_tests(test_dir : str, valid : bool, type : int):
 
     for filepath in all_files:
         if type == 0:
-            test_log = syntax_test_run(filepath, valid)
+            test_log,_ = syntax_test_run(filepath, valid)
             test_log.append("\n")
         else:
-            test_log = semantic_test_run(filepath, valid)
+            test_log,_ = semantic_test_run(filepath, valid)
             test_log.append("\n")
 
         logs.extend(test_log)
@@ -186,7 +152,8 @@ def run_single_test(filepath):
         return
     else:
         print(f"Running test: {filepath}")
-        test_log = semantic_test_run(filepath, valid=True, print_ast=True)
+        test_log, ast = semantic_test_run(filepath, valid=True)
+        print(ast)
         print(test_log[1])
 
 def main():
@@ -223,4 +190,4 @@ def main():
 if __name__ == '__main__':
     main()
     #run_test_suite()
-    #run_single_test(r".\test\invalid-semantic\56269_wrong_function_call\wrong_function_call.agu")
+    #run_single_test(r".\test\valid\64854_printA\printA.agu")
