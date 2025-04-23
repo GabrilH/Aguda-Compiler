@@ -1,13 +1,14 @@
 import os
 import io
 import contextlib
+from pathlib import PureWindowsPath, PurePosixPath
 from src.lexer import lexer
 from src.parser import parser, reset_parser
 from src.type_checker import SemanticError, verify
 import sys
 
-TEST_DIR = 'test'
-LOG_DIR = os.path.join(TEST_DIR, 'logs')
+LOG_DIR = os.path.join(os.getcwd(), 'logs')
+TEST_DIR = os.path.join(os.getcwd(), "aguda-testing", "test")
 VALID_DIR = os.path.join(TEST_DIR, 'valid')
 INVALID_SEM_DIR = os.path.join(TEST_DIR, 'invalid-semantic')
 INVALID_SYN_DIR = os.path.join(TEST_DIR, 'invalid-syntax')
@@ -144,6 +145,7 @@ def run_single_test(filepath):
     Run a single test.
     :param filepath: Path to the test file
     """
+    filepath = str(PurePosixPath(PureWindowsPath(filepath)))
     if not os.path.isfile(filepath):
         print(f"File '{filepath}' does not exist.")
         return
@@ -179,11 +181,7 @@ def main():
         
         # If the first argument is a file path, run that test
         else:
-            filepath = sys.argv[1]
-            if not os.path.isfile(filepath):
-                print(f"File '{filepath}' does not exist.")
-                return
-            run_single_test(filepath)
+            run_single_test(sys.argv[1])
     else:
         print("Usage: docker-compose run --rm aguda-compiler [<file_path> | --tests]")
 

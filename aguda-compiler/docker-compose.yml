@@ -3,5 +3,6 @@ services:
     build: .
     image: aguda-compiler
     volumes:
-      - ./test/logs:/app/test/logs
+      - ./logs:/app/logs
+      - ./aguda-testing:/app/aguda-testing
     network_mode: "host"
