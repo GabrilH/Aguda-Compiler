@@ -6,6 +6,6 @@ continuo a apenas dar a ultima exp de exp;exp;exp... nos erros
 stor tem a localização dos 'if then else' no corpo do then
     - ver se é para mudar no parser ou da exp que se manda para checks
 
-verificar se checkEqualTypes do set e function call fazem sentido
+merdas do docker
 
-refactor no semantic_run do main
+mudar o .md
