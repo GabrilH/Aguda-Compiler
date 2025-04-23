@@ -16,7 +16,8 @@ Program is semantically valid!
 
 
 test\valid\54394_combinations\combinations.agu [FAIL]
-Error: (10, 15) Function call 'fac(6, 2)' has 2 arguments, expected 1
+Error: (10, 15) expected arguments of types [Int], found [Int, Int] for expression 
+'fac(6, 2)'
 
 
 test\valid\54394_identifier\identifier.agu [✔]
@@ -41,10 +42,7 @@ Program is semantically valid!
 
 test\valid\54394_zip\zip.agu [FAIL]
 Error: (6, 33) unresolved symbol: lenght
-Error: (6, 33) unresolved symbol: lenght
-Error: (6, 33) Expected instance of <class 'src.syntax.FunctionType'>, found None, for expression 
-'lenght'
-Error: (-1, -1) Unexpected error during semantic analysis: 'NoneType' object has no attribute 'param_types'
+...and 3 more errors.
 
 
 test\valid\56269_ackermann\ackermann.agu [✔]
@@ -65,27 +63,13 @@ Program is semantically valid!
 
 test\valid\56269_bottomRow\bottomRow.agu [FAIL]
 Error: (16, 11) unresolved symbol: j
-Error: (16, 13) Expected two equal types; found Int and None, for expression 
-'j < length(a[0])'
-Error: (17, 18) unresolved symbol: j
-Error: (17, 18) Expected two equal types; found Int and None, for expression 
-'j'
-Error: (18, 11) unresolved symbol: j
-...and 3 more errors.
+...and 7 more errors.
 
 
 test\valid\56269_if\if.agu [FAIL]
 Error: (17, 12) Expected type 'Bool', found type 'Unit' for expression 
 'let x : Bool = true'
-Error: (16, 11) Expected type 'Bool', found type 'Unit' for expression 
-'let x : Bool = let x : Bool = true'
-Error: (15, 10) Expected type 'Bool', found type 'Unit' for expression 
-'let x : Bool = let x : Bool = let x : Bool = true'
-Error: (14, 9) Expected type 'Bool', found type 'Unit' for expression 
-'let x : Bool = let x : Bool = let x : Bool = let x : Bool = true'
-Error: (13, 8) Expected type 'Bool', found type 'Unit' for expression 
-'let x : Bool = let x : Bool = let x : Bool = let x : Bool = let x : Bool = true'
-...and 13 more errors.
+...and 17 more errors.
 
 
 test\valid\56269_insertionSort\insertionSort.agu [✔]
@@ -139,6 +123,7 @@ Program is semantically valid!
 test\valid\56307_sumArrayFunction\sumArrayFunction.agu [FAIL]
 Error: (11, 39) Expected type 'Int[]', found type 'Int' for expression 
 '10'
+...and 1 more errors.
 
 
 test\valid\56307_zeroLengthArray\zeroLengthArray.agu [FAIL]
@@ -156,7 +141,7 @@ Error: (9, 11) unresolved symbol: empty_matrix
 
 test\valid\56311_equals\equals_method.agu [FAIL]
 Error: (4, 5) unresolved symbol: a
-Error: (4, 10) unresolved symbol: b
+...and 1 more errors.
 
 
 test\valid\56311_high_order_function_type\high_order_func_type.agu [✔]
@@ -170,10 +155,7 @@ Error: (4, 23) Expected type 'Bool', found type 'Int' for expression
 
 test\valid\56311_matrix_operations\matrix_operations.agu [FAIL]
 Error: (14, 9) unresolved symbol: error
-Error: (14, 9) unresolved symbol: error
-Error: (14, 9) Expected instance of <class 'src.syntax.FunctionType'>, found None, for expression 
-'error'
-Error: (-1, -1) Unexpected error during semantic analysis: 'NoneType' object has no attribute 'param_types'
+...and 3 more errors.
 
 
 test\valid\56311_minus_minus\minus_minus.agu [✔]
@@ -208,6 +190,7 @@ a[2])'
 test\valid\56332_count_even_in_array\count_even_in_array.agu [FAIL]
 Error: (13, 71) Expected type 'Int[]', found type 'Int' for expression 
 '1'
+...and 1 more errors.
 
 
 test\valid\56332_count_negatives_on_matrix\count_negatives_on_matrix.agu [FAIL]
@@ -230,6 +213,7 @@ Program is semantically valid!
 test\valid\56332_min_elem_of_array\min_elem_of_array.agu [FAIL]
 Error: (11, 70) Expected type 'Int[]', found type 'Int' for expression 
 '100'
+...and 1 more errors.
 
 
 test\valid\56332_precedence_calc\precedence_calc.agu [✔]
@@ -302,13 +286,7 @@ Error: (16, 5) Expected two equal types; found Unit and Int, for expression
   0
 else
   let min : Int = a[0]'
-Error: (21, 19) unresolved symbol: min
-Error: (21, 17) Expected two equal types; found None and Int, for expression 
-'a[i] < min'
-Error: (21, 32) unresolved symbol: min
-Error: (21, 28) Expected two equal types; found Int and None, for expression 
-'set min = a[i]'
-...and 2 more errors.
+...and 6 more errors.
 
 
 test\valid\58166_modTest\modTest.agu [✔]
@@ -334,14 +312,7 @@ Program is semantically valid!
 test\valid\58166_stringLength\stringLength.agu [FAIL]
 Error: (5, 19) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 
 's'
-Error: (6, 19) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 
-'s'
-Error: (6, 36) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 
-'s'
-Error: (7, 19) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 
-'s'
-Error: (7, 37) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 
-'s'
+...and 4 more errors.
 
 
 test\valid\58168_3letsPrint1stValue\3letsPrint1stValue.agu [✔]
@@ -351,13 +322,7 @@ Program is semantically valid!
 test\valid\58168_addOneValueToArray\addOneValueToArray.agu [FAIL]
 Error: (4, 21) Expected type 'Int', found type 'Bool' for expression 
 'false'
-Error: (11, 7) unresolved symbol: result
-Error: (11, 3) Expected two equal types; found Bool and None, for expression 
-'set result = true'
-Error: (12, 3) unresolved symbol: result
-Error: (12, 3) Expected two equal types; found Bool and None, for expression 
-'result'
-...and 1 more errors.
+...and 5 more errors.
 
 
 test\valid\58168_cubesForEvenNum\cubesForEvenNum.agu [✔]
@@ -386,13 +351,7 @@ Program is semantically valid!
 
 test\valid\58168_sumOfMinAndOfMaxOfArray\sumOfMinAndOfMaxOfArray.agu [FAIL]
 Error: (15, 10) unresolved symbol: i
-Error: (15, 12) Expected two equal types; found Int and None, for expression 
-'i < length(b)'
-Error: (16, 5) unresolved symbol: a
-Error: (16, 5) unresolved symbol: a
-Error: (16, 5) Expected instance of <class 'src.syntax.ArrayType'>, found None, for expression 
-'a'
-...and 3 more errors.
+...and 7 more errors.
 
 
 test\valid\58168_sumTwoNumbers\sumTwoNumbers.agu [✔]
@@ -509,12 +468,7 @@ Program is semantically valid!
 
 test\valid\58185_unit_type_test\unit_type_test.agu [FAIL]
 Error: (5, 26) unresolved symbol: i
-Error: (5, 28) Expected two equal types; found Int and None, for expression 
-'i > 0'
-Error: (6, 15) unresolved symbol: i
-Error: (8, 13) unresolved symbol: i
-Error: (8, 17) unresolved symbol: i
-...and 2 more errors.
+...and 6 more errors.
 
 
 test\valid\58185_while_loops\while_loops.agu [✔]
@@ -527,13 +481,7 @@ Program is semantically valid!
 
 test\valid\58215_addToArrayIndex\addToArrayIndex.agu [FAIL]
 Error: (3, 1) number of params does not match type in function declaration 'addToArrayIndex'
-Error: (4, 11) unresolved symbol: i
-Error: (4, 11) Expected two equal types; found Int and None, for expression 
-'i'
-Error: (4, 18) unresolved symbol: i
-Error: (4, 18) Expected two equal types; found Int and None, for expression 
-'i'
-...and 5 more errors.
+...and 9 more errors.
 
 
 test\valid\58215_funWithFunArg\funWithFunArg.agu [✔]
@@ -550,10 +498,7 @@ Program is semantically valid!
 
 test\valid\58215_minArrAndElseUnit\minArrAndElseUnit.agu [FAIL]
 Error: (3, 1) number of params does not match type in function declaration 'minValInArr'
-Error: (6, 15) unresolved symbol: size
-Error: (6, 13) Expected two equal types; found None and Int, for expression 
-'i < size'
-Error: (20, 5) Print function takes exactly one argument
+...and 3 more errors.
 
 
 test\valid\58215_negAndEven\negAndEven.agu [✔]
@@ -562,39 +507,23 @@ Program is semantically valid!
 
 test\valid\58215_scopeArr\scopeArr.agu [FAIL]
 Error: (4, 1) number of params does not match type in function declaration 'setDiag2dArray'
-Error: (7, 15) unresolved symbol: size
-Error: (7, 13) Expected two equal types; found None and Int, for expression 
-'i < size'
-Error: (9, 14) Expected instance of <class 'src.syntax.ArrayType'>, found Int, for expression 
-'a[i]'
-Error: (-1, -1) Unexpected error during semantic analysis: 'BaseType' object has no attribute 'type'
+...and 4 more errors.
 
 
 test\valid\58215_somaSub\somaSub.agu [FAIL]
 Error: (3, 1) number of params does not match type in function declaration 'soma'
-Error: (4, 9) unresolved symbol: y
-Error: (4, 9) Expected two equal types; found Int and None, for expression 
-'y'
-Error: (4, 7) Expected two equal types; found (Int) -> Int and Int, for expression 
-'x + y'
-Error: (6, 1) number of params does not match type in function declaration 'sub'
-...and 5 more errors.
+...and 13 more errors.
 
 
 test\valid\58215_unitFunc\unitFunc.agu [FAIL]
 Error: (3, 1) number of params does not match type in function declaration 'faz3'
-Error: (4, 18) Expected type '(Int) -> Int', found type 'Int' for expression 
-'3'
-Error: (4, 25) Expected type '(Int) -> Int', found type 'Int' for expression 
-'3'
-Error: (7, 11) Function call 'faz3(unit, 7)' has 2 arguments, expected 1
+...and 3 more errors.
 
 
 test\valid\58219_compare_string_length\compare_string_length.agu [FAIL]
 Error: (4, 29) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 
 'str1'
-Error: (5, 29) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 
-'str2'
+...and 1 more errors.
 
 
 test\valid\58219_count_common_elements\count_common_elemts.agu [✔]
@@ -603,29 +532,19 @@ Program is semantically valid!
 
 test\valid\58219_find_array_max_and_min\array_max_min.agu [FAIL]
 Error: (11, 25) unresolved symbol: maxVal
-Error: (11, 23) Expected two equal types; found None and Int, for expression 
-'arr[i] > maxVal'
-Error: (11, 41) unresolved symbol: maxVal
-Error: (11, 37) Expected two equal types; found Int and None, for expression 
-'set maxVal = arr[i]'
-Error: (16, 15) unresolved symbol: maxVal
-...and 5 more errors.
+...and 9 more errors.
 
 
 test\valid\58219_find_char\find_char.agu [FAIL]
 Error: (4, 28) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 
 'str'
-Error: (8, 12) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 
-'str'
-Error: (-1, -1) Unexpected error during semantic analysis: 'BaseType' object has no attribute 'type'
+...and 2 more errors.
 
 
 test\valid\58219_first_unique_character\first_unique_character.agu [FAIL]
 Error: (4, 26) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 
 'str'
-Error: (13, 20) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 
-'str'
-Error: (-1, -1) Unexpected error during semantic analysis: 'BaseType' object has no attribute 'type'
+...and 2 more errors.
 
 
 test\valid\58219_is_array_sorted\is_array_sorted.agu [FAIL]
@@ -634,13 +553,7 @@ Error: (6, 5) Expected two equal types; found Unit and Bool, for expression
   result
 else
   let i : Int = 1'
-Error: (10, 15) unresolved symbol: i
-Error: (10, 17) Expected two equal types; found Int and None, for expression 
-'i < len'
-Error: (11, 20) unresolved symbol: i
-Error: (11, 20) Expected two equal types; found Int and None, for expression 
-'i'
-...and 8 more errors.
+...and 12 more errors.
 
 
 test\valid\58219_is_prime\is_prime.agu [FAIL]
@@ -649,28 +562,18 @@ Error: (8, 8) Expected two equal types; found Unit and Bool, for expression
   false
 else
   let i : Int = 5'
-Error: (14, 11) unresolved symbol: i
-Error: (14, 11) Expected two equal types; found Int and None, for expression 
-'i'
-Error: (14, 15) unresolved symbol: i
-Error: (14, 15) Expected two equal types; found Int and None, for expression 
-'i'
-...and 8 more errors.
+...and 12 more errors.
 
 
 test\valid\58219_logical_operators\logical_operators.agu [FAIL]
 Error: (9, 1) number of params does not match type in function declaration 'notOp'
-Error: (17, 9) Function call 'notOp(true)' has 1 arguments, expected 2
-Error: (18, 9) Function call 'notOp(false)' has 1 arguments, expected 2
+...and 2 more errors.
 
 
 test\valid\58219_reverse_string\reverse_string.agu [FAIL]
 Error: (5, 19) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 
 's'
-Error: (6, 5) Function call 'reverse(s, i + 1)' has 2 arguments, expected 1
-Error: (7, 11) Expected instance of <class 'src.syntax.ArrayType'>, found String, for expression 
-'s'
-Error: (-1, -1) Unexpected error during semantic analysis: 'BaseType' object has no attribute 'type'
+...and 3 more errors.
 
 
 test\valid\58219_sum_array\sum_array.agu [✔]
@@ -724,18 +627,13 @@ Program is semantically valid!
 
 test\valid\64361_check_null_value\check_null_value.agu [FAIL]
 Error: (4, 13) unresolved symbol: null
-Error: (4, 10) Expected two equal types; found None and Int, for expression 
-'x == null'
-Error: (10, 24) unresolved symbol: null
-Error: (10, 24) Expected two equal types; found Int and None, for expression 
-'null'
+...and 3 more errors.
 
 
 test\valid\64361_count_vowels\count_vowels.agu [FAIL]
-Error: (17, 24) Expected two equal types; found String[] and String, for expression 
-'word'
-Error: (20, 24) Expected two equal types; found String[] and String, for expression 
-'sentence'
+Error: (17, 11) expected arguments of types [String[], Int], found [String, Int] for expression 
+'count_vowels(word, 5)'
+...and 1 more errors.
 
 
 test\valid\64361_exponential\exponential.agu [✔]
@@ -768,10 +666,7 @@ Program is semantically valid!
 
 test\valid\64361_sum_function\sum_function.agu [FAIL]
 Error: (21, 11) unresolved symbol: sum_array
-Error: (21, 11) unresolved symbol: sum_array
-Error: (21, 11) Expected instance of <class 'src.syntax.FunctionType'>, found None, for expression 
-'sum_array'
-Error: (-1, -1) Unexpected error during semantic analysis: 'NoneType' object has no attribute 'param_types'
+...and 3 more errors.
 
 
 test\valid\64371_binary_search\binary_search.agu [✔]
@@ -828,13 +723,7 @@ Program is semantically valid!
 
 test\valid\64854_heart\heart.agu [FAIL]
 Error: (5, 11) unresolved symbol: i
-Error: (5, 13) Expected two equal types; found Int and None, for expression 
-'i < length(heart_matrix)'
-Error: (6, 12) unresolved symbol: i
-Error: (6, 14) Expected two equal types; found Int and None, for expression 
-'i == 0'
-Error: (7, 12) unresolved symbol: i
-...and 29 more errors.
+...and 33 more errors.
 
 
 test\valid\64854_inc\inc.agu [FAIL]
@@ -853,11 +742,7 @@ Program is semantically valid!
 test\valid\64854_printA\printA.agu [FAIL]
 Error: (4, 5) Expected two equal types; found String and Unit, for expression 
 'print("a")'
-Error: (7, 12) unresolved symbol: _
-Error: (7, 12) Expected two equal types; found Unit and None, for expression 
-'_'
-Error: (7, 5) Expected two equal types; found Unit and String, for expression 
-'printA(_)'
+...and 3 more errors.
 
 
 test\valid\64854_produce_letter\produce_letter.agu [✔]

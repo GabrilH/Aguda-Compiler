@@ -1,7 +1,7 @@
 from src.syntax import *
 from src.symbol_table import SymbolTable
 
-MAX_ERRORS = 5
+MAX_ERRORS = 1
 logger = None
 
 class SemanticError(Exception):
@@ -159,12 +159,22 @@ def checkArguments(ctx: SymbolTable, matched_exp: Exp, exps: List[Exp], function
     Checks if the arguments `exps` match the expected types in `expected_types`.
     """
     expected_types = function_type.param_types
-    if len(exps) != len(expected_types):
-        logger.log(f"Function call '{matched_exp}' has {len(exps)} arguments, expected {len(expected_types)}", matched_exp.lineno, matched_exp.column)
-    else:
-        for exp, expected_type in zip(exps, expected_types):
-            checkAgainst(ctx, exp, expected_type)
-
+    actual_types = [typeof(ctx, exp) for exp in exps]
+    if len(actual_types) != len(expected_types):
+        logger.log(
+            f"expected arguments of types [{', '.join(str(t) for t in expected_types)}], "
+            f"found [{', '.join(str(t) for t in actual_types)}] for expression \n'{matched_exp}'",
+            matched_exp.lineno,
+            matched_exp.column
+        )
+    for actual_type, expected_type in zip(actual_types, expected_types):
+        if actual_type != expected_type:
+            logger.log(
+            f"expected arguments of types [{', '.join(str(t) for t in expected_types)}], "
+            f"found [{', '.join(str(t) for t in actual_types)}] for expression \n'{matched_exp}'",
+            matched_exp.lineno,
+            matched_exp.column
+        )
 def insertIntoCtx(ctx: SymbolTable, name: str, type: Type) -> None:
     if name != '_':
         ctx.insert(name, type)
@@ -225,7 +235,7 @@ def typeof(ctx: SymbolTable, match_exp: Exp) -> Type:
             
             return funcType.return_type
             
-        case VariableDeclaration(id, type, exp) | TopLevelVariableDeclaration(id, type, exp):           
+        case VariableDeclaration(id, type, exp) | TopLevelVariableDeclaration(id, type, exp):   
             checkAgainst(ctx, exp, type)
             checkBuiltInConflict(match_exp, id.name)
             insertIntoCtx(ctx, id.name, type)
