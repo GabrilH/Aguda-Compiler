@@ -4,12 +4,10 @@ Passed [✔]: 36
 Failed [FAIL]: 2
 
 test\invalid-semantic\56269_bad_type\bad_type.agu [✔]
-Error: (5, 1) number of params does not match type in function declaration 'sum'
+Error: (5, 5) number of params does not match type in function declaration 'sum'
 Error: (5, 30) unresolved symbol: n
 Error: (5, 30) Expected two equal types; found Int and None, for expression 
 'n'
-Error: (7, 15) expected arguments of types [Int], found [String, String] for expression 
-'sum("a", "b")'
 Error: (7, 15) expected arguments of types [Int], found [String, String] for expression 
 'sum("a", "b")'
 
@@ -173,7 +171,7 @@ Error: (4, 30) Expected type 'String', found type 'Bool' for expression
 
 
 test\invalid-semantic\64371_arg_type_mismatch\arg_type_mismatch.agu [✔]
-Error: (3, 1) number of params does not match type in function declaration 'add'
+Error: (3, 5) number of params does not match type in function declaration 'add'
 Error: (3, 33) unresolved symbol: y
 Error: (3, 33) Expected two equal types; found Int and None, for expression 
 'y'

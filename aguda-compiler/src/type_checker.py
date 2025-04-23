@@ -12,7 +12,7 @@ class ErrorLogger:
     def __init__(self):
         self.messages = []
 
-    def log(self, message: str, lineno: int, column: int) -> None:
+    def log(self, message: str, lineno: int, column: int):
         self.messages.append(f"Error: ({lineno}, {column}) {message}")
 
     def print_errors(self):
@@ -30,28 +30,60 @@ class ErrorLogger:
     def get_errors(self):
         return self.messages
                 
-def checkEqualTypes(exp: Exp, actual_type: Type, expected_type: Type) -> None:
+def checkEqualTypes(exp: Exp, actual_type: Type, expected_type: Type):
     """
     Checks if two types are equal or compatible.
     """
-    # TODO deve receber exp ou n?
     if actual_type != expected_type:
-        logger.log(f"Expected two equal types; found {expected_type} and {actual_type}, for expression \n'{exp}'", exp.lineno, exp.column)
+        logger.log(f"Expected two equal types; found {expected_type} and {actual_type}, "
+                   f"for expression \n'{exp}'", exp.lineno, exp.column)
     
-def checkInstance(ctx: SymbolTable, exp: Exp, expected_class: type) -> None:
+def checkInstance(exp: Exp, actual_type: Type, expected_class: type) -> bool:
     """
-    Checks if the expression `exp` is an instance of the expected class `expected_class`.
+    Checks if the actual type is an instance of the expected class.
+    Returns True if it is, otherwise logs an error and returns False.
     """
-    actual_type = typeof(ctx, exp)
     if not isinstance(actual_type, expected_class):
-        logger.log(f"Expected instance of {expected_class.__name__}, found {actual_type}, for expression \n'{exp}'", exp.lineno, exp.column)
+        logger.log(f"Expected instance of {expected_class.__name__}, found {actual_type}, "
+                   f"for expression \n'{exp}'", exp.lineno, exp.column)
+        return False
+    return True
 
-def checkBuiltInConflict(exp: Exp, name: str) -> None:
+def checkBuiltInConflict(exp: Exp, var: Var):
     """
-    Checks if the name conflicts with built-in functions.
+    Checks if the variable name conflicts with built-in functions.
     """
-    if name in ['print', 'length']:
-        logger.log(f"Name '{name}' conflicts with built-in function", exp.lineno, exp.column)
+    if var.name in ['print', 'length']:
+        logger.log(f"Variable name '{var}' conflicts with built-in function", exp.lineno, exp.column)
+
+def checkArguments(ctx: SymbolTable, matched_exp: Exp, exps: List[Exp], function_type: FunctionType):
+    """
+    Checks if the arguments `exps` match the expected types in `expected_types`.
+    """
+    expected_types = function_type.param_types
+    actual_types = [typeof(ctx, exp) for exp in exps]
+    if len(actual_types) != len(expected_types) or any(a != e for a, e in zip(actual_types, expected_types)):
+        logger.log(
+            f"expected arguments of types [{', '.join(str(t) for t in expected_types)}], "
+            f"found [{', '.join(str(t) for t in actual_types)}] for expression \n'{matched_exp}'",
+            matched_exp.lineno,
+            matched_exp.column
+        )
+
+def checkParemeters(function_id : Var, parameters: List[Var], function_type: FunctionType):
+    """
+    Checks if the parameters names are unique and do not conflict with built-in functions.
+    """
+    if len(parameters) != len(function_type.param_types):
+        logger.log(f"number of params does not match type in function declaration "
+                   f"'{function_id}'", function_id.lineno, function_id.column)
+
+    param_names = set()
+    for param in parameters:
+        if param.name != '_' and param.name in param_names:
+            logger.log(f"duplicate parameter name '{param.name}' in function declaration "
+                       f"'{function_id}'", function_id.lineno, function_id.column)
+        param_names.add(param.name)
 
 def checkAgainst(ctx: SymbolTable, match_exp: Exp, expected_type: Type) -> None:
     """
@@ -72,10 +104,10 @@ def checkAgainst(ctx: SymbolTable, match_exp: Exp, expected_type: Type) -> None:
             checkAgainst(ctx, exp2, type)
 
         case (ArrayAccess(exp1, exp2), _):
-            checkInstance(ctx, exp1, ArrayType)
             checkAgainst(ctx, exp2, BaseType('Int'))
-            actual_type : ArrayType = typeof(ctx, exp1)
-            checkEqualTypes(match_exp, actual_type.type, expected_type)
+            exp1Type : ArrayType = typeof(ctx, exp1)
+            if checkInstance(exp1, exp1Type, ArrayType):
+                checkEqualTypes(match_exp, exp1Type.type, expected_type)
 
         case (FunctionCall(id, exps), _):
             match (id.name, expected_type):
@@ -91,21 +123,23 @@ def checkAgainst(ctx: SymbolTable, match_exp: Exp, expected_type: Type) -> None:
                         logger.log(f"Length function takes exactly one argument", match_exp.lineno, match_exp.column)
                     else:
                         exp1 = exps[0]
-                        checkInstance(ctx, exp1, ArrayType)
+                        exp1Type = typeof(ctx, exp1)
+                        checkInstance(exp1, exp1Type, ArrayType)
 
                 case ('length', _) | ('print', _):
-                    logger.log(f"Expected type '{expected_type}', found type '{typeof(ctx, match_exp)}' for expression \n'{match_exp}'", match_exp.lineno, match_exp.column)
+                    logger.log(f"Expected type '{expected_type}', found type '{typeof(ctx, match_exp)}' "
+                               f"for expression \n'{match_exp}'", match_exp.lineno, match_exp.column)
 
                 case _:
-                    funcType = typeof(ctx, id)
-                    checkInstance(ctx, id, FunctionType)
-                    checkArguments(ctx, match_exp, exps, funcType)
-                    checkEqualTypes(match_exp, funcType.return_type, expected_type)
+                    funcType : FunctionType = typeof(ctx, id)
+                    if checkInstance(id, funcType, FunctionType):
+                        checkArguments(ctx, match_exp, exps, funcType)
+                        checkEqualTypes(match_exp, funcType.return_type, expected_type)
 
         case (VariableDeclaration(id, type, exp),BaseType('Unit')) | (TopLevelVariableDeclaration(id, type, exp),BaseType('Unit')):
             checkAgainst(ctx, exp, type)
-            checkBuiltInConflict(match_exp, id.name)
-            insertIntoCtx(ctx, id.name, type)
+            checkBuiltInConflict(match_exp, id)
+            insertIntoCtx(ctx, id, type)
 
         case (Var(name),_):
             actual_type = typeofVar(ctx, match_exp, name)
@@ -153,37 +187,20 @@ def checkAgainst(ctx: SymbolTable, match_exp: Exp, expected_type: Type) -> None:
             checkAgainst(ctx, exp, expected_type)
 
         case _:
-            logger.log(f"Expected type '{expected_type}', found type '{typeof(ctx, match_exp)}' for expression \n'{match_exp}'", match_exp.lineno, match_exp.column)
+            logger.log(f"Expected type '{expected_type}', found type '{typeof(ctx, match_exp)}' "
+                       f"for expression \n'{match_exp}'", match_exp.lineno, match_exp.column)
             # actual_type = typeof(ctx, match_exp)
             # checkEqualTypes(match_exp, actual_type, expected_type)
-        
-def checkArguments(ctx: SymbolTable, matched_exp: Exp, exps: List[Exp], function_type: FunctionType) -> None:
+
+def insertIntoCtx(ctx: SymbolTable, var: Var, type: Type) -> None:
     """
-    Checks if the arguments `exps` match the expected types in `expected_types`.
+    Inserts a variable and its type into the symbol table.
     """
-    expected_types = function_type.param_types
-    actual_types = [typeof(ctx, exp) for exp in exps]
-    if len(actual_types) != len(expected_types):
-        logger.log(
-            f"expected arguments of types [{', '.join(str(t) for t in expected_types)}], "
-            f"found [{', '.join(str(t) for t in actual_types)}] for expression \n'{matched_exp}'",
-            matched_exp.lineno,
-            matched_exp.column
-        )
-    for actual_type, expected_type in zip(actual_types, expected_types):
-        if actual_type != expected_type:
-            logger.log(
-            f"expected arguments of types [{', '.join(str(t) for t in expected_types)}], "
-            f"found [{', '.join(str(t) for t in actual_types)}] for expression \n'{matched_exp}'",
-            matched_exp.lineno,
-            matched_exp.column
-        )
-def insertIntoCtx(ctx: SymbolTable, name: str, type: Type) -> None:
+    name = var.name
     if name != '_':
         ctx.insert(name, type)
     
 def typeofVar(ctx: SymbolTable, exp: Exp, name: str) -> Type:
-    # TODO deve receber exp ou n?
     varType = ctx.lookup(name)
     if varType is None:
         logger.log(f"unresolved symbol: {name}", exp.lineno, exp.column)
@@ -212,10 +229,11 @@ def typeof(ctx: SymbolTable, match_exp: Exp) -> Type:
             return ArrayType(type)
         
         case ArrayAccess(exp1, exp2):
-            exp1Type = typeof(ctx, exp1)
-            checkInstance(ctx, exp1, ArrayType)
-            checkAgainst(ctx, exp2, BaseType('Int'))            
-            return exp1Type.type
+            checkAgainst(ctx, exp2, BaseType('Int'))
+            exp1Type : ArrayType = typeof(ctx, exp1)
+            if checkInstance(exp1, exp1Type, ArrayType):         
+                return exp1Type.type
+            #TODO return a quê caso nao seja array?
         
         case FunctionCall(id, exps):
             if id.name == 'print':
@@ -229,19 +247,20 @@ def typeof(ctx: SymbolTable, match_exp: Exp) -> Type:
                 if len(exps) != 1:
                     logger.log(f"Length function takes exactly one argument", match_exp.lineno, match_exp.column)
                 exp1 = exps[0]
-                checkInstance(ctx, exp1, ArrayType)
+                exp1Type = typeof(ctx, exp1)
+                checkInstance(exp1, exp1Type, ArrayType)
                 return BaseType('Int')
             
-            funcType = typeof(ctx, id)
-            checkInstance(ctx, id, FunctionType)
-            checkArguments(ctx, match_exp, exps, funcType)
-            
-            return funcType.return_type
+            funcType : FunctionType = typeof(ctx, id)
+            if checkInstance(id, funcType, FunctionType):
+                checkArguments(ctx, match_exp, exps, funcType)
+                return funcType.return_type
+            #TODO return a quê caso nao seja function?
             
         case VariableDeclaration(id, type, exp) | TopLevelVariableDeclaration(id, type, exp):   
             checkAgainst(ctx, exp, type)
-            checkBuiltInConflict(match_exp, id.name)
-            insertIntoCtx(ctx, id.name, type)
+            checkBuiltInConflict(match_exp, id)
+            insertIntoCtx(ctx, id, type)
             # TODO Furthermore, if the declaration appears at the left
             # of a semicolon let id : type = exp1 ; exp2, then the type of id
             # is used to validate exp2
@@ -300,23 +319,18 @@ def typeof(ctx: SymbolTable, match_exp: Exp) -> Type:
             return BaseType('Bool')
         
         case FunctionDeclaration(id, parameters, type, body):
-            checkBuiltInConflict(match_exp, id.name)
-            checkInstance(ctx, id, FunctionType)
-            if len(parameters) != len(type.param_types):
-                logger.log(f"number of params does not match type in function declaration '{id.name}'", match_exp.lineno, match_exp.column)
-            insertIntoCtx(ctx, id.name, type)
-
-            # Check for duplicate parameter names (except for '_')
-            param_names = set()
-            for param in parameters:
-                if param.name != '_' and param.name in param_names:
-                    logger.log(f"Duplicate parameter name '{param.name}' in function '{id.name}'", match_exp.lineno, match_exp.column)
-                param_names.add(param.name)
+            checkBuiltInConflict(match_exp, id)
+            if not checkInstance(match_exp, type, FunctionType):
+                return
+            type : FunctionType = type
+            checkParemeters(id, parameters, type)
+            # TODO faz sentido fazer insert apenas depois do check?
+            insertIntoCtx(ctx, id, type)
 
             # Augment the context with parameter types
             local_ctx = ctx.enter_scope()
             for param, param_type in zip(parameters, type.param_types):
-                insertIntoCtx(local_ctx, param.name, param_type)
+                insertIntoCtx(local_ctx, param, param_type)
             
             checkAgainst(local_ctx, body, type.return_type)
 
@@ -343,12 +357,12 @@ def first_pass(ctx: SymbolTable, node: ASTNode) -> None:
                 first_pass(ctx, decl)
 
         case FunctionDeclaration(id, _, type, _):
-            checkBuiltInConflict(node, id.name)
-            insertIntoCtx(ctx, id.name, type)
+            checkBuiltInConflict(node, id)
+            insertIntoCtx(ctx, id, type)
 
         case TopLevelVariableDeclaration(id, type, _):
-            checkBuiltInConflict(node, id.name)
-            insertIntoCtx(ctx, id.name, type)
+            checkBuiltInConflict(node, id)
+            insertIntoCtx(ctx, id, type)
         case _:
             return
 

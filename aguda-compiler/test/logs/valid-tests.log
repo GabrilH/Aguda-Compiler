@@ -42,10 +42,14 @@ Program is semantically valid!
 
 test\valid\54394_zip\zip.agu [FAIL]
 Error: (6, 33) unresolved symbol: lenght
-Error: (6, 33) unresolved symbol: lenght
 Error: (6, 33) Expected instance of FunctionType, found None, for expression 
 'lenght'
-Error: (-1, -1) Unexpected error during semantic analysis: 'NoneType' object has no attribute 'param_types'
+Error: (6, 46) Expected type 'Int', found type 'Int[]' for expression 
+'new Int [2 | 0]'
+Error: (8, 15) unresolved symbol: lenght
+Error: (8, 15) Expected instance of FunctionType, found None, for expression 
+'lenght'
+...and 1 more errors.
 
 
 test\valid\56269_ackermann\ackermann.agu [✔]
@@ -173,10 +177,13 @@ Error: (4, 23) Expected type 'Bool', found type 'Int' for expression
 
 test\valid\56311_matrix_operations\matrix_operations.agu [FAIL]
 Error: (14, 9) unresolved symbol: error
-Error: (14, 9) unresolved symbol: error
 Error: (14, 9) Expected instance of FunctionType, found None, for expression 
 'error'
-Error: (-1, -1) Unexpected error during semantic analysis: 'NoneType' object has no attribute 'param_types'
+Error: (13, 5) Expected two equal types; found Unit and None, for expression 
+'if length(mat[0]) != length(vec) then
+  error("Dimensions don't match")
+else
+  unit'
 
 
 test\valid\56311_minus_minus\minus_minus.agu [✔]
@@ -405,11 +412,11 @@ test\valid\58168_sumOfMinAndOfMaxOfArray\sumOfMinAndOfMaxOfArray.agu [FAIL]
 Error: (15, 10) unresolved symbol: i
 Error: (15, 12) Expected two equal types; found Int and None, for expression 
 'i < length(b)'
+Error: (16, 7) unresolved symbol: i
+Error: (16, 7) Expected two equal types; found Int and None, for expression 
+'i'
 Error: (16, 5) unresolved symbol: a
-Error: (16, 5) unresolved symbol: a
-Error: (16, 5) Expected instance of ArrayType, found None, for expression 
-'a'
-...and 3 more errors.
+...and 7 more errors.
 
 
 test\valid\58168_sumTwoNumbers\sumTwoNumbers.agu [✔]
@@ -543,7 +550,7 @@ Program is semantically valid!
 
 
 test\valid\58215_addToArrayIndex\addToArrayIndex.agu [FAIL]
-Error: (3, 1) number of params does not match type in function declaration 'addToArrayIndex'
+Error: (3, 5) number of params does not match type in function declaration 'addToArrayIndex'
 Error: (4, 11) unresolved symbol: i
 Error: (4, 11) Expected two equal types; found Int and None, for expression 
 'i'
@@ -566,7 +573,7 @@ Program is semantically valid!
 
 
 test\valid\58215_minArrAndElseUnit\minArrAndElseUnit.agu [FAIL]
-Error: (3, 1) number of params does not match type in function declaration 'minValInArr'
+Error: (3, 5) number of params does not match type in function declaration 'minValInArr'
 Error: (6, 15) unresolved symbol: size
 Error: (6, 13) Expected two equal types; found None and Int, for expression 
 'i < size'
@@ -578,28 +585,29 @@ Program is semantically valid!
 
 
 test\valid\58215_scopeArr\scopeArr.agu [FAIL]
-Error: (4, 1) number of params does not match type in function declaration 'setDiag2dArray'
+Error: (4, 5) number of params does not match type in function declaration 'setDiag2dArray'
 Error: (7, 15) unresolved symbol: size
 Error: (7, 13) Expected two equal types; found None and Int, for expression 
 'i < size'
 Error: (9, 14) Expected instance of ArrayType, found Int, for expression 
 'a[i]'
-Error: (-1, -1) Unexpected error during semantic analysis: 'BaseType' object has no attribute 'type'
+Error: (9, 23) unresolved symbol: n
+...and 5 more errors.
 
 
 test\valid\58215_somaSub\somaSub.agu [FAIL]
-Error: (3, 1) number of params does not match type in function declaration 'soma'
+Error: (3, 5) number of params does not match type in function declaration 'soma'
 Error: (4, 9) unresolved symbol: y
 Error: (4, 9) Expected two equal types; found Int and None, for expression 
 'y'
 Error: (4, 7) Expected two equal types; found (Int) -> Int and Int, for expression 
 'x + y'
-Error: (6, 1) number of params does not match type in function declaration 'sub'
-...and 9 more errors.
+Error: (6, 5) number of params does not match type in function declaration 'sub'
+...and 7 more errors.
 
 
 test\valid\58215_unitFunc\unitFunc.agu [FAIL]
-Error: (3, 1) number of params does not match type in function declaration 'faz3'
+Error: (3, 5) number of params does not match type in function declaration 'faz3'
 Error: (4, 18) Expected type '(Int) -> Int', found type 'Int' for expression 
 '3'
 Error: (4, 25) Expected type '(Int) -> Int', found type 'Int' for expression 
@@ -635,7 +643,8 @@ Error: (4, 28) Expected instance of ArrayType, found String, for expression
 'str'
 Error: (8, 12) Expected instance of ArrayType, found String, for expression 
 'str'
-Error: (-1, -1) Unexpected error during semantic analysis: 'BaseType' object has no attribute 'type'
+Error: (8, 19) Expected two equal types; found String and None, for expression 
+'str[i] == char'
 
 
 test\valid\58219_first_unique_character\first_unique_character.agu [FAIL]
@@ -643,7 +652,8 @@ Error: (4, 26) Expected instance of ArrayType, found String, for expression
 'str'
 Error: (13, 20) Expected instance of ArrayType, found String, for expression 
 'str'
-Error: (-1, -1) Unexpected error during semantic analysis: 'BaseType' object has no attribute 'type'
+Error: (13, 30) Expected instance of ArrayType, found String, for expression 
+'str'
 
 
 test\valid\58219_is_array_sorted\is_array_sorted.agu [FAIL]
@@ -677,7 +687,7 @@ Error: (14, 15) Expected two equal types; found Int and None, for expression
 
 
 test\valid\58219_logical_operators\logical_operators.agu [FAIL]
-Error: (9, 1) number of params does not match type in function declaration 'notOp'
+Error: (9, 5) number of params does not match type in function declaration 'notOp'
 Error: (17, 9) expected arguments of types [Bool, Bool], found [Bool] for expression 
 'notOp(true)'
 Error: (18, 9) expected arguments of types [Bool, Bool], found [Bool] for expression 
@@ -691,7 +701,6 @@ Error: (6, 5) expected arguments of types [String], found [String, Int] for expr
 'reverse(s, i + 1)'
 Error: (7, 11) Expected instance of ArrayType, found String, for expression 
 's'
-Error: (-1, -1) Unexpected error during semantic analysis: 'BaseType' object has no attribute 'type'
 
 
 test\valid\58219_sum_array\sum_array.agu [✔]
@@ -789,10 +798,8 @@ Program is semantically valid!
 
 test\valid\64361_sum_function\sum_function.agu [FAIL]
 Error: (21, 11) unresolved symbol: sum_array
-Error: (21, 11) unresolved symbol: sum_array
 Error: (21, 11) Expected instance of FunctionType, found None, for expression 
 'sum_array'
-Error: (-1, -1) Unexpected error during semantic analysis: 'NoneType' object has no attribute 'param_types'
 
 
 test\valid\64371_binary_search\binary_search.agu [✔]
