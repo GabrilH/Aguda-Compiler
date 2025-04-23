@@ -1,7 +1,7 @@
 invalid-semantic-tests
 
-Passed [✔]: 36
-Failed [FAIL]: 2
+Passed [✔]: 37
+Failed [FAIL]: 1
 
 test\invalid-semantic\56269_bad_type\bad_type.agu [✔]
 Semantic Error: (5, 5) number of params does not match type in function declaration 'sum'
@@ -170,8 +170,8 @@ Semantic Error: (5, 13) Expected type 'Int', found type 'String' for expression
 '"0"'
 
 
-test\invalid-semantic\64371_variable_not_in_scope\variable_not_in_scope.agu [FAIL]
-Expected error but none found.
+test\invalid-semantic\64371_variable_not_in_scope\variable_not_in_scope.agu [✔]
+Semantic Error: (10, 11) unresolved symbol: even
 
 
 test\invalid-semantic\64854_adding_string_int\adding_string_int.agu [✔]

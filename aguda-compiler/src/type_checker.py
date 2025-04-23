@@ -152,7 +152,7 @@ def checkAgainst(ctx: SymbolTable, matched_exp: Exp, expected_type: Type) -> Non
                         checkArguments(ctx, matched_exp, exps, funcType)
                         checkEqualTypes(matched_exp, funcType.return_type, expected_type)
 
-        case (VariableDeclaration(id, type, exp),BaseType('Unit')) | (TopLevelVariableDeclaration(id, type, exp),BaseType('Unit')):
+        case (VariableDeclaration(id, type, exp),BaseType('Unit')):
             checkAgainst(ctx, exp, type)
             insertIntoCtx(ctx, id, type)
 
@@ -162,8 +162,8 @@ def checkAgainst(ctx: SymbolTable, matched_exp: Exp, expected_type: Type) -> Non
         
         case (Conditional(exp1, exp2, exp3), _):
             checkAgainst(ctx, exp1, BaseType('Bool'))
-            checkAgainst(ctx, exp2, expected_type)
-            checkAgainst(ctx, exp3, expected_type)
+            checkAgainst(ctx.enter_scope(), exp2, expected_type)
+            checkAgainst(ctx.enter_scope(), exp3, expected_type)
 
         case (WhileLoop(exp1, exp2), BaseType('Unit')):
             checkAgainst(ctx, exp1, BaseType('Bool'))
@@ -199,7 +199,7 @@ def checkAgainst(ctx: SymbolTable, matched_exp: Exp, expected_type: Type) -> Non
             checkAgainst(ctx, operand, BaseType('Bool'))
 
         case (Group(exp), _):
-            checkAgainst(ctx, exp, expected_type)
+            checkAgainst(ctx.enter_scope(), exp, expected_type)
 
         case _:
             logger.log(f"Expected type '{expected_type}', found type '{typeof(ctx, matched_exp)}' "
