@@ -6,4 +6,4 @@ parser.out
 parsetab.py
 
 # Ignore test git repo
-aguda-testing/
+# aguda-testing/
