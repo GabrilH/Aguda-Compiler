@@ -7,9 +7,6 @@ class SymbolTable:
         self.parent : SymbolTable = None
 
     def insert(self, name: str, symbol_type: Type) -> None:
-        # TODO Add this check to disallow shadowing
-        # if name in self.table:
-        #     raise NameError(f"Symbol '{name}' is already defined")
         self.table[name] = symbol_type
 
     def lookup(self, name: str) -> Type:
@@ -23,8 +20,3 @@ class SymbolTable:
         child = SymbolTable()
         child.parent = self
         return child
-
-    def exit_scope(self) -> 'SymbolTable':
-        if self.parent is None:
-            raise RuntimeError("Cannot exit global scope")
-        return self.parent
