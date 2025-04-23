@@ -138,7 +138,6 @@ def checkAgainst(ctx: SymbolTable, match_exp: Exp, expected_type: Type) -> None:
 
         case (VariableDeclaration(id, type, exp),BaseType('Unit')) | (TopLevelVariableDeclaration(id, type, exp),BaseType('Unit')):
             checkAgainst(ctx, exp, type)
-            checkBuiltInConflict(match_exp, id)
             insertIntoCtx(ctx, id, type)
 
         case (Var(name),_):
@@ -259,7 +258,6 @@ def typeof(ctx: SymbolTable, match_exp: Exp) -> Type:
             
         case VariableDeclaration(id, type, exp) | TopLevelVariableDeclaration(id, type, exp):   
             checkAgainst(ctx, exp, type)
-            checkBuiltInConflict(match_exp, id)
             insertIntoCtx(ctx, id, type)
             # TODO Furthermore, if the declaration appears at the left
             # of a semicolon let id : type = exp1 ; exp2, then the type of id
@@ -361,7 +359,6 @@ def first_pass(ctx: SymbolTable, node: ASTNode) -> None:
             insertIntoCtx(ctx, id, type)
 
         case TopLevelVariableDeclaration(id, type, _):
-            checkBuiltInConflict(node, id)
             insertIntoCtx(ctx, id, type)
         case _:
             return
