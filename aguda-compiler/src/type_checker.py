@@ -1,7 +1,7 @@
 from src.syntax import *
 from src.symbol_table import SymbolTable
 
-MAX_ERRORS = 1
+MAX_ERRORS = 5
 logger = None
 
 class SemanticError(Exception):
@@ -44,7 +44,7 @@ def checkInstance(ctx: SymbolTable, exp: Exp, expected_class: type) -> None:
     """
     actual_type = typeof(ctx, exp)
     if not isinstance(actual_type, expected_class):
-        logger.log(f"Expected instance of {expected_class}, found {actual_type}, for expression \n'{exp}'", exp.lineno, exp.column)
+        logger.log(f"Expected instance of {expected_class.__name__}, found {actual_type}, for expression \n'{exp}'", exp.lineno, exp.column)
 
 def checkBuiltInConflict(exp: Exp, name: str) -> None:
     """
