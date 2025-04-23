@@ -7,103 +7,125 @@ This project is a compiler for the AGUDA programming language, built using PLY. 
 
 ## How to build the compiler
 - **Ensure you have Docker installed and running**
+- **Git pull `aguda-testing`**
+
+        cd aguda-testing; git pull
+
+    **OR** (even `aguda-testing` directory does not yet exist) run in project's root folder (**needs FCUL VPN**)
+
+        git clone https://git.alunos.di.fc.ul.pt/tcomp000/aguda-testing  
+        
 - **Run the following command** (inside project's root folder):
 
-        TODO
+        docker-compose build
 
 - When you no longer need the docker, you may remove the image by executing:
 
         docker rmi aguda-compiler
 
 ## How to run a particular test
-run the following command:
+The test to be run should be inside the directory `aguda-testing\test` and be put there **before** building the docker.
 
-    TODO
+    docker-compose run --rm aguda-compiler RELATIVE_TEST_PATH
 
 Example:
 
-    TODO
+    docker-compose run --rm aguda-compiler aguda-testing\test\valid\tcomp000_powers\powers.agu    
 
 It's also possible to run without arguments and write the AGUDA program directly in the console, followed by [ENTER] and Ctrl+D (EOF):
 
-    TODO
+    docker-compose run --rm aguda-compiler
 
 
 ### How to interpret particular test output
-After running a particular **valid** test, the compiler outputs the textual representation of its AST, for example, the following command:
+After running a particular **valid** test, the compiler outputs the textual representation of its AST and a message saying that the program is semantically valid, for example, the following command:
 
-    docker-compose run --rm aguda-compiler test/valid/tcomp000_powers/powers.agu
+    docker-compose run --rm aguda-compiler aguda-testing\test\valid\tcomp000_powers\powers.agu
 
 Should produce the following output:
 
+    Generating LALR tables
+    Running test: aguda-testing/test/valid/tcomp000_powers/powers.agu
     let powers(n) : (Int) -> Int[] =
-    let a : Int[] =
-        new Int [n | 0] ;
-        let i : Int =
-        0 ;
-        while i < n do
+        let a : Int[] = new Int [n | 0] ;
+        let i : Int = 0 ;
+        while i < n do (
             set a[i] = i * i ;
-            a
+            set i = i + 1
+        ) ;
+        a
     let _ : Unit =
-    print(powers(10))
+        print(powers(10))
+    Program is semantically valid!
 
-If the given test is **invalid**, the compiler outputs what it was able to parse and also the syntatic and/or lexer errors that are present in the test program. For example, the following program:
+If the given test is **syntax invalid**, the compiler outputs what it was able to parse and also the syntatic and/or lexer errors that are present in the test program. For example, the following program:
 
-    -- Author: 58250, Leonardo Monteiro
+    -- Author: tcomp000, Vasco T. Vasconcelos
 
-    -- Function to convert euros to dollars
-    let euros_to_usd (euros : Float) : Float = euros * 1.18
+    -- # Comments are to start with --, not #
 
-    let amount_euros : Float = 100  -- Amount in euros
-    let amount_usd : Float = euros_to_usd(amount_euros)
-
-    let _ : Unit = 
-        print(amount_usd)    -- Expected result: 118.0 
+    let x : Int
 
 
 Should produce the following output:
 
-    Syntactic error: at line 4, column 25: Unexpected token ':'
-    Lexical error: Illegal character '.' at line 4, column 53
-    Syntactic error: at line 6, column 20: Unexpected token 'Float'
-    Syntactic error: at line 7, column 18: Unexpected token 'Float'
-    let _ : Unit =
-        print(amount_usd)
+    Generating LALR tables
+    Running test: aguda-testing/test/invalid-syntax/tcomp000_wrong_comment/wrong_comment.agu
+    None
+    Syntactic error: at EOF
+
+If the given test is **semantically invalid**, the compiler outputs the AST of the program and the semantic errors it found. For example, the following program:
+
+    -- tcomp000, vasco t. vasconcelos
+
+    let _ : Int = (while false do 5) + 5
+
+Should produce the following output:
+
+    Generating LALR tables
+    Running test: aguda-testing/test/invalid-semantic/tcomp000-while-plus-five/while-plus-five.agu
+    let _ : Int =
+        (
+            while false do 5
+        ) + 5
+    Semantic Error: (3, 16) Expected type 'Int', found type 'Unit' for expression
+    'while false do 5'
 
 # How to run the whole test suit
 
 To run the whole test suit, the following command must be executed:
 
-    TODO --suite
+    docker-compose run --rm aguda-compiler --suite
 
 The tests should be put separated into three different subdirectories depending on their type:
-- Valid tests -> `test\valid`
-- Semantic invalid tests -> `test\invalid-semantic`
-- Syntatic invalid tests -> `test\invalid-syntax`
+- Valid tests -> `aguda-testing\test\valid`
+- Semantic invalid tests -> `aguda-testing\test\invalid-semantic`
+- Syntatic invalid tests -> `aguda-testing\test\invalid-syntax`
 
 Each program (valid or invalid) must be included in a distinct folder. Valid test folders should contain two files. For a program `p`, include a `p.agu` (the source code) and a `p.expect` (a txt file with the expected output of program `p`). Folders for invalid tests contain one `.agu` file only. Resulting in the following directory schema:
 
     project_root\
-    ├── test\
-        ├── invalid-semantic\
-        │   ├── tcomp000-while-plus-five0\
-        |   |   ├── while-plus-five.agu
-        |   |...
-        |
-        ├── invalid-syntax\
-        │   ├── tcomp000_wrong_comment\
-        |   |   ├── wrong_comment.agu
-        |   |...
-        |
-        └── valid\
-            ├── tcomp000_powers\
-            |   ├── powers.agu
-            |   ├── powers.expect
-            |...
+        ├── aguda-testing\
+            ├── test\
+                ├── invalid-semantic\
+                │   ├── tcomp000-while-plus-five0\
+                |   |   ├── while-plus-five.agu
+                |   |...
+                |
+                ├── invalid-syntax\
+                │   ├── tcomp000_wrong_comment\
+                |   |   ├── wrong_comment.agu
+                |   |...
+                |
+                └── valid\
+                    ├── tcomp000_powers\
+                    |   ├── powers.agu
+                    |   ├── powers.expect
+                    |...
 
 ### How to interpret the test suit output
 
-The test suit generates three different logs inside the folder `test/logs`, one for each type of test. Each log consists of the following:
+The test suit generates three different logs inside the folder `logs`, one for each type of test. Each log consists of the following:
 - Log header:
     
     - Type-of-test
@@ -122,21 +144,21 @@ The test suit generates three different logs inside the folder `test/logs`, one 
 
         - If **valid** test and **semantically incorrect**:
 
-                test\valid\58219_logical_operators\logical_operators.agu [FAIL]
-                Semantic Error: (9, 5) number of params does not match type in function declaration 'notOp'
-                Semantic Error: (17, 9) expected arguments of types [Bool, Bool], found [Bool] for expression 
-                'notOp(true)'
-                Semantic Error: (18, 9) expected arguments of types [Bool, Bool], found [Bool] for expression 
-                'notOp(false)'
+                /app/aguda-testing/test/valid/58166_powerTen/powerTen.agu [FAIL]
+                Semantic Error: (5, 5) Expected both branches to be of same type; found Int and Unit, for expression 
+                'if n < 0 then
+                    0 - 1
+                else
+                    unit'
 
         - If **invalid** test and **semantically correct**
 
-                test\invalid-semantic\64371_variable_not_in_scope\variable_not_in_scope.agu [FAIL]
+                /app/aguda-testing/test/invalid-semantic/58166_outOfBounds/outOfBounds.agu [FAIL]
                 Expected error but none found.
 
         - If **invalid** test and **semantically incorrect**
 
-                test\invalid-semantic\tcomp000-while-plus-five\while-plus-five.agu [✔]
+                /app/aguda-testing/test/invalid-semantic/tcomp000-while-plus-five/while-plus-five.agu [✔]
                 Semantic Error: (3, 16) Expected type 'Int', found type 'Unit' for expression 
                 'while false do 5'
 
@@ -145,7 +167,7 @@ To change the max number of errors to be printed you just need to changed the va
 
 ## A brief description of how you implemented the symbol table
 
-The Symbol Table was implemented as a hierarchical structure, it uses a dictionary to store symbols in the current scope and supports nested scopes through a parent-child relationship.
+The Symbol Table was implemented as a hierarchical structure, it uses a dictionary to store the symbols in the current scope and supports nested scopes through a parent-child relationship.
 
 Methods:
 
