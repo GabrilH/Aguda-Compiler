@@ -73,8 +73,7 @@ Error: (16, 11) unresolved symbol: j
 Error: (16, 13) Expected two equal types; found None and Int, for expression 
 'j < length(a[0])'
 Error: (17, 18) unresolved symbol: j
-Error: (17, 18) Expected two equal types; found None and Int, for expression 
-'j'
+Error: (17, 18) Expected variable 'j' to be of type 'Int', found type 'None'
 Error: (18, 11) unresolved symbol: j
 ...and 3 more errors.
 
@@ -379,8 +378,7 @@ Error: (11, 7) unresolved symbol: result
 Error: (11, 3) Expected two equal types; found None and Bool, for expression 
 'set result = true'
 Error: (12, 3) unresolved symbol: result
-Error: (12, 3) Expected two equal types; found None and Bool, for expression 
-'result'
+Error: (12, 3) Expected variable 'result' to be of type 'Bool', found type 'None'
 ...and 1 more errors.
 
 
@@ -413,8 +411,7 @@ Error: (15, 10) unresolved symbol: i
 Error: (15, 12) Expected two equal types; found None and Int, for expression 
 'i < length(b)'
 Error: (16, 7) unresolved symbol: i
-Error: (16, 7) Expected two equal types; found None and Int, for expression 
-'i'
+Error: (16, 7) Expected variable 'i' to be of type 'Int', found type 'None'
 Error: (16, 5) unresolved symbol: a
 ...and 7 more errors.
 
@@ -552,11 +549,9 @@ Program is semantically valid!
 test\valid\58215_addToArrayIndex\addToArrayIndex.agu [FAIL]
 Error: (3, 5) number of params does not match type in function declaration 'addToArrayIndex'
 Error: (4, 11) unresolved symbol: i
-Error: (4, 11) Expected two equal types; found None and Int, for expression 
-'i'
+Error: (4, 11) Expected variable 'i' to be of type 'Int', found type 'None'
 Error: (4, 18) unresolved symbol: i
-Error: (4, 18) Expected two equal types; found None and Int, for expression 
-'i'
+Error: (4, 18) Expected variable 'i' to be of type 'Int', found type 'None'
 ...and 5 more errors.
 
 
@@ -598,8 +593,7 @@ Error: (9, 23) unresolved symbol: n
 test\valid\58215_somaSub\somaSub.agu [FAIL]
 Error: (3, 5) number of params does not match type in function declaration 'soma'
 Error: (4, 9) unresolved symbol: y
-Error: (4, 9) Expected two equal types; found None and Int, for expression 
-'y'
+Error: (4, 9) Expected variable 'y' to be of type 'Int', found type 'None'
 Error: (4, 7) Expected two equal types; found Int and (Int) -> Int, for expression 
 'x + y'
 Error: (6, 5) number of params does not match type in function declaration 'sub'
@@ -666,8 +660,7 @@ Error: (10, 15) unresolved symbol: i
 Error: (10, 17) Expected two equal types; found None and Int, for expression 
 'i < len'
 Error: (11, 20) unresolved symbol: i
-Error: (11, 20) Expected two equal types; found None and Int, for expression 
-'i'
+Error: (11, 20) Expected variable 'i' to be of type 'Int', found type 'None'
 ...and 8 more errors.
 
 
@@ -678,11 +671,9 @@ Error: (8, 8) Expected two equal types; found Bool and Unit, for expression
 else
   let i : Int = 5'
 Error: (14, 11) unresolved symbol: i
-Error: (14, 11) Expected two equal types; found None and Int, for expression 
-'i'
+Error: (14, 11) Expected variable 'i' to be of type 'Int', found type 'None'
 Error: (14, 15) unresolved symbol: i
-Error: (14, 15) Expected two equal types; found None and Int, for expression 
-'i'
+Error: (14, 15) Expected variable 'i' to be of type 'Int', found type 'None'
 ...and 8 more errors.
 
 

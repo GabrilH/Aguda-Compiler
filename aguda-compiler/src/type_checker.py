@@ -142,7 +142,10 @@ def checkAgainst(ctx: SymbolTable, matched_exp: Exp, expected_type: Type) -> Non
 
         case (Var(name),_):
             actual_type = typeofVar(ctx, matched_exp, name)
-            checkEqualTypes(matched_exp, actual_type, expected_type)
+            if actual_type != expected_type:
+                logger.log(f"Expected variable '{name}' to be of type '{expected_type}', "
+                            f"found type '{actual_type}'",
+                            matched_exp.lineno, matched_exp.column)
         
         case (Conditional(exp1, exp2, exp3), _):
             checkAgainst(ctx, exp1, BaseType('Bool'))
