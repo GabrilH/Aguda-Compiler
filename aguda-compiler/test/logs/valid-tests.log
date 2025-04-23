@@ -727,7 +727,7 @@ Error: (5, 11) unresolved symbol: i
 
 
 test\valid\64854_inc\inc.agu [FAIL]
-Error: (5, 1) Expected two equal types; found Int and Unit, for expression 
+Error: (5, 1) Expected type 'Int', found type 'Unit' for expression 
 'print(i)'
 
 
@@ -740,7 +740,7 @@ Program is semantically valid!
 
 
 test\valid\64854_printA\printA.agu [FAIL]
-Error: (4, 5) Expected two equal types; found String and Unit, for expression 
+Error: (4, 5) Expected type 'String', found type 'Unit' for expression 
 'print("a")'
 ...and 3 more errors.
 

@@ -78,26 +78,29 @@ def checkAgainst(ctx: SymbolTable, match_exp: Exp, expected_type: Type) -> None:
             checkEqualTypes(match_exp, actual_type.type, expected_type)
 
         case (FunctionCall(id, exps), _):
-            if id.name == 'print':
-                if len(exps) != 1:
-                    logger.log(f"Print function takes exactly one argument", match_exp.lineno, match_exp.column)
-                else:
-                    exp1 = exps[0]
-                    typeof(ctx, exp1)
-                checkEqualTypes(match_exp, BaseType('Unit'), expected_type)
-            
-            elif id.name == 'length':
-                if len(exps) != 1:
-                    logger.log(f"Length function takes exactly one argument", match_exp.lineno, match_exp.column)
-                else:
-                    checkInstance(ctx, exps[0], ArrayType)
-                checkEqualTypes(match_exp, BaseType('Int'), expected_type)
-            
-            else:
-                funcType = typeof(ctx, id)
-                checkInstance(ctx, id, FunctionType)
-                checkArguments(ctx, match_exp, exps, funcType)
-                checkEqualTypes(match_exp, funcType.return_type, expected_type)
+            match (id.name, expected_type):
+                case ('print', BaseType('Unit')):
+                    if len(exps) != 1:
+                        logger.log(f"Print function takes exactly one argument", match_exp.lineno, match_exp.column)
+                    else:
+                        exp1 = exps[0]
+                        typeof(ctx, exp1)
+
+                case ('length', BaseType('Int')):
+                    if len(exps) != 1:
+                        logger.log(f"Length function takes exactly one argument", match_exp.lineno, match_exp.column)
+                    else:
+                        exp1 = exps[0]
+                        checkInstance(ctx, exp1, ArrayType)
+
+                case ('length', _) | ('print', _):
+                    logger.log(f"Expected type '{expected_type}', found type '{typeof(ctx, match_exp)}' for expression \n'{match_exp}'", match_exp.lineno, match_exp.column)
+
+                case _:
+                    funcType = typeof(ctx, id)
+                    checkInstance(ctx, id, FunctionType)
+                    checkArguments(ctx, match_exp, exps, funcType)
+                    checkEqualTypes(match_exp, funcType.return_type, expected_type)
 
         case (VariableDeclaration(id, type, exp),BaseType('Unit')) | (TopLevelVariableDeclaration(id, type, exp),BaseType('Unit')):
             checkAgainst(ctx, exp, type)
