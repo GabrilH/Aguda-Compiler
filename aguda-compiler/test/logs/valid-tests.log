@@ -42,12 +42,12 @@ Program is semantically valid!
 
 test\valid\54394_zip\zip.agu [FAIL]
 Error: (6, 33) unresolved symbol: lenght
-Error: (6, 33) Expected instance of FunctionType, found None, for expression 
+Error: (6, 33) Expected a FunctionType, found None for expression 
 'lenght'
 Error: (6, 46) Expected type 'Int', found type 'Int[]' for expression 
 'new Int [2 | 0]'
 Error: (8, 15) unresolved symbol: lenght
-Error: (8, 15) Expected instance of FunctionType, found None, for expression 
+Error: (8, 15) Expected a FunctionType, found None for expression 
 'lenght'
 ...and 1 more errors.
 
@@ -177,7 +177,7 @@ Error: (4, 23) Expected type 'Bool', found type 'Int' for expression
 
 test\valid\56311_matrix_operations\matrix_operations.agu [FAIL]
 Error: (14, 9) unresolved symbol: error
-Error: (14, 9) Expected instance of FunctionType, found None, for expression 
+Error: (14, 9) Expected a FunctionType, found None for expression 
 'error'
 Error: (13, 5) Expected two equal types; found Unit and None, for expression 
 'if length(mat[0]) != length(vec) then
@@ -356,16 +356,16 @@ Program is semantically valid!
 
 
 test\valid\58166_stringLength\stringLength.agu [FAIL]
-Error: (5, 19) Expected instance of ArrayType, found String, for expression 
-'s'
-Error: (6, 19) Expected instance of ArrayType, found String, for expression 
-'s'
-Error: (6, 36) Expected instance of ArrayType, found String, for expression 
-'s'
-Error: (7, 19) Expected instance of ArrayType, found String, for expression 
-'s'
-Error: (7, 37) Expected instance of ArrayType, found String, for expression 
-'s'
+Error: (5, 12) Expected a ArrayType, found String for expression 
+'length(s)'
+Error: (6, 12) Expected a ArrayType, found String for expression 
+'length(s)'
+Error: (6, 29) Expected a ArrayType, found String for expression 
+'length(s)'
+Error: (7, 12) Expected a ArrayType, found String for expression 
+'length(s)'
+Error: (7, 30) Expected a ArrayType, found String for expression 
+'length(s)'
 
 
 test\valid\58168_3letsPrint1stValue\3letsPrint1stValue.agu [✔]
@@ -589,7 +589,7 @@ Error: (4, 5) number of params does not match type in function declaration 'setD
 Error: (7, 15) unresolved symbol: size
 Error: (7, 13) Expected two equal types; found None and Int, for expression 
 'i < size'
-Error: (9, 14) Expected instance of ArrayType, found Int, for expression 
+Error: (9, 14) Expected a ArrayType, found Int for expression 
 'a[i]'
 Error: (9, 23) unresolved symbol: n
 ...and 5 more errors.
@@ -617,10 +617,10 @@ Error: (7, 11) expected arguments of types [Unit], found [Unit, Int] for express
 
 
 test\valid\58219_compare_string_length\compare_string_length.agu [FAIL]
-Error: (4, 29) Expected instance of ArrayType, found String, for expression 
-'str1'
-Error: (5, 29) Expected instance of ArrayType, found String, for expression 
-'str2'
+Error: (4, 22) Expected a ArrayType, found String for expression 
+'length(str1)'
+Error: (5, 22) Expected a ArrayType, found String for expression 
+'length(str2)'
 
 
 test\valid\58219_count_common_elements\count_common_elemts.agu [✔]
@@ -639,20 +639,20 @@ Error: (16, 15) unresolved symbol: maxVal
 
 
 test\valid\58219_find_char\find_char.agu [FAIL]
-Error: (4, 28) Expected instance of ArrayType, found String, for expression 
-'str'
-Error: (8, 12) Expected instance of ArrayType, found String, for expression 
+Error: (4, 21) Expected a ArrayType, found String for expression 
+'length(str)'
+Error: (8, 12) Expected a ArrayType, found String for expression 
 'str'
 Error: (8, 19) Expected two equal types; found String and None, for expression 
 'str[i] == char'
 
 
 test\valid\58219_first_unique_character\first_unique_character.agu [FAIL]
-Error: (4, 26) Expected instance of ArrayType, found String, for expression 
+Error: (4, 19) Expected a ArrayType, found String for expression 
+'length(str)'
+Error: (13, 20) Expected a ArrayType, found String for expression 
 'str'
-Error: (13, 20) Expected instance of ArrayType, found String, for expression 
-'str'
-Error: (13, 30) Expected instance of ArrayType, found String, for expression 
+Error: (13, 30) Expected a ArrayType, found String for expression 
 'str'
 
 
@@ -695,11 +695,11 @@ Error: (18, 9) expected arguments of types [Bool, Bool], found [Bool] for expres
 
 
 test\valid\58219_reverse_string\reverse_string.agu [FAIL]
-Error: (5, 19) Expected instance of ArrayType, found String, for expression 
-'s'
+Error: (5, 12) Expected a ArrayType, found String for expression 
+'length(s)'
 Error: (6, 5) expected arguments of types [String], found [String, Int] for expression 
 'reverse(s, i + 1)'
-Error: (7, 11) Expected instance of ArrayType, found String, for expression 
+Error: (7, 11) Expected a ArrayType, found String for expression 
 's'
 
 
@@ -736,8 +736,8 @@ Program is semantically valid!
 
 
 test\valid\58250_length\58250_length.agu [FAIL]
-Error: (5, 26) Expected instance of ArrayType, found String, for expression 
-'str'
+Error: (5, 19) Expected a ArrayType, found String for expression 
+'length(str)'
 
 
 test\valid\58250_max_between_2\58250_max_between_2.agu [✔]
@@ -798,7 +798,7 @@ Program is semantically valid!
 
 test\valid\64361_sum_function\sum_function.agu [FAIL]
 Error: (21, 11) unresolved symbol: sum_array
-Error: (21, 11) Expected instance of FunctionType, found None, for expression 
+Error: (21, 11) Expected a FunctionType, found None for expression 
 'sum_array'
 
 

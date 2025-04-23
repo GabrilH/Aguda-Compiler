@@ -44,7 +44,7 @@ def checkInstance(exp: Exp, actual_type: Type, expected_class: type) -> bool:
     Returns True if it is, otherwise logs an error and returns False.
     """
     if not isinstance(actual_type, expected_class):
-        logger.log(f"Expected instance of {expected_class.__name__}, found {actual_type}, "
+        logger.log(f"Expected a {expected_class.__name__}, found {actual_type} "
                    f"for expression \n'{exp}'", exp.lineno, exp.column)
         return False
     return True
@@ -124,7 +124,7 @@ def checkAgainst(ctx: SymbolTable, match_exp: Exp, expected_type: Type) -> None:
                     else:
                         exp1 = exps[0]
                         exp1Type = typeof(ctx, exp1)
-                        checkInstance(exp1, exp1Type, ArrayType)
+                        checkInstance(match_exp, exp1Type, ArrayType)
 
                 case ('length', _) | ('print', _):
                     logger.log(f"Expected type '{expected_type}', found type '{typeof(ctx, match_exp)}' "
@@ -247,7 +247,7 @@ def typeof(ctx: SymbolTable, match_exp: Exp) -> Type:
                     logger.log(f"Length function takes exactly one argument", match_exp.lineno, match_exp.column)
                 exp1 = exps[0]
                 exp1Type = typeof(ctx, exp1)
-                checkInstance(exp1, exp1Type, ArrayType)
+                checkInstance(match_exp, exp1Type, ArrayType)
                 return BaseType('Int')
             
             funcType : FunctionType = typeof(ctx, id)
