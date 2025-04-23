@@ -13,7 +13,7 @@ class ErrorLogger:
         self.messages = []
 
     def log(self, message: str, lineno: int, column: int):
-        self.messages.append(f"Error: ({lineno}, {column}) {message}")
+        self.messages.append(f"Semantic Error: ({lineno}, {column}) {message}")
 
     def print_errors(self):
         for error in self.messages[:MAX_ERRORS]:
