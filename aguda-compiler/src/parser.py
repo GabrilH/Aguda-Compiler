@@ -24,11 +24,6 @@ precedence = (
 
 def p_program(t):
     '''program : top_level_declarations'''
-    # TODO adicionar se for preciso
-    # program = s.Program(t[1])
-    # program.lineno = t[1][0].lineno if t[1] else 1
-    # program.column = t[1][0].column if t[1] else 1
-    # t[0] = program
     t[0] = s.Program(t[1])
 
 def p_top_level_declarations(t):
@@ -333,10 +328,3 @@ def reset_parser():
         lexer.lineno = 1
 
 parser = yacc.yacc()
-
-# if __name__ == '__main__':
-#     with open("test/valid/56334_bubbleSort/bubbleSort.agu", 'r') as f:
-#         data = f.read()
-
-#     ast = parser.parse(data)
-#     print(ast)

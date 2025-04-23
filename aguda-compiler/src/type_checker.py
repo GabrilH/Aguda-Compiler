@@ -32,7 +32,7 @@ class ErrorLogger:
                 
 def checkEqualTypes(error_exp: Exp, actual_type: Type, expected_type: Type):
     """
-    Checks if two types are equal or compatible.
+    Checks if the actual type matches the expected type.
     """
     if actual_type == expected_type:
         return
@@ -74,7 +74,7 @@ def checkBuiltInConflict(error_exp: Exp, var: Var):
 
 def checkArguments(ctx: SymbolTable, error_exp: Exp, exps: List[Exp], function_type: FunctionType):
     """
-    Checks if the arguments `exps` match the expected types in `expected_types`.
+    Checks if the arguments of a function call match the expected types.
     """
     expected_types = function_type.param_types
     actual_types = [typeof(ctx, exp) for exp in exps]
@@ -204,8 +204,6 @@ def checkAgainst(ctx: SymbolTable, matched_exp: Exp, expected_type: Type) -> Non
         case _:
             logger.log(f"Expected type '{expected_type}', found type '{typeof(ctx, matched_exp)}' "
                        f"for expression \n'{matched_exp}'", matched_exp.lineno, matched_exp.column)
-            # actual_type = typeof(ctx, matched_exp)
-            # checkEqualTypes(matched_exp, actual_type, expected_type)
 
 def insertIntoCtx(ctx: SymbolTable, var: Var, type: Type) -> None:
     """
@@ -248,7 +246,6 @@ def typeof(ctx: SymbolTable, matched_exp: Exp) -> Type:
             exp1Type : ArrayType = typeof(ctx, exp1)
             if checkInstance(exp1, exp1Type, ArrayType):         
                 return exp1Type.type
-            #TODO return a quê caso nao seja array?
         
         case FunctionCall(id, exps):
             if id.name == 'print':
@@ -270,14 +267,10 @@ def typeof(ctx: SymbolTable, matched_exp: Exp) -> Type:
             if checkInstance(id, funcType, FunctionType):
                 checkArguments(ctx, matched_exp, exps, funcType)
                 return funcType.return_type
-            #TODO return a quê caso nao seja function?
             
         case VariableDeclaration(id, type, exp) | TopLevelVariableDeclaration(id, type, exp):   
             checkAgainst(ctx, exp, type)
             insertIntoCtx(ctx, id, type)
-            # TODO Furthermore, if the declaration appears at the left
-            # of a semicolon let id : type = exp1 ; exp2, then the type of id
-            # is used to validate exp2
             return BaseType('Unit')
         
         case Var(name):
@@ -337,8 +330,8 @@ def typeof(ctx: SymbolTable, matched_exp: Exp) -> Type:
             if not checkInstance(matched_exp, type, FunctionType):
                 return
             type : FunctionType = type
+
             checkParameters(id, parameters, type)
-            # TODO faz sentido fazer insert apenas depois do check?
             insertIntoCtx(ctx, id, type)
 
             # Augment the context with parameter types
@@ -376,6 +369,7 @@ def first_pass(ctx: SymbolTable, node: ASTNode) -> None:
 
         case TopLevelVariableDeclaration(id, type, _):
             insertIntoCtx(ctx, id, type)
+            
         case _:
             return
 
@@ -397,10 +391,10 @@ def verify(ast: ASTNode) -> None:
     logger = ErrorLogger()
 
     ctx = SymbolTable()
-    add_builtins(ctx)  # Add built-in functions to the context
+    add_builtins(ctx)
     try :
-        first_pass(ctx, ast)  # first pass
-        second_pass(ctx, ast)  # second pass
+        first_pass(ctx, ast)
+        second_pass(ctx, ast)
     except Exception as e:
         logger.log(f"Unexpected error during semantic analysis: {str(e)}", -1, -1)
 

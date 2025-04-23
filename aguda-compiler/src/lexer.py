@@ -104,16 +104,3 @@ def t_error(t):
     t.lexer.skip(1)
 
 lexer = lex.lex()
-
-# if __name__ == '__main__':
-#     import sys
-
-#     # lexer.input(sys.stdin.read())
-#     with open("aguda-compiler/tests/collatz.agu") as f:
-#         lexer.input(f.read())
-
-#     while True:
-#         tok = lexer.token()
-#         if not tok: 
-#             break      # No more input
-#         print(tok)
