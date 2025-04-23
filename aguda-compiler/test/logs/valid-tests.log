@@ -178,7 +178,7 @@ test\valid\56311_matrix_operations\matrix_operations.agu [FAIL]
 Error: (14, 9) unresolved symbol: error
 Error: (14, 9) Expected a FunctionType, found None for expression 
 'error'
-Error: (13, 5) Expected two equal types; found None and Unit, for expression 
+Error: (13, 5) Expected both branches to be of same type; found None and Unit, for expression 
 'if length(mat[0]) != length(vec) then
   error("Dimensions don't match")
 else
@@ -320,7 +320,7 @@ Program is semantically valid!
 
 
 test\valid\58166_maxDistance\maxDistance.agu [FAIL]
-Error: (16, 5) Expected two equal types; found Int and Unit, for expression 
+Error: (16, 5) Expected both branches to be of same type; found Int and Unit, for expression 
 'if length(a) == 0 then
   0
 else
@@ -343,7 +343,7 @@ Program is semantically valid!
 
 
 test\valid\58166_powerTen\powerTen.agu [FAIL]
-Error: (5, 5) Expected two equal types; found Int and Unit, for expression 
+Error: (5, 5) Expected both branches to be of same type; found Int and Unit, for expression 
 'if n < 0 then
   0 - 1
 else
@@ -651,7 +651,7 @@ Error: (13, 30) Expected a ArrayType, found String for expression
 
 
 test\valid\58219_is_array_sorted\is_array_sorted.agu [FAIL]
-Error: (6, 5) Expected two equal types; found Bool and Unit, for expression 
+Error: (6, 5) Expected both branches to be of same type; found Bool and Unit, for expression 
 'if len <= 1 then
   result
 else
@@ -665,7 +665,7 @@ Error: (11, 20) Expected variable 'i' to be of type 'Int', found type 'None'
 
 
 test\valid\58219_is_prime\is_prime.agu [FAIL]
-Error: (8, 8) Expected two equal types; found Bool and Unit, for expression 
+Error: (8, 8) Expected both branches to be of same type; found Bool and Unit, for expression 
 'if n % 2 == 0 || n % 3 == 0 then
   false
 else
@@ -776,7 +776,7 @@ Program is semantically valid!
 
 
 test\valid\64361_prime_number\prime_number.agu [FAIL]
-Error: (8, 13) Expected two equal types; found Bool and Unit, for expression 
+Error: (8, 13) Expected both branches to be of same type; found Bool and Unit, for expression 
 'if n % i == 0 then
   false
 else
@@ -875,7 +875,7 @@ Error: (4, 5) Expected type 'String', found type 'Unit' for expression
 Error: (7, 12) unresolved symbol: _
 Error: (7, 5) expected arguments of types [Unit], found [None] for expression 
 'printA(_)'
-Error: (7, 5) Expected two equal types; found String and Unit, for expression 
+Error: (7, 5) Expected function call to return type 'Unit', found type 'String' for expression 
 'printA(_)'
 
 

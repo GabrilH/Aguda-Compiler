@@ -34,9 +34,25 @@ def checkEqualTypes(error_exp: Exp, actual_type: Type, expected_type: Type):
     """
     Checks if two types are equal or compatible.
     """
-    if actual_type != expected_type:
-        logger.log(f"Expected two equal types; found {actual_type} and {expected_type}, "
-                   f"for expression \n'{error_exp}'", error_exp.lineno, error_exp.column)
+    if actual_type == expected_type:
+        return
+    
+    match error_exp:            
+        case FunctionCall(_, _):
+            logger.log(f"Expected function call to return type '{expected_type}', "
+                    f"found type '{actual_type}' for expression \n'{error_exp}'", error_exp.lineno, error_exp.column)
+            
+        case Conditional(_, _, _):
+            logger.log(f"Expected both branches to be of same type; found {actual_type} and {expected_type}, "
+                    f"for expression \n'{error_exp}'", error_exp.lineno, error_exp.column)
+            
+        case Var(_):
+            logger.log(f"Expected variable '{error_exp}' to be of type '{expected_type}', "
+                    f"found type '{actual_type}'", error_exp.lineno, error_exp.column)
+
+        case _: 
+            logger.log(f"Expected two equal types; found {actual_type} and {expected_type}, "
+                    f"for expression \n'{error_exp}'", error_exp.lineno, error_exp.column)
     
 def checkInstance(error_exp: Exp, actual_type: Type, expected_class: type) -> bool:
     """
@@ -70,7 +86,7 @@ def checkArguments(ctx: SymbolTable, error_exp: Exp, exps: List[Exp], function_t
             error_exp.column
         )
 
-def checkParemeters(error_exp : Exp, parameters: List[Var], function_type: FunctionType):
+def checkParameters(error_exp : Exp, parameters: List[Var], function_type: FunctionType):
     """
     Checks if the parameters names are unique and do not conflict with built-in functions.
     """
@@ -142,10 +158,7 @@ def checkAgainst(ctx: SymbolTable, matched_exp: Exp, expected_type: Type) -> Non
 
         case (Var(name),_):
             actual_type = typeofVar(ctx, matched_exp, name)
-            if actual_type != expected_type:
-                logger.log(f"Expected variable '{name}' to be of type '{expected_type}', "
-                            f"found type '{actual_type}'",
-                            matched_exp.lineno, matched_exp.column)
+            checkEqualTypes(matched_exp, actual_type, expected_type)
         
         case (Conditional(exp1, exp2, exp3), _):
             checkAgainst(ctx, exp1, BaseType('Bool'))
@@ -324,7 +337,7 @@ def typeof(ctx: SymbolTable, matched_exp: Exp) -> Type:
             if not checkInstance(matched_exp, type, FunctionType):
                 return
             type : FunctionType = type
-            checkParemeters(id, parameters, type)
+            checkParameters(id, parameters, type)
             # TODO faz sentido fazer insert apenas depois do check?
             insertIntoCtx(ctx, id, type)
 

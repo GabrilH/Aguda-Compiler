@@ -19,7 +19,7 @@ Error: (6, 17) Expected type 'Int', found type 'String' for expression
 test\invalid-semantic\56269_wrong_function_call\wrong_function_call.agu [✔]
 Error: (11, 5) expected arguments of types [Int], found [Int, Int] for expression 
 'wrongCall(1, 2)'
-Error: (11, 5) Expected two equal types; found Int and (Unit) -> Int, for expression 
+Error: (11, 5) Expected function call to return type '(Unit) -> Int', found type 'Int' for expression 
 'wrongCall(1, 2)'
 
 
@@ -64,7 +64,7 @@ Error: (2, 15) Expected type 'Int', found type 'Bool' for expression
 
 
 test\invalid-semantic\56332_wrong_return_type\wrong_return_type.agu [✔]
-Error: (3, 15) Expected two equal types; found Unit and Int, for expression 
+Error: (3, 15) Expected function call to return type 'Int', found type 'Unit' for expression 
 'retornaUnit(5)'
 
 
