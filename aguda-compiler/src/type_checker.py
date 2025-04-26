@@ -210,6 +210,11 @@ def insertIntoCtx(ctx: SymbolTable, var: Var, type: Type) -> None:
     Inserts a variable and its type into the symbol table.
     """
     name = var.name
+    if isinstance(type, FunctionType):
+        if ctx.contains(name):
+            logger.log(f"Multiple declarations of function '{name}'", var.lineno, var.column)
+            return
+        
     if name != '_':
         ctx.insert(name, type)
     
@@ -332,7 +337,6 @@ def typeof(ctx: SymbolTable, matched_exp: Exp) -> Type:
             type : FunctionType = type
 
             checkParameters(id, parameters, type)
-            insertIntoCtx(ctx, id, type)
 
             # Augment the context with parameter types
             local_ctx = ctx.enter_scope()
