@@ -153,8 +153,8 @@ def checkAgainst(ctx: SymbolTable, matched_exp: Exp, expected_type: Type) -> Non
                         checkEqualTypes(matched_exp, funcType.return_type, expected_type)
 
         case (VariableDeclaration(id, type, exp),BaseType('Unit')):
-            checkAgainst(ctx.enter_scope(), exp, type)
             insertIntoCtx(ctx, id, type)
+            checkAgainst(ctx.enter_scope(), exp, type)
 
         case (Var(name),_):
             actual_type = typeofVar(ctx, matched_exp, name)
@@ -268,9 +268,9 @@ def typeof(ctx: SymbolTable, matched_exp: Exp) -> Type:
                 checkArguments(ctx, matched_exp, exps, funcType)
                 return funcType.return_type
             
-        case VariableDeclaration(id, type, exp) | TopLevelVariableDeclaration(id, type, exp):   
+        case VariableDeclaration(id, type, exp) | TopLevelVariableDeclaration(id, type, exp):
+            insertIntoCtx(ctx, id, type)   
             checkAgainst(ctx.enter_scope(), exp, type)
-            insertIntoCtx(ctx, id, type)
             return BaseType('Unit')
         
         case Var(name):
@@ -365,9 +365,6 @@ def first_pass(ctx: SymbolTable, node: ASTNode) -> None:
 
         case FunctionDeclaration(id, _, type, _):
             checkBuiltInConflict(node, id)
-            insertIntoCtx(ctx, id, type)
-
-        case TopLevelVariableDeclaration(id, type, _):
             insertIntoCtx(ctx, id, type)
             
         case _:
