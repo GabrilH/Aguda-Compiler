@@ -3,4 +3,7 @@ docker-compose run --rm -v C:\Users\gmfh\Documents\TComp_Repo\aguda-compiler\arr
 
 mudar o .md: contains do symbol table
 
-atualizer zip e gitlab
+atualizar zip e gitlab
+
+não é suposto dar para redeclarar top level vars?????
+    - experimentar meter no symbol table nao ser possivel redeclarar coisas dos scopes acima
