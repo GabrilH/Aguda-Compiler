@@ -153,8 +153,14 @@ def checkAgainst(ctx: SymbolTable, matched_exp: Exp, expected_type: Type) -> Non
                         checkEqualTypes(matched_exp, funcType.return_type, expected_type)
 
         case (VariableDeclaration(id, type, exp),BaseType('Unit')):
+            if isinstance(exp, Sequence):
+                checkAgainst(ctx, exp.first, type)
+                local_ctx = ctx.enter_scope()
+                insertIntoCtx(local_ctx, id, type)
+                checkAgainst(local_ctx, exp.rest, type)
+            else:
+                checkAgainst(ctx.enter_scope(), exp, type)
             insertIntoCtx(ctx, id, type)
-            checkAgainst(ctx.enter_scope(), exp, type)
 
         case (Var(name),_):
             actual_type = typeofVar(ctx, matched_exp, name)
@@ -274,8 +280,15 @@ def typeof(ctx: SymbolTable, matched_exp: Exp) -> Type:
                 return funcType.return_type
             
         case VariableDeclaration(id, type, exp) | TopLevelVariableDeclaration(id, type, exp):
-            insertIntoCtx(ctx, id, type)   
-            checkAgainst(ctx.enter_scope(), exp, type)
+
+            if isinstance(exp, Sequence):
+                checkAgainst(ctx, exp.first, type)
+                local_ctx = ctx.enter_scope()
+                insertIntoCtx(local_ctx, id, type)
+                checkAgainst(local_ctx, exp.rest, type)
+            else:
+                checkAgainst(ctx.enter_scope(), exp, type)
+            insertIntoCtx(ctx, id, type)
             return BaseType('Unit')
         
         case Var(name):

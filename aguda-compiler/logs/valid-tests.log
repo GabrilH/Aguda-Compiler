@@ -1,7 +1,7 @@
 valid-tests
 
-Passed [✔]: 138
-Failed [FAIL]: 42
+Passed [✔]: 137
+Failed [FAIL]: 43
 
 /app/aguda-testing/test/valid/54394_array_operations/array_operations.agu [✔]
 Program is semantically valid!
@@ -28,8 +28,9 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/54394_semicolon_assignment/semicolon_assignment.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/54394_semicolon_assignment/semicolon_assignment.agu [FAIL]
+Semantic Error: (4, 5) Expected type 'Int', found type 'Unit' for expression 
+'let y : Int = 4'
 
 
 /app/aguda-testing/test/valid/54394_string_printing/string_printing.agu [✔]
@@ -89,7 +90,7 @@ Semantic Error: (14, 9) Expected type 'Bool', found type 'Unit' for expression
 'let x : Bool = let x : Bool = let x : Bool = let x : Bool = true'
 Semantic Error: (13, 8) Expected type 'Bool', found type 'Unit' for expression 
 'let x : Bool = let x : Bool = let x : Bool = let x : Bool = let x : Bool = true'
-...and 13 more errors.
+...and 14 more errors.
 
 
 /app/aguda-testing/test/valid/56269_insertionSort/insertionSort.agu [✔]
@@ -190,6 +191,8 @@ Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/56311_shadow_variables/shadow_variables.agu [FAIL]
+Semantic Error: (4, 5) Expected type 'Int', found type 'Unit' for expression 
+'let x : Int = 2'
 Semantic Error: (5, 5) Expected type 'Int', found type 'Unit' for expression 
 'let x : Int = 4'
 
