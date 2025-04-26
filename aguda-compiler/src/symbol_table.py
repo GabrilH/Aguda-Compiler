@@ -15,6 +15,13 @@ class SymbolTable:
         if self.parent:
             return self.parent.lookup(name)
         return None
+    
+    def contains(self, name: str) -> bool:
+        if name in self.table:
+            return True
+        if self.parent:
+            return self.parent.contains(name)
+        return False
 
     def enter_scope(self) -> 'SymbolTable':
         child = SymbolTable()
