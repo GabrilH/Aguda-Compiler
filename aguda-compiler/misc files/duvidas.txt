@@ -11,3 +11,6 @@
     length aceita qualquer array, ou por enquanto podemos apenas meter um placeholder type?
 
     54394_semicolon_assignment não falha no stor mas penso ter que falhar
+
+    58250_calculate_operations - bozo dois _
+    58250_cube - bozo dois _

@@ -185,4 +185,22 @@ Several helper functions support this logic, including `checkEqualTypes` for com
 
 ## If your program does not pass all tests, explain why
 
-- My type checker currently has the same tests results as the professor's, so the tests that fail are, supposedly, incorrectly written.
+- My type checker currently has three errors difference from the professor's.
+    1. The programs `58250_calculate_operations` and `58250_cube` and syntatically valid in my type checker because the wildcard `_` can be used as ID to declare multiple times without problem
+
+    2. My type checker finds the following error in the program `54394_semicolon_assignment`, where the professor's does not find any error.
+
+            -- Author: 54394, Afonso Esteves
+
+            let _ : Int =
+                let y : Int = 4;
+                while y < 10 do (
+                    set y = y + 4
+                );
+                y
+
+            Semantic Error: (4, 5) Expected type 'Int', found type 'Unit' for expression 'let y : Int = 4'
+
+    This is happening because the expression `let _ : Int =` is expecting to find a type 'Int' in the expression `let y : Int = 4` but it is instead receiving a type 'Unit'.
+
+
