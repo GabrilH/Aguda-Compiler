@@ -226,7 +226,9 @@ def insertIntoCtx(ctx: SymbolTable, var: Var, type: Type) -> None:
     
 def typeofVar(ctx: SymbolTable, exp: Exp, name: str) -> Type:
     varType = ctx.lookup(name)
-    if varType is None:
+    if name == '_':
+        logger.log(f"Wildcard variable '{name}' cannot be used", exp.lineno, exp.column)
+    elif varType is None:
         logger.log(f"unresolved symbol: {name}", exp.lineno, exp.column)
     return varType
     
