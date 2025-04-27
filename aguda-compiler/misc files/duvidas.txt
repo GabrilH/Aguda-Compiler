@@ -9,3 +9,5 @@
 
     É suposto já termos definido na Symbol Table que o print aceita qualquer tipo e que o 
     length aceita qualquer array, ou por enquanto podemos apenas meter um placeholder type?
+
+    54394_semicolon_assignment não falha no stor mas penso ter que falhar
