@@ -1,6 +1,6 @@
 invalid-semantic-tests
 
-Passed [✔]: 37
+Passed [✔]: 39
 Failed [FAIL]: 1
 
 /app/aguda-testing/test/invalid-semantic/56269_bad_type/bad_type.agu [✔]
@@ -197,8 +197,17 @@ Semantic Error: (2, 26) Expected type 'Unit', found type 'Int' for expression
 '5'
 
 
+/app/aguda-testing/test/invalid-semantic/tcomp000-fun-redecl/fun-redecl.agu [✔]
+Semantic Error: (6, 5) Multiple declarations of function 'fun'
+
+
 /app/aguda-testing/test/invalid-semantic/tcomp000-while-plus-five/while-plus-five.agu [✔]
 Semantic Error: (3, 16) Expected type 'Int', found type 'Unit' for expression 
 'while false do 5'
+
+
+/app/aguda-testing/test/invalid-semantic/tcomp000-wild-on-the-right/wild-on-the-right.agu [✔]
+Semantic Error: (3, 30) Wildcard variable '_' cannot be used
+Semantic Error: (3, 30) Expected variable '_' to be of type 'Int', found type 'None'
 
 

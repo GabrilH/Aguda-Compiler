@@ -1,6 +1,6 @@
 valid-tests
 
-Passed [✔]: 137
+Passed [✔]: 138
 Failed [FAIL]: 43
 
 /app/aguda-testing/test/valid/54394_array_operations/array_operations.agu [✔]
@@ -866,7 +866,7 @@ Program is semantically valid!
 /app/aguda-testing/test/valid/64854_printA/printA.agu [FAIL]
 Semantic Error: (4, 5) Expected type 'String', found type 'Unit' for expression 
 'print("a")'
-Semantic Error: (7, 12) unresolved symbol: _
+Semantic Error: (7, 12) Wildcard variable '_' cannot be used
 Semantic Error: (7, 5) expected arguments of types [Unit], found [None] for expression 
 'printA(_)'
 Semantic Error: (7, 5) Expected function call to return type 'Unit', found type 'String' for expression 
@@ -894,6 +894,10 @@ Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/tcomp000_diagonal/diagonal.agu [✔]
+Program is semantically valid!
+
+
+/app/aguda-testing/test/valid/tcomp000_double_wild/tcomp000_double_wild.agu [✔]
 Program is semantically valid!
 
 
