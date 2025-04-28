@@ -45,7 +45,7 @@ After running a particular **valid** test, the compiler outputs the textual repr
 Should produce the following output:
 
     Generating LALR tables
-    Running test: aguda-testing/test/valid/tcomp000_powers/powers.agu
+    Running single test on file 'aguda-testing\test\valid\tcomp000_powers\powers.agu' with max_errors=5
     let powers(n) : (Int) -> Int[] =
         let a : Int[] = new Int [n | 0] ;
         let i : Int = 0 ;
@@ -70,7 +70,7 @@ If the given test is **syntax invalid**, the compiler outputs what it was able t
 Should produce the following output:
 
     Generating LALR tables
-    Running test: aguda-testing/test/invalid-syntax/tcomp000_wrong_comment/wrong_comment.agu
+    Running single test on file 'aguda-testing/test/invalid-syntax/tcomp000_wrong_comment/wrong_comment.agu' with max_errors=5
     None
     Syntactic error: at EOF
 
@@ -83,7 +83,7 @@ If the given test is **semantically invalid**, the compiler outputs the AST of t
 Should produce the following output:
 
     Generating LALR tables
-    Running test: aguda-testing/test/invalid-semantic/tcomp000-while-plus-five/while-plus-five.agu
+    Running single test on file 'aguda-testing/test/invalid-semantic/tcomp000-while-plus-five/while-plus-five.agu' with max_errors=5
     let _ : Int =
         (
             while false do 5
@@ -163,7 +163,24 @@ The test suit generates three different logs inside the folder `logs`, one for e
                 'while false do 5'
 
 ## How to change the max number of errors to be printed
-To change the max number of errors to be printed you just need to changed the value of the constant `MAX_ERRORS` at the top of the file `type_checker.py`.
+To change the max number of errors to be printed you just need to add the flag `--max_errors={INT}` to any of the running commands, for example:
+
+        > docker-compose run --rm aguda-compiler --suite --max_errors=10
+
+        Running all tests with max_errors=10
+        Logs written to /app/logs/invalid-semantic-tests.log
+        Logs written to /app/logs/invalid-syntax-tests.log
+        Logs written to /app/logs/valid-tests.log
+
+Or even:
+
+        > docker-compose run --rm aguda-compiler aguda-testing\test\invalid-semantic\tcomp000-wild-on-the-right\wild-on-the-right.agu --max_errors=1
+
+        Running single test on file 'aguda-testing\test\invalid-semantic\tcomp000-wild-on-the-right\wild-on-the-right.agu' with max_errors=1
+        let f(_) : (Int) -> Int =
+        2 * _
+        Semantic Error: (3, 30) Wildcard variable '_' cannot be used
+        ...and 1 more errors.
 
 ## A brief description of how you implemented the symbol table
 
