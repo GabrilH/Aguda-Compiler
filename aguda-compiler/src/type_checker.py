@@ -4,6 +4,8 @@ from src.symbol_table import SymbolTable
 class TypeChecker:
 
     def __init__(self, max_errors):
+        if max_errors < 0:
+            raise ValueError("max_errors must be greater than or equal to 0")
         self.logger = ErrorLogger(max_errors)
 
     def verify(self, ast: ASTNode) -> None:
@@ -397,7 +399,7 @@ class SemanticError(Exception):
     pass
 
 class ErrorLogger:
-    def __init__(self, max_errors: int = 5):
+    def __init__(self, max_errors):
         self.max_errors = max_errors
         self.messages = []
 

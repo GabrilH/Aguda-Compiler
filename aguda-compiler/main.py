@@ -1,3 +1,4 @@
+import argparse
 import os
 import io
 import contextlib
@@ -12,6 +13,7 @@ TEST_DIR = os.path.join(os.getcwd(), "aguda-testing", "test")
 VALID_DIR = os.path.join(TEST_DIR, 'valid')
 INVALID_SEM_DIR = os.path.join(TEST_DIR, 'invalid-semantic')
 INVALID_SYN_DIR = os.path.join(TEST_DIR, 'invalid-syntax')
+MAX_ERRORS = 5
 
 def write_logs(logs, test_type):
 
@@ -84,7 +86,7 @@ def semantic_test_run(filepath, valid):
     output_buffer = io.StringIO()
     try:
         with contextlib.redirect_stdout(output_buffer):
-            TypeChecker(5).verify(ast)
+            TypeChecker(MAX_ERRORS).verify(ast)
     except SemanticError as e:
         pass_status = "[✔]" if not valid else "[FAIL]"
         test_log.append(f"{filepath} {pass_status}")
@@ -153,37 +155,42 @@ def run_single_test(filepath):
         print(f"File '{filepath}' is not a .agu file.")
         return
     else:
-        print(f"Running test: {filepath}")
         test_log, ast = semantic_test_run(filepath, valid=True)
         print(ast)
         print(test_log[1])
 
 def main():
-    # If no args, accept stdin as program input
-    if len(sys.argv) == 1:
-        print("Write the AGUDA code to be validated, followed by [ENTER] and Ctrl+D (EOF)")
-        code = sys.stdin.read()
-        temp_file_path = os.path.join(TEST_DIR, 'temp_input.agu')
-        with open(temp_file_path, 'w', encoding='utf-8') as temp_file:
-            temp_file.write(code)
-        run_single_test(temp_file_path)
-        os.remove(temp_file_path)
+    global MAX_ERRORS
+    args_parser = argparse.ArgumentParser(description="AGUDA Compiler")
+    args_parser.add_argument("--suite", action="store_true", help="Run all tests")
+    args_parser.add_argument("--max_errors", type=int, default=MAX_ERRORS, help="Set the maximum number of errors allowed")
+    args_parser.add_argument("file_path", nargs="?", help="Path to the AGUDA file to test (optional)")
+
+    args = args_parser.parse_args()
+
+    if args.max_errors < 0:
+        print("max_errors must be a non-negative integer.")
+        return
+    MAX_ERRORS = args.max_errors
+
+    if args.suite:
+        print(f"Running all tests with max_errors={MAX_ERRORS}")
+        run_test_suite()
+        return
     
-    elif len(sys.argv) == 2:
-        # If the first argument is --suite, run all tests
-        if sys.argv[1] == "--suite":
-            print("Running all tests...")
-            run_test_suite()
-        
-        elif sys.argv[1] == "--help":
-            print("Usage: docker-compose run --rm aguda-compiler [<file_path> | --tests]")
-            return
-        
-        # If the first argument is a file path, run that test
-        else:
-            run_single_test(sys.argv[1])
-    else:
-        print("Usage: docker-compose run --rm aguda-compiler [<file_path> | --tests]")
+    if args.file_path:
+        print(f"Running single test on file '{args.file_path}' with max_errors={MAX_ERRORS}")
+        run_single_test(args.file_path)
+        return
+
+    # Default behavior: accept stdin as program input
+    print(f"Write the AGUDA code to be validated, followed by [ENTER] and Ctrl+D (EOF). Max errors allowed: {MAX_ERRORS}")
+    code = sys.stdin.read()
+    temp_file_path = os.path.join(TEST_DIR, 'temp_input.agu')
+    with open(temp_file_path, 'w', encoding='utf-8') as temp_file:
+        temp_file.write(code)
+    run_single_test(temp_file_path)
+    os.remove(temp_file_path)
 
 if __name__ == '__main__':
     main()
