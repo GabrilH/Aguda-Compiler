@@ -4,7 +4,7 @@ import contextlib
 from pathlib import PureWindowsPath, PurePosixPath
 from src.lexer import lexer
 from src.parser import parser, reset_parser
-from src.type_checker import SemanticError, verify
+from src.type_checker import SemanticError, TypeChecker
 import sys
 
 LOG_DIR = os.path.join(os.getcwd(), 'logs')
@@ -84,7 +84,7 @@ def semantic_test_run(filepath, valid):
     output_buffer = io.StringIO()
     try:
         with contextlib.redirect_stdout(output_buffer):
-            verify(ast)
+            TypeChecker(5).verify(ast)
     except SemanticError as e:
         pass_status = "[✔]" if not valid else "[FAIL]"
         test_log.append(f"{filepath} {pass_status}")
