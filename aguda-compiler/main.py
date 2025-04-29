@@ -14,6 +14,8 @@ VALID_DIR = os.path.join(TEST_DIR, 'valid')
 INVALID_SEM_DIR = os.path.join(TEST_DIR, 'invalid-semantic')
 INVALID_SYN_DIR = os.path.join(TEST_DIR, 'invalid-syntax')
 MAX_ERRORS = 5
+TOTAL_TESTS = 0
+TOTAL_FAILED_TESTS = 0
 
 def write_logs(logs, test_type):
 
@@ -22,9 +24,11 @@ def write_logs(logs, test_type):
 
     passed = sum(1 for line in logs if '[✔]' in line)
     failed = sum(1 for line in logs if '[FAIL]' in line or '[EXCEPTION]' in line)
+    total = passed + failed
 
     with open(log_path, 'w', encoding='utf-8') as f:
         f.write(test_type + '\n\n')
+        f.write(f"Total tests run: {total}\n")
         f.write(f"Passed [✔]: {passed}\n")
         f.write(f"Failed [FAIL]: {failed}\n\n")
         for line in logs:
@@ -112,6 +116,8 @@ def run_multiple_tests(test_dir : str, valid : bool, type : int):
     :param type: 0 for syntax tests, 1 for semantic tests
     :return: List logs of the tests
     """
+    global TOTAL_TESTS, TOTAL_FAILED_TESTS
+
     logs = []
 
     all_files = []
@@ -121,6 +127,7 @@ def run_multiple_tests(test_dir : str, valid : bool, type : int):
     all_files.sort()
 
     for filepath in all_files:
+        TOTAL_TESTS += 1
         if type == 0:
             test_log,_ = syntax_test_run(filepath, valid)
             test_log.append("\n")
@@ -128,11 +135,19 @@ def run_multiple_tests(test_dir : str, valid : bool, type : int):
             test_log,_ = semantic_test_run(filepath, valid)
             test_log.append("\n")
 
+        if any("[FAIL]" in line or "[EXCEPTION]" in line for line in test_log):
+            TOTAL_FAILED_TESTS += 1 
+
         logs.extend(test_log)
 
     return logs
 
 def run_test_suite():
+    global TOTAL_TESTS, TOTAL_FAILED_TESTS
+
+    TOTAL_TESTS = 0
+    TOTAL_FAILED_TESTS = 0
+
     invalid_sem_tests_logs = run_multiple_tests(INVALID_SEM_DIR, valid=False, type=1)
     write_logs(invalid_sem_tests_logs, "invalid-semantic-tests")
 
@@ -141,6 +156,11 @@ def run_test_suite():
 
     valid_tests_logs = run_multiple_tests(VALID_DIR, valid=True, type=1)
     write_logs(valid_tests_logs, "valid-tests")
+
+    print(f"\nTest Suite Summary:")
+    print(f"Total Tests Run: {TOTAL_TESTS}")
+    print(f"Total Passed Tests: {TOTAL_TESTS - TOTAL_FAILED_TESTS}")
+    print(f"Total Failed Tests: {TOTAL_FAILED_TESTS}")
 
 def run_single_test(filepath):
     """

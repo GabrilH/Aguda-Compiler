@@ -129,6 +129,7 @@ The test suit generates three different logs inside the folder `logs`, one for e
 - Log header:
     
     - Type-of-test
+    - Number of total tests
     - Number of passed tests `[✔]`
     - Number of failed tests `[FAIL]`
 
@@ -171,6 +172,11 @@ To change the max number of errors to be printed you just need to add the flag `
         Logs written to /app/logs/invalid-semantic-tests.log
         Logs written to /app/logs/invalid-syntax-tests.log
         Logs written to /app/logs/valid-tests.log
+
+        Test Suite Summary:
+        Total Tests Run: 283
+        Total Passed Tests: 239
+        Total Failed Tests: 44
 
 Or even:
 
