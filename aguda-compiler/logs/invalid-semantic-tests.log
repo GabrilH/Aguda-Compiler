@@ -1,8 +1,8 @@
 invalid-semantic-tests
 
 Total tests run: 40
-Passed [✔]: 39
-Failed [FAIL]: 1
+Passed [✔]: 40
+Failed [FAIL]: 0
 
 /app/aguda-testing/test/invalid-semantic/56269_bad_type/bad_type.agu [✔]
 Semantic Error: (5, 5) number of params does not match type in function declaration 'sum'
@@ -84,12 +84,13 @@ Semantic Error: (9, 5) expected arguments of types [Int, Int], found [Int, Int, 
 'max(2, 3, 4)'
 
 
-/app/aguda-testing/test/invalid-semantic/58166_outOfBounds/outOfBounds.agu [FAIL]
-Expected error but none found.
-
-
 /app/aguda-testing/test/invalid-semantic/58166_sumIntBool/sumIntBool.agu [✔]
 Semantic Error: (7, 28) Expected variable 'val' to be of type 'Int', found type 'Bool'
+
+
+/app/aguda-testing/test/invalid-semantic/58166_wrongArrayType/wrongArrayType.agu [✔]
+Semantic Error: (5, 36) unresolved symbol: True
+Semantic Error: (5, 36) Expected variable 'True' to be of type 'Bool', found type 'None'
 
 
 /app/aguda-testing/test/invalid-semantic/58166_wrongPara/wrongPara.agu [✔]

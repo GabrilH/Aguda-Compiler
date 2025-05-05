@@ -1,8 +1,8 @@
 valid-tests
 
-Total tests run: 181
-Passed [✔]: 138
-Failed [FAIL]: 43
+Total tests run: 164
+Passed [✔]: 160
+Failed [FAIL]: 4
 
 /app/aguda-testing/test/valid/54394_array_operations/array_operations.agu [✔]
 Program is semantically valid!
@@ -16,9 +16,8 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/54394_combinations/combinations.agu [FAIL]
-Semantic Error: (10, 15) expected arguments of types [Int], found [Int, Int] for expression 
-'fac(6, 2)'
+/app/aguda-testing/test/valid/54394_combinations/combinations.agu [✔]
+Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/54394_identifier/identifier.agu [✔]
@@ -42,16 +41,8 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/54394_zip/zip.agu [FAIL]
-Semantic Error: (6, 33) unresolved symbol: lenght
-Semantic Error: (6, 33) Expected a FunctionType, found None for expression 
-'lenght'
-Semantic Error: (6, 46) Expected type 'Int', found type 'Int[]' for expression 
-'new Int [2 | 0]'
-Semantic Error: (8, 15) unresolved symbol: lenght
-Semantic Error: (8, 15) Expected a FunctionType, found None for expression 
-'lenght'
-...and 1 more errors.
+/app/aguda-testing/test/valid/54394_zip/zip.agu [✔]
+Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/56269_ackermann/ackermann.agu [✔]
@@ -70,28 +61,12 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/56269_bottomRow/bottomRow.agu [FAIL]
-Semantic Error: (16, 11) unresolved symbol: j
-Semantic Error: (16, 13) Expected two equal types; found None and Int, for expression 
-'j < length(a[0])'
-Semantic Error: (17, 18) unresolved symbol: j
-Semantic Error: (17, 18) Expected variable 'j' to be of type 'Int', found type 'None'
-Semantic Error: (18, 11) unresolved symbol: j
-...and 3 more errors.
+/app/aguda-testing/test/valid/56269_bottomRow/bottomRow.agu [✔]
+Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/56269_if/if.agu [FAIL]
-Semantic Error: (17, 12) Expected type 'Bool', found type 'Unit' for expression 
-'let x : Bool = true'
-Semantic Error: (16, 11) Expected type 'Bool', found type 'Unit' for expression 
-'let x : Bool = let x : Bool = true'
-Semantic Error: (15, 10) Expected type 'Bool', found type 'Unit' for expression 
-'let x : Bool = let x : Bool = let x : Bool = true'
-Semantic Error: (14, 9) Expected type 'Bool', found type 'Unit' for expression 
-'let x : Bool = let x : Bool = let x : Bool = let x : Bool = true'
-Semantic Error: (13, 8) Expected type 'Bool', found type 'Unit' for expression 
-'let x : Bool = let x : Bool = let x : Bool = let x : Bool = let x : Bool = true'
-...and 14 more errors.
+/app/aguda-testing/test/valid/56269_if/if.agu [✔]
+Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/56269_insertionSort/insertionSort.agu [✔]
@@ -142,49 +117,36 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/56307_sumArrayFunction/sumArrayFunction.agu [FAIL]
-Semantic Error: (11, 39) Expected type 'Int[]', found type 'Int' for expression 
-'10'
-Semantic Error: (11, 15) expected arguments of types [Int[]], found [Int[][]] for expression 
-'sumArray(new Int[] [5 | 10])'
+/app/aguda-testing/test/valid/56307_sumArrayFunction/sumArrayFunction.agu [✔]
+Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/56307_zeroLengthArray/zeroLengthArray.agu [FAIL]
-Semantic Error: (2, 40) Expected type 'Int[]', found type 'Int' for expression 
-'0'
+/app/aguda-testing/test/valid/56307_zeroLengthArray/zeroLengthArray.agu [✔]
+Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/56311_boundary_arithmetic/boundary_arithmetic.agu [✔]
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/56311_empty_array/empty_array.agu [FAIL]
-Semantic Error: (9, 11) unresolved symbol: empty_matrix
+/app/aguda-testing/test/valid/56311_empty_array/empty_array.agu [✔]
+Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/56311_equals/equals_method.agu [FAIL]
-Semantic Error: (4, 5) unresolved symbol: a
-Semantic Error: (4, 10) unresolved symbol: b
+/app/aguda-testing/test/valid/56311_equals/equals_method.agu [✔]
+Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/56311_high_order_function_type/high_order_func_type.agu [✔]
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/56311_if_inside_if/if_inside_if.agu [FAIL]
-Semantic Error: (4, 23) Expected type 'Bool', found type 'Int' for expression 
-'1'
+/app/aguda-testing/test/valid/56311_if_inside_if/if_inside_if.agu [✔]
+Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/56311_matrix_operations/matrix_operations.agu [FAIL]
-Semantic Error: (14, 9) unresolved symbol: error
-Semantic Error: (14, 9) Expected a FunctionType, found None for expression 
-'error'
-Semantic Error: (13, 5) Expected both branches to be of same type; found None and Unit, for expression 
-'if length(mat[0]) != length(vec) then
-  error("Dimensions don't match")
-else
-  unit'
+/app/aguda-testing/test/valid/56311_matrix_operations/matrix_operations.agu [✔]
+Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/56311_minus_minus/minus_minus.agu [✔]
@@ -194,8 +156,6 @@ Program is semantically valid!
 /app/aguda-testing/test/valid/56311_shadow_variables/shadow_variables.agu [FAIL]
 Semantic Error: (4, 5) Expected type 'Int', found type 'Unit' for expression 
 'let x : Int = 2'
-Semantic Error: (5, 5) Expected type 'Int', found type 'Unit' for expression 
-'let x : Int = 4'
 
 
 /app/aguda-testing/test/valid/56311_while_loop_with_empty_body/while_loop_with_empty_body.agu [✔]
@@ -204,35 +164,6 @@ Program is semantically valid!
 
 /app/aguda-testing/test/valid/56311_while_loop_with_mutations/while_loop_with_mutations.agu [✔]
 Program is semantically valid!
-
-
-/app/aguda-testing/test/valid/56332_array_sum/array_sum.agu [FAIL]
-Semantic Error: (13, 1) Expected type 'Int[]', found type 'Unit' for expression 
-'let _ : Unit = print(arraySum(a))'
-
-
-/app/aguda-testing/test/valid/56332_array_update/array_update.agu [FAIL]
-Semantic Error: (10, 1) Expected type 'Int[]', found type 'Unit' for expression 
-'let _ : Unit = print(a[0] ;
-a[1] ;
-a[2])'
-
-
-/app/aguda-testing/test/valid/56332_count_even_in_array/count_even_in_array.agu [FAIL]
-Semantic Error: (13, 71) Expected type 'Int[]', found type 'Int' for expression 
-'1'
-Semantic Error: (13, 22) expected arguments of types [Int[]], found [Int[][]] for expression 
-'countEven(new Int[] [6 | 14 ;
-2 ;
-10 ;
-33 ;
-88 ;
-1])'
-
-
-/app/aguda-testing/test/valid/56332_count_negatives_on_matrix/count_negatives_on_matrix.agu [FAIL]
-Semantic Error: (30, 1) Expected type 'Int[][]', found type 'Unit' for expression 
-'let _ : Unit = print(countNegatives(matrix))'
 
 
 /app/aguda-testing/test/valid/56332_dec_to_zero/dec_to_zero.agu [✔]
@@ -245,18 +176,6 @@ Program is semantically valid!
 
 /app/aguda-testing/test/valid/56332_if_then_else_printing_string/if_then_else_printing_string.agu [✔]
 Program is semantically valid!
-
-
-/app/aguda-testing/test/valid/56332_min_elem_of_array/min_elem_of_array.agu [FAIL]
-Semantic Error: (11, 70) Expected type 'Int[]', found type 'Int' for expression 
-'100'
-Semantic Error: (11, 22) expected arguments of types [Int[]], found [Int[][]] for expression 
-'minArray(new Int[] [6 | 0 ;
-0 - 1 ;
-10 ;
-0 ;
-0 - 50 ;
-100])'
 
 
 /app/aguda-testing/test/valid/56332_precedence_calc/precedence_calc.agu [✔]
@@ -323,19 +242,8 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/58166_maxDistance/maxDistance.agu [FAIL]
-Semantic Error: (16, 5) Expected both branches to be of same type; found Int and Unit, for expression 
-'if length(a) == 0 then
-  0
-else
-  let min : Int = a[0]'
-Semantic Error: (21, 19) unresolved symbol: min
-Semantic Error: (21, 17) Expected two equal types; found Int and None, for expression 
-'a[i] < min'
-Semantic Error: (21, 32) unresolved symbol: min
-Semantic Error: (21, 28) Expected two equal types; found None and Int, for expression 
-'set min = a[i]'
-...and 2 more errors.
+/app/aguda-testing/test/valid/58166_maxDistance/maxDistance.agu [✔]
+Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/58166_modTest/modTest.agu [✔]
@@ -346,12 +254,8 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/58166_powerTen/powerTen.agu [FAIL]
-Semantic Error: (5, 5) Expected both branches to be of same type; found Int and Unit, for expression 
-'if n < 0 then
-  0 - 1
-else
-  unit'
+/app/aguda-testing/test/valid/58166_powerTen/powerTen.agu [✔]
+Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/58166_safeIndexCheck/safeIndexCheck.agu [✔]
@@ -366,15 +270,8 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/58168_addOneValueToArray/addOneValueToArray.agu [FAIL]
-Semantic Error: (4, 21) Expected type 'Int', found type 'Bool' for expression 
-'false'
-Semantic Error: (11, 7) unresolved symbol: result
-Semantic Error: (11, 3) Expected two equal types; found None and Bool, for expression 
-'set result = true'
-Semantic Error: (12, 3) unresolved symbol: result
-Semantic Error: (12, 3) Expected variable 'result' to be of type 'Bool', found type 'None'
-...and 1 more errors.
+/app/aguda-testing/test/valid/58168_addOneValueToArray/addOneValueToArray.agu [✔]
+Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/58168_cubesForEvenNum/cubesForEvenNum.agu [✔]
@@ -401,14 +298,8 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/58168_sumOfMinAndOfMaxOfArray/sumOfMinAndOfMaxOfArray.agu [FAIL]
-Semantic Error: (15, 10) unresolved symbol: i
-Semantic Error: (15, 12) Expected two equal types; found None and Int, for expression 
-'i < length(b)'
-Semantic Error: (16, 7) unresolved symbol: i
-Semantic Error: (16, 7) Expected variable 'i' to be of type 'Int', found type 'None'
-Semantic Error: (16, 5) unresolved symbol: a
-...and 7 more errors.
+/app/aguda-testing/test/valid/58168_sumOfMinAndOfMaxOfArray/sumOfMinAndOfMaxOfArray.agu [✔]
+Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/58168_sumTwoNumbers/sumTwoNumbers.agu [✔]
@@ -523,173 +414,11 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/58185_unit_type_test/unit_type_test.agu [FAIL]
-Semantic Error: (5, 26) unresolved symbol: i
-Semantic Error: (5, 28) Expected two equal types; found None and Int, for expression 
-'i > 0'
-Semantic Error: (6, 15) unresolved symbol: i
-Semantic Error: (8, 13) unresolved symbol: i
-Semantic Error: (8, 17) unresolved symbol: i
-...and 2 more errors.
+/app/aguda-testing/test/valid/58185_unit_type_test/unit_type_test.agu [✔]
+Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/58185_while_loops/while_loops.agu [✔]
-Program is semantically valid!
-
-
-/app/aguda-testing/test/valid/58215_3dArray/3dArray.agu [✔]
-Program is semantically valid!
-
-
-/app/aguda-testing/test/valid/58215_addToArrayIndex/addToArrayIndex.agu [FAIL]
-Semantic Error: (3, 5) number of params does not match type in function declaration 'addToArrayIndex'
-Semantic Error: (4, 11) unresolved symbol: i
-Semantic Error: (4, 11) Expected variable 'i' to be of type 'Int', found type 'None'
-Semantic Error: (4, 18) unresolved symbol: i
-Semantic Error: (4, 18) Expected variable 'i' to be of type 'Int', found type 'None'
-...and 5 more errors.
-
-
-/app/aguda-testing/test/valid/58215_funWithFunArg/funWithFunArg.agu [✔]
-Program is semantically valid!
-
-
-/app/aguda-testing/test/valid/58215_ifsInsideIfs/ifsInsideIfs.agu [✔]
-Program is semantically valid!
-
-
-/app/aguda-testing/test/valid/58215_linha/linha.agu [✔]
-Program is semantically valid!
-
-
-/app/aguda-testing/test/valid/58215_minArrAndElseUnit/minArrAndElseUnit.agu [FAIL]
-Semantic Error: (3, 5) number of params does not match type in function declaration 'minValInArr'
-Semantic Error: (6, 15) unresolved symbol: size
-Semantic Error: (6, 13) Expected two equal types; found Int and None, for expression 
-'i < size'
-Semantic Error: (20, 5) Print function takes exactly one argument
-
-
-/app/aguda-testing/test/valid/58215_negAndEven/negAndEven.agu [✔]
-Program is semantically valid!
-
-
-/app/aguda-testing/test/valid/58215_scopeArr/scopeArr.agu [FAIL]
-Semantic Error: (4, 5) number of params does not match type in function declaration 'setDiag2dArray'
-Semantic Error: (7, 15) unresolved symbol: size
-Semantic Error: (7, 13) Expected two equal types; found Int and None, for expression 
-'i < size'
-Semantic Error: (9, 14) Expected a ArrayType, found Int for expression 
-'a[i]'
-Semantic Error: (9, 23) unresolved symbol: n
-...and 5 more errors.
-
-
-/app/aguda-testing/test/valid/58215_somaSub/somaSub.agu [FAIL]
-Semantic Error: (3, 5) number of params does not match type in function declaration 'soma'
-Semantic Error: (4, 9) unresolved symbol: y
-Semantic Error: (4, 9) Expected variable 'y' to be of type 'Int', found type 'None'
-Semantic Error: (4, 7) Expected two equal types; found Int and (Int) -> Int, for expression 
-'x + y'
-Semantic Error: (6, 5) number of params does not match type in function declaration 'sub'
-...and 7 more errors.
-
-
-/app/aguda-testing/test/valid/58215_unitFunc/unitFunc.agu [FAIL]
-Semantic Error: (3, 5) number of params does not match type in function declaration 'faz3'
-Semantic Error: (4, 18) Expected type '(Int) -> Int', found type 'Int' for expression 
-'3'
-Semantic Error: (4, 25) Expected type '(Int) -> Int', found type 'Int' for expression 
-'3'
-Semantic Error: (7, 11) expected arguments of types [Unit], found [Unit, Int] for expression 
-'faz3(unit, 7)'
-
-
-/app/aguda-testing/test/valid/58219_compare_string_length/compare_string_length.agu [FAIL]
-Semantic Error: (4, 22) Expected a ArrayType, found String for expression 
-'length(str1)'
-Semantic Error: (5, 22) Expected a ArrayType, found String for expression 
-'length(str2)'
-
-
-/app/aguda-testing/test/valid/58219_count_common_elements/count_common_elemts.agu [✔]
-Program is semantically valid!
-
-
-/app/aguda-testing/test/valid/58219_find_array_max_and_min/array_max_min.agu [FAIL]
-Semantic Error: (11, 25) unresolved symbol: maxVal
-Semantic Error: (11, 23) Expected two equal types; found Int and None, for expression 
-'arr[i] > maxVal'
-Semantic Error: (11, 41) unresolved symbol: maxVal
-Semantic Error: (11, 37) Expected two equal types; found None and Int, for expression 
-'set maxVal = arr[i]'
-Semantic Error: (16, 15) unresolved symbol: maxVal
-...and 5 more errors.
-
-
-/app/aguda-testing/test/valid/58219_find_char/find_char.agu [FAIL]
-Semantic Error: (4, 21) Expected a ArrayType, found String for expression 
-'length(str)'
-Semantic Error: (8, 12) Expected a ArrayType, found String for expression 
-'str'
-Semantic Error: (8, 19) Expected two equal types; found None and String, for expression 
-'str[i] == char'
-
-
-/app/aguda-testing/test/valid/58219_first_unique_character/first_unique_character.agu [FAIL]
-Semantic Error: (4, 19) Expected a ArrayType, found String for expression 
-'length(str)'
-Semantic Error: (13, 20) Expected a ArrayType, found String for expression 
-'str'
-Semantic Error: (13, 30) Expected a ArrayType, found String for expression 
-'str'
-
-
-/app/aguda-testing/test/valid/58219_is_array_sorted/is_array_sorted.agu [FAIL]
-Semantic Error: (6, 5) Expected both branches to be of same type; found Bool and Unit, for expression 
-'if len <= 1 then
-  result
-else
-  let i : Int = 1'
-Semantic Error: (10, 15) unresolved symbol: i
-Semantic Error: (10, 17) Expected two equal types; found None and Int, for expression 
-'i < len'
-Semantic Error: (11, 20) unresolved symbol: i
-Semantic Error: (11, 20) Expected variable 'i' to be of type 'Int', found type 'None'
-...and 8 more errors.
-
-
-/app/aguda-testing/test/valid/58219_is_prime/is_prime.agu [FAIL]
-Semantic Error: (8, 8) Expected both branches to be of same type; found Bool and Unit, for expression 
-'if n % 2 == 0 || n % 3 == 0 then
-  false
-else
-  let i : Int = 5'
-Semantic Error: (14, 11) unresolved symbol: i
-Semantic Error: (14, 11) Expected variable 'i' to be of type 'Int', found type 'None'
-Semantic Error: (14, 15) unresolved symbol: i
-Semantic Error: (14, 15) Expected variable 'i' to be of type 'Int', found type 'None'
-...and 8 more errors.
-
-
-/app/aguda-testing/test/valid/58219_logical_operators/logical_operators.agu [FAIL]
-Semantic Error: (9, 5) number of params does not match type in function declaration 'notOp'
-Semantic Error: (17, 9) expected arguments of types [Bool, Bool], found [Bool] for expression 
-'notOp(true)'
-Semantic Error: (18, 9) expected arguments of types [Bool, Bool], found [Bool] for expression 
-'notOp(false)'
-
-
-/app/aguda-testing/test/valid/58219_reverse_string/reverse_string.agu [FAIL]
-Semantic Error: (5, 12) Expected a ArrayType, found String for expression 
-'length(s)'
-Semantic Error: (6, 5) expected arguments of types [String], found [String, Int] for expression 
-'reverse(s, i + 1)'
-Semantic Error: (7, 11) Expected a ArrayType, found String for expression 
-'s'
-
-
-/app/aguda-testing/test/valid/58219_sum_array/sum_array.agu [✔]
 Program is semantically valid!
 
 
@@ -701,16 +430,16 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/58250_calculate_operations/58250_calculate_operations.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/58250_calculate_operations/58250_calculate_operations.agu [FAIL]
+Syntactic error: at line 24, column 6: Unexpected token 'final'
 
 
 /app/aguda-testing/test/valid/58250_check_value/58250_check_value.agu [✔]
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/58250_cube/58250_cube.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/58250_cube/58250_cube.agu [FAIL]
+Syntactic error: at line 14, column 6: Unexpected token 'final'
 
 
 /app/aguda-testing/test/valid/58250_divide_two_numbers/58250_divide_two_numbers.agu [✔]
@@ -719,11 +448,6 @@ Program is semantically valid!
 
 /app/aguda-testing/test/valid/58250_is_even/58250_is_even.agu [✔]
 Program is semantically valid!
-
-
-/app/aguda-testing/test/valid/58250_length/58250_length.agu [FAIL]
-Semantic Error: (5, 19) Expected a ArrayType, found String for expression 
-'length(str)'
 
 
 /app/aguda-testing/test/valid/58250_max_between_2/58250_max_between_2.agu [✔]
@@ -738,20 +462,12 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/64361_check_null_value/check_null_value.agu [FAIL]
-Semantic Error: (4, 13) unresolved symbol: null
-Semantic Error: (4, 10) Expected two equal types; found Int and None, for expression 
-'x == null'
-Semantic Error: (10, 24) unresolved symbol: null
-Semantic Error: (10, 5) expected arguments of types [Int], found [None] for expression 
-'testNullAssignment(null)'
+/app/aguda-testing/test/valid/64361_check_positive_value/check_positive.agu [✔]
+Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/64361_count_vowels/count_vowels.agu [FAIL]
-Semantic Error: (17, 11) expected arguments of types [String[], Int], found [String, Int] for expression 
-'count_vowels(word, 5)'
-Semantic Error: (20, 11) expected arguments of types [String[], Int], found [String, Int] for expression 
-'count_vowels(sentence, 18)'
+/app/aguda-testing/test/valid/64361_count_vowels/count_vowels.agu [✔]
+Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/64361_exponential/exponential.agu [✔]
@@ -770,22 +486,16 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/64361_prime_number/prime_number.agu [FAIL]
-Semantic Error: (8, 13) Expected both branches to be of same type; found Bool and Unit, for expression 
-'if n % i == 0 then
-  false
-else
-  unit'
+/app/aguda-testing/test/valid/64361_prime_number/prime_number.agu [✔]
+Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/64361_reverse_array/reverse_array.agu [✔]
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/64361_sum_function/sum_function.agu [FAIL]
-Semantic Error: (21, 11) unresolved symbol: sum_array
-Semantic Error: (21, 11) Expected a FunctionType, found None for expression 
-'sum_array'
+/app/aguda-testing/test/valid/64361_sum_function/sum_function.agu [✔]
+Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/64371_binary_search/binary_search.agu [✔]
@@ -840,20 +550,12 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/64854_heart/heart.agu [FAIL]
-Semantic Error: (5, 11) unresolved symbol: i
-Semantic Error: (5, 13) Expected two equal types; found None and Int, for expression 
-'i < length(heart_matrix)'
-Semantic Error: (6, 12) unresolved symbol: i
-Semantic Error: (6, 14) Expected two equal types; found None and Int, for expression 
-'i == 0'
-Semantic Error: (7, 12) unresolved symbol: i
-...and 29 more errors.
+/app/aguda-testing/test/valid/64854_heart/heart.agu [✔]
+Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/64854_inc/inc.agu [FAIL]
-Semantic Error: (5, 1) Expected type 'Int', found type 'Unit' for expression 
-'print(i)'
+/app/aguda-testing/test/valid/64854_inc/inc.agu [✔]
+Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/64854_is_pair/is_pair.agu [✔]
@@ -864,14 +566,8 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/64854_printA/printA.agu [FAIL]
-Semantic Error: (4, 5) Expected type 'String', found type 'Unit' for expression 
-'print("a")'
-Semantic Error: (7, 12) Wildcard variable '_' cannot be used
-Semantic Error: (7, 5) expected arguments of types [Unit], found [None] for expression 
-'printA(_)'
-Semantic Error: (7, 5) Expected function call to return type 'Unit', found type 'String' for expression 
-'printA(_)'
+/app/aguda-testing/test/valid/64854_printA/printA.agu [✔]
+Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/64854_produce_letter/produce_letter.agu [✔]
@@ -906,6 +602,14 @@ Program is semantically valid!
 Program is semantically valid!
 
 
+/app/aguda-testing/test/valid/tcomp000_evenOddCond/evenOddCond.agu [✔]
+Program is semantically valid!
+
+
+/app/aguda-testing/test/valid/tcomp000_evenOddResult/evenOddResult.agu [✔]
+Program is semantically valid!
+
+
 /app/aguda-testing/test/valid/tcomp000_expIf/expif.agu [✔]
 Program is semantically valid!
 
@@ -914,7 +618,19 @@ Program is semantically valid!
 Program is semantically valid!
 
 
+/app/aguda-testing/test/valid/tcomp000_intFuns/intFuns.agu [✔]
+Program is semantically valid!
+
+
 /app/aguda-testing/test/valid/tcomp000_letOfLet/letOfLet.agu [✔]
+Program is semantically valid!
+
+
+/app/aguda-testing/test/valid/tcomp000_letOfLetFun/letOfLetFun.agu [✔]
+Program is semantically valid!
+
+
+/app/aguda-testing/test/valid/tcomp000_letPlusLet/letPlusLet.agu [✔]
 Program is semantically valid!
 
 
@@ -926,7 +642,23 @@ Program is semantically valid!
 Program is semantically valid!
 
 
+/app/aguda-testing/test/valid/tcomp000_notNotNot/notNotNot.agu [✔]
+Program is semantically valid!
+
+
+/app/aguda-testing/test/valid/tcomp000_power-iterative/power-iterative.agu [✔]
+Program is semantically valid!
+
+
+/app/aguda-testing/test/valid/tcomp000_power-of-power/power-of-power.agu [✔]
+Program is semantically valid!
+
+
 /app/aguda-testing/test/valid/tcomp000_powers/powers.agu [✔]
+Program is semantically valid!
+
+
+/app/aguda-testing/test/valid/tcomp000_sumThree/sumThree.agu [✔]
 Program is semantically valid!
 
 
