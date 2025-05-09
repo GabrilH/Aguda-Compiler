@@ -1,8 +1,8 @@
 valid-tests
 
-Total tests run: 164
-Passed [✔]: 160
-Failed [FAIL]: 4
+Total tests run: 159
+Passed [✔]: 154
+Failed [FAIL]: 5
 
 /app/aguda-testing/test/valid/54394_array_operations/array_operations.agu [✔]
 Program is semantically valid!
@@ -28,9 +28,8 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/54394_semicolon_assignment/semicolon_assignment.agu [FAIL]
-Semantic Error: (4, 5) Expected type 'Int', found type 'Unit' for expression 
-'let y : Int = 4'
+/app/aguda-testing/test/valid/54394_semicolon_assignment/semicolon_assignment.agu [✔]
+Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/54394_string_printing/string_printing.agu [✔]
@@ -57,8 +56,8 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/56269_booleanSequence/booleanSequence.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/56269_booleanSequence/booleanSequence.agu [FAIL]
+Syntactic error: at line 3, column 5: Unexpected token 'unit'
 
 
 /app/aguda-testing/test/valid/56269_bottomRow/bottomRow.agu [✔]
@@ -89,8 +88,8 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/56307_arithmeticOperations/arithmeticOperations.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/56307_arithmeticOperations/arithmeticOperations.agu [FAIL]
+Syntactic error: at line 20, column 15: Unexpected token 'Ubit'
 
 
 /app/aguda-testing/test/valid/56307_countdownFunction/countdownFunction.agu [✔]
@@ -314,8 +313,8 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/58170_complexWhile/complexWhile.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/58170_complexWhile/complexWhile.agu [FAIL]
+Syntactic error: at EOF
 
 
 /app/aguda-testing/test/valid/58170_factorial/factorial.agu [✔]
@@ -430,16 +429,16 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/58250_calculate_operations/58250_calculate_operations.agu [FAIL]
-Syntactic error: at line 24, column 6: Unexpected token 'final'
+/app/aguda-testing/test/valid/58250_calculate_operations/58250_calculate_operations.agu [✔]
+Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/58250_check_value/58250_check_value.agu [✔]
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/58250_cube/58250_cube.agu [FAIL]
-Syntactic error: at line 14, column 6: Unexpected token 'final'
+/app/aguda-testing/test/valid/58250_cube/58250_cube.agu [✔]
+Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/58250_divide_two_numbers/58250_divide_two_numbers.agu [✔]
@@ -550,8 +549,8 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/64854_heart/heart.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/64854_heart/heart.agu [FAIL]
+Syntactic error: at line 23, column 15: Unexpected token 'Init'
 
 
 /app/aguda-testing/test/valid/64854_inc/inc.agu [✔]
@@ -578,19 +577,11 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/tcomp000_arrayOfUnit/arrayOfUnit.agu [✔]
-Program is semantically valid!
-
-
 /app/aguda-testing/test/valid/tcomp000_assoc_eq/assoc_eq.agu [✔]
 Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/tcomp000_collatz/collatz.agu [✔]
-Program is semantically valid!
-
-
-/app/aguda-testing/test/valid/tcomp000_diagonal/diagonal.agu [✔]
 Program is semantically valid!
 
 
@@ -634,14 +625,6 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/tcomp000_lookup/lookup.agu [✔]
-Program is semantically valid!
-
-
-/app/aguda-testing/test/valid/tcomp000_lookupRec/lookupRec.agu [✔]
-Program is semantically valid!
-
-
 /app/aguda-testing/test/valid/tcomp000_notNotNot/notNotNot.agu [✔]
 Program is semantically valid!
 
@@ -651,10 +634,6 @@ Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/tcomp000_power-of-power/power-of-power.agu [✔]
-Program is semantically valid!
-
-
-/app/aguda-testing/test/valid/tcomp000_powers/powers.agu [✔]
 Program is semantically valid!
 
 
