@@ -1,4 +1,2 @@
 Comando para correr ficheiro local:
 docker-compose run --rm -v C:\Users\gmfh\Documents\TComp_Repo\aguda-compiler\array_operations.agu:/app/local_file.agu aguda-compiler /app/local_file.agu
-
-- checkar tipo da main

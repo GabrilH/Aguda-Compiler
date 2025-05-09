@@ -121,19 +121,27 @@ class TypeChecker:
                 error_exp.column
             )
 
-    def checkParameters(self, error_exp : Exp, parameters: List[Var], function_type: FunctionType):
+    def checkParameters(self, function_id : Var, parameters: List[Var], function_type: FunctionType):
         """
         Checks if the parameters names are unique and do not conflict with built-in functions.
         """
+        if function_id.name == 'main':
+            # check if matches let main (x) : Unit -> Unit
+            if len(parameters) != 1 or len(function_type.param_types) != 1 or \
+                    function_type.param_types[0] != BaseType('Unit') or \
+                    function_type.return_type != BaseType('Unit'):
+                self.logger.log(f"main function must have signature 'let main (x) : Unit -> Unit'", function_id.lineno, function_id.column)
+                return
+
         if len(parameters) != len(function_type.param_types):
             self.logger.log(f"number of params does not match type in function declaration "
-                    f"'{error_exp}'", error_exp.lineno, error_exp.column)
+                    f"'{function_id}'", function_id.lineno, function_id.column)
 
         param_names = set()
         for param in parameters:
             if param.name != '_' and param.name in param_names:
                 self.logger.log(f"duplicate parameter name '{param.name}' in function declaration "
-                        f"'{error_exp}'", error_exp.lineno, error_exp.column)
+                        f"'{function_id}'", function_id.lineno, function_id.column)
             param_names.add(param.name)
 
     def checkAgainst(self, ctx: SymbolTable, matched_exp: Exp, expected_type: Type) -> None:
