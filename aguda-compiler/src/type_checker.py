@@ -7,6 +7,7 @@ class TypeChecker:
         if max_errors < 0:
             raise ValueError("max_errors must be greater than or equal to 0")
         self.logger = ErrorLogger(max_errors)
+        self.hasMain = False
 
     def verify(self, ast: ASTNode) -> None:
         """
@@ -43,14 +44,17 @@ class TypeChecker:
             case Program(declarations):
                 for decl in declarations:
                     self.first_pass(ctx, decl)
+                if not self.hasMain:
+                    self.logger.log("No main function found", -1, -1)
 
+            case FunctionDeclaration(id, _, type, _):
+                if id.name == 'main':
+                    self.hasMain = True
+                self.insertIntoCtx(ctx, node, id, type)
+                
             case TopLevelVariableDeclaration(id, type, _):
                 self.insertIntoCtx(ctx, node, id, type)
 
-            case FunctionDeclaration(id, _, type, _):
-                self.checkBuiltInConflict(node, id)
-                self.insertIntoCtx(ctx, node, id, type)
-                
             case _:
                 return
 

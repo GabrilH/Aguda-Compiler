@@ -1,15 +1,15 @@
 valid-tests
 
 Total tests run: 156
-Passed [✔]: 151
-Failed [FAIL]: 5
+Passed [✔]: 119
+Failed [FAIL]: 37
 
-/app/aguda-testing/test/valid/54394_array_operations/array_operations.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/54394_array_operations/array_operations.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
 
 
-/app/aguda-testing/test/valid/54394_bool_array/bool_array.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/54394_bool_array/bool_array.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
 
 
 /app/aguda-testing/test/valid/54394_clamp/clamp.agu [✔]
@@ -32,16 +32,16 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/54394_string_printing/string_printing.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/54394_string_printing/string_printing.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
 
 
-/app/aguda-testing/test/valid/54394_uv_mapping/uv_mapping.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/54394_uv_mapping/uv_mapping.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
 
 
-/app/aguda-testing/test/valid/54394_zip/zip.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/54394_zip/zip.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
 
 
 /app/aguda-testing/test/valid/56269_ackermann/ackermann.agu [✔]
@@ -60,8 +60,8 @@ Program is semantically valid!
 Syntactic error: at line 3, column 5: Unexpected token 'unit'
 
 
-/app/aguda-testing/test/valid/56269_bottomRow/bottomRow.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/56269_bottomRow/bottomRow.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
 
 
 /app/aguda-testing/test/valid/56269_if/if.agu [✔]
@@ -128,8 +128,8 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/56311_empty_array/empty_array.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/56311_empty_array/empty_array.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
 
 
 /app/aguda-testing/test/valid/56311_equals/equals_method.agu [✔]
@@ -185,8 +185,8 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/56334_bubbleSort/bubbleSort.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/56334_bubbleSort/bubbleSort.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
 
 
 /app/aguda-testing/test/valid/56334_countOccurrences/countOccurrences.agu [✔]
@@ -205,24 +205,24 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/56334_listSum/listSum.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/56334_listSum/listSum.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
 
 
-/app/aguda-testing/test/valid/56334_map/map.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/56334_map/map.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
 
 
-/app/aguda-testing/test/valid/56334_max/max.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/56334_max/max.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
 
 
-/app/aguda-testing/test/valid/56334_palindrome/palindrome.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/56334_palindrome/palindrome.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
 
 
-/app/aguda-testing/test/valid/56334_reverseArray/reverseArray.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/56334_reverseArray/reverseArray.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
 
 
 /app/aguda-testing/test/valid/58166_booleanConfusion/booleanConfusion.agu [✔]
@@ -241,8 +241,8 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/58166_maxDistance/maxDistance.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/58166_maxDistance/maxDistance.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
 
 
 /app/aguda-testing/test/valid/58166_modTest/modTest.agu [✔]
@@ -305,8 +305,8 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/58170_arrayBounds/arrayBounds.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/58170_arrayBounds/arrayBounds.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
 
 
 /app/aguda-testing/test/valid/58170_categorizeNumbers/categorizeNumbers.agu [✔]
@@ -333,8 +333,8 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/58170_pyramid/pyramid.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/58170_pyramid/pyramid.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
 
 
 /app/aguda-testing/test/valid/58170_sameNameVar/sameNameVar.agu [✔]
@@ -373,8 +373,8 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/58185_bubble_sort/bubble_sort.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/58185_bubble_sort/bubble_sort.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
 
 
 /app/aguda-testing/test/valid/58185_factorial/factorial.agu [✔]
@@ -393,20 +393,20 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/58185_simple_arithmetic/simple_arithmetic.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/58185_simple_arithmetic/simple_arithmetic.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
 
 
-/app/aguda-testing/test/valid/58185_string_concatenation/string_concatenation.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/58185_string_concatenation/string_concatenation.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
 
 
-/app/aguda-testing/test/valid/58185_unit_type_test/unit_type_test.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/58185_unit_type_test/unit_type_test.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
 
 
-/app/aguda-testing/test/valid/58185_while_loops/while_loops.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/58185_while_loops/while_loops.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
 
 
 /app/aguda-testing/test/valid/58250_average/58250_average.agu [✔]
@@ -477,20 +477,20 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/64361_reverse_array/reverse_array.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/64361_reverse_array/reverse_array.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
 
 
-/app/aguda-testing/test/valid/64361_sum_function/sum_function.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/64361_sum_function/sum_function.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
 
 
-/app/aguda-testing/test/valid/64371_binary_search/binary_search.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/64371_binary_search/binary_search.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
 
 
-/app/aguda-testing/test/valid/64371_bubble_sort/bubble_sort.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/64371_bubble_sort/bubble_sort.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
 
 
 /app/aguda-testing/test/valid/64371_even_fibonnaci_numbers/even_fibonnaci_numbers.agu [✔]
@@ -501,24 +501,24 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/64371_index_of/index_of.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/64371_index_of/index_of.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
 
 
 /app/aguda-testing/test/valid/64371_multiples_3_or_5/multiples_3_or_5.agu [✔]
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/64371_pascals_triangle/pascals_triangle.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/64371_pascals_triangle/pascals_triangle.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
 
 
-/app/aguda-testing/test/valid/64371_pyramid/pyramid.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/64371_pyramid/pyramid.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
 
 
-/app/aguda-testing/test/valid/64371_reverse_array/reverse_array.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/64371_reverse_array/reverse_array.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
 
 
 /app/aguda-testing/test/valid/64371_two_sum/two_sum.agu [✔]
@@ -529,8 +529,8 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/64854_chess_matrix/chess_matrix.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/64854_chess_matrix/chess_matrix.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
 
 
 /app/aguda-testing/test/valid/64854_coin_flip/coin_flip.agu [✔]
@@ -553,12 +553,12 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/64854_printA/printA.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/64854_printA/printA.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
 
 
-/app/aguda-testing/test/valid/64854_produce_letter/produce_letter.agu [✔]
-Program is semantically valid!
+/app/aguda-testing/test/valid/64854_produce_letter/produce_letter.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
 
 
 /app/aguda-testing/test/valid/64854_switch/switch.agu [✔]
