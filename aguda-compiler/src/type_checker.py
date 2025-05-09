@@ -44,9 +44,12 @@ class TypeChecker:
                 for decl in declarations:
                     self.first_pass(ctx, decl)
 
+            case TopLevelVariableDeclaration(id, type, _):
+                self.insertIntoCtx(ctx, node, id, type)
+
             case FunctionDeclaration(id, _, type, _):
                 self.checkBuiltInConflict(node, id)
-                self.insertIntoCtx(ctx, id, type)
+                self.insertIntoCtx(ctx, node, id, type)
                 
             case _:
                 return
@@ -184,11 +187,11 @@ class TypeChecker:
                 if isinstance(exp, Sequence):
                     self.checkAgainst(ctx, exp.first, type)
                     local_ctx = ctx.enter_scope()
-                    self.insertIntoCtx(local_ctx, id, type)
+                    self.insertIntoCtx(local_ctx, matched_exp, id, type)
                     self.checkAgainst(local_ctx, exp.rest, type)
                 else:
                     self.checkAgainst(ctx.enter_scope(), exp, type)
-                self.insertIntoCtx(ctx, id, type)
+                self.insertIntoCtx(ctx, matched_exp, id, type)
 
             case (Var(name),_):
                 actual_type = self.typeofVar(ctx, matched_exp, name)
@@ -239,15 +242,21 @@ class TypeChecker:
                 self.logger.log(f"Expected type '{expected_type}', found type '{self.typeof(ctx, matched_exp)}' "
                         f"for expression \n'{matched_exp}'", matched_exp.lineno, matched_exp.column)
 
-    def insertIntoCtx(self, ctx: SymbolTable, var: Var, type: Type) -> None:
+    def insertIntoCtx(self, ctx: SymbolTable, matched_exp: Exp, var: Var, type: Type) -> None:
         """
         Inserts a variable and its type into the symbol table.
         """
         name = var.name
-        if isinstance(type, FunctionType):
-            if ctx.contains(name):
-                self.logger.log(f"Multiple declarations of function '{name}'", var.lineno, var.column)
-                return
+        match matched_exp:
+            case FunctionDeclaration(_, _, _, _):
+                if ctx.contains(name):
+                    self.logger.log(f"Multiple declarations of function '{name}'", var.lineno, var.column)
+                    return
+
+            case TopLevelVariableDeclaration(_, _, _):
+                if ctx.contains(name):
+                    self.logger.log(f"Multiple declarations of top-level variable '{name}'", var.lineno, var.column)
+                    return
             
         if name != '_':
             ctx.insert(name, type)
@@ -309,16 +318,26 @@ class TypeChecker:
                     self.checkArguments(ctx, matched_exp, exps, funcType)
                     return funcType.return_type
                 
-            case VariableDeclaration(id, type, exp) | TopLevelVariableDeclaration(id, type, exp):
+            case VariableDeclaration(id, type, exp):
 
                 if isinstance(exp, Sequence):
                     self.checkAgainst(ctx, exp.first, type)
                     local_ctx = ctx.enter_scope()
-                    self.insertIntoCtx(local_ctx, id, type)
+                    self.insertIntoCtx(local_ctx, matched_exp, id, type)
                     self.checkAgainst(local_ctx, exp.rest, type)
                 else:
                     self.checkAgainst(ctx.enter_scope(), exp, type)
-                self.insertIntoCtx(ctx, id, type)
+                self.insertIntoCtx(ctx, matched_exp, id, type)
+                return BaseType('Unit')
+            
+            case TopLevelVariableDeclaration(id, type, exp):
+
+                if isinstance(exp, Sequence):
+                    self.checkAgainst(ctx, exp.first, type)
+                    local_ctx = ctx.enter_scope()
+                    self.checkAgainst(local_ctx, exp.rest, type)
+                else:
+                    self.checkAgainst(ctx.enter_scope(), exp, type)
                 return BaseType('Unit')
             
             case Var(name):
@@ -384,7 +403,7 @@ class TypeChecker:
                 # Augment the context with parameter types
                 local_ctx = ctx.enter_scope()
                 for param, param_type in zip(parameters, type.param_types):
-                    self.insertIntoCtx(local_ctx, param, param_type)
+                    self.insertIntoCtx(local_ctx, matched_exp, param, param_type)
                 
                 self.checkAgainst(local_ctx, body, type.return_type)
 

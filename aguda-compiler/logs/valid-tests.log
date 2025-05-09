@@ -1,7 +1,7 @@
 valid-tests
 
-Total tests run: 159
-Passed [✔]: 154
+Total tests run: 156
+Passed [✔]: 151
 Failed [FAIL]: 5
 
 /app/aguda-testing/test/valid/54394_array_operations/array_operations.agu [✔]
@@ -349,10 +349,6 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/58182_fibonacci_memoization/fibonacci_memoization.agu [✔]
-Program is semantically valid!
-
-
 /app/aguda-testing/test/valid/58182_function_unit_type/function_unit_type.agu [✔]
 Program is semantically valid!
 
@@ -365,15 +361,7 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/58182_overload_print_and_length/overload_print_and_length.agu [✔]
-Program is semantically valid!
-
-
 /app/aguda-testing/test/valid/58182_simple_arithmetic/simple_arithmetic.agu [✔]
-Program is semantically valid!
-
-
-/app/aguda-testing/test/valid/58182_transpose_matrix/transpose_matrix.agu [✔]
 Program is semantically valid!
 
 

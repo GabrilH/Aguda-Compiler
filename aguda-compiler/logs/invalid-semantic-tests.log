@@ -111,7 +111,7 @@ Semantic Error: (5, 6) Expected variable 'x' to be of type 'Bool', found type 'I
 Semantic Error: (6, 13) Expected variable 'index' to be of type 'Int', found type 'Bool'
 
 
-/app/aguda-testing/test/invalid-semantic/58182_add_int_to _string/add_int_to_string.agu [✔]
+/app/aguda-testing/test/invalid-semantic/58182_add_int_to_string/add_int_to_string.agu [✔]
 Semantic Error: (3, 31) Expected type 'Int', found type 'String' for expression 
 '"Hello"'
 Semantic Error: (3, 39) Expected two equal types; found Int and String, for expression 
