@@ -108,12 +108,23 @@ def semantic_test_run(filepath, valid):
     
     return test_log, ast
 
+def code_gen_test_run(filepath, valid):
+    
+    semantic_log, ast = semantic_test_run(filepath, True)
+
+    # If there are semantic errors, exit without code generation
+    if any("[FAIL]" in line or "[EXCEPTION]" in line for line in semantic_log):
+        return semantic_log, ast
+    
+    return semantic_log, ast
+    # TODO: Implement code generation and testing
+
 def run_multiple_tests(test_dir : str, valid : bool, type : int):
     """
     Run multiple tests in a directory.
     :param test_dir: Directory containing the tests
     :param valid: True if the programs to test are valid, False if they are invalid
-    :param type: 0 for syntax tests, 1 for semantic tests
+    :param type: 0 for syntax tests, 1 for semantic tests, 2 for code generation tests
     :return: List logs of the tests
     """
     global TOTAL_TESTS, TOTAL_FAILED_TESTS
@@ -131,8 +142,11 @@ def run_multiple_tests(test_dir : str, valid : bool, type : int):
         if type == 0:
             test_log,_ = syntax_test_run(filepath, valid)
             test_log.append("\n")
-        else:
+        elif type == 1:
             test_log,_ = semantic_test_run(filepath, valid)
+            test_log.append("\n")
+        elif type == 2:
+            test_log,_ = code_gen_test_run(filepath, valid)
             test_log.append("\n")
 
         if any("[FAIL]" in line or "[EXCEPTION]" in line for line in test_log):
@@ -143,6 +157,7 @@ def run_multiple_tests(test_dir : str, valid : bool, type : int):
     return logs
 
 def run_test_suite():
+
     global TOTAL_TESTS, TOTAL_FAILED_TESTS
 
     TOTAL_TESTS = 0
@@ -154,7 +169,7 @@ def run_test_suite():
     invalid_syn_tests_logs = run_multiple_tests(INVALID_SYN_DIR, valid=False, type=0)
     write_logs(invalid_syn_tests_logs, "invalid-syntax-tests")
 
-    valid_tests_logs = run_multiple_tests(VALID_DIR, valid=True, type=1)
+    valid_tests_logs = run_multiple_tests(VALID_DIR, valid=True, type=2)
     write_logs(valid_tests_logs, "valid-tests")
 
     print(f"\nTest Suite Summary:")
@@ -213,6 +228,6 @@ def main():
     os.remove(temp_file_path)
 
 if __name__ == '__main__':
-    main()
-    #run_test_suite()
+    #main()
+    run_test_suite()
     #run_single_test(r".\test\valid\64854_printA\printA.agu")
