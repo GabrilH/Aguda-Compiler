@@ -1,0 +1,53 @@
+Compiler Techniques 2024/25
+M4: Code Generation
+Deliver by May 26, 2025
+
+AGUDA
+
+For the fourth and last milestone (M4) of the compiler we shall convert
+AGUDA into LLVM code.
+Once again M4 is delivered as a docker container (max 1MB), so that I may
+run your code on my machine, regardless of the programming language and
+the versions of the software you use.
+You are expected to
+• Write a code generator for the AGUDA programming language that
+outputs LLVM code
+• Write a short how-to report, in md format
+What we need not implement:
+• Arrays and array operations
+• Strings
+• Top-level declarations initialised to non-constants
+Requirements:
+• The compiler reads a source file (an .agu file) from the command line
+and outputs an .ll file in the same directory
+• Code is generated only for programs that pass the validation phase of
+the compiler
+• You compiler should pass as many tests as possible. Tests are taken from
+https:
+//git.alunos.di.fc.ul.pt/tcomp000/aguda-testing.
+• Include this folder as a git repository in your deliverable, so that I may
+“git pull” before building the container
+The testing infrastructure should
+• Run the LLVM code (the easiest way is by calling the lli LLVM
+interpreter from within the testing infrastructure)
+• Compare the output of running the LLVM code against the contents of
+the first line of the expect file in the same directory
+• A test passes if the output and the the first line of the expect file
+coincide, and fails otherwise
+
+The how-to report should include:
+• How to update your tests (by git pulling from aguda-testing)
+• How to build your compiler
+• How to run the whole test suite (valid and invalid programs)
+• How to run a particular test
+• How to interpret the testing output (how many tests passed, which
+failed)
+• A brief description of how you implemented short-circuit boolean
+expressions (or why you did not follow this approach)
+• If your compiler does not pass all tests, explain why
+• Name you report aguda-M4.md; place it in the top folder of your
+deliverable
+
+2
+
+
