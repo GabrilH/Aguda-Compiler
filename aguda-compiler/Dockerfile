@@ -1,5 +1,11 @@
 FROM python:alpine
 
+# Install LLVM and other dependencies
+RUN apt-get update && apt-get install -y \
+    llvm \
+    clang \
+    && rm -rf /var/lib/apt/lists/*
+
 # Set the working directory inside the container
 WORKDIR /app
 
