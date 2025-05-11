@@ -1,12 +1,17 @@
+from src.error_logger import ErrorLogger
 from src.syntax import *
 from src.symbol_table import SymbolTable
+
+class SemanticError(Exception):
+    """Exception raised for semantic errors in the program."""
+    pass
 
 class TypeChecker:
 
     def __init__(self, max_errors):
         if max_errors < 0:
             raise ValueError("max_errors must be greater than or equal to 0")
-        self.logger = ErrorLogger(max_errors)
+        self.logger = ErrorLogger(max_errors, "Semantic")
         self.hasMain = False
 
     def verify(self, ast: ASTNode) -> None:
@@ -424,30 +429,3 @@ class TypeChecker:
             
             case _:
                 self.logger.log(f"Unknown expression type '{type(matched_exp)}'", matched_exp.lineno, matched_exp.column)
-
-class SemanticError(Exception):
-    """Exception raised for semantic errors in the program."""
-    pass
-
-class ErrorLogger:
-    def __init__(self, max_errors):
-        self.max_errors = max_errors
-        self.messages = []
-
-    def log(self, message: str, lineno: int, column: int):
-        self.messages.append(f"Semantic Error: ({lineno}, {column}) {message}")
-
-    def print_errors(self):
-        for error in self.messages[:self.max_errors]:
-            print(error)
-        if len(self.messages) > self.max_errors:
-            print(f"...and {len(self.messages) - self.max_errors} more errors.")
-
-    def has_errors(self) -> bool:
-        return len(self.messages) > 0
-
-    def reset(self):
-        self.messages = []
-
-    def get_errors(self):
-        return self.messages
