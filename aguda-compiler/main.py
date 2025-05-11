@@ -1,8 +1,10 @@
 import argparse
 import os
 import io
+import subprocess
 import contextlib
 from pathlib import PureWindowsPath, PurePosixPath
+from src.code_generator import CodeGenerator, CodeGenerationError
 from src.lexer import lexer
 from src.parser import parser, reset_parser
 from src.type_checker import SemanticError, TypeChecker
@@ -116,8 +118,46 @@ def code_gen_test_run(filepath, valid):
     if any("[FAIL]" in line or "[EXCEPTION]" in line for line in semantic_log):
         return semantic_log, ast
     
-    return semantic_log, ast
-    # TODO: Implement code generation and testing
+    test_log = semantic_log # TODO: change to []
+    # output_path = filepath.replace('.agu', '.ll')
+    
+    # try:
+    #     code_gen = CodeGenerator(MAX_ERRORS)
+    #     llvm_ir = code_gen.generate(ast)
+        
+    #     with open(output_path, 'w') as f:
+    #         f.write(llvm_ir)
+        
+    #     # Now run the LLVM IR using lli
+    #     result = subprocess.run(['lli', output_path], capture_output=True, text=True)
+
+    #     expect_path = filepath.replace('.agu', '.expect')
+            
+    #     try:
+    #         with open(expect_path, 'r') as f:
+    #             expected_output = f.readline().strip()
+            
+    #         actual_output = result.stdout.strip()
+            
+    #         if actual_output == expected_output:
+    #             test_log.append(f"{filepath} [✔]")
+    #         else:
+    #             test_log.append(f"{filepath} [FAIL]")
+    #             test_log.append(f"Expected: '{expected_output}'")
+    #             test_log.append(f"Got: '{actual_output}'")
+
+    #     except FileNotFoundError:
+    #         test_log.append(f"{filepath} [FAIL]")
+    #         test_log.append(f"Expect file not found: {expect_path}")
+
+    # except CodeGenerationError as e:
+    #     test_log.append(f"{filepath} [SKIP]")
+    #     test_log.append(str(e))
+    # except Exception as e:
+    #     test_log.append(f"{filepath} [EXCEPTION]")
+    #     test_log.append(str(e))
+    
+    return test_log, ast
 
 def run_multiple_tests(test_dir : str, valid : bool, type : int):
     """
@@ -190,7 +230,7 @@ def run_single_test(filepath):
         print(f"File '{filepath}' is not a .agu file.")
         return
     else:
-        test_log, ast = semantic_test_run(filepath, valid=True)
+        test_log, ast = code_gen_test_run(filepath, valid=True)
         print(ast)
         print(test_log[1])
 
