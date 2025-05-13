@@ -420,7 +420,7 @@ class TypeChecker:
                 # Augment the context with parameter types
                 local_ctx = ctx.enter_scope()
                 for param, param_type in zip(parameters, type.param_types):
-                    self.insertIntoCtx(local_ctx, matched_exp, param, param_type)
+                    self.insertIntoCtx(local_ctx, param, param, param_type)
                 
                 self.checkAgainst(local_ctx, body, type.return_type)
 
