@@ -1,10 +1,7 @@
 FROM python:alpine
 
 # Install LLVM and other dependencies
-RUN apt-get update && apt-get install -y \
-    llvm \
-    clang \
-    && rm -rf /var/lib/apt/lists/*
+# RUN apk update && apk add --no-cache llvm clang
 
 # Set the working directory inside the container
 WORKDIR /app
