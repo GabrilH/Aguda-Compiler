@@ -75,3 +75,102 @@ Regras para transformar na AST:
         Variaveis que vivem no registo de ativação:
             - vars passadas por referencia
             - vars acedidas em funções chamadas por uma dada função
+
+# codegen
+
+- quando se chama função, tem-se que mandar o tipo dos parâmetros
+    - R:
+
+- expressões boolean, mal se saiba o resultado da exp, dar return (n continuar a ler) curto circuito
+    - R: 
+
+- a função main será um caso específico?
+    - R:
+
+- é suposto ir fazendo logs ou lançar logo exception?
+    - R:
+
+- qual é o tipo LLVM do Unit?
+    - R: qualquer
+
+------------
+
+DUAS PASSAGENS PELA AST
+    - 1ª colecionar tipos de funções
+    - 2ª gerar codigo
+
+- tradução de expressôes:
+    - expGen : Exp (AST) -> (LLVMCode, Value)
+    - Value ::= Register | Literal (Int | Bool | Unit)
+    - LLVMCode ::= Lista de instruções
+
+        {exp}  {codigo, valor}
+    ctx |- e -> (c,v)
+        {in}    {out}
+
+    Literals expGen:
+    
+        |- n -> ([],n)
+        
+        |- b -> ([],b)
+
+        |- unit -> ([],1)
+
+    Sequence:
+
+        |- e1 -> (c1,r1)    |- e2 -> (c2,r2)
+        -----------------------------------
+        |- e1;e2 -> ([c1,c2], r2)
+
+    BinOp aritméticas:
+                                            r fresh
+                                            --------
+        |- e1 -> (c1,v1)    |- e2 -> (c2,v2)    |
+        ------------------------------------------
+        |- e1 + e2 -> (
+            [c1;c2; r = add i32, v1,v2],
+            r (resultado da op)
+            )
+        
+        POWER: tem-se que chamar uma função que faz power
+        as outras têm instrução propria
+    
+    Variables:
+
+         ctx(x) = (rx, t)         r fresh
+        -----------------------------------
+        ctx |- x -> [r = load t, t*, rx , r]
+
+        ctx: tabela símbolos de nomes de variables p/ pares (tipo,Value)
+        t = tipo de x
+        t* = type(t)*
+        rx = 
+        
+        load - carregar valor
+        em mem. p/ registo
+
+    Let:
+
+        ctx |- e1 -> (c1,v1)       insert x (t,r) ctx |- e2 -> (c2,v2)      r fresh
+        -----------------------------------------------------------------------------
+        ctx |- let x : t = e1 in e2 -> (
+            [c1; r: alloca t; store t v; t*r; c2],
+            v2
+        )
+
+    Function call:
+
+        ctx |- e1 -> (c1,v1)...... ctx |- en -> (cn,vn)        r fresh
+        ---------------------------------------------------------------
+        ctx |- f(e1...en) -> (
+            [c1;...cn; r = call u vf [t1 v1, tn vn]]
+        )
+
+        u = tipo de retorno
+        vf = nome da funcao
+
+    Conditional:
+
+
+
+        |- if e1 then e2 else e3
