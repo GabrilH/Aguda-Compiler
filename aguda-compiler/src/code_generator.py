@@ -29,7 +29,7 @@ class CodeGenerator:
             case BaseType(name="Bool"):
                 return "i1"
             case BaseType(name="Unit"):
-                return "void"
+                return "i1"
             case FunctionType(return_type, param_types):
                 param_types_llvm = [self.get_llvm_type(param) for param in param_types]
                 return f"{self.get_llvm_type(return_type)} ({', '.join(param_types_llvm)})"

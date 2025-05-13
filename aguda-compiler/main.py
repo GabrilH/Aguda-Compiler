@@ -268,6 +268,6 @@ def main():
     os.remove(temp_file_path)
 
 if __name__ == '__main__':
-    #main()
-    run_test_suite()
-    #run_single_test(r".\test\valid\64854_printA\printA.agu")
+    main()
+    #run_test_suite()
+    #run_single_test(r".\aguda-testing\test\valid\58250_calculate_operations\58250_calculate_operations.agu")
