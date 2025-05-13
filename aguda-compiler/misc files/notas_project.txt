@@ -100,12 +100,16 @@ DUAS PASSAGENS PELA AST
     - 2ª gerar codigo
 
 - tradução de expressôes:
-    - expGen : Exp (AST) -> (LLVMCode, Value)
+    - condGen :
+    - expGen  : Exp (AST) -> (LLVMCode, Value)
+    -> condGen e expGen mutuamente recursivas (tipo checkAgainst e typeof)
+
+
     - Value ::= Register | Literal (Int | Bool | Unit)
     - LLVMCode ::= Lista de instruções
 
-        {exp}  {codigo, valor}
-    ctx |- e -> (c,v)
+        {exp}  {codigo, valor, tipo, label}
+    ctx |- e -> (c,v,t,l)
         {in}    {out}
 
     Literals expGen:
@@ -141,7 +145,7 @@ DUAS PASSAGENS PELA AST
         -----------------------------------
         ctx |- x -> [r = load t, t*, rx , r]
 
-        ctx: tabela símbolos de nomes de variables p/ pares (tipo,Value)
+        ctx: tabela símbolos de nomes de variables p/ pares (tipo,nome_llvm)
         t = tipo de x
         t* = type(t)*
         rx = 
@@ -174,3 +178,49 @@ DUAS PASSAGENS PELA AST
 
 
         |- if e1 then e2 else e3
+
+
+    condGen:
+
+        ctx,l,tt,ff |- e -> c,l
+
+        Bool Literals:
+
+            ctx l,ff,ll |- true: br label %tt
+            ctx l,ff,ll |- false: br label %ff
+
+        &&: (OR é parecido)
+
+                                                        tt' fresh
+        ctx,l,tt',ff |- e1,l1  ctx,tt',tt,ff |- e2 -> c2,l2    |
+        --------------------------------------------------------
+            ctx l,tt,ff |- e1 && e2 -> (
+                [c1;tt',c2], l2
+            )
+
+        NOT:
+            - simplesmente troca a ordem das etiquetas
+
+        BinOp comparable:
+                                                                    r fresh
+            ctx,l |- e1 -> (c1,v2,l1)   ctx,l1 |- e2 -> (c2,v2,l2)      |
+            --------------------------------------------------------------
+            ctx,l,tt,ff |- e1 == e2 -> (
+                [c1;c2; r= icmp eq tipo v1 v2
+                    : br i1 r, %tt, %ff],
+                l2a
+            )
+
+            TODOs:
+                - call?
+                - if?
+                - neg?
+
+            catch call - todos os outros casos
+
+                ctx,l |- e -> (c,v,t,l')
+                --------------------------
+                ctx,l,tt,ff |- e -> (
+                    [c,br i1 v, label %tt, label %ff],
+                    l'
+                )

@@ -11,7 +11,8 @@ class CodeGenerationError(Exception):
 class Emitter:
     def __init__(self):
         self.code = []
-        self.counter = 0
+        self.l_counter = 0
+        self.r_counter = 0
 
     def emit(self, code: str):
         self.code.append(code)
@@ -70,10 +71,39 @@ class CodeGenerator:
             case _:
                 self.logger.log(f"Non-implemented expression type: {type(matched_exp).__name__}", matched_exp.lineno, matched_exp.column)           
 
+    def l_fresh(self):
+        """
+        Generate a new label for LLVM code.
+        """
+        self.l_counter += 1
+        return f"label_{self.l_counter}"
+
+    def r_fresh(self):
+        """
+        Generate a new register for LLVM code.
+        """
+        self.r_counter += 1
+        return f"%r{self.r_counter}"
+
+    def first_pass(self):
+        """
+        First pass over the AST to construct initial symbol tables
+        """
+        pass
+
+    def second_pass(self):
+        """
+        Second pass over the AST to generate LLVM code.
+        """
+        pass
+
     def generate(self, program: Program) -> Emitter:
         """Generate LLVM IR code from the AST."""
         
         self.emitter.emit("; LLVM IR generated from AGUDA")
+
+        self.first_pass()
+        self.second_pass()
         
         for decl in program.declarations:
             match decl:
