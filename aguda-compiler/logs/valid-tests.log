@@ -1,15 +1,15 @@
 valid-tests
 
-Total tests run: 159
-Passed [✔]: 121
-Failed [FAIL]: 38
+Total tests run: 160
+Passed [✔]: 137
+Failed [FAIL]: 23
 
-/app/aguda-testing/test/valid/54394_array_operations/array_operations.agu [FAIL]
-Semantic Error: (-1, -1) No main function found
+/app/aguda-testing/test/valid/54394_array_operations/array_operations.agu [✔]
+Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/54394_bool_array/bool_array.agu [FAIL]
-Semantic Error: (-1, -1) No main function found
+/app/aguda-testing/test/valid/54394_bool_array/bool_array.agu [✔]
+Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/54394_clamp/clamp.agu [✔]
@@ -32,8 +32,8 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/54394_string_printing/string_printing.agu [FAIL]
-Semantic Error: (-1, -1) No main function found
+/app/aguda-testing/test/valid/54394_string_printing/string_printing.agu [✔]
+Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/54394_uv_mapping/uv_mapping.agu [FAIL]
@@ -56,8 +56,8 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/56269_booleanSequence/booleanSequence.agu [FAIL]
-Syntactic error: at line 3, column 5: Unexpected token 'unit'
+/app/aguda-testing/test/valid/56269_booleanSequence/booleanSequence.agu [✔]
+Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/56269_bottomRow/bottomRow.agu [FAIL]
@@ -88,8 +88,8 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/56307_arithmeticOperations/arithmeticOperations.agu [FAIL]
-Syntactic error: at line 20, column 15: Unexpected token 'Ubit'
+/app/aguda-testing/test/valid/56307_arithmeticOperations/arithmeticOperations.agu [✔]
+Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/56307_countdownFunction/countdownFunction.agu [✔]
@@ -152,9 +152,8 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/56311_shadow_variables/shadow_variables.agu [FAIL]
-Semantic Error: (4, 5) Expected type 'Int', found type 'Unit' for expression 
-'let x : Int = 2'
+/app/aguda-testing/test/valid/56311_shadow_variables/shadow_variables.agu [✔]
+Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/56311_while_loop_with_empty_body/while_loop_with_empty_body.agu [✔]
@@ -313,8 +312,8 @@ Semantic Error: (-1, -1) No main function found
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/58170_complexWhile/complexWhile.agu [FAIL]
-Syntactic error: at EOF
+/app/aguda-testing/test/valid/58170_complexWhile/complexWhile.agu [✔]
+Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/58170_factorial/factorial.agu [✔]
@@ -333,8 +332,8 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/58170_pyramid/pyramid.agu [FAIL]
-Semantic Error: (-1, -1) No main function found
+/app/aguda-testing/test/valid/58170_pyramid/pyramid.agu [✔]
+Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/58170_sameNameVar/sameNameVar.agu [✔]
@@ -405,20 +404,20 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/58185_simple_arithmetic/simple_arithmetic.agu [FAIL]
-Semantic Error: (-1, -1) No main function found
+/app/aguda-testing/test/valid/58185_simple_arithmetic/simple_arithmetic.agu [✔]
+Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/58185_string_concatenation/string_concatenation.agu [FAIL]
 Semantic Error: (-1, -1) No main function found
 
 
-/app/aguda-testing/test/valid/58185_unit_type_test/unit_type_test.agu [FAIL]
-Semantic Error: (-1, -1) No main function found
+/app/aguda-testing/test/valid/58185_unit_type_test/unit_type_test.agu [✔]
+Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/58185_while_loops/while_loops.agu [FAIL]
-Semantic Error: (-1, -1) No main function found
+/app/aguda-testing/test/valid/58185_while_loops/while_loops.agu [✔]
+Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/58250_average/58250_average.agu [✔]
@@ -525,8 +524,8 @@ Program is semantically valid!
 Semantic Error: (-1, -1) No main function found
 
 
-/app/aguda-testing/test/valid/64371_pyramid/pyramid.agu [FAIL]
-Semantic Error: (-1, -1) No main function found
+/app/aguda-testing/test/valid/64371_pyramid/pyramid.agu [✔]
+Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/64371_reverse_array/reverse_array.agu [FAIL]
@@ -549,8 +548,8 @@ Semantic Error: (-1, -1) No main function found
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/64854_heart/heart.agu [FAIL]
-Syntactic error: at line 23, column 15: Unexpected token 'Init'
+/app/aguda-testing/test/valid/64854_heart/heart.agu [✔]
+Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/64854_inc/inc.agu [✔]
@@ -565,12 +564,12 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/64854_printA/printA.agu [FAIL]
-Semantic Error: (-1, -1) No main function found
+/app/aguda-testing/test/valid/64854_printA/printA.agu [✔]
+Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/64854_produce_letter/produce_letter.agu [FAIL]
-Semantic Error: (-1, -1) No main function found
+/app/aguda-testing/test/valid/64854_produce_letter/produce_letter.agu [✔]
+Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/64854_switch/switch.agu [✔]
@@ -578,6 +577,10 @@ Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/tcomp000_assoc_eq/assoc_eq.agu [✔]
+Program is semantically valid!
+
+
+/app/aguda-testing/test/valid/tcomp000_callCond/tcomp000_callCond.agu [✔]
 Program is semantically valid!
 
 
