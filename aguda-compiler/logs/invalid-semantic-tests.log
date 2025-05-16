@@ -232,7 +232,7 @@ Semantic Error: (4, 15) Expected variable 'y' to be of type 'Int', found type 'N
 
 /app/aguda-testing/test/invalid-semantic/tcomp000-branches-diff-types/branches-diff-types.agu [✔]
 Semantic Error: (-1, -1) No main function found
-Semantic Error: (2, 26) Expected type 'Unit', found type 'Int' for expression 
+Semantic Error: (3, 26) Expected type 'Unit', found type 'Int' for expression 
 '5'
 
 
