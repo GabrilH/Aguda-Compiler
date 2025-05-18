@@ -1,7 +1,7 @@
 let fun (_) : Unit -> Int =
     if true
-    then (let x : Int = 5; x)
-    else (let x : Unit = unit; 6) 
+    then (let x : Bool = true; x; let x : Int = 5; x)
+    else (let x : Unit = unit; 6)
 
 let main (_) : Unit -> Unit =
     fun(unit);
