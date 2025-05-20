@@ -47,3 +47,65 @@ Comparação de Optimizing Compilers:
 
 Arranjar vários esquemas de opt para tratar com genéricos (e não programas particulares como Px)
     - Esquemas == passagens na R.I.
+
+--------------
+
+Dataflow Analysis - intraprocedimental (dentro da mesma função)
+
+Reading definiitions:
+    - ver se o valor de um temporário (registo) t pode afetar uma expressão noutra parte do código:
+    - Exemplos:
+        - t <- a + c
+        - t <- M[a]l998
+        - t <- f(a1, ..., an)
+    - calcular quais as defs que chegam a qq nó (instrução) do programa
+
+n : nº da linha ID do nó
+gen: gera def
+kill: mata def
+defs(a) - os nº das linhas de todas as instruções no programa da forma a <- ...
+
+gen[n]      |   kill[n]         | Linguagem
+------------------------------------------------------------
+    {d}     |     defs(b)-{d}   | d: b <- a + c
+    -       |         -         | d: M[b] <- a      --store
+    {d}     |     defs(b)-{d}   | d: b <- M[a]      --load
+    {d}     |     defs(b)-{d}   | d: b <- f(a1,..., an)
+    -       |         -         | d: jump e         --br
+    -       |         -         | d: cjump a l1 l2  --br
+            |                   |
+
+REACHING DEFINITIONS -> Constant Propagation
+    - in[n] = p £ prod[n] U out[n]
+    - out[n] = gen[n] U (in[n] - kill[n])
+
+PROGRAM 17.3 do Livro:
+
+CFG - Control Flow Graph
+
+            1
+            |
+            V
+            2
+            |
+            V
+        --> 3 --> 6
+        |   |     |
+        |   V     V
+        |   4     7
+        |   |
+        |   V
+        --- 5
+
+                         ITER 0      ITER 1                 ITER 2          ITER 3
+nº  | gen     kill  | in  out   |   in      out     |   in      out     |   in      out
+------------------------------------------------------------------------|  ... tudo igual
+1   | 1       6     | -     -   |   -       1       |   -       1       |
+2   | 2       4,7   | -     -   |   1       1,2     |   1       1,2     |
+3   | -        -    | -     -   |   1,2     1,2     |   1,2,4   1,2,4   |
+4   | 4        2,7  | -     -   |   1,2     1,4     |   1,2,4   1,4     |
+5   | -         -   | -     -   |   1,4     1,4     |   1,4     1,4     |
+6   | 6         1   | -     -   |   1,2     2,6     |   1,2,4   2,4,6   |
+7   | 7         2,4 | -     -   |   2,6     6,7     |   2,4,6   6,7     |
+
+O que interessa é a coluna 'in' da ultima iteração.
