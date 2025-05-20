@@ -1,0 +1,49 @@
+Matéria teste:
+
+Cap. 17 Livro Tigre : LLVM opt
+
+Optimizing compiler:
+    - transforma programa
+    - aumenta eficiência:
+        - espaço
+        - tempo <---
+        - energia
+    - mantém o comportamento
+
+Transformações:
+    - eliminação de expressões redundantes
+    - eliminação de código morto
+    - constant folding
+        - x = 3 + 4 ---> x = 7 (trivial)
+        - y = 3 ; x = y + 4 ----> x = 7 (mais dificil)
+    - eliminação de recursividade terminal (transforma recursividade em ciclos)
+
+A que nível optimizar?
+    - Source code? (programador)
+    - R.I. - Representação intermédia (LLVM)? <-----
+    - Assembly?
+
+"É sempre possível inventar novas oportunidades de optimização"
+
+Fully-optimizing compiler recebe programa e gera + eficiente (com mesmo comportamento)
+    - Opt(P): "função" que optimiza programa P
+    - um P que não faz I/O e não termina:
+        - while true ---> Opt(P) = [L: br L]
+    - ! Não existe um *fully* optimizing compiler, porque resolveria:
+        - Halting Problem: Q termina? <==> Opt(Q) == [L: br L] ?
+
+Comparação de Optimizing Compilers:
+
+    A - optimized compiler
+    B - optimized compiler melhor que A?
+    Px - não termina
+
+    A(Px) = Px' != [L: br L]
+    B(P) =  if P == Px
+            then [L: br L]
+            else A(P)
+
+    "Teorema do trabalho para a vida de um desenvolver de optimizing compilers"
+
+Arranjar vários esquemas de opt para tratar com genéricos (e não programas particulares como Px)
+    - Esquemas == passagens na R.I.
