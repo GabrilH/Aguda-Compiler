@@ -119,43 +119,43 @@ def code_gen_test_run(filepath, valid):
         return semantic_log, ast
     
     test_log = semantic_log # TODO: change to []
-    # output_path = filepath.replace('.agu', '.ll')
+    output_path = filepath.replace('.agu', '.ll')
     
-    # try:
-    #     code_gen = CodeGenerator(MAX_ERRORS)
-    #     llvm_ir = code_gen.generate(ast)
+    try:
+        code_gen = CodeGenerator(MAX_ERRORS)
+        llvm_ir = code_gen.generate(ast)
         
-    #     with open(output_path, 'w') as f:
-    #         f.write(llvm_ir)
+        with open(output_path, 'w') as f:
+            f.write(llvm_ir)
         
-    #     # Now run the LLVM IR using lli
-    #     result = subprocess.run(['lli', output_path], capture_output=True, text=True)
+        # Now run the LLVM IR using lli
+        # result = subprocess.run(['lli', output_path], capture_output=True, text=True)
 
-    #     expect_path = filepath.replace('.agu', '.expect')
+        # expect_path = filepath.replace('.agu', '.expect')
             
-    #     try:
-    #         with open(expect_path, 'r') as f:
-    #             expected_output = f.readline().strip()
+        # try:
+        #     with open(expect_path, 'r') as f:
+        #         expected_output = f.readline().strip()
             
-    #         actual_output = result.stdout.strip()
+        #     actual_output = result.stdout.strip()
             
-    #         if actual_output == expected_output:
-    #             test_log.append(f"{filepath} [✔]")
-    #         else:
-    #             test_log.append(f"{filepath} [FAIL]")
-    #             test_log.append(f"Expected: '{expected_output}'")
-    #             test_log.append(f"Got: '{actual_output}'")
+        #     if actual_output == expected_output:
+        #         test_log.append(f"{filepath} [✔]")
+        #     else:
+        #         test_log.append(f"{filepath} [FAIL]")
+        #         test_log.append(f"Expected: '{expected_output}'")
+        #         test_log.append(f"Got: '{actual_output}'")
 
-    #     except FileNotFoundError:
-    #         test_log.append(f"{filepath} [FAIL]")
-    #         test_log.append(f"Expect file not found: {expect_path}")
+        # except FileNotFoundError:
+        #     test_log.append(f"{filepath} [FAIL]")
+        #     test_log.append(f"Expect file not found: {expect_path}")
 
-    # except CodeGenerationError as e:
-    #     test_log.append(f"{filepath} [SKIP]")
-    #     test_log.append(str(e))
-    # except Exception as e:
-    #     test_log.append(f"{filepath} [EXCEPTION]")
-    #     test_log.append(str(e))
+    except CodeGenerationError as e:
+        test_log.append(f"{filepath} [SKIP]")
+        test_log.append(str(e))
+    except Exception as e:
+        test_log.append(f"{filepath} [EXCEPTION]")
+        test_log.append(str(e))
     
     return test_log, ast
 
@@ -268,6 +268,6 @@ def main():
     os.remove(temp_file_path)
 
 if __name__ == '__main__':
-    main()
+    #main()
     #run_test_suite()
-    #run_single_test(r".\aguda-testing\test\valid\58250_calculate_operations\58250_calculate_operations.agu")
+    run_single_test(r".\aguda-testing\test\valid\tcomp000_if_then_if\if_then_if.agu")
