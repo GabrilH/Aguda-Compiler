@@ -1,8 +1,8 @@
 valid-tests
 
-Total tests run: 149
-Passed [✔]: 137
-Failed [FAIL]: 12
+Total tests run: 137
+Passed [✔]: 129
+Failed [FAIL]: 8
 
 /app/aguda-testing/test/valid/54394_array_operations/array_operations.agu [✔]
 Program is semantically valid!
@@ -128,10 +128,6 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/56311_empty_array/empty_array.agu [FAIL]
-Semantic Error: (-1, -1) No main function found
-
-
 /app/aguda-testing/test/valid/56311_equals/equals_method.agu [✔]
 Program is semantically valid!
 
@@ -141,10 +137,6 @@ Program is semantically valid!
 
 
 /app/aguda-testing/test/valid/56311_if_inside_if/if_inside_if.agu [✔]
-Program is semantically valid!
-
-
-/app/aguda-testing/test/valid/56311_matrix_operations/matrix_operations.agu [✔]
 Program is semantically valid!
 
 
@@ -208,35 +200,15 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/58166_invertArray/invertArray.agu [✔]
-Program is semantically valid!
-
-
 /app/aguda-testing/test/valid/58166_mathTest/mathTest.agu [✔]
 Program is semantically valid!
-
-
-/app/aguda-testing/test/valid/58166_maxDistance/maxDistance.agu [FAIL]
-Semantic Error: (-1, -1) No main function found
 
 
 /app/aguda-testing/test/valid/58166_modTest/modTest.agu [✔]
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/58166_pingPong/pingPong.agu [✔]
-Program is semantically valid!
-
-
 /app/aguda-testing/test/valid/58166_powerTen/powerTen.agu [✔]
-Program is semantically valid!
-
-
-/app/aguda-testing/test/valid/58166_safeIndexCheck/safeIndexCheck.agu [✔]
-Program is semantically valid!
-
-
-/app/aguda-testing/test/valid/58166_stringLength/stringLength.agu [✔]
 Program is semantically valid!
 
 
@@ -280,10 +252,6 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/58170_arrayBounds/arrayBounds.agu [FAIL]
-Semantic Error: (-1, -1) No main function found
-
-
 /app/aguda-testing/test/valid/58170_categorizeNumbers/categorizeNumbers.agu [✔]
 Program is semantically valid!
 
@@ -316,15 +284,7 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/58170_shiftRight/shiftRight.agu [✔]
-Program is semantically valid!
-
-
 /app/aguda-testing/test/valid/58182_fibonacci/fibonacci.agu [✔]
-Program is semantically valid!
-
-
-/app/aguda-testing/test/valid/58182_fibonacci_memoization/fibonacci_memoization.agu [✔]
 Program is semantically valid!
 
 
@@ -340,16 +300,8 @@ Program is semantically valid!
 Program is semantically valid!
 
 
-/app/aguda-testing/test/valid/58182_overload_print_and_length/overload_print_and_length.agu [✔]
-Program is semantically valid!
-
-
 /app/aguda-testing/test/valid/58182_simple_arithmetic/simple_arithmetic.agu [✔]
 Program is semantically valid!
-
-
-/app/aguda-testing/test/valid/58182_transpose_matrix/transpose_matrix.agu [FAIL]
-Semantic Error: (-1, -1) No main function found
 
 
 /app/aguda-testing/test/valid/58182_while_loop_break/while_loop_break.agu [✔]
