@@ -127,7 +127,7 @@ class FunctionCall(Exp):
 
     def __str__(self):
         args = ', '.join(str(a) for a in self.arguments)
-        return f'{self.name}({args})'
+        return f'{self.id}({args})'
 
 
 @dataclass
@@ -192,7 +192,7 @@ class TopLevelVariableDeclaration(Declaration):
     value: Exp
 
     def __str__(self):
-        return f'let {self.name} : {self.type} =\n{indent(self.value)}'
+        return f'let {self.id} : {self.type} =\n{indent(self.value)}'
 
 @dataclass
 class VariableDeclaration(Declaration):
@@ -201,7 +201,7 @@ class VariableDeclaration(Declaration):
     value: Exp
 
     def __str__(self):
-        return f'let {self.name} : {self.type} = {self.value}'
+        return f'let {self.id} : {self.type} = {self.value}'
 
 @dataclass
 class FunctionDeclaration(Declaration):
@@ -212,7 +212,7 @@ class FunctionDeclaration(Declaration):
 
     def __str__(self):
         params = ', '.join(str(p) for p in self.parameters)
-        return (f'let {self.name}({params}) : {self.type} =\n'
+        return (f'let {self.id}({params}) : {self.type} =\n'
                 f'{indent(self.body)}')
 
 @dataclass
