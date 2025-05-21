@@ -1,2 +1,5 @@
-Comando para correr ficheiro local:
-docker-compose run --rm -v C:\Users\gmfh\Documents\TComp_Repo\aguda-compiler\array_operations.agu:/app/local_file.agu aguda-compiler /app/local_file.agu
+adicionar power
+corrigir as comparações
+adicionar && e || ao expGen? -> fazer a cena de expGen <-> condGen
+adicionar funções externas (c functions) que depois são linked
+comparar expecteds
