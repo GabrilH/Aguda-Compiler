@@ -10,7 +10,6 @@ class CodeGenerationError(Exception):
 
 class CodeGenerator:
     def __init__(self, max_errors):
-        self.logger = ErrorLogger(max_errors, "Code Generation")
         self.module = ir.Module()
         self.builder = None
         self.current_function = None
@@ -32,7 +31,7 @@ class CodeGenerator:
                 return_type = self.get_llvm_type(aguda_type.return_type)
                 return ir.FunctionType(return_type, param_types)
             case _:
-                self.logger.log(f"Unsupported type: {aguda_type}", aguda_type.lineno, aguda_type.column)
+                raise CodeGenerationError(f"Unsupported type: {aguda_type}", aguda_type.lineno, aguda_type.column)
 
     def fresh_label(self) -> str:
         """Generate a fresh label name."""
@@ -73,7 +72,7 @@ class CodeGenerator:
             case Var(name):
                 var_info = self.symbol_table.get(name)
                 if not var_info:
-                    self.logger.log(f"Undefined variable: {name}", exp.lineno, exp.column)
+                    raise CodeGenerationError(f"Undefined variable: {name}", exp.lineno, exp.column)
                 var_type, var_value = var_info
                 return self.builder.load(var_value)
             
@@ -114,7 +113,7 @@ class CodeGenerator:
                     return self.builder.icmp_signed(op_map[operator], val1, val2)
                 else:
                     #TODO power operator
-                    self.logger.log(f"Unsupported binary operator: {operator}", exp.lineno, exp.column)
+                    raise CodeGenerationError(f"Unsupported binary operator: {operator}", exp.lineno, exp.column)
 
             case FunctionCall(id, arguments):
                 arg_values = [self.expGen(arg) for arg in arguments]
@@ -122,12 +121,12 @@ class CodeGenerator:
                 # Get function type
                 func_type = self.function_types.get(id.name)
                 if not func_type:
-                    self.logger.log(f"Undefined function: {id.name}", id.lineno, id.column)
+                    raise CodeGenerationError(f"Undefined function: {id.name}", id.lineno, id.column)
                 
                 # Get function from module
                 func = self.module.get_global(id.name)
                 if not func:
-                    self.logger.log(f"Function not found in module: {id.name}", id.lineno, id.column)
+                    raise CodeGenerationError(f"Function not found in module: {id.name}", id.lineno, id.column)
                 
                 return self.builder.call(func, arg_values)
             
@@ -203,16 +202,19 @@ class CodeGenerator:
                 if isinstance(lhs, Var):
                     var_info = self.symbol_table.get(lhs.name)
                     if not var_info:
-                        self.logger.log(f"Undefined variable: {lhs.name}", lhs.lineno, lhs.column)
+                        raise CodeGenerationError(f"Undefined variable: {lhs.name}", lhs.lineno, lhs.column)
                     var_type, var_value = var_info
                     self.builder.store(val, var_value)
                 else:
-                    self.logger.log(f"Array assignments not supported yet", lhs.lineno, lhs.column)
+                    raise CodeGenerationError(f"Array assignments not supported yet", lhs.lineno, lhs.column)
                 
                 return ir.Constant(ir.IntType(32), 1)  # Return unit value
             
+            case Group(exp):
+                return self.expGen(exp)
+            
             case _:
-                self.logger.log(f"Unsupported expression type: {type(exp)}", exp.lineno, exp.column)
+                raise CodeGenerationError(f"Not implemented: Generating code for expression  '{exp}'", exp.lineno, exp.column)
 
     def condGen(self, exp: Exp, true_label: str, false_label: str):
         """
@@ -283,7 +285,7 @@ class CodeGenerator:
                     self.function_types[id.name] = type
                 case TopLevelVariableDeclaration(id, type, value):
                     if not isinstance(value, (IntLiteral, BoolLiteral, UnitLiteral)):
-                        self.logger.log(f"Top-level variable declarations must be initialized with literals", decl.lineno, decl.column)
+                        raise CodeGenerationError(f"Top-level variable declarations must be initialized with literals", decl.lineno, decl.column)
                     else:
                         var_type = self.get_llvm_type(type)
                         var = ir.GlobalVariable(self.module, var_type, id.name)
@@ -300,7 +302,7 @@ class CodeGenerator:
             case UnitLiteral():
                 return Constant(ir.IntType(32), 1)
             case _:
-                self.logger.log(f"Unsupported constant type: {type(value)}", value.lineno, value.column)
+                raise CodeGenerationError(f"Not implemented: Converting constant '{value}' to LLVM constant", value.lineno, value.column)
 
     def second_pass(self, program: Program):
         """
@@ -347,10 +349,4 @@ class CodeGenerator:
         """Generate LLVM IR code from the AST."""
         self.first_pass(program)
         self.second_pass(program)
-        
-        # Check if there were any errors
-        if self.logger.has_errors():
-            self.logger.print_errors()
-            raise CodeGenerationError("Code generation failed due to errors")
-        
         return str(self.module)
