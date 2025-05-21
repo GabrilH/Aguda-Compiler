@@ -122,7 +122,7 @@ class LogicalNegation(Exp):
 
 @dataclass
 class FunctionCall(Exp):
-    name: Var
+    id: Var
     arguments: List[Exp]
 
     def __str__(self):
@@ -187,7 +187,7 @@ class ArrayCreation(Exp):
 
 @dataclass
 class TopLevelVariableDeclaration(Declaration):
-    name: Var
+    id: Var
     type: Type
     value: Exp
 
@@ -196,7 +196,7 @@ class TopLevelVariableDeclaration(Declaration):
 
 @dataclass
 class VariableDeclaration(Declaration):
-    name: Var
+    id: Var
     type: Type
     value: Exp
 
