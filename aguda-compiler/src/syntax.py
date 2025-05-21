@@ -205,7 +205,7 @@ class VariableDeclaration(Declaration):
 
 @dataclass
 class FunctionDeclaration(Declaration):
-    name: Var
+    id: Var
     parameters: List[Var]
     type: FunctionType
     body: Exp
