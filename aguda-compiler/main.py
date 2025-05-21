@@ -118,7 +118,7 @@ def code_gen_test_run(filepath, valid):
     if any("[FAIL]" in line or "[EXCEPTION]" in line for line in semantic_log):
         return semantic_log, ast
     
-    test_log = semantic_log # TODO: change to []
+    test_log = []
     output_path = filepath.replace('.agu', '.ll')
     
     try:
@@ -127,6 +127,8 @@ def code_gen_test_run(filepath, valid):
         
         with open(output_path, 'w') as f:
             f.write(llvm_ir)
+
+        test_log.append(f"{filepath} [✔]")
         
         # Now run the LLVM IR using lli
         # result = subprocess.run(['lli', output_path], capture_output=True, text=True)
@@ -268,6 +270,6 @@ def main():
     os.remove(temp_file_path)
 
 if __name__ == '__main__':
-    #main()
+    main()
     #run_test_suite()
-    run_single_test(r".\aguda-testing\test\valid\tcomp000_if_then_if\if_then_if.agu")
+    #run_single_test(r".\aguda-testing\test\valid\54394_array_operations\array_operations.agu")

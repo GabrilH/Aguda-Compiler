@@ -4,258 +4,258 @@ Total tests run: 62
 Passed [✔]: 62
 Failed [FAIL]: 0
 
-/app/aguda-testing/test/invalid-syntax/54394_bad_if_statement/bad_if_statement.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\54394_bad_if_statement\bad_if_statement.agu [✔]
 Syntactic error: at line 4, column 10: Unexpected token 'v1'
 
 
-/app/aguda-testing/test/invalid-syntax/54394_let_misspelled/let_misspelled.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\54394_let_misspelled\let_misspelled.agu [✔]
 Syntactic error: at line 3, column 1: Unexpected token 'lot'
 
 
-/app/aguda-testing/test/invalid-syntax/56269_bad_assignment/bad_assignment.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\56269_bad_assignment\bad_assignment.agu [✔]
 Syntactic error: at line 6, column 7: Unexpected token '3'
 
 
-/app/aguda-testing/test/invalid-syntax/56269_bad_operator/bad_operator.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\56269_bad_operator\bad_operator.agu [✔]
 Syntactic error: at line 7, column 29: Unexpected token '+'
 
 
-/app/aguda-testing/test/invalid-syntax/56269_wrong_variable/wrong_variable.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\56269_wrong_variable\wrong_variable.agu [✔]
 Syntactic error: at line 5, column 5: Unexpected token '%'
 Lexical error: Illegal character '&' at line 5, column 6
 
 
-/app/aguda-testing/test/invalid-syntax/56307_extraClosingParenthesis/extraClosingParenthesis.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\56307_extraClosingParenthesis\extraClosingParenthesis.agu [✔]
 Syntactic error: at line 2, column 42: Unexpected token ')'
 
 
-/app/aguda-testing/test/invalid-syntax/56307_missingColon/missingColon.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\56307_missingColon\missingColon.agu [✔]
 Syntactic error: at line 2, column 22: Unexpected token 'Int'
 
 
-/app/aguda-testing/test/invalid-syntax/56307_unterminatedLiteralString/unterminatedLiteralString.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\56307_unterminatedLiteralString\unterminatedLiteralString.agu [✔]
 Lexical error: Illegal character '"' at line 2, column 26
 Syntactic error: at line 2, column 32: Unexpected token 'string'
 
 
-/app/aguda-testing/test/invalid-syntax/56311_double_semicolons/double_semicolons.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\56311_double_semicolons\double_semicolons.agu [✔]
 Syntactic error: at line 5, column 29: Unexpected token ';'
 
 
-/app/aguda-testing/test/invalid-syntax/56311_invalid_character/invalid_character.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\56311_invalid_character\invalid_character.agu [✔]
 Lexical error: Illegal character '$' at line 5, column 17
 
 
-/app/aguda-testing/test/invalid-syntax/56311_missing_character/missing_character.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\56311_missing_character\missing_character.agu [✔]
 Syntactic error: at line 5, column 7: Unexpected token 'Int'
 
 
-/app/aguda-testing/test/invalid-syntax/56332_lexical_error_string_in_a_int/lexical_error_string_in_a_int.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\56332_lexical_error_string_in_a_int\lexical_error_string_in_a_int.agu [✔]
 Syntactic error: at line 2, column 24: Unexpected token 'abc'
 
 
-/app/aguda-testing/test/invalid-syntax/56332_syntax_missing_then_in_if/syntax_missing_then_in_if.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\56332_syntax_missing_then_in_if\syntax_missing_then_in_if.agu [✔]
 Syntactic error: at line 3, column 14: Unexpected token 'x'
 
 
-/app/aguda-testing/test/invalid-syntax/56332_syntax_unexpected_times/56332_syntax_unexpected_times.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\56332_syntax_unexpected_times\56332_syntax_unexpected_times.agu [✔]
 Syntactic error: at line 2, column 20: Unexpected token '*'
 
 
-/app/aguda-testing/test/invalid-syntax/56334_invalidCharacter/invalidCharacter.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\56334_invalidCharacter\invalidCharacter.agu [✔]
 Lexical error: Illegal character '~' at line 3, column 6
 
 
-/app/aguda-testing/test/invalid-syntax/56334_missingEquals/missingEquals.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\56334_missingEquals\missingEquals.agu [✔]
 Syntactic error: at line 4, column 13: Unexpected token 'x'
 
 
-/app/aguda-testing/test/invalid-syntax/56334_missingThen/missingThen.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\56334_missingThen\missingThen.agu [✔]
 Syntactic error: at line 4, column 19: Unexpected token 'true'
 
 
-/app/aguda-testing/test/invalid-syntax/58166_lexicalProb/lexicalProb.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58166_lexicalProb\lexicalProb.agu [✔]
 Syntactic error: at line 4, column 22: Unexpected token '|'
 
 
-/app/aguda-testing/test/invalid-syntax/58166_missingThen/missingThen.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58166_missingThen\missingThen.agu [✔]
 Syntactic error: at line 7, column 15: Unexpected token 'else'
 
 
-/app/aguda-testing/test/invalid-syntax/58166_missingType/missingType.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58166_missingType\missingType.agu [✔]
 Syntactic error: at line 5, column 11: Unexpected token '='
 
 
-/app/aguda-testing/test/invalid-syntax/58168_invalidIdentifier/58168_invalidIdentifier.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58168_invalidIdentifier\58168_invalidIdentifier.agu [✔]
 Syntactic error: at line 4, column 7: Unexpected token '3'
 
 
-/app/aguda-testing/test/invalid-syntax/58168_noBracketsFunc/58168_noBracketsFunc.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58168_noBracketsFunc\58168_noBracketsFunc.agu [✔]
 Syntactic error: at line 4, column 5: Unexpected token 'let'
 
 
-/app/aguda-testing/test/invalid-syntax/58168_noBracketsWhile/58168_noBracketsWhile.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58168_noBracketsWhile\58168_noBracketsWhile.agu [✔]
 Syntactic error: at line 5, column 3: Unexpected token 'while'
 
 
-/app/aguda-testing/test/invalid-syntax/58168_typeCheck/58168_missingLetReturnType.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58168_typeCheck\58168_missingLetReturnType.agu [✔]
 Syntactic error: at line 3, column 18: Unexpected token '='
 
 
-/app/aguda-testing/test/invalid-syntax/58168_undeclaredVar1/58168_missingLetInfo.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58168_undeclaredVar1\58168_missingLetInfo.agu [✔]
 Syntactic error: at line 7, column 9: Unexpected token '='
 
 
-/app/aguda-testing/test/invalid-syntax/58168_undeclaredVar2/58168_undeclaredVar2.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58168_undeclaredVar2\58168_undeclaredVar2.agu [✔]
 Syntactic error: at line 5, column 13: Unexpected token '<'
 
 
-/app/aguda-testing/test/invalid-syntax/58170_invalidIdentifier/invalidIdentifier.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58170_invalidIdentifier\invalidIdentifier.agu [✔]
 Syntactic error: at line 3, column 5: Unexpected token '1'
 Syntactic error: at line 5, column 10: Unexpected token 'variable'
 
 
-/app/aguda-testing/test/invalid-syntax/58170_missingParen/missingParen.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58170_missingParen\missingParen.agu [✔]
 Syntactic error: at EOF
 
 
-/app/aguda-testing/test/invalid-syntax/58170_missingSet/missingSet.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58170_missingSet\missingSet.agu [✔]
 Syntactic error: at line 5, column 5: Unexpected token '='
 
 
-/app/aguda-testing/test/invalid-syntax/58182_calling_as_zeroary_function/callin_as_zeroary_function.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58182_calling_as_zeroary_function\callin_as_zeroary_function.agu [✔]
 Syntactic error: at line 4, column 22: Unexpected token ')'
 
 
-/app/aguda-testing/test/invalid-syntax/58182_missing_semicolon/missing_semicolon.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58182_missing_semicolon\missing_semicolon.agu [✔]
 Syntactic error: at line 5, column 5: Unexpected token 'anotherVar'
 
 
-/app/aguda-testing/test/invalid-syntax/58182_nested_function_creation/nested_function_creation.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58182_nested_function_creation\nested_function_creation.agu [✔]
 Syntactic error: at line 6, column 23: Unexpected token '('
 Syntactic error: at line 10, column 5: Unexpected token ')'
 
 
-/app/aguda-testing/test/invalid-syntax/58182_non_capitalized_int/non_capitalized_int.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58182_non_capitalized_int\non_capitalized_int.agu [✔]
 Syntactic error: at line 3, column 16: Unexpected token 'int'
 
 
-/app/aguda-testing/test/invalid-syntax/58185_invalid_array_syntax/invalid_array_syntax.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58185_invalid_array_syntax\invalid_array_syntax.agu [✔]
 Syntactic error: at line 5, column 32: Unexpected token ','
 
 
-/app/aguda-testing/test/invalid-syntax/58185_missing_parenthesis/missing_parenthesis.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58185_missing_parenthesis\missing_parenthesis.agu [✔]
 Syntactic error: at line 4, column 9: Unexpected token 'n'
 
 
-/app/aguda-testing/test/invalid-syntax/58185_unclosed_string/unclosed_string.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58185_unclosed_string\unclosed_string.agu [✔]
 Lexical error: Illegal character '"' at line 5, column 11
 Syntactic error: at line 5, column 17: Unexpected token 'string'
 
 
-/app/aguda-testing/test/invalid-syntax/58215_capitalL/capitalL.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58215_capitalL\capitalL.agu [✔]
 Syntactic error: at line 3, column 1: Unexpected token 'Let'
 
 
-/app/aguda-testing/test/invalid-syntax/58215_outOfBounds/outOfBounds.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58215_outOfBounds\outOfBounds.agu [✔]
 Syntactic error: at line 4, column 18: Unexpected token ']'
 
 
-/app/aguda-testing/test/invalid-syntax/58215_scope/scope.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58215_scope\scope.agu [✔]
 Syntactic error: at line 4, column 5: Unexpected token 'let'
 
 
-/app/aguda-testing/test/invalid-syntax/58215_simpleNoName/simpleNoName.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58215_simpleNoName\simpleNoName.agu [✔]
 Syntactic error: at line 4, column 9: Unexpected token 'Int'
 
 
-/app/aguda-testing/test/invalid-syntax/58215_unitInt/unitInt.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58215_unitInt\unitInt.agu [✔]
 Syntactic error: at line 4, column 23: Unexpected token 'abc'
 
 
-/app/aguda-testing/test/invalid-syntax/58215_wrongSignal/wrongSignal.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58215_wrongSignal\wrongSignal.agu [✔]
 Syntactic error: at line 4, column 21: Unexpected token '='
 
 
-/app/aguda-testing/test/invalid-syntax/58219_invalid_char/invalid_char.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58219_invalid_char\invalid_char.agu [✔]
 Lexical error: Illegal character '$' at line 4, column 11
 Lexical error: Illegal character '$' at line 6, column 25
 
 
-/app/aguda-testing/test/invalid-syntax/58219_invalid_number_of_arguments/invalid_number_of_arguments.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58219_invalid_number_of_arguments\invalid_number_of_arguments.agu [✔]
 Syntactic error: at line 8, column 21: Unexpected token '15'
 
 
-/app/aguda-testing/test/invalid-syntax/58219_invalid_return_type/invalid_return_type.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58219_invalid_return_type\invalid_return_type.agu [✔]
 Syntactic error: at line 4, column 20: Unexpected token 'Boool'
 
 
-/app/aguda-testing/test/invalid-syntax/58219_missing_parantheses/missing_parantheses.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58219_missing_parantheses\missing_parantheses.agu [✔]
 Syntactic error: at line 7, column 22: Unexpected token 'add'
 
 
-/app/aguda-testing/test/invalid-syntax/58219_undeclared_variable/undeclared_variable.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58219_undeclared_variable\undeclared_variable.agu [✔]
 Syntactic error: at line 6, column 9: Unexpected token '='
 
 
-/app/aguda-testing/test/invalid-syntax/58219_wrong_array_initialization/wrong_array_initialization.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58219_wrong_array_initialization\wrong_array_initialization.agu [✔]
 Syntactic error: at line 5, column 32: Unexpected token ','
 
 
-/app/aguda-testing/test/invalid-syntax/58250_invalid_lexical/58250_invalid_lexical.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58250_invalid_lexical\58250_invalid_lexical.agu [✔]
 Lexical error: Illegal character '@' at line 2, column 17
 
 
-/app/aguda-testing/test/invalid-syntax/58250_invalid_semantic_function_call/58250_invalid_semantic_function_call.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58250_invalid_semantic_function_call\58250_invalid_semantic_function_call.agu [✔]
 Syntactic error: at line 4, column 12: Unexpected token '='
 
 
-/app/aguda-testing/test/invalid-syntax/58250_invalid_syntax_invalid_assignment/58250_invalid_syntax_invalid_assignment.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58250_invalid_syntax_invalid_assignment\58250_invalid_syntax_invalid_assignment.agu [✔]
 Syntactic error: at line 4, column 1: Unexpected token 'a'
 
 
-/app/aguda-testing/test/invalid-syntax/58250_invalid_syntax_missing_parentheses/58250_invalid_syntax_missing_parentheses.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\58250_invalid_syntax_missing_parentheses\58250_invalid_syntax_missing_parentheses.agu [✔]
 Syntactic error: at line 2, column 9: Unexpected token 'a'
 
 
-/app/aguda-testing/test/invalid-syntax/64361_then_keyword_missing/then_keyword_missing.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\64361_then_keyword_missing\then_keyword_missing.agu [✔]
 Syntactic error: at line 4, column 11: Unexpected token 'm'
 
 
-/app/aguda-testing/test/invalid-syntax/64361_wrong_two_dots_placement/wrong_two_dots_placement.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\64361_wrong_two_dots_placement\wrong_two_dots_placement.agu [✔]
 Syntactic error: at line 3, column 14: Unexpected token 'Int'
 
 
-/app/aguda-testing/test/invalid-syntax/64361_wrong_type_keyword/wrong_type_keyword.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\64361_wrong_type_keyword\wrong_type_keyword.agu [✔]
 Syntactic error: at line 3, column 9: Unexpected token 'integer'
 
 
-/app/aguda-testing/test/invalid-syntax/64371_invalid_else/invalid_else.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\64371_invalid_else\invalid_else.agu [✔]
 Syntactic error: at line 3, column 36: Unexpected token 'else'
 
 
-/app/aguda-testing/test/invalid-syntax/64371_missing_type_annotation/missing_type_annotation.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\64371_missing_type_annotation\missing_type_annotation.agu [✔]
 Syntactic error: at line 3, column 9: Unexpected token '='
 
 
-/app/aguda-testing/test/invalid-syntax/64371_unterminated_string/unterminated_string.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\64371_unterminated_string\unterminated_string.agu [✔]
 Lexical error: Illegal character '"' at line 3, column 19
 Syntactic error: at line 3, column 26: Unexpected token 'world'
 
 
-/app/aguda-testing/test/invalid-syntax/64854_missing_separator/missing_separator.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\64854_missing_separator\missing_separator.agu [✔]
 Syntactic error: at line 6, column 5: Unexpected token 'set'
 
 
-/app/aguda-testing/test/invalid-syntax/64854_missing_separator_in_while_loop/missing_separator_in_while_loop.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\64854_missing_separator_in_while_loop\missing_separator_in_while_loop.agu [✔]
 Syntactic error: at line 8, column 5: Unexpected token 'set'
 
 
-/app/aguda-testing/test/invalid-syntax/64854_non_letter_id/non_letter_id.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\64854_non_letter_id\non_letter_id.agu [✔]
 Syntactic error: at line 4, column 5: Unexpected token '1'
 
 
-/app/aguda-testing/test/invalid-syntax/tcomp000_wrong_comment/wrong_comment.agu [✔]
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\invalid-syntax\tcomp000_wrong_comment\wrong_comment.agu [✔]
 Syntactic error: at EOF
 
 
