@@ -128,10 +128,9 @@ class CodeGenerator:
                 var_type = self.get_llvm_type(type)
                 var_ptr = self.builder.alloca(var_type)
                 
-                # Store the initial value # TODO: when would this be None?
-                if value is not None:
-                    val = self.expGen(value)
-                    self.builder.store(val, var_ptr)
+                # Store the initial value
+                val = self.expGen(value)
+                self.builder.store(val, var_ptr)
                 
                 # Add to symbol table - in the current scope
                 self.symbol_table.insert(id.name, (type, var_ptr))
