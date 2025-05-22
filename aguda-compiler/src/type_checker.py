@@ -201,13 +201,7 @@ class TypeChecker:
                             self.checkEqualTypes(matched_exp, funcType.return_type, expected_type)
 
             case (VariableDeclaration(id, type, exp),BaseType('Unit')):
-                if isinstance(exp, Sequence):
-                    self.checkAgainst(ctx, exp.first, type)
-                    local_ctx = ctx.enter_scope()
-                    self.insertIntoCtx(local_ctx, matched_exp, id, type)
-                    self.checkAgainst(local_ctx, exp.rest, type)
-                else:
-                    self.checkAgainst(ctx.enter_scope(), exp, type)
+                self.checkAgainst(ctx.enter_scope(), exp, type)
                 self.insertIntoCtx(ctx, matched_exp, id, type)
 
             case (Var(name),_):
@@ -336,14 +330,7 @@ class TypeChecker:
                     return funcType.return_type
                 
             case VariableDeclaration(id, type, exp):
-
-                if isinstance(exp, Sequence):
-                    self.checkAgainst(ctx, exp.first, type)
-                    local_ctx = ctx.enter_scope()
-                    self.insertIntoCtx(local_ctx, matched_exp, id, type)
-                    self.checkAgainst(local_ctx, exp.rest, type)
-                else:
-                    self.checkAgainst(ctx.enter_scope(), exp, type)
+                self.checkAgainst(ctx.enter_scope(), exp, type)
                 self.insertIntoCtx(ctx, matched_exp, id, type)
                 return BaseType('Unit')
             
