@@ -18,7 +18,7 @@ class TypeChecker:
         """
         Verifies the semantic correctness of the program.
         """
-        ctx = SymbolTable()
+        ctx = SymbolTable[Type]()
         self.add_builtins(ctx)
         try :
             self.first_pass(ctx, ast)
