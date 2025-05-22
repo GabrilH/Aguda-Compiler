@@ -1,8 +1,8 @@
 valid-tests
 
-Total tests run: 124
-Passed [✔]: 35
-Failed [FAIL]: 89
+Total tests run: 123
+Passed [✔]: 116
+Failed [FAIL]: 7
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\54394_array_operations\array_operations.agu [SKIP]
 ('Unsupported type: Int[]', 3, 30)
@@ -12,27 +12,22 @@ C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\
 ('Unsupported type: Bool[]', 4, 25)
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\54394_clamp\clamp.agu [EXCEPTION]
-invalid comparison 'sgt' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\54394_clamp\clamp.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\54394_combinations\combinations.agu [EXCEPTION]
-invalid comparison 'eq' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\54394_combinations\combinations.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\54394_identifier\identifier.agu [EXCEPTION]
-cannot store i32 to i1*: mismatching types
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\54394_identifier\identifier.agu [✔]
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\54394_operator_precedence\operator_precedence.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\54394_semicolon_assignment\semicolon_assignment.agu [EXCEPTION]
-invalid comparison 'slt' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\54394_semicolon_assignment\semicolon_assignment.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\54394_string_printing\string_printing.agu [EXCEPTION]
-invalid comparison 'slt' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\54394_string_printing\string_printing.agu [✔]
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\54394_uv_mapping\uv_mapping.agu [FAIL]
@@ -43,28 +38,23 @@ C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\
 Semantic Error: (-1, -1) No main function found
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_ackermann\ackermann.agu [EXCEPTION]
-invalid comparison 'eq' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_ackermann\ackermann.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_associativity\associativity.agu [EXCEPTION]
-Type of #1 arg mismatch: i1 != i32
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_associativity\associativity.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_booleanSequence\booleanSequence.agu [EXCEPTION]
-Type of #1 arg mismatch: i32 != i1
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_booleanSequence\booleanSequence.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_boolean\boolean.agu [EXCEPTION]
-Type of #1 arg mismatch: i32 != i1
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_boolean\boolean.agu [✔]
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_bottomRow\bottomRow.agu [FAIL]
 Semantic Error: (-1, -1) No main function found
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_if\if.agu [EXCEPTION]
-Type of #1 arg mismatch: i32 != i1
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_if\if.agu [✔]
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_insertionSort\insertionSort.agu [SKIP]
@@ -77,31 +67,25 @@ C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_parentheses\parentheses.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_variables\variables.agu [EXCEPTION]
-Type of #1 arg mismatch: i1 != i32
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_variables\variables.agu [✔]
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56307_applyTwiceFunction\applyTwiceFunction.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56307_arithmeticOperations\arithmeticOperations.agu [EXCEPTION]
-invalid comparison 'sle' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56307_arithmeticOperations\arithmeticOperations.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56307_countdownFunction\countdownFunction.agu [EXCEPTION]
-invalid comparison 'sgt' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56307_countdownFunction\countdownFunction.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56307_counterFunction\counterFunction.agu [EXCEPTION]
-invalid comparison 'sgt' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56307_counterFunction\counterFunction.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56307_factorialFunction\factorialFunction.agu [EXCEPTION]
-invalid comparison 'eq' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56307_factorialFunction\factorialFunction.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56307_maxFunction\maxFunction.agu [EXCEPTION]
-invalid comparison 'sge' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56307_maxFunction\maxFunction.agu [✔]
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56307_powerFunction\powerFunction.agu [✔]
@@ -121,15 +105,13 @@ Top-level variable declarations must be initialized with literals (2, 1)
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56311_boundary_arithmetic\boundary_arithmetic.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56311_equals\equals_method.agu [EXCEPTION]
-invalid comparison 'eq' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56311_equals\equals_method.agu [✔]
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56311_high_order_function_type\high_order_func_type.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56311_if_inside_if\if_inside_if.agu [EXCEPTION]
-invalid comparison 'eq' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56311_if_inside_if\if_inside_if.agu [✔]
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56311_minus_minus\minus_minus.agu [✔]
@@ -138,24 +120,19 @@ C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56311_shadow_variables\shadow_variables.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56311_while_loop_with_empty_body\while_loop_with_empty_body.agu [EXCEPTION]
-Type of #1 arg mismatch: i32 != i1
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56311_while_loop_with_empty_body\while_loop_with_empty_body.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56311_while_loop_with_mutations\while_loop_with_mutations.agu [EXCEPTION]
-invalid comparison 'sgt' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56311_while_loop_with_mutations\while_loop_with_mutations.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56332_dec_to_zero\dec_to_zero.agu [EXCEPTION]
-invalid comparison 'eq' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56332_dec_to_zero\dec_to_zero.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56332_factorial_in_aguda\factorial_in_aguda.agu [EXCEPTION]
-invalid comparison 'eq' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56332_factorial_in_aguda\factorial_in_aguda.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56332_if_then_else_printing_string\if_then_else_printing_string.agu [EXCEPTION]
-invalid comparison 'sge' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56332_if_then_else_printing_string\if_then_else_printing_string.agu [✔]
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56332_precedence_calc\precedence_calc.agu [✔]
@@ -164,40 +141,31 @@ C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56332_simple_sum\simple_sum.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56334_factorial\factorial.agu [EXCEPTION]
-invalid comparison 'sle' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56334_factorial\factorial.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56334_fibonacci\fibonacci.agu [EXCEPTION]
-invalid comparison 'eq' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56334_fibonacci\fibonacci.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56334_helloWorld\helloWorld.agu [EXCEPTION]
-invalid comparison 'sge' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56334_helloWorld\helloWorld.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56334_max\max.agu [EXCEPTION]
-invalid comparison 'sge' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56334_max\max.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58166_booleanConfusion\booleanConfusion.agu [EXCEPTION]
-Type of #1 arg mismatch: i1 != i32
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58166_booleanConfusion\booleanConfusion.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58166_digits\digits.agu [EXCEPTION]
-invalid comparison 'slt' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58166_digits\digits.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58166_mathTest\mathTest.agu [EXCEPTION]
-invalid comparison 'eq' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58166_mathTest\mathTest.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58166_modTest\modTest.agu [EXCEPTION]
-invalid comparison 'eq' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58166_modTest\modTest.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58166_powerTen\powerTen.agu [EXCEPTION]
-invalid comparison 'slt' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58166_powerTen\powerTen.agu [✔]
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58168_3letsPrint1stValue\3letsPrint1stValue.agu [✔]
@@ -207,8 +175,7 @@ C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\
 ('Unsupported type: Int[]', 3, 15)
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58168_cubesForEvenNum\cubesForEvenNum.agu [EXCEPTION]
-invalid comparison 'eq' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58168_cubesForEvenNum\cubesForEvenNum.agu [✔]
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58168_decrementor\decrementor.agu [✔]
@@ -235,16 +202,13 @@ C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58168_sumTwoNumbers\sumTwoNumbers.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58170_categorizeNumbers\categorizeNumbers.agu [EXCEPTION]
-invalid comparison 'eq' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58170_categorizeNumbers\categorizeNumbers.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58170_complexWhile\complexWhile.agu [EXCEPTION]
-invalid comparison 'slt' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58170_complexWhile\complexWhile.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58170_factorial\factorial.agu [EXCEPTION]
-invalid comparison 'eq' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58170_factorial\factorial.agu [✔]
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58170_manyParams\manyParams.agu [✔]
@@ -253,28 +217,22 @@ C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58170_nestedCalls\nestedCalls.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58170_opWithoutParen\opWithoutParen.agu [EXCEPTION]
-Type of #1 arg mismatch: i32 != i1
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58170_opWithoutParen\opWithoutParen.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58170_pyramid\pyramid.agu [EXCEPTION]
-invalid comparison 'sle' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58170_pyramid\pyramid.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58170_sameNameVar\sameNameVar.agu [EXCEPTION]
-Type of #1 arg mismatch: i1 != i32
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58170_sameNameVar\sameNameVar.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58182_fibonacci\fibonacci.agu [EXCEPTION]
-invalid comparison 'sle' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58182_fibonacci\fibonacci.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58182_function_unit_type\function_unit_type.agu [EXCEPTION]
-Type of #1 arg mismatch: i1 != i32
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58182_function_unit_type\function_unit_type.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58182_logic_operations\logic_operations.agu [EXCEPTION]
-Type of #1 arg mismatch: i32 != i1
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58182_logic_operations\logic_operations.agu [✔]
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58182_nested_function_calls\nested_function_calls.agu [✔]
@@ -283,24 +241,21 @@ C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58182_simple_arithmetic\simple_arithmetic.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58182_while_loop_break\while_loop_break.agu [EXCEPTION]
-invalid comparison 'slt' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58182_while_loop_break\while_loop_break.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58185_boolean_logic\boolean_logic.agu [EXCEPTION]
-Type of #1 arg mismatch: i32 != i1
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58185_boolean_logic\boolean_logic.agu [✔]
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58185_bubble_sort\bubble_sort.agu [FAIL]
 Semantic Error: (-1, -1) No main function found
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58185_factorial\factorial.agu [EXCEPTION]
-invalid comparison 'sle' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58185_factorial\factorial.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58185_mutual_recursion\mutual_recursion.agu [EXCEPTION]
-invalid comparison 'eq' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58185_mutual_recursion\mutual_recursion.agu [SKIP]
+Not implemented: Generating code for (12, 11) expression  '" is "'
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58185_power_operator\power_operator.agu [✔]
@@ -316,12 +271,10 @@ C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\
 Semantic Error: (-1, -1) No main function found
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58185_unit_type_test\unit_type_test.agu [EXCEPTION]
-invalid comparison 'sgt' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58185_unit_type_test\unit_type_test.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58185_while_loops\while_loops.agu [EXCEPTION]
-invalid comparison 'slt' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58185_while_loops\while_loops.agu [✔]
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58250_average\58250_average.agu [✔]
@@ -333,36 +286,29 @@ C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58250_calculate_operations\58250_calculate_operations.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58250_check_value\58250_check_value.agu [EXCEPTION]
-invalid comparison 'sgt' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58250_check_value\58250_check_value.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58250_cube\58250_cube.agu [EXCEPTION]
-Type of #1 arg mismatch: i1 != i32
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58250_cube\58250_cube.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58250_divide_two_numbers\58250_divide_two_numbers.agu [EXCEPTION]
-Type of #1 arg mismatch: i1 != i32
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58250_divide_two_numbers\58250_divide_two_numbers.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58250_is_even\58250_is_even.agu [EXCEPTION]
-invalid comparison 'eq' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58250_is_even\58250_is_even.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58250_max_between_2\58250_max_between_2.agu [EXCEPTION]
-invalid comparison 'sgt' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58250_max_between_2\58250_max_between_2.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58250_sum_all_to_n\58250_sum_all_to_n.agu [EXCEPTION]
-invalid comparison 'sle' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58250_sum_all_to_n\58250_sum_all_to_n.agu [✔]
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64361_array_sum\array_sum.agu [SKIP]
 ('Unsupported type: Int[][]', 3, 26)
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64361_check_positive_value\check_positive.agu [EXCEPTION]
-invalid comparison 'sgt' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64361_check_positive_value\check_positive.agu [✔]
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64361_count_vowels\count_vowels.agu [SKIP]
@@ -373,20 +319,16 @@ C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\
 ('Unsupported type: Int[]', 3, 27)
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64361_factorial\factorial.agu [EXCEPTION]
-invalid comparison 'eq' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64361_factorial\factorial.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64361_fibonacci\fibonacci.agu [EXCEPTION]
-invalid comparison 'eq' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64361_fibonacci\fibonacci.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64361_greatest_common_divisor\greatest_common_divisor.agu [EXCEPTION]
-invalid comparison 'ne' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64361_greatest_common_divisor\greatest_common_divisor.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64361_prime_number\prime_number.agu [EXCEPTION]
-invalid comparison 'slt' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64361_prime_number\prime_number.agu [✔]
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64361_reverse_array\reverse_array.agu [FAIL]
@@ -397,89 +339,70 @@ C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\
 Semantic Error: (-1, -1) No main function found
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64371_even_fibonnaci_numbers\even_fibonnaci_numbers.agu [EXCEPTION]
-invalid comparison 'slt' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64371_even_fibonnaci_numbers\even_fibonnaci_numbers.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64371_greatest_common_divisor\greatest_common_divisor.agu [EXCEPTION]
-invalid comparison 'eq' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64371_greatest_common_divisor\greatest_common_divisor.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64371_multiples_3_or_5\multiples_3_or_5.agu [EXCEPTION]
-invalid comparison 'slt' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64371_multiples_3_or_5\multiples_3_or_5.agu [✔]
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_add\add.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_coin_flip\coin_flip.agu [EXCEPTION]
-invalid comparison 'eq' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_coin_flip\coin_flip.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_heart\heart.agu [EXCEPTION]
-invalid comparison 'slt' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_heart\heart.agu [✔]
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_inc\inc.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_is_pair\is_pair.agu [EXCEPTION]
-invalid comparison 'eq' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_is_pair\is_pair.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_positive_power\positive_power.agu [EXCEPTION]
-invalid comparison 'sle' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_positive_power\positive_power.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_printA\printA.agu [EXCEPTION]
-Type of #1 arg mismatch: i1 != i32
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_printA\printA.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_produce_letter\produce_letter.agu [EXCEPTION]
-Type of #1 arg mismatch: i32 != i1
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_produce_letter\produce_letter.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_switch\switch.agu [EXCEPTION]
-Type of #1 arg mismatch: i32 != i1
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_switch\switch.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000-scope-cond\tcomp000-scope-cond.agu [EXCEPTION]
-cannot store i32 to i1*: mismatching types
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000-scope-cond\tcomp000-scope-cond.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000-scope-leave\tcomp000-scope-leave.agu [EXCEPTION]
-Type of #1 arg mismatch: i32 != i1
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000-scope-leave\tcomp000-scope-leave.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_assoc_eq\assoc_eq.agu [EXCEPTION]
-invalid comparison 'eq' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_assoc_eq\assoc_eq.agu [✔]
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_callCond\tcomp000_callCond.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_collatz\collatz.agu [EXCEPTION]
-invalid comparison 'eq' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_collatz\collatz.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_double_wild\tcomp000_double_wild.agu [EXCEPTION]
-Type of #1 arg mismatch: i1 != i32
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_double_wild\tcomp000_double_wild.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_evenOddCond\evenOddCond.agu [EXCEPTION]
-invalid comparison 'eq' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_evenOddCond\evenOddCond.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_evenOddResult\evenOddResult.agu [EXCEPTION]
-invalid comparison 'eq' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_evenOddResult\evenOddResult.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_evenOdd\evenOdd.agu [EXCEPTION]
-invalid comparison 'eq' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_evenOdd\evenOdd.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_expIf\expif.agu [EXCEPTION]
-Type of #1 arg mismatch: i32 != i1
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_expIf\expif.agu [✔]
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_if_then_if\if_then_if.agu [✔]
@@ -488,23 +411,19 @@ C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_intFuns\intFuns.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_letOfLetFun\letOfLetFun.agu [EXCEPTION]
-cannot store i32 to i1*: mismatching types
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_letOfLetFun\letOfLetFun.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_letOfLet\letOfLet.agu [EXCEPTION]
-cannot store i32 to i1*: mismatching types
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_letOfLet\letOfLet.agu [✔]
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_letPlusLet\letPlusLet.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_notNotNot\notNotNot.agu [EXCEPTION]
-Type of #1 arg mismatch: i32 != i1
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_notNotNot\notNotNot.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_power-iterative\power-iterative.agu [EXCEPTION]
-invalid comparison 'sgt' for icmp
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_power-iterative\power-iterative.agu [✔]
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_power-of-power\power-of-power.agu [✔]

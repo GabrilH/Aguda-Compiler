@@ -27,7 +27,7 @@ class CodeGenerator:
         Adds built-in functions to the module.
         """
         # Print function
-        print_type = FunctionType([BaseType("Int")], BaseType("Unit")) # Type checking done in expGen
+        print_type = FunctionType([BaseType("Int")], BaseType("Unit"))
         print_func = ir.Function(self.module, self.get_llvm_type(print_type), "print")
         print_func.linkage = "external"
         ctx.insert("print", (print_type, print_func))
@@ -45,31 +45,28 @@ class CodeGenerator:
         for decl in program.declarations:
             match decl:
                 case FunctionDeclaration(id, _, type, _):
-                    # Create function and store in symbol table
                     func_type = self.get_llvm_type(type)
                     func = ir.Function(self.module, func_type, id.name)
                     ctx.insert(id.name, (type, func))
                 case TopLevelVariableDeclaration(id, type, value):
-                    if not isinstance(value, (IntLiteral, BoolLiteral, UnitLiteral)):
-                        raise CodeGenerationError(f"Top-level variable declarations must be initialized with literals ({decl.lineno}, {decl.column})")
-                    else:
+                    if isinstance(value, (IntLiteral, BoolLiteral, UnitLiteral)):
                         var_type = self.get_llvm_type(type)
                         var = ir.GlobalVariable(self.module, var_type, id.name)
                         var.initializer = self.expGen(ctx, value)
                         ctx.insert(id.name, (type, var))
+                    else:
+                        raise CodeGenerationError(f"Top-level variable declarations must be initialized with literals ({decl.lineno}, {decl.column})")
 
     def second_pass(self, ctx: SymbolTable, program: Program):
         """
         Second pass over the AST to generate LLVM code.
         """
-        # Generate code for each function
         for decl in program.declarations:
             if isinstance(decl, FunctionDeclaration):
                 self.generate_function(ctx, decl)
 
     def generate_function(self, ctx: SymbolTable, func_decl: FunctionDeclaration):
         """Generate LLVM code for a function declaration."""
-        # Get function from symbol table
         func_info = ctx.lookup(func_decl.id.name)
         if not func_info:
             raise CodeGenerationError(f"Undefined function: {func_decl.id.name} ({func_decl.id.lineno}, {func_decl.id.column})")
@@ -120,7 +117,7 @@ class CodeGenerator:
                 _, var_value = var_info
                 return self.builder.load(var_value)
             
-            case VariableDeclaration(id, type, value):            
+            case VariableDeclaration(id, type, value):
                 # Allocate space for the variable
                 var_type = self.get_llvm_type(type)
                 var_ptr = self.builder.alloca(var_type)
@@ -135,39 +132,33 @@ class CodeGenerator:
                 # Return unit value for variable declaration
                 return ir.Constant(ir.IntType(32), 1)
             
-            case BinaryOp(left, operator, right):
+            case BinaryOp(left, op, right):
                 # Handle short-circuit boolean operations using condGen
-                if operator in ['&&', '||']:
+                if op in ['&&', '||']:
                     return self.short_circuit_expGen(ctx, exp)
                 
                 # For other binary operators, evaluate both sides first (left then right)
                 val1 = self.expGen(ctx, left)
                 val2 = self.expGen(ctx, right)
 
-                if operator in ['+', '-', '*', '/', '%']:
-                    op_map = {
-                        '+': self.builder.add,
-                        '-': self.builder.sub,
-                        '*': self.builder.mul,
-                        '/': self.builder.sdiv,
-                        '%': self.builder.srem
-                    }
-                    return op_map[operator](val1, val2)
-                
-                elif operator == '^':
-                    # call power function
-                    power_func = self.module.get_global('_power')
-                    return self.builder.call(power_func, [val1, val2])    
-            
-                elif operator in ['==', '!=', '<', '<=', '>', '>=']:
-                    # TODO it's possible to compare bool values
-                    op_map = {
-                        '==': 'eq', '!=': 'ne', '<': 'slt', '<=': 'sle', '>': 'sgt', '>=': 'sge'
-                    }
-                    return self.builder.icmp_signed(op_map[operator], val1, val2)
-
-                else:
-                    raise CodeGenerationError(f"Unsupported binary operator: {operator} ({exp.lineno}, {exp.column})")
+                match op:
+                    case '+':
+                        return self.builder.add(val1, val2)
+                    case '-':
+                        return self.builder.sub(val1, val2)
+                    case '*':
+                        return self.builder.mul(val1, val2)
+                    case '/':
+                        return self.builder.sdiv(val1, val2)
+                    case '%':
+                        return self.builder.srem(val1, val2)
+                    case '^':
+                        power_func = self.module.get_global('_power')
+                        return self.builder.call(power_func, [val1, val2])
+                    case '==' | '!=' | '<' | '<=' | '>' | '>=':
+                        return self.builder.icmp_signed(op, val1, val2)
+                    case _:
+                        raise CodeGenerationError(f"Unsupported binary operator: {op} ({exp.lineno}, {exp.column})")
 
             case FunctionCall(id, arguments):
                 arg_values = [self.expGen(ctx, arg) for arg in arguments]
@@ -178,6 +169,14 @@ class CodeGenerator:
                     raise CodeGenerationError(f"Undefined function: {id.name} ({id.lineno}, {id.column})")
                 
                 func_type, func = func_info
+                
+                # Special handling for print function - convert bool to int if needed
+                if id.name == "print" and len(arg_values) == 1:
+                    # If we're passing a bool to print function, convert it to int
+                    if arg_values[0].type == ir.IntType(1):  # Bool type is i1
+                        # Convert bool to int using zext (zero extension)
+                        arg_values[0] = self.builder.zext(arg_values[0], ir.IntType(32))
+                
                 return self.builder.call(func, arg_values)
             
             case Conditional(condition, then_branch, else_branch):
@@ -391,13 +390,8 @@ class CodeGenerator:
             case BinaryOp(left, op, right) if op in ['==', '!=', '<', '<=', '>', '>=']:
                 # For comparison operators, evaluate both sides and branch based on result
                 val1 = self.expGen(ctx, left)
-                val2 = self.expGen(ctx, right)
-                
-                op_map = {
-                    '==': 'eq', '!=': 'ne', '<': 'slt', '<=': 'sle', '>': 'sgt', '>=': 'sge'
-                }
-                
-                cond = self.builder.icmp_signed(op_map[op], val1, val2)
+                val2 = self.expGen(ctx, right)                
+                cond = self.builder.icmp_signed(op, val1, val2)
                 self.builder.cbranch(cond, true_block, false_block)
             
             case _:
@@ -413,7 +407,7 @@ class CodeGenerator:
             case BaseType("Bool"):
                 return ir.IntType(1)
             case BaseType("Unit"):
-                return ir.IntType(1)
+                return ir.IntType(32)
             case FunctionType():
                 param_types = [self.get_llvm_type(t) for t in aguda_type.param_types]
                 return_type = self.get_llvm_type(aguda_type.return_type)

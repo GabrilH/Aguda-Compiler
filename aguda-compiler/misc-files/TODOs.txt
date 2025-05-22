@@ -1,5 +1,4 @@
-adicionar power
-corrigir as comparações
-adicionar && e || ao expGen? -> fazer a cena de expGen <-> condGen
+limnpar codigo
+fazer a cena de expGen <-> condGen
 adicionar funções externas (c functions) que depois são linked
 comparar expecteds
