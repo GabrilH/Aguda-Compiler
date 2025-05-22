@@ -29,8 +29,3 @@ class SymbolTable(Generic[T]):
         child = SymbolTable()
         child.parent = self
         return child
-    
-    def exit_scope(self) -> 'SymbolTable[T]':
-        if self.parent:
-            return self.parent
-        return self
