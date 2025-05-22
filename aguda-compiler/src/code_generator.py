@@ -16,7 +16,7 @@ class CodeGenerator:
 
     def generate(self, program: Program) -> str:
         """Generate LLVM IR code from the AST."""
-        ctx = SymbolTable[Tuple[Type, ir.Value]]()
+        ctx = SymbolTable[ir.Value]()
         self.add_builtins(ctx)	
         self.first_pass(ctx, program)
         self.second_pass(ctx, program)
@@ -27,16 +27,16 @@ class CodeGenerator:
         Adds built-in functions to the module.
         """
         # Print function
-        print_type = FunctionType([BaseType("Int")], BaseType("Unit"))
+        print_type = FunctionType([BaseType("Int")], BaseType("Unit")) # Input type is bypassed in expGen
         print_func = ir.Function(self.module, self.get_llvm_type(print_type), "print")
         print_func.linkage = "external"
-        ctx.insert("print", (print_type, print_func))
+        ctx.insert("print", print_func)
 
         # Power function
         power_type = FunctionType([BaseType("Int"), BaseType("Int")], BaseType("Int"))
         power_func = ir.Function(self.module, self.get_llvm_type(power_type), "_power")
         power_func.linkage = "external"
-        ctx.insert("_power", (power_type, power_func))
+        ctx.insert("_power", power_func)
 
     def first_pass(self, ctx: SymbolTable, program: Program):
         """
@@ -47,13 +47,13 @@ class CodeGenerator:
                 case FunctionDeclaration(id, _, type, _):
                     func_type = self.get_llvm_type(type)
                     func = ir.Function(self.module, func_type, id.name)
-                    ctx.insert(id.name, (type, func))
+                    ctx.insert(id.name, func)
                 case TopLevelVariableDeclaration(id, type, value):
                     if isinstance(value, (IntLiteral, BoolLiteral, UnitLiteral)):
                         var_type = self.get_llvm_type(type)
                         var = ir.GlobalVariable(self.module, var_type, id.name)
                         var.initializer = self.expGen(ctx, value)
-                        ctx.insert(id.name, (type, var))
+                        ctx.insert(id.name, var)
                     else:
                         raise CodeGenerationError(f"Top-level variable declarations must be initialized with literals ({decl.lineno}, {decl.column})")
 
@@ -67,11 +67,7 @@ class CodeGenerator:
 
     def generate_function(self, ctx: SymbolTable, func_decl: FunctionDeclaration):
         """Generate LLVM code for a function declaration."""
-        func_info = ctx.lookup(func_decl.id.name)
-        if not func_info:
-            raise CodeGenerationError(f"Undefined function: {func_decl.id.name} ({func_decl.id.lineno}, {func_decl.id.column})")
-        func_type, func = func_info
-        
+        func = ctx.lookup(func_decl.id.name)
         # Set up basic block
         entry_block = func.append_basic_block('entry')
         self.builder = ir.IRBuilder(entry_block)
@@ -86,7 +82,7 @@ class CodeGenerator:
             # Allocate space for parameter
             param_ptr = self.builder.alloca(self.get_llvm_type(param_type))
             self.builder.store(arg, param_ptr)
-            local_ctx.insert(param.name, (param_type, param_ptr))
+            local_ctx.insert(param.name, param_ptr)
         
         # Generate function body
         value = self.expGen(local_ctx, func_decl.body)
@@ -110,11 +106,7 @@ class CodeGenerator:
             case UnitLiteral():
                 return ir.Constant(ir.IntType(32), 1)
             case Var(name):
-                var_info = ctx.lookup(name)
-                # TODO: remove check
-                if not var_info:
-                    raise CodeGenerationError(f"Undefined variable: {name} ({exp.lineno}, {exp.column})")
-                _, var_value = var_info
+                var_value = ctx.lookup(name)
                 return self.builder.load(var_value)
             
             case VariableDeclaration(id, type, value):
@@ -127,7 +119,7 @@ class CodeGenerator:
                 self.builder.store(val, var_ptr)
                 
                 # Add to symbol table
-                ctx.insert(id.name, (type, var_ptr))
+                ctx.insert(id.name, var_ptr)
                 
                 # Return unit value for variable declaration
                 return ir.Constant(ir.IntType(32), 1)
@@ -164,11 +156,7 @@ class CodeGenerator:
                 arg_values = [self.expGen(ctx, arg) for arg in arguments]
                 
                 # Get function info from symbol table
-                func_info = ctx.lookup(id.name)
-                if not func_info:
-                    raise CodeGenerationError(f"Undefined function: {id.name} ({id.lineno}, {id.column})")
-                
-                func_type, func = func_info
+                func = ctx.lookup(id.name)
                 
                 # Special handling for print function - convert bool to int if needed
                 if id.name == "print" and len(arg_values) == 1:
@@ -251,11 +239,8 @@ class CodeGenerator:
                 val = self.expGen(ctx, exp)
 
                 if isinstance(lhs, Var):
-                    var_info = ctx.lookup(lhs.name)
-                    if not var_info:
-                        raise CodeGenerationError(f"Undefined variable: {lhs.name} ({lhs.lineno}, {lhs.column})")
-                    var_type, var_value = var_info
-                    self.builder.store(val, var_value)
+                    var_ptr = ctx.lookup(lhs.name)
+                    self.builder.store(val, var_ptr)
                 else:
                     raise CodeGenerationError(f"Array assignments not supported ({lhs.lineno}, {lhs.column})")
                 
