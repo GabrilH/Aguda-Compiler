@@ -25,7 +25,7 @@ cannot store i32 to i1*: mismatching types
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\54394_operator_precedence\operator_precedence.agu [SKIP]
-('Unsupported binary operator: ^', 3, 52)
+Unsupported binary operator: ^ (3, 52)
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\54394_semicolon_assignment\semicolon_assignment.agu [EXCEPTION]
@@ -49,11 +49,11 @@ invalid comparison 'eq' for icmp
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_associativity\associativity.agu [SKIP]
-('Unsupported binary operator: ^', 6, 24)
+Unsupported binary operator: ^ (6, 24)
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_booleanSequence\booleanSequence.agu [SKIP]
-('Unsupported binary operator: &&', 4, 15)
+Unsupported binary operator: && (4, 15)
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_boolean\boolean.agu [EXCEPTION]
@@ -83,7 +83,7 @@ Type of #1 arg mismatch: i1 != i32
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56307_applyTwiceFunction\applyTwiceFunction.agu [SKIP]
-('Undefined function: f', 3, 5)
+Undefined function: f (3, 5)
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56307_arithmeticOperations\arithmeticOperations.agu [EXCEPTION]
@@ -107,7 +107,7 @@ invalid comparison 'sge' for icmp
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56307_powerFunction\powerFunction.agu [SKIP]
-('Unsupported binary operator: ^', 3, 15)
+Unsupported binary operator: ^ (3, 15)
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56307_shadowingFunction\shadowFunction.agu [✔]
@@ -118,11 +118,11 @@ C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56307_zeroLengthArray\zeroLengthArray.agu [SKIP]
-('Top-level variable declarations must be initialized with literals', 2, 1)
+Top-level variable declarations must be initialized with literals (2, 1)
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56311_boundary_arithmetic\boundary_arithmetic.agu [SKIP]
-('Top-level variable declarations must be initialized with literals', 4, 1)
+Top-level variable declarations must be initialized with literals (4, 1)
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56311_equals\equals_method.agu [EXCEPTION]
@@ -130,7 +130,7 @@ invalid comparison 'eq' for icmp
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56311_high_order_function_type\high_order_func_type.agu [SKIP]
-('Undefined function: f', 4, 5)
+Undefined function: f (4, 5)
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56311_if_inside_if\if_inside_if.agu [EXCEPTION]
@@ -164,7 +164,7 @@ invalid comparison 'sge' for icmp
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56332_precedence_calc\precedence_calc.agu [SKIP]
-('Unsupported binary operator: ^', 2, 47)
+Unsupported binary operator: ^ (2, 47)
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56332_simple_sum\simple_sum.agu [✔]
@@ -187,7 +187,9 @@ invalid comparison 'sge' for icmp
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58166_booleanConfusion\booleanConfusion.agu [SKIP]
-("Not implemented: Generating code for expression  '!(\n  a\n)'", 6, 20)
+Not implemented: Generating code for (6, 20) expression  '!(
+  a
+)'
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58166_digits\digits.agu [EXCEPTION]
@@ -260,7 +262,7 @@ C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58170_opWithoutParen\opWithoutParen.agu [SKIP]
-('Unsupported binary operator: ^', 4, 27)
+Unsupported binary operator: ^ (4, 27)
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58170_pyramid\pyramid.agu [EXCEPTION]
@@ -280,14 +282,14 @@ Type of #1 arg mismatch: i1 != i32
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58182_logic_operations\logic_operations.agu [SKIP]
-('Unsupported binary operator: ||', 10, 25)
+Unsupported binary operator: || (10, 25)
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58182_nested_function_calls\nested_function_calls.agu [✔]
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58182_simple_arithmetic\simple_arithmetic.agu [SKIP]
-('Unsupported binary operator: ^', 11, 30)
+Unsupported binary operator: ^ (11, 30)
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58182_while_loop_break\while_loop_break.agu [EXCEPTION]
@@ -311,7 +313,7 @@ invalid comparison 'eq' for icmp
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58185_power_operator\power_operator.agu [SKIP]
-('Unsupported binary operator: ^', 6, 13)
+Unsupported binary operator: ^ (6, 13)
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58185_sequencing\sequencing.agu [✔]
@@ -422,16 +424,12 @@ invalid comparison 'slt' for icmp
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_add\add.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_chess_matrix\chess_matrix.agu [FAIL]
-Semantic Error: (-1, -1) No main function found
-
-
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_coin_flip\coin_flip.agu [EXCEPTION]
 invalid comparison 'eq' for icmp
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_heart\heart.agu [SKIP]
-('Unsupported type: String[]', 4, 24)
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_heart\heart.agu [EXCEPTION]
+invalid comparison 'slt' for icmp
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_inc\inc.agu [✔]
@@ -454,7 +452,7 @@ Type of #1 arg mismatch: i32 != i1
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_switch\switch.agu [SKIP]
-("Not implemented: Generating code for expression  '!boolean'", 4, 5)
+Not implemented: Generating code for (4, 5) expression  '!boolean'
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000-scope-cond\tcomp000-scope-cond.agu [EXCEPTION]
@@ -514,7 +512,7 @@ C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_notNotNot\notNotNot.agu [SKIP]
-("Not implemented: Generating code for expression  '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!true'", 2, 10)
+Not implemented: Generating code for (2, 10) expression  '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!true'
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_power-iterative\power-iterative.agu [EXCEPTION]
@@ -522,7 +520,7 @@ invalid comparison 'sgt' for icmp
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_power-of-power\power-of-power.agu [SKIP]
-('Unsupported binary operator: ^', 4, 19)
+Unsupported binary operator: ^ (4, 19)
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_sumThree\sumThree.agu [EXCEPTION]
