@@ -1,8 +1,8 @@
 valid-tests
 
-Total tests run: 108
+Total tests run: 109
 Passed [✔]: 26
-Failed [FAIL]: 82
+Failed [FAIL]: 83
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\54394_array_operations\array_operations.agu [SKIP]
 ('Unsupported type: Int[]', 3, 30)
@@ -268,8 +268,8 @@ C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\
 invalid comparison 'sle' for icmp
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58170_sameNameVar\sameNameVar.agu [SKIP]
-Undefined variable: x (10, 11)
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58170_sameNameVar\sameNameVar.agu [EXCEPTION]
+Type of #1 arg mismatch: i1 != i32
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58182_fibonacci\fibonacci.agu [EXCEPTION]
