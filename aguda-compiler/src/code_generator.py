@@ -9,7 +9,7 @@ class CodeGenerationError(Exception):
     pass
 
 class CodeGenerator:
-    def __init__(self, max_errors):
+    def __init__(self):
         self.module = ir.Module()
         self.builder = None
         self.current_function = None
@@ -17,46 +17,87 @@ class CodeGenerator:
         self.function_types : Dict[str, FunctionType] = {}  # Maps function names to their types
         self.label_counter = 0
 
-    def get_llvm_type(self, aguda_type: Type) -> ir.Type:
-        """Convert AGUDA type to LLVM type."""
-        match aguda_type:
-            case BaseType('Int'):
-                return ir.IntType(32)
-            case BaseType("Bool"):
-                return ir.IntType(1)
-            case BaseType("Unit"):
-                return ir.IntType(1)
-            case FunctionType():
-                param_types = [self.get_llvm_type(t) for t in aguda_type.param_types]
-                return_type = self.get_llvm_type(aguda_type.return_type)
-                return ir.FunctionType(return_type, param_types)
-            case _:
-                raise CodeGenerationError(f"Unsupported type: {aguda_type}", aguda_type.lineno, aguda_type.column)
+    def generate(self, program: Program) -> str:
+        """Generate LLVM IR code from the AST."""
+        self.add_builtins()	
+        self.first_pass(program)
+        self.second_pass(program)
+        return str(self.module)
+    
+    def add_builtins(self):
+        """
+        Adds built-in functions to the module.
+        """
+        # Print function
+        print_type = FunctionType([BaseType("Int")], BaseType("Unit")) # Type checking done in expGen
+        print_func = ir.Function(self.module, self.get_llvm_type(print_type), "print")
+        print_func.linkage = "external"
+        self.function_types["print"] = print_type
 
-    def fresh_label(self) -> str:
-        """Generate a fresh label name."""
-        label = f"label_{self.label_counter}"
-        self.label_counter += 1
-        return label
+        # Power function
+        power_type = FunctionType([BaseType("Int"), BaseType("Int")], BaseType("Int"))
+        power_func = ir.Function(self.module, self.get_llvm_type(power_type), "_power")
+        power_func.linkage = "external"
+        self.function_types["_power"] = power_type
 
-    def fresh_cond_labels(self) -> Tuple[str, str, str]:
-        """Generate a set of related labels for a conditional expression."""
-        cond_num = self.label_counter
-        self.label_counter += 1
-        then_label = f"cond_{cond_num}_then"
-        else_label = f"cond_{cond_num}_else"
-        end_label = f"cond_{cond_num}_end"
-        return then_label, else_label, end_label
+    def first_pass(self, program: Program):
+        """
+        First pass over the AST to collect function types and global variables.z
+        """
+        for decl in program.declarations:
+            match decl:
+                case FunctionDeclaration(id, _, type, _):
+                    self.function_types[id.name] = type
+                case TopLevelVariableDeclaration(id, type, value):
+                    if not isinstance(value, (IntLiteral, BoolLiteral, UnitLiteral)):
+                        raise CodeGenerationError(f"Top-level variable declarations must be initialized with literals ({decl.lineno}, {decl.column})")
+                    else:
+                        var_type = self.get_llvm_type(type)
+                        var = ir.GlobalVariable(self.module, var_type, id.name)
+                        var.initializer = self.get_llvm_constant(value, type)
+                        self.symbol_table[id.name] = (type, var)
 
-    def fresh_while_labels(self) -> Tuple[str, str, str]:
-        """Generate a set of related labels for a while loop."""
-        loop_num = self.label_counter
-        self.label_counter += 1
-        start_label = f"while_{loop_num}_start"
-        body_label = f"while_{loop_num}_body"
-        end_label = f"while_{loop_num}_end"
-        return start_label, body_label, end_label
+    def second_pass(self, program: Program):
+        """
+        Second pass over the AST to generate LLVM code.
+        """
+        # Generate code for each function
+        for decl in program.declarations:
+            if isinstance(decl, FunctionDeclaration):
+                self.generate_function(decl)
 
+    def generate_function(self, func_decl: FunctionDeclaration):
+        """Generate LLVM code for a function declaration."""
+        # Create function
+        func_type = self.get_llvm_type(func_decl.type)
+        func = ir.Function(self.module, func_type, func_decl.id.name)
+        
+        # Set up basic block
+        entry_block = func.append_basic_block('entry')
+        self.builder = ir.IRBuilder(entry_block)
+        self.current_function = func
+        
+        # Add parameters to symbol table
+        for param, arg in zip(func_decl.parameters, func.args):
+            param_type = func_decl.type.param_types[func.args.index(arg)]
+            # Allocate space for parameter
+            param_ptr = self.builder.alloca(self.get_llvm_type(param_type))
+            self.builder.store(arg, param_ptr)
+            self.symbol_table[param.name] = (param_type, param_ptr)
+        
+        # Generate function body
+        value = self.expGen(func_decl.body)
+        
+        # Return the value
+        self.builder.ret(value)
+        
+        # Clean up
+        self.builder = None
+        self.current_function = None
+        # Clear local variables from symbol table
+        self.symbol_table = {k: v for k, v in self.symbol_table.items() 
+                           if isinstance(v[1], ir.GlobalVariable)}
+        
     def expGen(self, exp: Exp) -> ir.Value:
         """
         Generate LLVM code for an expression.
@@ -72,7 +113,7 @@ class CodeGenerator:
             case Var(name):
                 var_info = self.symbol_table.get(name)
                 if not var_info:
-                    raise CodeGenerationError(f"Undefined variable: {name}", exp.lineno, exp.column)
+                    raise CodeGenerationError(f"Undefined variable: {name} ({exp.lineno}, {exp.column})")
                 var_type, var_value = var_info
                 return self.builder.load(var_value)
             
@@ -113,7 +154,7 @@ class CodeGenerator:
                     return self.builder.icmp_signed(op_map[operator], val1, val2)
                 else:
                     #TODO power operator
-                    raise CodeGenerationError(f"Unsupported binary operator: {operator}", exp.lineno, exp.column)
+                    raise CodeGenerationError(f"Unsupported binary operator: {operator} ({exp.lineno}, {exp.column})")
 
             case FunctionCall(id, arguments):
                 arg_values = [self.expGen(arg) for arg in arguments]
@@ -121,12 +162,12 @@ class CodeGenerator:
                 # Get function type
                 func_type = self.function_types.get(id.name)
                 if not func_type:
-                    raise CodeGenerationError(f"Undefined function: {id.name}", id.lineno, id.column)
+                    raise CodeGenerationError(f"Undefined function: {id.name} ({id.lineno}, {id.column})")
                 
                 # Get function from module
                 func = self.module.get_global(id.name)
                 if not func:
-                    raise CodeGenerationError(f"Function not found in module: {id.name}", id.lineno, id.column)
+                    raise CodeGenerationError(f"Function not found in module: {id.name} ({id.lineno}, {id.column})")
                 
                 return self.builder.call(func, arg_values)
             
@@ -202,11 +243,11 @@ class CodeGenerator:
                 if isinstance(lhs, Var):
                     var_info = self.symbol_table.get(lhs.name)
                     if not var_info:
-                        raise CodeGenerationError(f"Undefined variable: {lhs.name}", lhs.lineno, lhs.column)
+                        raise CodeGenerationError(f"Undefined variable: {lhs.name} ({lhs.lineno}, {lhs.column})")
                     var_type, var_value = var_info
                     self.builder.store(val, var_value)
                 else:
-                    raise CodeGenerationError(f"Array assignments not supported yet", lhs.lineno, lhs.column)
+                    raise CodeGenerationError(f"Array assignments not supported ({lhs.lineno}, {lhs.column})")
                 
                 return ir.Constant(ir.IntType(32), 1)  # Return unit value
             
@@ -214,19 +255,15 @@ class CodeGenerator:
                 return self.expGen(exp)
             
             case _:
-                raise CodeGenerationError(f"Not implemented: Generating code for expression  '{exp}'", exp.lineno, exp.column)
+                raise CodeGenerationError(f"Not implemented: Generating code for ({exp.lineno}, {exp.column}) expression  '{exp}'")
 
     def condGen(self, exp: Exp, true_label: str, false_label: str):
         """
         Generate LLVM code for a conditional expression.
         Branches to true_label or false_label based on the condition.
         """
-        # Find existing blocks or create new ones
-        true_blocks = [b for b in self.current_function.basic_blocks if b.name == true_label]
-        false_blocks = [b for b in self.current_function.basic_blocks if b.name == false_label]
-        
-        true_block = true_blocks[0] if true_blocks else self.current_function.append_basic_block(true_label)
-        false_block = false_blocks[0] if false_blocks else self.current_function.append_basic_block(false_label)
+        true_block = self.current_function.append_basic_block(true_label)
+        false_block = self.current_function.append_basic_block(false_label)
         
         match exp:
             case BoolLiteral(value):
@@ -267,30 +304,45 @@ class CodeGenerator:
                 val = self.expGen(exp)
                 self.builder.cbranch(val, true_block, false_block)
 
-    def first_pass(self, program: Program):
-        """
-        First pass over the AST to collect function types and global variables.z
-        """
-        # Create our print function
-        print_type = FunctionType([BaseType("Int")], BaseType("Unit"))  # We'll handle type checking in expGen
-        print_func = ir.Function(self.module, self.get_llvm_type(print_type), "print")
-        print_func.linkage = "external"
-        
-        # Add function type to our dictionary
-        self.function_types["print"] = print_type
+    def get_llvm_type(self, aguda_type: Type) -> ir.Type:
+        """Convert AGUDA type to LLVM type."""
+        match aguda_type:
+            case BaseType('Int'):
+                return ir.IntType(32)
+            case BaseType("Bool"):
+                return ir.IntType(1)
+            case BaseType("Unit"):
+                return ir.IntType(1)
+            case FunctionType():
+                param_types = [self.get_llvm_type(t) for t in aguda_type.param_types]
+                return_type = self.get_llvm_type(aguda_type.return_type)
+                return ir.FunctionType(return_type, param_types)
+            case _:
+                raise CodeGenerationError(f"Unsupported type: {aguda_type}", aguda_type.lineno, aguda_type.column)
 
-        for decl in program.declarations:
-            match decl:
-                case FunctionDeclaration(id, _, type, _):
-                    self.function_types[id.name] = type
-                case TopLevelVariableDeclaration(id, type, value):
-                    if not isinstance(value, (IntLiteral, BoolLiteral, UnitLiteral)):
-                        raise CodeGenerationError(f"Top-level variable declarations must be initialized with literals", decl.lineno, decl.column)
-                    else:
-                        var_type = self.get_llvm_type(type)
-                        var = ir.GlobalVariable(self.module, var_type, id.name)
-                        var.initializer = self.get_llvm_constant(value, type)
-                        self.symbol_table[id.name] = (type, var)
+    def fresh_label(self) -> str:
+        """Generate a fresh label name."""
+        label = f"label_{self.label_counter}"
+        self.label_counter += 1
+        return label
+
+    def fresh_cond_labels(self) -> Tuple[str, str, str]:
+        """Generate a set of related labels for a conditional expression."""
+        cond_num = self.label_counter
+        self.label_counter += 1
+        then_label = f"cond_{cond_num}_then"
+        else_label = f"cond_{cond_num}_else"
+        end_label = f"cond_{cond_num}_end"
+        return then_label, else_label, end_label
+
+    def fresh_while_labels(self) -> Tuple[str, str, str]:
+        """Generate a set of related labels for a while loop."""
+        loop_num = self.label_counter
+        self.label_counter += 1
+        start_label = f"while_{loop_num}_start"
+        body_label = f"while_{loop_num}_body"
+        end_label = f"while_{loop_num}_end"
+        return start_label, body_label, end_label
 
     def get_llvm_constant(self, value: Exp, type: Type) -> Constant:
         """Convert an AGUDA literal to an LLVM constant."""
@@ -302,51 +354,4 @@ class CodeGenerator:
             case UnitLiteral():
                 return Constant(ir.IntType(32), 1)
             case _:
-                raise CodeGenerationError(f"Not implemented: Converting constant '{value}' to LLVM constant", value.lineno, value.column)
-
-    def second_pass(self, program: Program):
-        """
-        Second pass over the AST to generate LLVM code.
-        """
-        # Generate code for each function
-        for decl in program.declarations:
-            if isinstance(decl, FunctionDeclaration):
-                self.generate_function(decl)
-
-    def generate_function(self, func_decl: FunctionDeclaration):
-        """Generate LLVM code for a function declaration."""
-        # Create function
-        func_type = self.get_llvm_type(func_decl.type)
-        func = ir.Function(self.module, func_type, func_decl.id.name)
-        
-        # Set up basic block
-        entry_block = func.append_basic_block('entry')
-        self.builder = ir.IRBuilder(entry_block)
-        self.current_function = func
-        
-        # Add parameters to symbol table
-        for param, arg in zip(func_decl.parameters, func.args):
-            param_type = func_decl.type.param_types[func.args.index(arg)]
-            # Allocate space for parameter
-            param_ptr = self.builder.alloca(self.get_llvm_type(param_type))
-            self.builder.store(arg, param_ptr)
-            self.symbol_table[param.name] = (param_type, param_ptr)
-        
-        # Generate function body
-        value = self.expGen(func_decl.body)
-        
-        # Return the value
-        self.builder.ret(value)
-        
-        # Clean up
-        self.builder = None
-        self.current_function = None
-        # Clear local variables from symbol table
-        self.symbol_table = {k: v for k, v in self.symbol_table.items() 
-                           if isinstance(v[1], ir.GlobalVariable)}
-
-    def generate(self, program: Program) -> str:
-        """Generate LLVM IR code from the AST."""
-        self.first_pass(program)
-        self.second_pass(program)
-        return str(self.module)
+                raise CodeGenerationError(f"Not implemented: Converting constant '{value}' to LLVM constant ({value.lineno}, {value.column})")
