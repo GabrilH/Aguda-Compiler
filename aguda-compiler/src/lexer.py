@@ -65,7 +65,7 @@ def t_ID(t):
 
 # Integer literal rule
 def t_INT_LITERAL(t):
-    r'\d+'
+    r'-?\d+'
     try:
         t.value = int(t.value)
     except ValueError:
