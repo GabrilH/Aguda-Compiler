@@ -1,8 +1,10 @@
-FROM python:3.13-alpine
+FROM python:3.10-slim
 
-# Install LLVM and other dependencies
-RUN apk update && apk add --no-cache llvm15 llvm15-dev clang15 build-base && \
-    ln -s /usr/bin/llvm-config-15 /usr/bin/llvm-config
+# Install LLVM
+RUN apt-get update && \
+    apt-get install -y llvm && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # Set the working directory inside the container
 WORKDIR /app
