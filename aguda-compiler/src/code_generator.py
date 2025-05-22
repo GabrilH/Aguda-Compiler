@@ -154,15 +154,10 @@ class CodeGenerator:
 
             case FunctionCall(id, arguments):
                 arg_values = [self.expGen(ctx, arg) for arg in arguments]
-                
-                # Get function info from symbol table
                 func = ctx.lookup(id.name)
                 
-                # Special handling for print function - convert bool to int if needed
-                if id.name == "print" and len(arg_values) == 1:
-                    # If we're passing a bool to print function, convert it to int
-                    if arg_values[0].type == ir.IntType(1):  # Bool type is i1
-                        # Convert bool to int using zext (zero extension)
+                # Special handling for print function: convert bool to int
+                if id.name == "print" and arg_values[0].type == ir.IntType(1):
                         arg_values[0] = self.builder.zext(arg_values[0], ir.IntType(32))
                 
                 return self.builder.call(func, arg_values)
