@@ -1,5 +1,6 @@
 from src.syntax import *
 from src.error_logger import ErrorLogger
+from src.symbol_table import SymbolTable
 from llvmlite import ir
 from llvmlite.ir import Constant
 from typing import Dict, Tuple, Optional, List
@@ -13,8 +14,8 @@ class CodeGenerator:
         self.module = ir.Module()
         self.builder = None
         self.current_function = None
-        self.symbol_table : Dict[str, Tuple[Type, ir.Value]] = {}  # Maps variable names to (type, value) pairs
-        self.function_types : Dict[str, FunctionType] = {}  # Maps function names to their types
+        self.symbol_table = SymbolTable[Tuple[Type, ir.Value]]()
+        self.function_types : Dict[str, FunctionType] = {} # TODO is this needed, or can we just use the symbol table?
         self.label_counter = 0
 
     def generate(self, program: Program) -> str:
@@ -55,7 +56,8 @@ class CodeGenerator:
                         var_type = self.get_llvm_type(type)
                         var = ir.GlobalVariable(self.module, var_type, id.name)
                         var.initializer = self.get_llvm_constant(value)
-                        self.symbol_table[id.name] = (type, var)
+                        # Store both type and IR value in the symbol table
+                        self.symbol_table.insert(id.name, (type, var))
 
     def second_pass(self, program: Program):
         """
@@ -77,13 +79,16 @@ class CodeGenerator:
         self.builder = ir.IRBuilder(entry_block)
         self.current_function = func
         
+        # Enter a new scope for function parameters and body
+        self.symbol_table = self.symbol_table.enter_scope()
+        
         # Add parameters to symbol table
         for param, arg in zip(func_decl.parameters, func.args):
             param_type = func_decl.type.param_types[func.args.index(arg)]
             # Allocate space for parameter
             param_ptr = self.builder.alloca(self.get_llvm_type(param_type))
             self.builder.store(arg, param_ptr)
-            self.symbol_table[param.name] = (param_type, param_ptr)
+            self.symbol_table.insert(param.name, (param_type, param_ptr))
         
         # Generate function body
         value = self.expGen(func_decl.body)
@@ -91,12 +96,10 @@ class CodeGenerator:
         # Return the value
         self.builder.ret(value)
         
-        # Clean up
+        # Clean up - exit the function scope
+        self.symbol_table = self.symbol_table.exit_scope()
         self.builder = None
         self.current_function = None
-        # Clear local variables from symbol table
-        self.symbol_table = {k: v for k, v in self.symbol_table.items() 
-                           if isinstance(v[1], ir.GlobalVariable)}
         
     def expGen(self, exp: Exp) -> ir.Value:
         """
@@ -104,31 +107,34 @@ class CodeGenerator:
         Returns the LLVM value containing the result.
         """
         match exp:
-            case IntLiteral(value):
+            case IntLiteral(value): # TODO: isn't this get_llvm_constant redundant?
                 return ir.Constant(ir.IntType(32), value)
             case BoolLiteral(value):
                 return ir.Constant(ir.IntType(1), 1 if value else 0)
             case UnitLiteral():
                 return ir.Constant(ir.IntType(32), 1)
             case Var(name):
-                var_info = self.symbol_table.get(name)
+                var_info = self.symbol_table.lookup(name)
                 if not var_info:
                     raise CodeGenerationError(f"Undefined variable: {name} ({exp.lineno}, {exp.column})")
                 var_type, var_value = var_info
                 return self.builder.load(var_value)
             
             case VariableDeclaration(id, type, value):
+                # Enter a new scope for let expressions
+                self.symbol_table = self.symbol_table.enter_scope()
+                
                 # Allocate space for the variable
                 var_type = self.get_llvm_type(type)
                 var_ptr = self.builder.alloca(var_type)
                 
-                # Store the initial value
+                # Store the initial value # TODO: when would this be None?
                 if value is not None:
                     val = self.expGen(value)
                     self.builder.store(val, var_ptr)
                 
-                # Add to symbol table
-                self.symbol_table[id.name] = (type, var_ptr)
+                # Add to symbol table - in the current scope
+                self.symbol_table.insert(id.name, (type, var_ptr))
                 
                 # Return unit value for variable declaration
                 return ir.Constant(ir.IntType(32), 1)
@@ -184,7 +190,11 @@ class CodeGenerator:
                 
                 # Generate then branch
                 self.builder.position_at_end(then_block)
+                # Enter a new scope for the then branch
+                self.symbol_table = self.symbol_table.enter_scope()
                 then_val = self.expGen(then_branch)
+                # Exit then branch scope
+                self.symbol_table = self.symbol_table.exit_scope()
                 then_block_end = self.builder.block
                 
                 # Create end block
@@ -193,7 +203,11 @@ class CodeGenerator:
                 
                 # Generate else branch
                 self.builder.position_at_end(else_block)
+                # Enter a new scope for the else branch
+                self.symbol_table = self.symbol_table.enter_scope()
                 else_val = self.expGen(else_branch)
+                # Exit else branch scope
+                self.symbol_table = self.symbol_table.exit_scope()
                 else_block_end = self.builder.block
                 self.builder.branch(end_block)
 
@@ -223,7 +237,11 @@ class CodeGenerator:
                 
                 # Generate body block
                 self.builder.position_at_end(body_block)
+                # Enter a new scope for the loop body
+                self.symbol_table = self.symbol_table.enter_scope()
                 self.expGen(body)
+                # Exit loop body scope
+                self.symbol_table = self.symbol_table.exit_scope()
                 self.builder.branch(start_block)
                 
                 # Position at end block
@@ -241,7 +259,7 @@ class CodeGenerator:
                 val = self.expGen(exp)
 
                 if isinstance(lhs, Var):
-                    var_info = self.symbol_table.get(lhs.name)
+                    var_info = self.symbol_table.lookup(lhs.name)
                     if not var_info:
                         raise CodeGenerationError(f"Undefined variable: {lhs.name} ({lhs.lineno}, {lhs.column})")
                     var_type, var_value = var_info
