@@ -54,7 +54,7 @@ class CodeGenerator:
                     else:
                         var_type = self.get_llvm_type(type)
                         var = ir.GlobalVariable(self.module, var_type, id.name)
-                        var.initializer = self.get_llvm_constant(value, type)
+                        var.initializer = self.get_llvm_constant(value)
                         self.symbol_table[id.name] = (type, var)
 
     def second_pass(self, program: Program):
@@ -344,14 +344,14 @@ class CodeGenerator:
         end_label = f"while_{loop_num}_end"
         return start_label, body_label, end_label
 
-    def get_llvm_constant(self, value: Exp, type: Type) -> Constant:
+    def get_llvm_constant(self, literal: Exp) -> Constant:
         """Convert an AGUDA literal to an LLVM constant."""
-        match value:
+        match literal:
             case IntLiteral(value):
-                return Constant(ir.IntType(32), value.value)
+                return Constant(ir.IntType(32), value)
             case BoolLiteral(value):
-                return Constant(ir.IntType(1), 1 if value.value else 0)
+                return Constant(ir.IntType(1), 1 if value else 0)
             case UnitLiteral():
                 return Constant(ir.IntType(32), 1)
             case _:
-                raise CodeGenerationError(f"Not implemented: Converting constant '{value}' to LLVM constant ({value.lineno}, {value.column})")
+                raise CodeGenerationError(f"Not implemented: Converting constant '{literal}' to LLVM constant ({literal.lineno}, {literal.column})")

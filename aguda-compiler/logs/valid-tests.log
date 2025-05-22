@@ -1,8 +1,8 @@
 valid-tests
 
 Total tests run: 108
-Passed [✔]: 23
-Failed [FAIL]: 85
+Passed [✔]: 26
+Failed [FAIL]: 82
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\54394_array_operations\array_operations.agu [SKIP]
 ('Unsupported type: Int[]', 3, 30)
@@ -65,7 +65,7 @@ Semantic Error: (-1, -1) No main function found
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_if\if.agu [EXCEPTION]
-'bool' object has no attribute 'value'
+Type of #1 arg mismatch: i32 != i1
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_insertionSort\insertionSort.agu [SKIP]
@@ -121,8 +121,7 @@ C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\
 Top-level variable declarations must be initialized with literals (2, 1)
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56311_boundary_arithmetic\boundary_arithmetic.agu [SKIP]
-Top-level variable declarations must be initialized with literals (4, 1)
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56311_boundary_arithmetic\boundary_arithmetic.agu [✔]
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56311_equals\equals_method.agu [EXCEPTION]
@@ -269,8 +268,8 @@ C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\
 invalid comparison 'sle' for icmp
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58170_sameNameVar\sameNameVar.agu [EXCEPTION]
-'int' object has no attribute 'value'
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58170_sameNameVar\sameNameVar.agu [SKIP]
+Undefined variable: x (10, 11)
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58182_fibonacci\fibonacci.agu [EXCEPTION]
@@ -337,12 +336,10 @@ invalid comparison 'slt' for icmp
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58250_average\58250_average.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58250_basic_addition\58250_basic_addition.agu [EXCEPTION]
-'int' object has no attribute 'value'
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58250_basic_addition\58250_basic_addition.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58250_calculate_operations\58250_calculate_operations.agu [EXCEPTION]
-'int' object has no attribute 'value'
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58250_calculate_operations\58250_calculate_operations.agu [✔]
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58250_check_value\58250_check_value.agu [EXCEPTION]
@@ -491,7 +488,7 @@ invalid comparison 'eq' for icmp
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_expIf\expif.agu [EXCEPTION]
-'bool' object has no attribute 'value'
+Type of #1 arg mismatch: i32 != i1
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_if_then_if\if_then_if.agu [✔]
