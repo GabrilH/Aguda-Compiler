@@ -12,7 +12,6 @@ class CodeGenerator:
         self.module = ir.Module()
         self.builder : Optional[ir.IRBuilder] = None
         self.current_function : Optional[ir.Function] = None
-        self.function_types : Dict[str, FunctionType] = {} # TODO is this needed, or can we just use the symbol table?
         self.label_counter = 0
 
     def generate(self, program: Program) -> str:
@@ -31,22 +30,25 @@ class CodeGenerator:
         print_type = FunctionType([BaseType("Int")], BaseType("Unit")) # Type checking done in expGen
         print_func = ir.Function(self.module, self.get_llvm_type(print_type), "print")
         print_func.linkage = "external"
-        self.function_types["print"] = print_type
+        ctx.insert("print", (print_type, print_func))
 
         # Power function
         power_type = FunctionType([BaseType("Int"), BaseType("Int")], BaseType("Int"))
         power_func = ir.Function(self.module, self.get_llvm_type(power_type), "_power")
         power_func.linkage = "external"
-        self.function_types["_power"] = power_type
+        ctx.insert("_power", (power_type, power_func))
 
     def first_pass(self, ctx: SymbolTable, program: Program):
         """
-        First pass over the AST to collect function types and global variables.z
+        First pass over the AST to collect function types and global variables.
         """
         for decl in program.declarations:
             match decl:
                 case FunctionDeclaration(id, _, type, _):
-                    self.function_types[id.name] = type
+                    # Create function and store in symbol table
+                    func_type = self.get_llvm_type(type)
+                    func = ir.Function(self.module, func_type, id.name)
+                    ctx.insert(id.name, (type, func))
                 case TopLevelVariableDeclaration(id, type, value):
                     if not isinstance(value, (IntLiteral, BoolLiteral, UnitLiteral)):
                         raise CodeGenerationError(f"Top-level variable declarations must be initialized with literals ({decl.lineno}, {decl.column})")
@@ -67,9 +69,11 @@ class CodeGenerator:
 
     def generate_function(self, ctx: SymbolTable, func_decl: FunctionDeclaration):
         """Generate LLVM code for a function declaration."""
-        # Create function
-        func_type = self.get_llvm_type(func_decl.type)
-        func = ir.Function(self.module, func_type, func_decl.id.name)
+        # Get function from symbol table
+        func_info = ctx.lookup(func_decl.id.name)
+        if not func_info:
+            raise CodeGenerationError(f"Undefined function: {func_decl.id.name} ({func_decl.id.lineno}, {func_decl.id.column})")
+        func_type, func = func_info
         
         # Set up basic block
         entry_block = func.append_basic_block('entry')
@@ -77,7 +81,7 @@ class CodeGenerator:
         self.current_function = func
         
         # Enter a new scope for function parameters and body
-        ctx = ctx.enter_scope()
+        local_ctx = ctx.enter_scope()
         
         # Add parameters to symbol table
         for param, arg in zip(func_decl.parameters, func.args):
@@ -85,10 +89,10 @@ class CodeGenerator:
             # Allocate space for parameter
             param_ptr = self.builder.alloca(self.get_llvm_type(param_type))
             self.builder.store(arg, param_ptr)
-            ctx.insert(param.name, (param_type, param_ptr))
+            local_ctx.insert(param.name, (param_type, param_ptr))
         
         # Generate function body
-        value = self.expGen(ctx, func_decl.body)
+        value = self.expGen(local_ctx, func_decl.body)
         
         # Return the value
         self.builder.ret(value)
@@ -110,9 +114,10 @@ class CodeGenerator:
                 return ir.Constant(ir.IntType(32), 1)
             case Var(name):
                 var_info = ctx.lookup(name)
+                # TODO: remove check
                 if not var_info:
                     raise CodeGenerationError(f"Undefined variable: {name} ({exp.lineno}, {exp.column})")
-                var_type, var_value = var_info
+                _, var_value = var_info
                 return self.builder.load(var_value)
             
             case VariableDeclaration(id, type, value):            
@@ -167,16 +172,12 @@ class CodeGenerator:
             case FunctionCall(id, arguments):
                 arg_values = [self.expGen(ctx, arg) for arg in arguments]
                 
-                # Get function type
-                func_type = self.function_types.get(id.name)
-                if not func_type:
+                # Get function info from symbol table
+                func_info = ctx.lookup(id.name)
+                if not func_info:
                     raise CodeGenerationError(f"Undefined function: {id.name} ({id.lineno}, {id.column})")
                 
-                # Get function from module
-                func = self.module.get_global(id.name)
-                if not func:
-                    raise CodeGenerationError(f"Function not found in module: {id.name} ({id.lineno}, {id.column})")
-                
+                func_type, func = func_info
                 return self.builder.call(func, arg_values)
             
             case Conditional(condition, then_branch, else_branch):

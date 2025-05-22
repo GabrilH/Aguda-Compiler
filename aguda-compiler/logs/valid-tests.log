@@ -1,8 +1,8 @@
 valid-tests
 
-Total tests run: 122
-Passed [✔]: 32
-Failed [FAIL]: 90
+Total tests run: 124
+Passed [✔]: 35
+Failed [FAIL]: 89
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\54394_array_operations\array_operations.agu [SKIP]
 ('Unsupported type: Int[]', 3, 30)
@@ -81,8 +81,7 @@ C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\
 Type of #1 arg mismatch: i1 != i32
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56307_applyTwiceFunction\applyTwiceFunction.agu [SKIP]
-Undefined function: f (3, 5)
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56307_applyTwiceFunction\applyTwiceFunction.agu [✔]
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56307_arithmeticOperations\arithmeticOperations.agu [EXCEPTION]
@@ -126,8 +125,7 @@ C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\
 invalid comparison 'eq' for icmp
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56311_high_order_function_type\high_order_func_type.agu [SKIP]
-Undefined function: f (4, 5)
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56311_high_order_function_type\high_order_func_type.agu [✔]
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56311_if_inside_if\if_inside_if.agu [EXCEPTION]
@@ -512,7 +510,6 @@ invalid comparison 'sgt' for icmp
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_power-of-power\power-of-power.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_sumThree\sumThree.agu [EXCEPTION]
-'f'
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_sumThree\sumThree.agu [✔]
 
 
