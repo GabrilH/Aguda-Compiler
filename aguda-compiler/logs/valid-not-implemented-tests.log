@@ -1,0 +1,132 @@
+valid-not-implemented-tests
+
+Total tests run: 29
+Passed [✔]: 14
+Failed [FAIL]: 15
+
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid-not-implemented\56311_empty_array\empty_array.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
+
+
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid-not-implemented\56311_matrix_operations\matrix_operations.agu [✔]
+Program is semantically valid!
+
+
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid-not-implemented\56332_array_sum\array_sum.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
+Semantic Error: (13, 1) Expected type 'Int[]', found type 'Unit' for expression 
+'let _ : Unit = print(arraySum(a))'
+
+
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid-not-implemented\56332_array_update\array_update.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
+Semantic Error: (13, 5) Expected type 'Int[]', found type 'Unit' for expression 
+'print(a[2])'
+
+
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid-not-implemented\56332_count_even_in_array\count_even_in_array.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
+Semantic Error: (21, 1) Expected type 'Int[]', found type 'Unit' for expression 
+'let _ : Unit = print(countEven(arr))'
+
+
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid-not-implemented\56332_count_negatives_on_matrix\count_negatives_on_matrix.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
+Semantic Error: (30, 1) Expected type 'Int[][]', found type 'Unit' for expression 
+'let _ : Unit = print(countNegatives(matrix))'
+
+
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid-not-implemented\56332_min_elem_of_array\min_elem_of_array.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
+Semantic Error: (20, 1) Expected type 'Int[]', found type 'Unit' for expression 
+'let _ : Unit = print(minArray(arr))'
+
+
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid-not-implemented\56334_bubbleSort\bubbleSort.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
+
+
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid-not-implemented\56334_countOccurrences\countOccurrences.agu [✔]
+Program is semantically valid!
+
+
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid-not-implemented\56334_listSum\listSum.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
+
+
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid-not-implemented\56334_map\map.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
+
+
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid-not-implemented\56334_palindrome\palindrome.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
+
+
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid-not-implemented\56334_reverseArray\reverseArray.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
+
+
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid-not-implemented\58166_invertArray\invertArray.agu [✔]
+Program is semantically valid!
+
+
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid-not-implemented\58166_maxDistance\maxDistance.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
+
+
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid-not-implemented\58166_pingPong\pingPong.agu [✔]
+Program is semantically valid!
+
+
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid-not-implemented\58166_safeIndexCheck\safeIndexCheck.agu [✔]
+Program is semantically valid!
+
+
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid-not-implemented\58166_stringLength\stringLength.agu [✔]
+Program is semantically valid!
+
+
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid-not-implemented\58170_arrayBounds\arrayBounds.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
+
+
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid-not-implemented\58170_shiftRight\shiftRight.agu [✔]
+Program is semantically valid!
+
+
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid-not-implemented\58182_fibonacci_memoization\fibonacci_memoization.agu [✔]
+Program is semantically valid!
+
+
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid-not-implemented\58182_overload_print_and_length\overload_print_and_length.agu [✔]
+Program is semantically valid!
+
+
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid-not-implemented\58182_transpose_matrix\transpose_matrix.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
+
+
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid-not-implemented\64854_chess_matrix\chess_matrix.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
+
+
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid-not-implemented\tcomp000_arrayOfUnit\arrayOfUnit.agu [✔]
+Program is semantically valid!
+
+
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid-not-implemented\tcomp000_diagonal\diagonal.agu [✔]
+Program is semantically valid!
+
+
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid-not-implemented\tcomp000_lookupRec\lookupRec.agu [✔]
+Program is semantically valid!
+
+
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid-not-implemented\tcomp000_lookup\lookup.agu [✔]
+Program is semantically valid!
+
+
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid-not-implemented\tcomp000_powers\powers.agu [✔]
+Program is semantically valid!
+
+

@@ -13,6 +13,7 @@ import sys
 LOG_DIR = os.path.join(os.getcwd(), 'logs')
 TEST_DIR = os.path.join(os.getcwd(), "aguda-testing", "test")
 VALID_DIR = os.path.join(TEST_DIR, 'valid')
+VALID_NOT_IMPLEMENTED_DIR = os.path.join(TEST_DIR, 'valid-not-implemented')
 INVALID_SEM_DIR = os.path.join(TEST_DIR, 'invalid-semantic')
 INVALID_SYN_DIR = os.path.join(TEST_DIR, 'invalid-syntax')
 MAX_ERRORS = 5
@@ -122,7 +123,7 @@ def code_gen_test_run(filepath, valid):
     output_path = filepath.replace('.agu', '.ll')
     
     try:
-        code_gen = CodeGenerator(MAX_ERRORS)
+        code_gen = CodeGenerator()
         llvm_ir = code_gen.generate(ast)
         
         with open(output_path, 'w') as f:
@@ -205,11 +206,14 @@ def run_test_suite():
     TOTAL_TESTS = 0
     TOTAL_FAILED_TESTS = 0
 
+    invalid_syn_tests_logs = run_multiple_tests(INVALID_SYN_DIR, valid=False, type=0)
+    write_logs(invalid_syn_tests_logs, "invalid-syntax-tests")
+
     invalid_sem_tests_logs = run_multiple_tests(INVALID_SEM_DIR, valid=False, type=1)
     write_logs(invalid_sem_tests_logs, "invalid-semantic-tests")
 
-    invalid_syn_tests_logs = run_multiple_tests(INVALID_SYN_DIR, valid=False, type=0)
-    write_logs(invalid_syn_tests_logs, "invalid-syntax-tests")
+    valid_not_implemented_tests_logs = run_multiple_tests(VALID_NOT_IMPLEMENTED_DIR, valid=True, type=1)
+    write_logs(valid_not_implemented_tests_logs, "valid-not-implemented-tests")
 
     valid_tests_logs = run_multiple_tests(VALID_DIR, valid=True, type=2)
     write_logs(valid_tests_logs, "valid-tests")
@@ -272,4 +276,4 @@ def main():
 if __name__ == '__main__':
     main()
     #run_test_suite()
-    #run_single_test(r".\aguda-testing\test\valid\54394_array_operations\array_operations.agu")
+    #run_single_test(r".\aguda-testing\test\valid\56311_boundary_arithmetic\boundary_arithmetic.agu")
