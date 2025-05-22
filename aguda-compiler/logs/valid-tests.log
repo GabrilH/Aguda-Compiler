@@ -1,8 +1,8 @@
 valid-tests
 
-Total tests run: 116
+Total tests run: 122
 Passed [✔]: 32
-Failed [FAIL]: 84
+Failed [FAIL]: 90
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\54394_array_operations\array_operations.agu [SKIP]
 ('Unsupported type: Int[]', 3, 30)
@@ -51,8 +51,8 @@ C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\
 Type of #1 arg mismatch: i1 != i32
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_booleanSequence\booleanSequence.agu [SKIP]
-Unsupported binary operator: && (4, 15)
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_booleanSequence\booleanSequence.agu [EXCEPTION]
+Type of #1 arg mismatch: i32 != i1
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_boolean\boolean.agu [EXCEPTION]
@@ -182,10 +182,8 @@ C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\
 invalid comparison 'sge' for icmp
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58166_booleanConfusion\booleanConfusion.agu [SKIP]
-Not implemented: Generating code for (6, 20) expression  '!(
-  a
-)'
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58166_booleanConfusion\booleanConfusion.agu [EXCEPTION]
+Type of #1 arg mismatch: i1 != i32
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58166_digits\digits.agu [EXCEPTION]
@@ -257,8 +255,8 @@ C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58170_nestedCalls\nestedCalls.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58170_opWithoutParen\opWithoutParen.agu [SKIP]
-Not implemented: Generating code for (6, 18) expression  '!true'
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58170_opWithoutParen\opWithoutParen.agu [EXCEPTION]
+Type of #1 arg mismatch: i32 != i1
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58170_pyramid\pyramid.agu [EXCEPTION]
@@ -277,8 +275,8 @@ C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\
 Type of #1 arg mismatch: i1 != i32
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58182_logic_operations\logic_operations.agu [SKIP]
-Unsupported binary operator: || (10, 25)
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58182_logic_operations\logic_operations.agu [EXCEPTION]
+Type of #1 arg mismatch: i32 != i1
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58182_nested_function_calls\nested_function_calls.agu [✔]
@@ -443,8 +441,8 @@ C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\
 Type of #1 arg mismatch: i32 != i1
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_switch\switch.agu [SKIP]
-Not implemented: Generating code for (4, 5) expression  '!boolean'
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_switch\switch.agu [EXCEPTION]
+Type of #1 arg mismatch: i32 != i1
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000-scope-cond\tcomp000-scope-cond.agu [EXCEPTION]
@@ -503,8 +501,8 @@ cannot store i32 to i1*: mismatching types
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_letPlusLet\letPlusLet.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_notNotNot\notNotNot.agu [SKIP]
-Not implemented: Generating code for (2, 10) expression  '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!true'
+C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_notNotNot\notNotNot.agu [EXCEPTION]
+Type of #1 arg mismatch: i32 != i1
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_power-iterative\power-iterative.agu [EXCEPTION]
