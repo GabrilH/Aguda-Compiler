@@ -3,6 +3,10 @@ from src.syntax import *
 
 T = TypeVar('T')
 
+"""
+SymbolTable is a generic class that can be used to store any type of value.
+It was designed to be used in a functional programming style, where the symbol table is passed around as a parameter to functions.
+"""
 class SymbolTable(Generic[T]):
     def __init__(self):
         self.table : Dict[str, T] = {}
