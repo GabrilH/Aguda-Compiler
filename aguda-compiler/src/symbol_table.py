@@ -1,15 +1,17 @@
-from typing import Dict
+from typing import Dict, TypeVar, Generic
 from src.syntax import *
 
-class SymbolTable:
+T = TypeVar('T')
+
+class SymbolTable(Generic[T]):
     def __init__(self):
-        self.table : Dict[str, Type] = {}
-        self.parent : SymbolTable = None
+        self.table : Dict[str, T] = {}
+        self.parent : 'SymbolTable[T]' = None
 
-    def insert(self, name: str, symbol_type: Type) -> None:
-        self.table[name] = symbol_type
+    def insert(self, name: str, value: T) -> None:
+        self.table[name] = value
 
-    def lookup(self, name: str) -> Type:
+    def lookup(self, name: str) -> T:
         if name in self.table:
             return self.table[name]
         if self.parent:
@@ -23,7 +25,12 @@ class SymbolTable:
             return self.parent.contains(name)
         return False
 
-    def enter_scope(self) -> 'SymbolTable':
+    def enter_scope(self) -> 'SymbolTable[T]':
         child = SymbolTable()
         child.parent = self
         return child
+    
+    def exit_scope(self) -> 'SymbolTable[T]':
+        if self.parent:
+            return self.parent
+        return self
