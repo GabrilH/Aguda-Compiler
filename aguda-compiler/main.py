@@ -129,32 +129,35 @@ def code_gen_test_run(filepath, valid):
         with open(output_path, 'w') as f:
             f.write(llvm_ir)
 
-        test_log.append(f"{filepath} [✔]")
-        
         # Now run the LLVM IR using lli
-        # result = subprocess.run(['lli', output_path], capture_output=True, text=True)
+        result = subprocess.run(['lli', output_path], capture_output=True, text=True)
+        
+        if result.returncode != 0:
+            test_log.append(f"{filepath} [FAIL]")
+            test_log.append(f"lli execution failed: {result.stderr}")
+            return test_log, ast
 
-        # expect_path = filepath.replace('.agu', '.expect')
+        expect_path = filepath.replace('.agu', '.expect')
             
-        # try:
-        #     with open(expect_path, 'r') as f:
-        #         expected_output = f.readline().strip()
+        try:
+            with open(expect_path, 'r') as f:
+                expected_output = f.readline().strip()
             
-        #     actual_output = result.stdout.strip()
+            actual_output = result.stdout.strip()
             
-        #     if actual_output == expected_output:
-        #         test_log.append(f"{filepath} [✔]")
-        #     else:
-        #         test_log.append(f"{filepath} [FAIL]")
-        #         test_log.append(f"Expected: '{expected_output}'")
-        #         test_log.append(f"Got: '{actual_output}'")
+            if actual_output == expected_output:
+                test_log.append(f"{filepath} [✔]")
+            else:
+                test_log.append(f"{filepath} [FAIL]")
 
-        # except FileNotFoundError:
-        #     test_log.append(f"{filepath} [FAIL]")
-        #     test_log.append(f"Expect file not found: {expect_path}")
+            test_log.append(f"Expected: '{expected_output}'\nGot: '{actual_output}'")
+
+        except FileNotFoundError:
+            test_log.append(f"{filepath} [FAIL]")
+            test_log.append(f"Expect file not found: {expect_path}")
 
     except CodeGenerationError as e:
-        test_log.append(f"{filepath} [SKIP]")
+        test_log.append(f"{filepath} [EXCEPTION]")
         test_log.append(str(e))
     except Exception as e:
         test_log.append(f"{filepath} [EXCEPTION]")
@@ -276,4 +279,4 @@ def main():
 if __name__ == '__main__':
     main()
     #run_test_suite()
-    #run_single_test(r".\aguda-testing\test\valid\56311_boundary_arithmetic\boundary_arithmetic.agu")
+    #srun_single_test(r".\aguda-testing\test\valid\54394_identifier\identifier.agu")
