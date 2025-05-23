@@ -1,8 +1,8 @@
 valid-tests
 
 Total tests run: 136
-Passed [✔]: 102
-Failed [FAIL]: 34
+Passed [✔]: 112
+Failed [FAIL]: 24
 
 /app/aguda-testing/test/valid/54394_array_operations/array_operations.agu [FAIL]
 Not implemented type: Int[] (3, 30)
@@ -65,12 +65,9 @@ Expected: 'true'
 Got: 'true'
 
 
-/app/aguda-testing/test/valid/56269_booleanSequence/booleanSequence.agu [EXCEPTION]
-lli execution failed: lli: lli: /app/aguda-testing/test/valid/56269_booleanSequence/booleanSequence.ll:52:1: error: expected instruction opcode
-bool_0_end:
-^
-
-
+/app/aguda-testing/test/valid/56269_booleanSequence/booleanSequence.agu [✔]
+Expected: 'true'
+Got: 'true'
 
 
 /app/aguda-testing/test/valid/56269_bottomRow/bottomRow.agu [FAIL]
@@ -240,12 +237,9 @@ Expected: '9'
 Got: '9'
 
 
-/app/aguda-testing/test/valid/58166_booleanConfusion/booleanConfusion.agu [EXCEPTION]
-lli execution failed: lli: lli: /app/aguda-testing/test/valid/58166_booleanConfusion/booleanConfusion.ll:75:1: error: expected instruction opcode
-bool_2_end:
-^
-
-
+/app/aguda-testing/test/valid/58166_booleanConfusion/booleanConfusion.agu [✔]
+Expected: 'true'
+Got: 'true'
 
 
 /app/aguda-testing/test/valid/58166_digits/digits.agu [✔]
@@ -319,12 +313,9 @@ Expected: '67676778'
 Got: '67676778'
 
 
-/app/aguda-testing/test/valid/58170_complexWhile/complexWhile.agu [EXCEPTION]
-lli execution failed: lli: lli: /app/aguda-testing/test/valid/58170_complexWhile/complexWhile.ll:62:1: error: expected instruction opcode
-while_0_body:
-^
-
-
+/app/aguda-testing/test/valid/58170_complexWhile/complexWhile.agu [✔]
+Expected: '11029384756565'
+Got: '11029384756565'
 
 
 /app/aguda-testing/test/valid/58170_factorial/factorial.agu [✔]
@@ -342,12 +333,9 @@ Expected: '5'
 Got: '5'
 
 
-/app/aguda-testing/test/valid/58170_opWithoutParen/opWithoutParen.agu [EXCEPTION]
-lli execution failed: lli: lli: /app/aguda-testing/test/valid/58170_opWithoutParen/opWithoutParen.ll:84:1: error: expected instruction opcode
-bool_1_end:
-^
-
-
+/app/aguda-testing/test/valid/58170_opWithoutParen/opWithoutParen.agu [✔]
+Expected: '2512false'
+Got: '2512false'
 
 
 /app/aguda-testing/test/valid/58170_pyramid/pyramid.agu [✔]
@@ -370,12 +358,9 @@ Expected: '1'
 Got: '1'
 
 
-/app/aguda-testing/test/valid/58182_logic_operations/logic_operations.agu [EXCEPTION]
-lli execution failed: lli: lli: /app/aguda-testing/test/valid/58182_logic_operations/logic_operations.ll:60:1: error: expected instruction opcode
-bool_0_end:
-^
-
-
+/app/aguda-testing/test/valid/58182_logic_operations/logic_operations.agu [✔]
+Expected: 'truetruetruefalsefalse'
+Got: 'truetruetruefalsefalse'
 
 
 /app/aguda-testing/test/valid/58182_nested_function_calls/nested_function_calls.agu [✔]
@@ -388,20 +373,14 @@ Expected: '22-12460772'
 Got: '22-12460768'
 
 
-/app/aguda-testing/test/valid/58182_while_loop_break/while_loop_break.agu [EXCEPTION]
-lli execution failed: lli: lli: /app/aguda-testing/test/valid/58182_while_loop_break/while_loop_break.ll:64:1: error: expected instruction opcode
-while_0_body:
-^
+/app/aguda-testing/test/valid/58182_while_loop_break/while_loop_break.agu [✔]
+Expected: '01234'
+Got: '01234'
 
 
-
-
-/app/aguda-testing/test/valid/58185_boolean_logic/boolean_logic.agu [EXCEPTION]
-lli execution failed: lli: lli: /app/aguda-testing/test/valid/58185_boolean_logic/boolean_logic.ll:75:1: error: expected instruction opcode
-bool_5_end:
-^
-
-
+/app/aguda-testing/test/valid/58185_boolean_logic/boolean_logic.agu [✔]
+Expected: 'truefalsetruefalsefalsetrue'
+Got: 'truefalsetruefalsefalsetrue'
 
 
 /app/aguda-testing/test/valid/58185_bubble_sort/bubble_sort.agu [FAIL]
@@ -546,12 +525,9 @@ Expected: '12'
 Got: '12'
 
 
-/app/aguda-testing/test/valid/64371_multiples_3_or_5/multiples_3_or_5.agu [EXCEPTION]
-lli execution failed: lli: lli: /app/aguda-testing/test/valid/64371_multiples_3_or_5/multiples_3_or_5.ll:64:1: error: expected instruction opcode
-while_0_end:
-^
-
-
+/app/aguda-testing/test/valid/64371_multiples_3_or_5/multiples_3_or_5.agu [✔]
+Expected: '233168'
+Got: '233168'
 
 
 /app/aguda-testing/test/valid/64854_add/add.agu [✔]
@@ -609,12 +585,9 @@ Expected: '5'
 Got: '5'
 
 
-/app/aguda-testing/test/valid/tcomp000_assoc_eq/assoc_eq.agu [EXCEPTION]
-lli execution failed: lli: lli: /app/aguda-testing/test/valid/tcomp000_assoc_eq/assoc_eq.ll:55:1: error: expected instruction opcode
-bool_0_end:
-^
-
-
+/app/aguda-testing/test/valid/tcomp000_assoc_eq/assoc_eq.agu [✔]
+Expected: 'true'
+Got: 'true'
 
 
 /app/aguda-testing/test/valid/tcomp000_callCond/tcomp000_callCond.agu [✔]
@@ -632,12 +605,9 @@ Expected: '5'
 Got: '5'
 
 
-/app/aguda-testing/test/valid/tcomp000_evenOdd/evenOdd.agu [EXCEPTION]
-lli execution failed: lli: lli: /app/aguda-testing/test/valid/tcomp000_evenOdd/evenOdd.ll:53:1: error: expected instruction opcode
-bool_0_end:
-^
-
-
+/app/aguda-testing/test/valid/tcomp000_evenOdd/evenOdd.agu [✔]
+Expected: 'true'
+Got: 'true'
 
 
 /app/aguda-testing/test/valid/tcomp000_evenOddCond/evenOddCond.agu [✔]
