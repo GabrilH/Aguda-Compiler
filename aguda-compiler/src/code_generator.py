@@ -17,7 +17,7 @@ class CodeGenerator:
 
     def generate(self, program: Program) -> str:
         """Generate LLVM IR code from the AST."""
-        ctx = SymbolTable[Tuple[ir.Value, Type]]()
+        ctx = SymbolTable[Tuple[ir.Value, Type]]() # SymbolTable with a tuple of LLVM Value and AGUDA Type
         self.add_builtins(ctx)	
         self.first_pass(ctx, program)
         self.second_pass(ctx, program)
@@ -53,7 +53,7 @@ class CodeGenerator:
         print_builder.call(printf_func, [fmt_ptr, print_func.args[0]])
         print_builder.ret(ir.Constant(ir.IntType(1), 0))  # Return unit
         
-        ctx.insert("print", print_func)
+        ctx.insert("print", (print_func, print_type))
 
         # Power function implementation
         power_type = FunctionType([BaseType("Int"), BaseType("Int")], BaseType("Int"))
@@ -128,7 +128,7 @@ class CodeGenerator:
         phi.add_incoming(final_result, load_result_block)
         power_builder.ret(phi)
 
-        ctx.insert("_power", power_func)
+        ctx.insert("_power", (power_func, power_type))
 
     def first_pass(self, ctx: SymbolTable, program: Program):
         """
@@ -230,12 +230,13 @@ class CodeGenerator:
                         raise CodeGenerationError(f"Unsupported binary operator: {op} ({exp.lineno}, {exp.column})")
 
             case FunctionCall(id, arguments):
-
-                if id.name == "print":
-                    return self.callPrint(ctx, arguments[0])
-                
                 arg_values = [self.expGen(ctx, arg) for arg in arguments]
-                func, _ = ctx.lookup(id.name)                
+                func, _  = ctx.lookup(id.name)
+                
+                # Special handling for print function: convert bool to int
+                if id.name == "print" and arg_values[0].type == ir.IntType(1):
+                        arg_values[0] = self.builder.zext(arg_values[0], ir.IntType(32))
+                
                 return self.builder.call(func, arg_values)
             
             case Conditional(condition, then_branch, else_branch):
