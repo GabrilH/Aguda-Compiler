@@ -10,6 +10,7 @@ class CodeGenerationError(Exception):
 class CodeGenerator:
     def __init__(self):
         self.module = ir.Module()
+        self.module.triple = "x86_64-unknown-linux-gnu"
         self.builder : Optional[ir.IRBuilder] = None
         self.current_function : Optional[ir.Function] = None
         self.label_counter = 0
@@ -24,18 +25,109 @@ class CodeGenerator:
     
     def add_builtins(self, ctx: SymbolTable):
         """
-        Adds built-in functions to the module.
+        Adds built-in functions to the module with their implementations.
         """
-        # Print function
-        print_type = FunctionType([BaseType("Int")], BaseType("Unit")) # Input type is bypassed in expGen
+        # Add printf declaration for use in print function
+        printf_type = ir.FunctionType(ir.IntType(32), [ir.IntType(8).as_pointer()], var_arg=True)
+        printf_func = ir.Function(self.module, printf_type, "printf")
+        printf_func.linkage = "external"
+        
+        # Print function implementation
+        print_type = FunctionType([BaseType("Int")], BaseType("Unit"))
         print_func = ir.Function(self.module, self.get_llvm_type(print_type), "print")
-        print_func.linkage = "external"
+        print_block = print_func.append_basic_block('entry')
+        print_builder = ir.IRBuilder(print_block)
+        
+        # Create format string for printing integers
+        fmt_str = "%d\0"
+        fmt_const = ir.Constant(ir.ArrayType(ir.IntType(8), len(fmt_str)), bytearray(fmt_str.encode("utf8")))
+        fmt_global = ir.GlobalVariable(self.module, fmt_const.type, "fmt_str")
+        fmt_global.linkage = 'internal'
+        fmt_global.global_constant = True
+        fmt_global.initializer = fmt_const
+        
+        # Get pointer to format string
+        fmt_ptr = print_builder.gep(fmt_global, [ir.Constant(ir.IntType(32), 0), ir.Constant(ir.IntType(32), 0)])
+        
+        # Call printf with the integer argument
+        print_builder.call(printf_func, [fmt_ptr, print_func.args[0]])
+        print_builder.ret(ir.Constant(ir.IntType(1), 0))  # Return unit
+        
         ctx.insert("print", print_func)
 
-        # Power function
+        # Power function implementation
         power_type = FunctionType([BaseType("Int"), BaseType("Int")], BaseType("Int"))
         power_func = ir.Function(self.module, self.get_llvm_type(power_type), "_power")
-        power_func.linkage = "external"
+        
+        # Function parameters
+        base = power_func.args[0]
+        exp = power_func.args[1]
+        
+        # Basic blocks
+        entry_block = power_func.append_basic_block('entry')
+        zero_exp = power_func.append_basic_block('zero_exp')
+        neg_exp = power_func.append_basic_block('neg_exp')
+        pos_exp = power_func.append_basic_block('pos_exp')
+        loop_cond = power_func.append_basic_block('loop_cond')
+        loop_body = power_func.append_basic_block('loop_body')
+        load_result_block = power_func.append_basic_block('load_result')
+        loop_end = power_func.append_basic_block('loop_end')
+        
+        power_builder = ir.IRBuilder(entry_block)
+        
+        # Check if exponent is 0
+        zero_const = ir.Constant(ir.IntType(32), 0)
+        is_zero = power_builder.icmp_signed('==', exp, zero_const)
+        power_builder.cbranch(is_zero, zero_exp, neg_exp)
+        
+        # If exponent is 0, return 1
+        power_builder.position_at_end(zero_exp)
+        power_builder.ret(ir.Constant(ir.IntType(32), 1))
+        
+        # Check if exponent is negative
+        power_builder.position_at_end(neg_exp)
+        is_negative = power_builder.icmp_signed('<', exp, zero_const)
+        power_builder.cbranch(is_negative, loop_end, pos_exp)  # For negative, return 0 (integer division)
+        
+        # Positive exponent case
+        power_builder.position_at_end(pos_exp)
+        result_ptr = power_builder.alloca(ir.IntType(32))
+        counter_ptr = power_builder.alloca(ir.IntType(32))
+        
+        # Initialize result to 1 and counter to 0
+        power_builder.store(ir.Constant(ir.IntType(32), 1), result_ptr)
+        power_builder.store(zero_const, counter_ptr)
+        power_builder.branch(loop_cond)
+        
+        # Loop condition: counter < exp
+        power_builder.position_at_end(loop_cond)
+        counter_val = power_builder.load(counter_ptr)
+        cond = power_builder.icmp_signed('<', counter_val, exp)
+        power_builder.cbranch(cond, loop_body, load_result_block)
+        
+        # Loop body: result *= base; counter++
+        power_builder.position_at_end(loop_body)
+        result_val = power_builder.load(result_ptr)
+        new_result = power_builder.mul(result_val, base)
+        power_builder.store(new_result, result_ptr)
+        
+        counter_val = power_builder.load(counter_ptr)
+        new_counter = power_builder.add(counter_val, ir.Constant(ir.IntType(32), 1))
+        power_builder.store(new_counter, counter_ptr)
+        power_builder.branch(loop_cond)
+        
+        # Load result and branch to end
+        power_builder.position_at_end(load_result_block)
+        final_result = power_builder.load(result_ptr)
+        power_builder.branch(loop_end)
+        
+        # Return result (0 for negative exponents, computed result for positive)
+        power_builder.position_at_end(loop_end)
+        phi = power_builder.phi(ir.IntType(32))
+        phi.add_incoming(zero_const, neg_exp)
+        phi.add_incoming(final_result, load_result_block)
+        power_builder.ret(phi)
+
         ctx.insert("_power", power_func)
 
     def first_pass(self, ctx: SymbolTable, program: Program):
