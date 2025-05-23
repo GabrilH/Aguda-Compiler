@@ -329,7 +329,7 @@ class CodeGenerator:
                 return_type = self.get_llvm_type(aguda_type.return_type)
                 return ir.FunctionType(return_type, param_types)
             case _:
-                raise CodeGenerationError(f"Unsupported type: {aguda_type}", aguda_type.lineno, aguda_type.column)
+                raise CodeGenerationError(f"Not implemented type: {aguda_type} ({aguda_type.lineno}, {aguda_type.column})")
 
     def fresh_label(self) -> str:
         """Generate a fresh label name."""

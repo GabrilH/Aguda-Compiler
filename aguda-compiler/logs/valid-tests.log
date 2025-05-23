@@ -5,11 +5,11 @@ Passed [✔]: 116
 Failed [FAIL]: 20
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\54394_array_operations\array_operations.agu [EXCEPTION]
-('Unsupported type: Int[]', 3, 30)
+Not implemented type: Int[] (3, 30)
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\54394_bool_array\bool_array.agu [EXCEPTION]
-('Unsupported type: Bool[]', 4, 25)
+Not implemented type: Bool[] (4, 25)
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\54394_clamp\clamp.agu [✔]
@@ -58,7 +58,7 @@ C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_insertionSort\insertionSort.agu [EXCEPTION]
-('Unsupported type: Int[]', 5, 25)
+Not implemented type: Int[] (5, 25)
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_multipleAssignment\multipleAssignment.agu [✔]
@@ -95,7 +95,7 @@ C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56307_sumArrayFunction\sumArrayFunction.agu [EXCEPTION]
-('Unsupported type: Int[]', 2, 22)
+Not implemented type: Int[] (2, 22)
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56307_zeroLengthArray\zeroLengthArray.agu [EXCEPTION]
@@ -172,7 +172,7 @@ C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58168_addOneValueToArray\addOneValueToArray.agu [EXCEPTION]
-('Unsupported type: Int[]', 3, 15)
+Not implemented type: Int[] (3, 15)
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58168_cubesForEvenNum\cubesForEvenNum.agu [✔]
@@ -188,15 +188,15 @@ C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58168_numOfEvenNumInArray\numOfEvenNumInArray.agu [EXCEPTION]
-('Unsupported type: Int[]', 3, 11)
+Not implemented type: Int[] (3, 11)
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58168_sumNumInArray\sumNumInArray.agu [EXCEPTION]
-('Unsupported type: Int[]', 3, 14)
+Not implemented type: Int[] (3, 14)
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58168_sumOfMinAndOfMaxOfArray\sumOfMinAndOfMaxOfArray.agu [EXCEPTION]
-('Unsupported type: Int[]', 3, 14)
+Not implemented type: Int[] (3, 14)
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58168_sumTwoNumbers\sumTwoNumbers.agu [✔]
@@ -305,18 +305,18 @@ C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64361_array_sum\array_sum.agu [EXCEPTION]
-('Unsupported type: Int[][]', 3, 26)
+Not implemented type: Int[][] (3, 26)
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64361_check_positive_value\check_positive.agu [✔]
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64361_count_vowels\count_vowels.agu [EXCEPTION]
-('Unsupported type: String[]', 3, 33)
+Not implemented type: String[] (3, 33)
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64361_exponential\exponential.agu [EXCEPTION]
-('Unsupported type: Int[]', 3, 27)
+Not implemented type: Int[] (3, 27)
 
 
 C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64361_factorial\factorial.agu [✔]
