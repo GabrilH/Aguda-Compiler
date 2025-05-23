@@ -18,12 +18,12 @@ class CodeGenerator:
     def generate(self, program: Program) -> str:
         """Generate LLVM IR code from the AST."""
         ctx = SymbolTable[Tuple[ir.Value, Type]]() # SymbolTable with a tuple of LLVM Value and AGUDA Type
-        self.add_builtins(ctx)	
+        self.add_builtins()	
         self.first_pass(ctx, program)
         self.second_pass(ctx, program)
         return str(self.module)
     
-    def add_builtins(self, ctx: SymbolTable[Tuple[ir.Value, Type]]):
+    def add_builtins(self):
         """
         Adds built-in functions to the module with their implementations.
         """
@@ -91,14 +91,14 @@ class CodeGenerator:
             case Var(name):
                 var_value, var_aguda_type = ctx.lookup(name)
                 return self.builder.load(var_value), var_aguda_type
+            
             case VariableDeclaration(id, type, value):
-                # Allocate space for the variable
                 var_llvm_type = self.get_llvm_type(type)
-                var_ptr = self.builder.alloca(var_llvm_type)
-                
-                # Store the value
                 val, var_aguda_type = self.expGen(ctx.enter_scope(),value)
+
+                var_ptr = self.builder.alloca(var_llvm_type)
                 self.builder.store(val, var_ptr)
+
                 ctx.insert(id.name, (var_ptr, var_aguda_type))
 
                 return self.expGen(ctx, UnitLiteral())
@@ -128,8 +128,6 @@ class CodeGenerator:
                         return self.builder.call(power_func, [val1, val2]), BaseType("Int")
                     case '==' | '!=' | '<' | '<=' | '>' | '>=':
                         return self.builder.icmp_signed(op, val1, val2), BaseType("Bool")
-                    case _:
-                        raise CodeGenerationError(f"Unsupported binary operator: {op} ({exp.lineno}, {exp.column})")
 
             case LogicalNegation(operand):
                 operand_val, _ = self.expGen(ctx, operand)
@@ -203,11 +201,8 @@ class CodeGenerator:
             
             case Assignment(lhs, exp):
                 val, _ = self.expGen(ctx, exp)
-                if isinstance(lhs, Var):
-                    var_ptr, _ = ctx.lookup(lhs.name)
-                    self.builder.store(val, var_ptr)
-                else:
-                    raise CodeGenerationError(f"Array assignments not supported ({lhs.lineno}, {lhs.column})")
+                var_ptr, _ = ctx.lookup(lhs.name)
+                self.builder.store(val, var_ptr)
                 return self.expGen(ctx, UnitLiteral())
             
             case Group(exp):
@@ -218,7 +213,7 @@ class CodeGenerator:
         
     def boolGen(self, ctx: SymbolTable[Tuple[ir.Value, Type]], exp: Exp) -> Tuple[ir.Value, Type]:
         """
-        Generate LLVM code for a boolean expression.
+        Generate LLVM code for a boolean expression in a short-circuit manner.
         Returns the LLVM value containing the result and the AGUDA type of the expression.
         """
         result_ptr = self.builder.alloca(ir.IntType(1))
@@ -258,16 +253,13 @@ class CodeGenerator:
                 right_val, _ = self.expGen(ctx, right)
                 self.builder.store(right_val, result_ptr)
                 self.builder.branch(end_block)
-                
-            case _:
-                raise CodeGenerationError(f"Unexpected expression in boolGen: {exp}")
         
         self.builder.position_at_end(end_block)
         return self.builder.load(result_ptr), BaseType("Bool")
     
     def callPrint(self, ctx: SymbolTable[Tuple[ir.Value, Type]], exp: Exp) -> Tuple[ir.Value, Type]:
         """
-        Generate LLVM code for a print function call.
+        Generates LLVM code for a print function call by translating the expression to a string.
         Returns the LLVM value containing the result and the AGUDA type of the expression.
         """
         printf_func = self.module.get_global('printf')
@@ -286,9 +278,6 @@ class CodeGenerator:
             case BaseType("Unit"):
                 str_ptr = self._create_global_string("unit\0")
                 self.builder.call(printf_func, [str_ptr])
-                
-            case _:
-                raise CodeGenerationError(f"Unsupported type for print: {arg_type}")
         
         # Bypass printf return type
         return self.expGen(ctx, UnitLiteral())
@@ -329,7 +318,7 @@ class CodeGenerator:
     
     def _setup_function_parameters(self, ctx: SymbolTable[Tuple[ir.Value, Type]], func_decl: FunctionDeclaration, func: ir.Function):
         """
-        Setup function parameters. Raises an error if a parameter is a function type.
+        Setup function parameters.
         """
         for param_var, param_type, arg in zip(func_decl.parameters, func_decl.type.param_types, func.args):          
             param_ptr = self.builder.alloca(self.get_llvm_type(param_type))

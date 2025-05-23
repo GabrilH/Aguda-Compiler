@@ -369,7 +369,7 @@ Got: '120'
 
 
 /app/aguda-testing/test/valid/58185_mutual_recursion/mutual_recursion.agu [FAIL]
-Not implemented: Generating code for (12, 11) expression  '" is "'
+Not implemented: Generating code for (12, 11) expression '" is "'
 
 
 /app/aguda-testing/test/valid/58185_power_operator/power_operator.agu [✔]
