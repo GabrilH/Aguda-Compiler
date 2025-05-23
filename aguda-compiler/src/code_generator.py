@@ -131,6 +131,10 @@ class CodeGenerator:
                     case _:
                         raise CodeGenerationError(f"Unsupported binary operator: {op} ({exp.lineno}, {exp.column})")
 
+            case LogicalNegation(operand):
+                operand_val, _ = self.expGen(ctx, operand)
+                return self.builder.not_(operand_val), BaseType("Bool")
+
             case FunctionCall(id, arguments):
                 # Special handling for print function
                 if id.name == "print":
@@ -206,9 +210,6 @@ class CodeGenerator:
                     raise CodeGenerationError(f"Array assignments not supported ({lhs.lineno}, {lhs.column})")
                 return self.expGen(ctx, UnitLiteral())
             
-            case LogicalNegation():
-                return self.boolGen(ctx, exp)
-                
             case Group(exp):
                 return self.expGen(ctx.enter_scope(), exp)
             
@@ -256,11 +257,6 @@ class CodeGenerator:
                 self.builder.position_at_end(eval_right_block)
                 right_val, _ = self.expGen(ctx, right)
                 self.builder.store(right_val, result_ptr)
-                self.builder.branch(end_block)
-                
-            case LogicalNegation(operand):
-                operand_val, _ = self.expGen(ctx, operand)
-                self.builder.store(self.builder.not_(operand_val), result_ptr)
                 self.builder.branch(end_block)
                 
             case _:
