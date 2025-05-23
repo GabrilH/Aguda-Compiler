@@ -32,28 +32,9 @@ class CodeGenerator:
         printf_func = ir.Function(self.module, printf_type, "printf")
         printf_func.linkage = "external"
         
-        # Print function implementation
-        print_type = FunctionType([BaseType("Int")], BaseType("Unit"))
-        print_func = ir.Function(self.module, self.get_llvm_type(print_type), "print")
-        print_block = print_func.append_basic_block('entry')
-        print_builder = ir.IRBuilder(print_block)
-        
-        # Create format string for printing integers
-        fmt_str = "%d\0"
-        fmt_const = ir.Constant(ir.ArrayType(ir.IntType(8), len(fmt_str)), bytearray(fmt_str.encode("utf8")))
-        fmt_global = ir.GlobalVariable(self.module, fmt_const.type, "fmt_str")
-        fmt_global.linkage = 'internal'
-        fmt_global.global_constant = True
-        fmt_global.initializer = fmt_const
-        
-        # Get pointer to format string
-        fmt_ptr = print_builder.gep(fmt_global, [ir.Constant(ir.IntType(32), 0), ir.Constant(ir.IntType(32), 0)])
-        
-        # Call printf with the integer argument
-        print_builder.call(printf_func, [fmt_ptr, print_func.args[0]])
-        print_builder.ret(ir.Constant(ir.IntType(1), 0))  # Return unit
-        
-        ctx.insert("print", (print_func, print_type))
+        # Print function type for symbol table (not actually used, handled in callPrint)
+        print_type = FunctionType([BaseType("Int")], BaseType("Unit"))  # Keep Int for backward compatibility
+        ctx.insert("print", (None, print_type))  # No actual function, handled specially
 
         # Power function implementation
         power_type = FunctionType([BaseType("Int"), BaseType("Int")], BaseType("Int"))
@@ -233,13 +214,13 @@ class CodeGenerator:
                         raise CodeGenerationError(f"Unsupported binary operator: {op} ({exp.lineno}, {exp.column})")
 
             case FunctionCall(id, arguments):
+                # Special handling for print function
+                if id.name == "print":
+                    return self.callPrint(ctx, arguments[0])
+                
+                # Regular function calls
                 arg_values = [val for val, _ in [self.expGen(ctx, arg) for arg in arguments]]
                 func, func_aguda_type = ctx.lookup(id.name)
-                
-                # Special handling for print function: convert bool to int
-                if id.name == "print" and arg_values[0].type == ir.IntType(1):
-                        arg_values[0] = self.builder.zext(arg_values[0], ir.IntType(32))
-                
                 return self.builder.call(func, arg_values), func_aguda_type.return_type
             
             case Conditional(condition, then_branch, else_branch):
@@ -375,11 +356,94 @@ class CodeGenerator:
         self.builder.position_at_end(end_block)
         return self.builder.load(result_ptr), BaseType("Bool")
     
-    def callPrint(self, ctx: SymbolTable[Tuple[ir.Value, Type]], exp: Exp):
+    def callPrint(self, ctx: SymbolTable[Tuple[ir.Value, Type]], exp: Exp) -> Tuple[ir.Value, Type]:
         """
         Generate LLVM code for a print function call.
+        Returns the LLVM value containing the result and the AGUDA type of the expression.
         """
-        pass
+        # Get the printf function
+        printf_func = self.module.get_global('printf')
+        
+        # Evaluate the argument
+        arg_val, arg_type = self.expGen(ctx, exp)
+        
+        # Determine the format string and handle the argument based on type
+        match arg_type:
+            case BaseType("Int"):
+                # Create format string for integers
+                fmt_str = "%d\0"
+                fmt_const = ir.Constant(ir.ArrayType(ir.IntType(8), len(fmt_str)), bytearray(fmt_str.encode("utf8")))
+                fmt_global = ir.GlobalVariable(self.module, fmt_const.type, f"fmt_int_{self.fresh()}")
+                fmt_global.linkage = 'internal'
+                fmt_global.global_constant = True
+                fmt_global.initializer = fmt_const
+                
+                # Get pointer to format string
+                fmt_ptr = self.builder.gep(fmt_global, [ir.Constant(ir.IntType(32), 0), ir.Constant(ir.IntType(32), 0)])
+                
+                # Call printf
+                self.builder.call(printf_func, [fmt_ptr, arg_val])
+                
+            case BaseType("Bool"):
+                # Create format strings for True and False
+                true_str = "true\0"
+                false_str = "false\0"
+                
+                true_const = ir.Constant(ir.ArrayType(ir.IntType(8), len(true_str)), bytearray(true_str.encode("utf8")))
+                true_global = ir.GlobalVariable(self.module, true_const.type, f"fmt_true_{self.fresh()}")
+                true_global.linkage = 'internal'
+                true_global.global_constant = True
+                true_global.initializer = true_const
+                
+                false_const = ir.Constant(ir.ArrayType(ir.IntType(8), len(false_str)), bytearray(false_str.encode("utf8")))
+                false_global = ir.GlobalVariable(self.module, false_const.type, f"fmt_false_{self.fresh()}")
+                false_global.linkage = 'internal'
+                false_global.global_constant = True
+                false_global.initializer = false_const
+                
+                # Create conditional to choose the right string
+                then_label, else_label, end_label = self.fresh_cond_labels()
+                then_block = self.current_function.append_basic_block(then_label)
+                else_block = self.current_function.append_basic_block(else_label)
+                end_block = self.current_function.append_basic_block(end_label)
+                
+                # Branch based on boolean value
+                self.builder.cbranch(arg_val, then_block, else_block)
+                
+                # True case
+                self.builder.position_at_end(then_block)
+                true_ptr = self.builder.gep(true_global, [ir.Constant(ir.IntType(32), 0), ir.Constant(ir.IntType(32), 0)])
+                self.builder.call(printf_func, [true_ptr])
+                self.builder.branch(end_block)
+                
+                # False case
+                self.builder.position_at_end(else_block)
+                false_ptr = self.builder.gep(false_global, [ir.Constant(ir.IntType(32), 0), ir.Constant(ir.IntType(32), 0)])
+                self.builder.call(printf_func, [false_ptr])
+                self.builder.branch(end_block)
+                
+                # Continue
+                self.builder.position_at_end(end_block)
+                
+            case BaseType("Unit"):
+                # Create format string for unit
+                fmt_str = "unit\0"
+                fmt_const = ir.Constant(ir.ArrayType(ir.IntType(8), len(fmt_str)), bytearray(fmt_str.encode("utf8")))
+                fmt_global = ir.GlobalVariable(self.module, fmt_const.type, f"fmt_unit_{self.fresh()}")
+                fmt_global.linkage = 'internal'
+                fmt_global.global_constant = True
+                fmt_global.initializer = fmt_const
+                
+                # Get pointer to format string
+                fmt_ptr = self.builder.gep(fmt_global, [ir.Constant(ir.IntType(32), 0), ir.Constant(ir.IntType(32), 0)])
+                
+                # Call printf
+                self.builder.call(printf_func, [fmt_ptr])
+                
+            case _:
+                raise CodeGenerationError(f"Unsupported type for print: {arg_type}")
+        
+        return ir.Constant(ir.IntType(1), 0), BaseType("Unit")
 
     def get_llvm_type(self, aguda_type: Type) -> ir.Type:
         """Convert AGUDA type to LLVM type."""
