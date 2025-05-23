@@ -144,7 +144,7 @@ class CodeGenerator:
                     if isinstance(value, (IntLiteral, BoolLiteral, UnitLiteral)):
                         var_type = self.get_llvm_type(type)
                         var = ir.GlobalVariable(self.module, var_type, id.name)
-                        var.initializer, _ = self.literalGen(value)
+                        var.initializer, _ = self.expGen(ctx, value)
                         ctx.insert(id.name, (var, type))
                     else:
                         raise CodeGenerationError(f"Top-level variable declarations must be initialized with literals ({decl.lineno}, {decl.column})")
@@ -183,12 +183,15 @@ class CodeGenerator:
         Returns the LLVM value containing the result and the AGUDA type of the expression.
         """
         match exp:
-            case IntLiteral() | BoolLiteral() | UnitLiteral():
-                return self.literalGen(exp)
+            case IntLiteral(value):
+                return ir.Constant(ir.IntType(32), value), BaseType("Int")
+            case BoolLiteral(value):
+                return ir.Constant(ir.IntType(1), 1 if value else 0), BaseType("Bool")
+            case UnitLiteral():
+                return ir.Constant(ir.IntType(1), 0), BaseType("Unit")
             case Var(name):
                 var_value, var_aguda_type = ctx.lookup(name)
                 return self.builder.load(var_value), var_aguda_type
-            
             case VariableDeclaration(id, type, value):
                 # Allocate space for the variable
                 var_llvm_type = self.get_llvm_type(type)
@@ -199,7 +202,7 @@ class CodeGenerator:
                 self.builder.store(val, var_ptr)
                 ctx.insert(id.name, (var_ptr, var_aguda_type))
 
-                return self.literalGen(UnitLiteral())
+                return self.expGen(ctx, UnitLiteral())
             
             case BinaryOp(left, op, right):
                 # Handle short-circuit boolean operations
@@ -289,7 +292,7 @@ class CodeGenerator:
                 self.builder.branch(cond_block)
                 
                 self.builder.position_at_end(end_block)
-                return self.literalGen(UnitLiteral())
+                return self.expGen(ctx, UnitLiteral())
             
             case Sequence(first, rest):
                 self.expGen(ctx, first)
@@ -302,7 +305,7 @@ class CodeGenerator:
                     self.builder.store(val, var_ptr)
                 else:
                     raise CodeGenerationError(f"Array assignments not supported ({lhs.lineno}, {lhs.column})")
-                return self.literalGen(UnitLiteral())
+                return self.expGen(ctx, UnitLiteral())
             
             case LogicalNegation():
                 return self.boolGen(ctx, exp)
@@ -372,20 +375,20 @@ class CodeGenerator:
         self.builder.position_at_end(end_block)
         return self.builder.load(result_ptr), BaseType("Bool")
     
-    def literalGen(self, exp: Exp) -> Tuple[ir.Value, Type]:
-        """
-        Generate LLVM code for a literal expression.
-        Returns the LLVM value containing the result and the AGUDA type of the expression.
-        """
-        match exp:
-            case IntLiteral(value):
-                return ir.Constant(ir.IntType(32), value), BaseType("Int")
-            case BoolLiteral(value):
-                return ir.Constant(ir.IntType(1), 1 if value else 0), BaseType("Bool")
-            case UnitLiteral():
-                return ir.Constant(ir.IntType(1), 0), BaseType("Unit")
-            case _:
-                raise CodeGenerationError(f"Not implemented: Generating code for ({exp.lineno}, {exp.column}) expression '{exp}'")
+    # def literalGen(self, exp: Exp) -> Tuple[ir.Value, Type]:
+    #     """
+    #     Generate LLVM code for a literal expression.
+    #     Returns the LLVM value containing the result and the AGUDA type of the expression.
+    #     """
+    #     match exp:
+    #         case IntLiteral(value):
+    #             return ir.Constant(ir.IntType(32), value), BaseType("Int")
+    #         case BoolLiteral(value):
+    #             return ir.Constant(ir.IntType(1), 1 if value else 0), BaseType("Bool")
+    #         case UnitLiteral():
+    #             return ir.Constant(ir.IntType(1), 0), BaseType("Unit")
+    #         case _:
+    #             raise CodeGenerationError(f"Not implemented: Generating code for ({exp.lineno}, {exp.column}) expression '{exp}'")
     
     def callPrint(self, ctx: SymbolTable[Tuple[ir.Value, Type]], exp: Exp):
         """
