@@ -4,11 +4,11 @@ Total tests run: 136
 Passed [✔]: 102
 Failed [FAIL]: 34
 
-/app/aguda-testing/test/valid/54394_array_operations/array_operations.agu [EXCEPTION]
+/app/aguda-testing/test/valid/54394_array_operations/array_operations.agu [FAIL]
 Not implemented type: Int[] (3, 30)
 
 
-/app/aguda-testing/test/valid/54394_bool_array/bool_array.agu [EXCEPTION]
+/app/aguda-testing/test/valid/54394_bool_array/bool_array.agu [FAIL]
 Not implemented type: Bool[] (4, 25)
 
 
@@ -65,7 +65,7 @@ Expected: 'true'
 Got: 'true'
 
 
-/app/aguda-testing/test/valid/56269_booleanSequence/booleanSequence.agu [FAIL]
+/app/aguda-testing/test/valid/56269_booleanSequence/booleanSequence.agu [EXCEPTION]
 lli execution failed: lli: lli: /app/aguda-testing/test/valid/56269_booleanSequence/booleanSequence.ll:52:1: error: expected instruction opcode
 bool_0_end:
 ^
@@ -82,7 +82,7 @@ Expected: 'true'
 Got: 'true'
 
 
-/app/aguda-testing/test/valid/56269_insertionSort/insertionSort.agu [EXCEPTION]
+/app/aguda-testing/test/valid/56269_insertionSort/insertionSort.agu [FAIL]
 Not implemented type: Int[] (5, 25)
 
 
@@ -101,7 +101,7 @@ Expected: '6'
 Got: '6'
 
 
-/app/aguda-testing/test/valid/56307_applyTwiceFunction/applyTwiceFunction.agu [FAIL]
+/app/aguda-testing/test/valid/56307_applyTwiceFunction/applyTwiceFunction.agu [EXCEPTION]
 lli execution failed: lli: lli: /app/aguda-testing/test/valid/56307_applyTwiceFunction/applyTwiceFunction.ll:43:26: error: invalid type for function argument
 define i32 @"applyTwice"(i32 (i32) %".1", i32 %".2")
                          ^
@@ -144,11 +144,11 @@ Expected: '30'
 Got: '30'
 
 
-/app/aguda-testing/test/valid/56307_sumArrayFunction/sumArrayFunction.agu [EXCEPTION]
+/app/aguda-testing/test/valid/56307_sumArrayFunction/sumArrayFunction.agu [FAIL]
 Not implemented type: Int[] (2, 22)
 
 
-/app/aguda-testing/test/valid/56307_zeroLengthArray/zeroLengthArray.agu [EXCEPTION]
+/app/aguda-testing/test/valid/56307_zeroLengthArray/zeroLengthArray.agu [FAIL]
 Top-level variable declarations must be initialized with literals (2, 1)
 
 
@@ -162,7 +162,7 @@ Expected: 'false'
 Got: 'false'
 
 
-/app/aguda-testing/test/valid/56311_high_order_function_type/high_order_func_type.agu [FAIL]
+/app/aguda-testing/test/valid/56311_high_order_function_type/high_order_func_type.agu [EXCEPTION]
 lli execution failed: lli: lli: /app/aguda-testing/test/valid/56311_high_order_function_type/high_order_func_type.ll:43:21: error: invalid type for function argument
 define i32 @"apply"(i32 (i32) %".1", i32 %".2")
                     ^
@@ -240,7 +240,7 @@ Expected: '9'
 Got: '9'
 
 
-/app/aguda-testing/test/valid/58166_booleanConfusion/booleanConfusion.agu [FAIL]
+/app/aguda-testing/test/valid/58166_booleanConfusion/booleanConfusion.agu [EXCEPTION]
 lli execution failed: lli: lli: /app/aguda-testing/test/valid/58166_booleanConfusion/booleanConfusion.ll:75:1: error: expected instruction opcode
 bool_2_end:
 ^
@@ -273,7 +273,7 @@ Expected: '0'
 Got: '0'
 
 
-/app/aguda-testing/test/valid/58168_addOneValueToArray/addOneValueToArray.agu [EXCEPTION]
+/app/aguda-testing/test/valid/58168_addOneValueToArray/addOneValueToArray.agu [FAIL]
 Not implemented type: Int[] (3, 15)
 
 
@@ -297,15 +297,15 @@ Expected: '1'
 Got: '1'
 
 
-/app/aguda-testing/test/valid/58168_numOfEvenNumInArray/numOfEvenNumInArray.agu [EXCEPTION]
+/app/aguda-testing/test/valid/58168_numOfEvenNumInArray/numOfEvenNumInArray.agu [FAIL]
 Not implemented type: Int[] (3, 11)
 
 
-/app/aguda-testing/test/valid/58168_sumNumInArray/sumNumInArray.agu [EXCEPTION]
+/app/aguda-testing/test/valid/58168_sumNumInArray/sumNumInArray.agu [FAIL]
 Not implemented type: Int[] (3, 14)
 
 
-/app/aguda-testing/test/valid/58168_sumOfMinAndOfMaxOfArray/sumOfMinAndOfMaxOfArray.agu [EXCEPTION]
+/app/aguda-testing/test/valid/58168_sumOfMinAndOfMaxOfArray/sumOfMinAndOfMaxOfArray.agu [FAIL]
 Not implemented type: Int[] (3, 14)
 
 
@@ -319,7 +319,7 @@ Expected: '67676778'
 Got: '67676778'
 
 
-/app/aguda-testing/test/valid/58170_complexWhile/complexWhile.agu [FAIL]
+/app/aguda-testing/test/valid/58170_complexWhile/complexWhile.agu [EXCEPTION]
 lli execution failed: lli: lli: /app/aguda-testing/test/valid/58170_complexWhile/complexWhile.ll:62:1: error: expected instruction opcode
 while_0_body:
 ^
@@ -342,7 +342,7 @@ Expected: '5'
 Got: '5'
 
 
-/app/aguda-testing/test/valid/58170_opWithoutParen/opWithoutParen.agu [FAIL]
+/app/aguda-testing/test/valid/58170_opWithoutParen/opWithoutParen.agu [EXCEPTION]
 lli execution failed: lli: lli: /app/aguda-testing/test/valid/58170_opWithoutParen/opWithoutParen.ll:84:1: error: expected instruction opcode
 bool_1_end:
 ^
@@ -370,7 +370,7 @@ Expected: '1'
 Got: '1'
 
 
-/app/aguda-testing/test/valid/58182_logic_operations/logic_operations.agu [FAIL]
+/app/aguda-testing/test/valid/58182_logic_operations/logic_operations.agu [EXCEPTION]
 lli execution failed: lli: lli: /app/aguda-testing/test/valid/58182_logic_operations/logic_operations.ll:60:1: error: expected instruction opcode
 bool_0_end:
 ^
@@ -388,7 +388,7 @@ Expected: '22-12460772'
 Got: '22-12460768'
 
 
-/app/aguda-testing/test/valid/58182_while_loop_break/while_loop_break.agu [FAIL]
+/app/aguda-testing/test/valid/58182_while_loop_break/while_loop_break.agu [EXCEPTION]
 lli execution failed: lli: lli: /app/aguda-testing/test/valid/58182_while_loop_break/while_loop_break.ll:64:1: error: expected instruction opcode
 while_0_body:
 ^
@@ -396,7 +396,7 @@ while_0_body:
 
 
 
-/app/aguda-testing/test/valid/58185_boolean_logic/boolean_logic.agu [FAIL]
+/app/aguda-testing/test/valid/58185_boolean_logic/boolean_logic.agu [EXCEPTION]
 lli execution failed: lli: lli: /app/aguda-testing/test/valid/58185_boolean_logic/boolean_logic.ll:75:1: error: expected instruction opcode
 bool_5_end:
 ^
@@ -413,7 +413,7 @@ Expected: '120'
 Got: '120'
 
 
-/app/aguda-testing/test/valid/58185_mutual_recursion/mutual_recursion.agu [EXCEPTION]
+/app/aguda-testing/test/valid/58185_mutual_recursion/mutual_recursion.agu [FAIL]
 Not implemented: Generating code for (12, 11) expression  '" is "'
 
 
@@ -491,7 +491,7 @@ Expected: '33028128'
 Got: '33028128'
 
 
-/app/aguda-testing/test/valid/64361_array_sum/array_sum.agu [EXCEPTION]
+/app/aguda-testing/test/valid/64361_array_sum/array_sum.agu [FAIL]
 Not implemented type: Int[][] (3, 26)
 
 
@@ -500,11 +500,11 @@ Expected: 'falsetrue'
 Got: 'falsetrue'
 
 
-/app/aguda-testing/test/valid/64361_count_vowels/count_vowels.agu [EXCEPTION]
+/app/aguda-testing/test/valid/64361_count_vowels/count_vowels.agu [FAIL]
 Not implemented type: String[] (3, 33)
 
 
-/app/aguda-testing/test/valid/64361_exponential/exponential.agu [EXCEPTION]
+/app/aguda-testing/test/valid/64361_exponential/exponential.agu [FAIL]
 Not implemented type: Int[] (3, 27)
 
 
@@ -546,7 +546,7 @@ Expected: '12'
 Got: '12'
 
 
-/app/aguda-testing/test/valid/64371_multiples_3_or_5/multiples_3_or_5.agu [FAIL]
+/app/aguda-testing/test/valid/64371_multiples_3_or_5/multiples_3_or_5.agu [EXCEPTION]
 lli execution failed: lli: lli: /app/aguda-testing/test/valid/64371_multiples_3_or_5/multiples_3_or_5.ll:64:1: error: expected instruction opcode
 while_0_end:
 ^
@@ -609,7 +609,7 @@ Expected: '5'
 Got: '5'
 
 
-/app/aguda-testing/test/valid/tcomp000_assoc_eq/assoc_eq.agu [FAIL]
+/app/aguda-testing/test/valid/tcomp000_assoc_eq/assoc_eq.agu [EXCEPTION]
 lli execution failed: lli: lli: /app/aguda-testing/test/valid/tcomp000_assoc_eq/assoc_eq.ll:55:1: error: expected instruction opcode
 bool_0_end:
 ^
@@ -632,7 +632,7 @@ Expected: '5'
 Got: '5'
 
 
-/app/aguda-testing/test/valid/tcomp000_evenOdd/evenOdd.agu [FAIL]
+/app/aguda-testing/test/valid/tcomp000_evenOdd/evenOdd.agu [EXCEPTION]
 lli execution failed: lli: lli: /app/aguda-testing/test/valid/tcomp000_evenOdd/evenOdd.ll:53:1: error: expected instruction opcode
 bool_0_end:
 ^

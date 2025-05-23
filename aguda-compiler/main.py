@@ -133,7 +133,7 @@ def code_gen_test_run(filepath, valid):
         result = subprocess.run(['lli', output_path], capture_output=True, text=True)
         
         if result.returncode != 0:
-            test_log.append(f"{filepath} [FAIL]")
+            test_log.append(f"{filepath} [EXCEPTION]")
             test_log.append(f"lli execution failed: {result.stderr}")
             return test_log, ast
 
@@ -157,7 +157,7 @@ def code_gen_test_run(filepath, valid):
             test_log.append(f"Expect file not found: {expect_path}")
 
     except CodeGenerationError as e:
-        test_log.append(f"{filepath} [EXCEPTION]")
+        test_log.append(f"{filepath} [FAIL]")
         test_log.append(str(e))
     except Exception as e:
         test_log.append(f"{filepath} [EXCEPTION]")
@@ -279,4 +279,4 @@ def main():
 if __name__ == '__main__':
     main()
     #run_test_suite()
-    #srun_single_test(r".\aguda-testing\test\valid\54394_identifier\identifier.agu")
+    #run_single_test(r".\aguda-testing/test/valid/tcomp000-scope-leave/tcomp000-scope-leave.agu")
