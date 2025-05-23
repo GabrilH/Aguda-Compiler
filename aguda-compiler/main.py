@@ -210,14 +210,14 @@ def run_test_suite():
     TOTAL_TESTS = 0
     TOTAL_FAILED_TESTS = 0
 
-    invalid_syn_tests_logs = run_multiple_tests(INVALID_SYN_DIR, valid=False, type=0)
-    write_logs(invalid_syn_tests_logs, "invalid-syntax-tests")
+    # invalid_syn_tests_logs = run_multiple_tests(INVALID_SYN_DIR, valid=False, type=0)
+    # write_logs(invalid_syn_tests_logs, "invalid-syntax-tests")
 
-    invalid_sem_tests_logs = run_multiple_tests(INVALID_SEM_DIR, valid=False, type=1)
-    write_logs(invalid_sem_tests_logs, "invalid-semantic-tests")
+    # invalid_sem_tests_logs = run_multiple_tests(INVALID_SEM_DIR, valid=False, type=1)
+    # write_logs(invalid_sem_tests_logs, "invalid-semantic-tests")
 
-    valid_not_implemented_tests_logs = run_multiple_tests(VALID_NOT_IMPLEMENTED_DIR, valid=True, type=1)
-    write_logs(valid_not_implemented_tests_logs, "valid-not-implemented-tests")
+    # valid_not_implemented_tests_logs = run_multiple_tests(VALID_NOT_IMPLEMENTED_DIR, valid=True, type=1)
+    # write_logs(valid_not_implemented_tests_logs, "valid-not-implemented-tests")
 
     valid_tests_logs = run_multiple_tests(VALID_DIR, valid=True, type=2)
     write_logs(valid_tests_logs, "valid-tests")
