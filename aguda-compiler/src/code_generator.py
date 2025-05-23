@@ -67,92 +67,23 @@ class CodeGenerator:
 
     def generate_function(self, ctx: SymbolTable, func_decl: FunctionDeclaration):
         """Generate LLVM code for a function declaration."""
-        func = ctx.lookup(func_decl.id.name)
-        # Set up basic block
+        func : ir.Function = ctx.lookup(func_decl.id.name)
+        
         entry_block = func.append_basic_block('entry')
         self.builder = ir.IRBuilder(entry_block)
         self.current_function = func
         
-        # Enter a new scope for function parameters and body
+        # New scope, add parameters to symbol table
         local_ctx = ctx.enter_scope()
-        
-        # Add parameters to symbol table
         for param, arg in zip(func_decl.parameters, func.args):
             param_type = func_decl.type.param_types[func.args.index(arg)]
-            # Allocate space for parameter
             param_ptr = self.builder.alloca(self.get_llvm_type(param_type))
             self.builder.store(arg, param_ptr)
             local_ctx.insert(param.name, param_ptr)
         
-        # Generate function body
         value = self.expGen(local_ctx, func_decl.body)
         
-        # Return the value
         self.builder.ret(value)
-        
-        self.builder = None
-        self.current_function = None
-        
-    def boolGen(self, ctx: SymbolTable, exp: Exp) -> ir.Value:
-        """
-        Unified handler for boolean expressions with short-circuit evaluation.
-        Returns a boolean value (i1) using proper short-circuit evaluation.
-        """
-        # Create result variable to store the boolean result
-        result_ptr = self.builder.alloca(ir.IntType(1))
-        
-        # Create end block for all paths
-        end_label = self.fresh_label()
-        end_block = self.current_function.append_basic_block(end_label)
-        
-        match exp:
-            case BinaryOp(left, '&&', right):
-                # Create blocks for short-circuit evaluation
-                eval_right_label = self.fresh_label()
-                eval_right_block = self.current_function.append_basic_block(eval_right_label)
-                
-                # Evaluate left operand
-                left_val = self.expGen(ctx, left)
-                self.builder.cbranch(left_val, eval_right_block, end_block)
-                
-                # Store false result for the case when left is false
-                self.builder.store(ir.Constant(ir.IntType(1), 0), result_ptr)
-                
-                # Evaluate right operand only if left was true
-                self.builder.position_at_end(eval_right_block)
-                right_val = self.expGen(ctx, right)
-                self.builder.store(right_val, result_ptr)
-                self.builder.branch(end_block)
-                
-            case BinaryOp(left, '||', right):
-                # Create blocks for short-circuit evaluation
-                eval_right_label = self.fresh_label()
-                eval_right_block = self.current_function.append_basic_block(eval_right_label)
-                
-                # Evaluate left operand
-                left_val = self.expGen(ctx, left)
-                self.builder.cbranch(left_val, end_block, eval_right_block)
-                
-                # Store true result for the case when left is true
-                self.builder.store(ir.Constant(ir.IntType(1), 1), result_ptr)
-                
-                # Evaluate right operand only if left was false
-                self.builder.position_at_end(eval_right_block)
-                right_val = self.expGen(ctx, right)
-                self.builder.store(right_val, result_ptr)
-                self.builder.branch(end_block)
-                
-            case LogicalNegation(operand):
-                operand_val = self.expGen(ctx, operand)
-                self.builder.store(self.builder.not_(operand_val), result_ptr)
-                self.builder.branch(end_block)
-                
-            case _:
-                raise CodeGenerationError(f"Unexpected expression in boolGen: {exp}")
-        
-        # Continue from the end block
-        self.builder.position_at_end(end_block)
-        return self.builder.load(result_ptr)
 
     def expGen(self, ctx: SymbolTable, exp: Exp) -> ir.Value:
         """
@@ -171,11 +102,9 @@ class CodeGenerator:
                 var_type = self.get_llvm_type(type)
                 var_ptr = self.builder.alloca(var_type)
                 
-                # Store the initial value
+                # Store the value
                 val = self.expGen(ctx.enter_scope(),value)
                 self.builder.store(val, var_ptr)
-                
-                # Add to symbol table
                 ctx.insert(id.name, var_ptr)
 
                 return self.literalGen(UnitLiteral())
@@ -219,10 +148,7 @@ class CodeGenerator:
                 return self.builder.call(func, arg_values)
             
             case Conditional(condition, then_branch, else_branch):
-                # Generate labels
                 then_label, else_label, end_label = self.fresh_cond_labels()
-                
-                # Create blocks
                 then_block = self.current_function.append_basic_block(then_label)
                 else_block = self.current_function.append_basic_block(else_label)
                 end_block = self.current_function.append_basic_block(end_label)
@@ -252,30 +178,25 @@ class CodeGenerator:
                 return phi
             
             case WhileLoop(condition, body):
-                # Generate labels
-                start_label, body_label, end_label = self.fresh_while_labels()
-                
-                # Create blocks
-                start_block = self.current_function.append_basic_block(start_label)
+                cond_label, body_label, end_label = self.fresh_while_labels()
+                cond_block = self.current_function.append_basic_block(cond_label)
                 body_block = self.current_function.append_basic_block(body_label)
                 end_block = self.current_function.append_basic_block(end_label)
                 
-                # Branch to start block
-                self.builder.branch(start_block)
+                # Branch to condition block
+                self.builder.branch(cond_block)
                 
                 # Generate condition
-                self.builder.position_at_end(start_block)
+                self.builder.position_at_end(cond_block)
                 cond_val = self.expGen(ctx, condition)
                 self.builder.cbranch(cond_val, body_block, end_block)
                 
                 # Generate body
                 self.builder.position_at_end(body_block)
                 self.expGen(ctx.enter_scope(), body)
-                self.builder.branch(start_block)
+                self.builder.branch(cond_block)
                 
-                # Position at end block
                 self.builder.position_at_end(end_block)
-                
                 return self.literalGen(UnitLiteral())
             
             case Sequence(first, rest):
@@ -299,6 +220,65 @@ class CodeGenerator:
             
             case _:
                 raise CodeGenerationError(f"Not implemented: Generating code for ({exp.lineno}, {exp.column}) expression  '{exp}'")
+        
+    def boolGen(self, ctx: SymbolTable, exp: Exp) -> ir.Value:
+        """
+        Generate LLVM code for a boolean expression.
+        Returns a boolean value (i1) using proper short-circuit evaluation.
+        """
+        result_ptr = self.builder.alloca(ir.IntType(1))
+        
+        fresh_num = self.fresh()
+        end_label = f"bool_{fresh_num}_end"
+        end_block = self.current_function.append_basic_block(end_label)
+        
+        match exp:
+            case BinaryOp(left, '&&', right):
+                # Create blocks for short-circuit evaluation
+                eval_right_label = f"bool_{fresh_num}_right"
+                eval_right_block = self.current_function.append_basic_block(eval_right_label)
+                
+                # Evaluate left operand
+                left_val = self.expGen(ctx, left)
+                self.builder.cbranch(left_val, eval_right_block, end_block)
+                
+                # Store false result for the case when left is false
+                self.builder.store(ir.Constant(ir.IntType(1), 0), result_ptr)
+                
+                # Evaluate right operand only if left was true
+                self.builder.position_at_end(eval_right_block)
+                right_val = self.expGen(ctx, right)
+                self.builder.store(right_val, result_ptr)
+                self.builder.branch(end_block)
+                
+            case BinaryOp(left, '||', right):
+                # Create blocks for short-circuit evaluation
+                eval_right_label = f"bool_{fresh_num}_right"
+                eval_right_block = self.current_function.append_basic_block(eval_right_label)
+                
+                # Evaluate left operand
+                left_val = self.expGen(ctx, left)
+                self.builder.cbranch(left_val, end_block, eval_right_block)
+                
+                # Store true result for the case when left is true
+                self.builder.store(ir.Constant(ir.IntType(1), 1), result_ptr)
+                
+                # Evaluate right operand only if left was false
+                self.builder.position_at_end(eval_right_block)
+                right_val = self.expGen(ctx, right)
+                self.builder.store(right_val, result_ptr)
+                self.builder.branch(end_block)
+                
+            case LogicalNegation(operand):
+                operand_val = self.expGen(ctx, operand)
+                self.builder.store(self.builder.not_(operand_val), result_ptr)
+                self.builder.branch(end_block)
+                
+            case _:
+                raise CodeGenerationError(f"Unexpected expression in boolGen: {exp}")
+        
+        self.builder.position_at_end(end_block)
+        return self.builder.load(result_ptr)
 
     def literalGen(self, exp: Exp) -> ir.Value:
         """
@@ -331,16 +311,15 @@ class CodeGenerator:
             case _:
                 raise CodeGenerationError(f"Not implemented type: {aguda_type} ({aguda_type.lineno}, {aguda_type.column})")
 
-    def fresh_label(self) -> str:
-        """Generate a fresh label name."""
-        label = f"label_{self.label_counter}"
+    def fresh(self) -> int:
+        """Generate a fresh number."""
+        num = self.label_counter
         self.label_counter += 1
-        return label
+        return num
 
     def fresh_cond_labels(self) -> Tuple[str, str, str]:
         """Generate a set of related labels for a conditional expression."""
-        cond_num = self.label_counter
-        self.label_counter += 1
+        cond_num = self.fresh()
         then_label = f"cond_{cond_num}_then"
         else_label = f"cond_{cond_num}_else"
         end_label = f"cond_{cond_num}_end"
@@ -348,9 +327,8 @@ class CodeGenerator:
 
     def fresh_while_labels(self) -> Tuple[str, str, str]:
         """Generate a set of related labels for a while loop."""
-        loop_num = self.label_counter
-        self.label_counter += 1
-        start_label = f"while_{loop_num}_start"
+        loop_num = self.fresh()
+        cond_label = f"while_{loop_num}_cond"
         body_label = f"while_{loop_num}_body"
         end_label = f"while_{loop_num}_end"
-        return start_label, body_label, end_label
+        return cond_label, body_label, end_label
