@@ -99,12 +99,8 @@ class CodeGenerator:
         Returns the LLVM value containing the result.
         """
         match exp:
-            case IntLiteral(value):
-                return ir.Constant(ir.IntType(32), value)
-            case BoolLiteral(value):
-                return ir.Constant(ir.IntType(1), 1 if value else 0)
-            case UnitLiteral():
-                return ir.Constant(ir.IntType(32), 1)
+            case IntLiteral() | BoolLiteral() | UnitLiteral():
+                return self.literalGen(exp)
             case Var(name):
                 var_value = ctx.lookup(name)
                 return self.builder.load(var_value)
@@ -120,9 +116,8 @@ class CodeGenerator:
                 
                 # Add to symbol table
                 ctx.insert(id.name, var_ptr)
-                
-                # Return unit value for variable declaration
-                return ir.Constant(ir.IntType(32), 1)
+
+                return self.literalGen(UnitLiteral())
             
             case BinaryOp(left, op, right):
                 # Handle short-circuit boolean operations using condGen
@@ -222,8 +217,7 @@ class CodeGenerator:
                 # Position at end block
                 self.builder.position_at_end(end_block)
                 
-                # Return unit value
-                return ir.Constant(ir.IntType(32), 1)
+                return self.literalGen(UnitLiteral())
             
             case Sequence(first, rest):
                 self.expGen(ctx, first)
@@ -239,10 +233,9 @@ class CodeGenerator:
                 else:
                     raise CodeGenerationError(f"Array assignments not supported ({lhs.lineno}, {lhs.column})")
                 
-                return ir.Constant(ir.IntType(32), 1)  # Return unit value
+                return self.literalGen(UnitLiteral())
             
             case LogicalNegation(operand):
-                # For logical negation, delegate to short-circuit implementation
                 return self.short_circuit_expGen(ctx, exp)
             
             case Group(exp):
@@ -379,6 +372,21 @@ class CodeGenerator:
                 val = self.expGen(ctx, exp)
                 self.builder.cbranch(val, true_block, false_block)
 
+    def literalGen(self, exp: Exp) -> ir.Value:
+        """
+        Generate LLVM code for a literal expression.
+        Returns the LLVM value containing the result.
+        """
+        match exp:
+            case IntLiteral(value):
+                return ir.Constant(ir.IntType(32), value)
+            case BoolLiteral(value):
+                return ir.Constant(ir.IntType(1), 1 if value else 0)
+            case UnitLiteral():
+                return ir.Constant(ir.IntType(1), 1)
+            case _:
+                raise CodeGenerationError(f"Not implemented: Generating code for ({exp.lineno}, {exp.column}) expression '{exp}'")
+
     def get_llvm_type(self, aguda_type: Type) -> ir.Type:
         """Convert AGUDA type to LLVM type."""
         match aguda_type:
@@ -387,7 +395,7 @@ class CodeGenerator:
             case BaseType("Bool"):
                 return ir.IntType(1)
             case BaseType("Unit"):
-                return ir.IntType(32)
+                return ir.IntType(1)
             case FunctionType():
                 param_types = [self.get_llvm_type(t) for t in aguda_type.param_types]
                 return_type = self.get_llvm_type(aguda_type.return_type)
