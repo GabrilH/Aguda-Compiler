@@ -31,9 +31,7 @@ class CodeGenerator:
         printf_func = ir.Function(self.module, printf_type, "printf")
         printf_func.linkage = "external"
 
-        power_type = FunctionType([BaseType("Int"), BaseType("Int")], BaseType("Int"))
-        power_func = self._create_power_function()
-        ctx.insert("_power", (power_func, power_type))
+        self._create_power_function()
 
     def first_pass(self, ctx: SymbolTable[Tuple[ir.Value, Type]], program: Program):
         """
@@ -42,7 +40,9 @@ class CodeGenerator:
         for decl in program.declarations:
             match decl:
                 case FunctionDeclaration(id, _, type, _):
-                    func_type = self.get_llvm_type(type)
+                    param_types = [self.get_llvm_type(t) for t in type.param_types]
+                    return_type = self.get_llvm_type(type.return_type)
+                    func_type = ir.FunctionType(return_type, param_types)
                     func = ir.Function(self.module, func_type, id.name)
                     ctx.insert(id.name, (func, type))
                 case TopLevelVariableDeclaration(id, type, value):
@@ -213,7 +213,7 @@ class CodeGenerator:
                 return self.expGen(ctx.enter_scope(), exp)
             
             case _:
-                raise CodeGenerationError(f"Not implemented: Generating code for ({exp.lineno}, {exp.column}) expression  '{exp}'")
+                raise CodeGenerationError(f"Not implemented: Generating code for ({exp.lineno}, {exp.column}) expression '{exp}'")
         
     def boolGen(self, ctx: SymbolTable[Tuple[ir.Value, Type]], exp: Exp) -> Tuple[ir.Value, Type]:
         """
@@ -306,12 +306,8 @@ class CodeGenerator:
                 return ir.IntType(1)
             case BaseType("Unit"):
                 return ir.IntType(1)
-            case FunctionType():
-                param_types = [self.get_llvm_type(t) for t in aguda_type.param_types]
-                return_type = self.get_llvm_type(aguda_type.return_type)
-                return ir.FunctionType(return_type, param_types)
             case _:
-                raise CodeGenerationError(f"Not implemented type: {aguda_type} ({aguda_type.lineno}, {aguda_type.column})")
+                raise CodeGenerationError(f"Not implemented: Generating code for ({aguda_type.lineno}, {aguda_type.column}) type '{aguda_type}'")
 
     def fresh(self) -> int:
         """Generate a fresh number."""
@@ -340,8 +336,6 @@ class CodeGenerator:
         Setup function parameters. Raises an error if a parameter is a function type.
         """
         for param_var, param_type, arg in zip(func_decl.parameters, func_decl.type.param_types, func.args):          
-            if isinstance(param_type, FunctionType):
-                raise CodeGenerationError(f"Not implemented: Generating code for ({param_type.lineno}, {param_type.column}) type '{param_type}'")
             param_ptr = self.builder.alloca(self.get_llvm_type(param_type))
             self.builder.store(arg, param_ptr)
             ctx.insert(param_var.name, (param_ptr, param_type))

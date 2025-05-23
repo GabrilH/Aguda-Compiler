@@ -64,7 +64,7 @@ Got: 'true'
 
 
 /app/aguda-testing/test/valid/56269_insertionSort/insertionSort.agu [FAIL]
-Not implemented type: Int[] (5, 25)
+Not implemented: Generating code for (5, 25) type 'Int[]'
 
 
 /app/aguda-testing/test/valid/56269_multipleAssignment/multipleAssignment.agu [✔]
@@ -122,7 +122,7 @@ Got: '30'
 
 
 /app/aguda-testing/test/valid/56307_sumArrayFunction/sumArrayFunction.agu [FAIL]
-Not implemented type: Int[] (2, 22)
+Not implemented: Generating code for (2, 22) type 'Int[]'
 
 
 /app/aguda-testing/test/valid/56307_zeroLengthArray/zeroLengthArray.agu [FAIL]
@@ -244,7 +244,7 @@ Got: '0'
 
 
 /app/aguda-testing/test/valid/58168_addOneValueToArray/addOneValueToArray.agu [FAIL]
-Not implemented type: Int[] (3, 15)
+Not implemented: Generating code for (3, 15) type 'Int[]'
 
 
 /app/aguda-testing/test/valid/58168_cubesForEvenNum/cubesForEvenNum.agu [✔]
@@ -268,15 +268,15 @@ Got: '1'
 
 
 /app/aguda-testing/test/valid/58168_numOfEvenNumInArray/numOfEvenNumInArray.agu [FAIL]
-Not implemented type: Int[] (3, 11)
+Not implemented: Generating code for (3, 11) type 'Int[]'
 
 
 /app/aguda-testing/test/valid/58168_sumNumInArray/sumNumInArray.agu [FAIL]
-Not implemented type: Int[] (3, 14)
+Not implemented: Generating code for (3, 14) type 'Int[]'
 
 
 /app/aguda-testing/test/valid/58168_sumOfMinAndOfMaxOfArray/sumOfMinAndOfMaxOfArray.agu [FAIL]
-Not implemented type: Int[] (3, 14)
+Not implemented: Generating code for (3, 14) type 'Int[]'
 
 
 /app/aguda-testing/test/valid/58168_sumTwoNumbers/sumTwoNumbers.agu [✔]
@@ -447,7 +447,7 @@ Got: '33028128'
 
 
 /app/aguda-testing/test/valid/64361_array_sum/array_sum.agu [FAIL]
-Not implemented type: Int[][] (3, 26)
+Not implemented: Generating code for (3, 26) type 'Int[][]'
 
 
 /app/aguda-testing/test/valid/64361_check_positive_value/check_positive.agu [✔]
@@ -456,11 +456,11 @@ Got: 'falsetrue'
 
 
 /app/aguda-testing/test/valid/64361_count_vowels/count_vowels.agu [FAIL]
-Not implemented type: String[] (3, 33)
+Not implemented: Generating code for (3, 33) type 'String[]'
 
 
 /app/aguda-testing/test/valid/64361_exponential/exponential.agu [FAIL]
-Not implemented type: Int[] (3, 27)
+Not implemented: Generating code for (3, 27) type 'Int[]'
 
 
 /app/aguda-testing/test/valid/64361_factorial/factorial.agu [✔]
