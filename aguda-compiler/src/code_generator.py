@@ -216,7 +216,7 @@ class CodeGenerator:
             case _:
                 raise CodeGenerationError(f"Not implemented: Generating code for ({exp.lineno}, {exp.column}) expression '{exp}'")
         
-    def boolGen(self, ctx: SymbolTable[Tuple[ir.Value, Type]], exp: Exp) -> Tuple[ir.Value, Type]:
+    def boolGen(self, ctx: SymbolTable[Tuple[ir.Value, Type]], exp: BinaryOp) -> Tuple[ir.Value, Type]:
         """
         Generate LLVM code for a boolean expression in a short-circuit manner.
         Returns the LLVM value containing the result and the AGUDA type of the expression.
@@ -225,40 +225,27 @@ class CodeGenerator:
         
         fresh_num = self.fresh()
         end_block = self.current_function.append_basic_block(f"bool_{fresh_num}_end")
-        
-        match exp:
-            case BinaryOp(left, '&&', right):
-                eval_right_block = self.current_function.append_basic_block(f"bool_{fresh_num}_right")
+        eval_right_block = self.current_function.append_basic_block(f"bool_{fresh_num}_right")
 
-                # Store false result for the case when left is false
-                self.builder.store(ir.Constant(ir.IntType(1), 0), result_ptr)
-                
-                # Evaluate left operand
-                left_val, _ = self.expGen(ctx, left)
+        # Evaluate left operand
+        left_val, _ = self.expGen(ctx, exp.left)
+        self.builder.store(left_val, result_ptr)
+        
+        match exp.operator:
+            case '&&':
+                # Branch: if left is true, evaluate right, otherwise end
                 self.builder.cbranch(left_val, eval_right_block, end_block)
                 
-                # Evaluate right operand only if left was true
-                self.builder.position_at_end(eval_right_block)
-                right_val, _ = self.expGen(ctx, right)
-                self.builder.store(right_val, result_ptr)
-                self.builder.branch(end_block)
-                
-            case BinaryOp(left, '||', right):
-                eval_right_block = self.current_function.append_basic_block(f"bool_{fresh_num}_right")
-
-                # Store true result for the case when left is true
-                self.builder.store(ir.Constant(ir.IntType(1), 1), result_ptr)
-                
-                # Evaluate left operand
-                left_val, _ = self.expGen(ctx, left)
+            case '||':                
+                # Branch: if left is true, end, otherwise evaluate right
                 self.builder.cbranch(left_val, end_block, eval_right_block)
-                
-                # Evaluate right operand only if left was false
-                self.builder.position_at_end(eval_right_block)
-                right_val, _ = self.expGen(ctx, right)
-                self.builder.store(right_val, result_ptr)
-                self.builder.branch(end_block)
-        
+
+        # Evaluate right operand
+        self.builder.position_at_end(eval_right_block)
+        right_val, _ = self.expGen(ctx, exp.right)
+        self.builder.store(right_val, result_ptr)
+
+        self.builder.branch(end_block)
         self.builder.position_at_end(end_block)
         return self.builder.load(result_ptr), BaseType("Bool")
     
