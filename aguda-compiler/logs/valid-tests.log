@@ -1,434 +1,434 @@
 valid-tests
 
-Total tests run: 123
+Total tests run: 136
 Passed [✔]: 116
-Failed [FAIL]: 7
+Failed [FAIL]: 20
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\54394_array_operations\array_operations.agu [SKIP]
+/app/aguda-testing/test/valid/54394_array_operations/array_operations.agu [EXCEPTION]
 ('Unsupported type: Int[]', 3, 30)
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\54394_bool_array\bool_array.agu [SKIP]
+/app/aguda-testing/test/valid/54394_bool_array/bool_array.agu [EXCEPTION]
 ('Unsupported type: Bool[]', 4, 25)
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\54394_clamp\clamp.agu [✔]
+/app/aguda-testing/test/valid/54394_clamp/clamp.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\54394_combinations\combinations.agu [✔]
+/app/aguda-testing/test/valid/54394_combinations/combinations.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\54394_identifier\identifier.agu [✔]
+/app/aguda-testing/test/valid/54394_identifier/identifier.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\54394_operator_precedence\operator_precedence.agu [✔]
+/app/aguda-testing/test/valid/54394_operator_precedence/operator_precedence.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\54394_semicolon_assignment\semicolon_assignment.agu [✔]
+/app/aguda-testing/test/valid/54394_semicolon_assignment/semicolon_assignment.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\54394_string_printing\string_printing.agu [✔]
+/app/aguda-testing/test/valid/54394_string_printing/string_printing.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\54394_uv_mapping\uv_mapping.agu [FAIL]
+/app/aguda-testing/test/valid/54394_uv_mapping/uv_mapping.agu [FAIL]
 Semantic Error: (-1, -1) No main function found
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\54394_zip\zip.agu [FAIL]
+/app/aguda-testing/test/valid/54394_zip/zip.agu [FAIL]
 Semantic Error: (-1, -1) No main function found
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_ackermann\ackermann.agu [✔]
+/app/aguda-testing/test/valid/56269_ackermann/ackermann.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_associativity\associativity.agu [✔]
+/app/aguda-testing/test/valid/56269_associativity/associativity.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_booleanSequence\booleanSequence.agu [✔]
+/app/aguda-testing/test/valid/56269_boolean/boolean.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_boolean\boolean.agu [✔]
+/app/aguda-testing/test/valid/56269_booleanSequence/booleanSequence.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_bottomRow\bottomRow.agu [FAIL]
+/app/aguda-testing/test/valid/56269_bottomRow/bottomRow.agu [FAIL]
 Semantic Error: (-1, -1) No main function found
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_if\if.agu [✔]
+/app/aguda-testing/test/valid/56269_if/if.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_insertionSort\insertionSort.agu [SKIP]
+/app/aguda-testing/test/valid/56269_insertionSort/insertionSort.agu [EXCEPTION]
 ('Unsupported type: Int[]', 5, 25)
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_multipleAssignment\multipleAssignment.agu [✔]
+/app/aguda-testing/test/valid/56269_multipleAssignment/multipleAssignment.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_parentheses\parentheses.agu [✔]
+/app/aguda-testing/test/valid/56269_parentheses/parentheses.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56269_variables\variables.agu [✔]
+/app/aguda-testing/test/valid/56269_variables/variables.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56307_applyTwiceFunction\applyTwiceFunction.agu [✔]
+/app/aguda-testing/test/valid/56307_applyTwiceFunction/applyTwiceFunction.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56307_arithmeticOperations\arithmeticOperations.agu [✔]
+/app/aguda-testing/test/valid/56307_arithmeticOperations/arithmeticOperations.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56307_countdownFunction\countdownFunction.agu [✔]
+/app/aguda-testing/test/valid/56307_countdownFunction/countdownFunction.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56307_counterFunction\counterFunction.agu [✔]
+/app/aguda-testing/test/valid/56307_counterFunction/counterFunction.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56307_factorialFunction\factorialFunction.agu [✔]
+/app/aguda-testing/test/valid/56307_factorialFunction/factorialFunction.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56307_maxFunction\maxFunction.agu [✔]
+/app/aguda-testing/test/valid/56307_maxFunction/maxFunction.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56307_powerFunction\powerFunction.agu [✔]
+/app/aguda-testing/test/valid/56307_powerFunction/powerFunction.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56307_shadowingFunction\shadowFunction.agu [✔]
+/app/aguda-testing/test/valid/56307_shadowingFunction/shadowFunction.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56307_sumArrayFunction\sumArrayFunction.agu [SKIP]
+/app/aguda-testing/test/valid/56307_sumArrayFunction/sumArrayFunction.agu [EXCEPTION]
 ('Unsupported type: Int[]', 2, 22)
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56307_zeroLengthArray\zeroLengthArray.agu [SKIP]
+/app/aguda-testing/test/valid/56307_zeroLengthArray/zeroLengthArray.agu [EXCEPTION]
 Top-level variable declarations must be initialized with literals (2, 1)
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56311_boundary_arithmetic\boundary_arithmetic.agu [✔]
+/app/aguda-testing/test/valid/56311_boundary_arithmetic/boundary_arithmetic.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56311_equals\equals_method.agu [✔]
+/app/aguda-testing/test/valid/56311_equals/equals_method.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56311_high_order_function_type\high_order_func_type.agu [✔]
+/app/aguda-testing/test/valid/56311_high_order_function_type/high_order_func_type.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56311_if_inside_if\if_inside_if.agu [✔]
+/app/aguda-testing/test/valid/56311_if_inside_if/if_inside_if.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56311_minus_minus\minus_minus.agu [✔]
+/app/aguda-testing/test/valid/56311_minus_minus/minus_minus.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56311_shadow_variables\shadow_variables.agu [✔]
+/app/aguda-testing/test/valid/56311_shadow_variables/shadow_variables.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56311_while_loop_with_empty_body\while_loop_with_empty_body.agu [✔]
+/app/aguda-testing/test/valid/56311_while_loop_with_empty_body/while_loop_with_empty_body.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56311_while_loop_with_mutations\while_loop_with_mutations.agu [✔]
+/app/aguda-testing/test/valid/56311_while_loop_with_mutations/while_loop_with_mutations.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56332_dec_to_zero\dec_to_zero.agu [✔]
+/app/aguda-testing/test/valid/56332_dec_to_zero/dec_to_zero.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56332_factorial_in_aguda\factorial_in_aguda.agu [✔]
+/app/aguda-testing/test/valid/56332_factorial_in_aguda/factorial_in_aguda.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56332_if_then_else_printing_string\if_then_else_printing_string.agu [✔]
+/app/aguda-testing/test/valid/56332_if_then_else_printing_string/if_then_else_printing_string.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56332_precedence_calc\precedence_calc.agu [✔]
+/app/aguda-testing/test/valid/56332_precedence_calc/precedence_calc.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56332_simple_sum\simple_sum.agu [✔]
+/app/aguda-testing/test/valid/56332_simple_sum/simple_sum.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56334_factorial\factorial.agu [✔]
+/app/aguda-testing/test/valid/56334_factorial/factorial.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56334_fibonacci\fibonacci.agu [✔]
+/app/aguda-testing/test/valid/56334_fibonacci/fibonacci.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56334_helloWorld\helloWorld.agu [✔]
+/app/aguda-testing/test/valid/56334_helloWorld/helloWorld.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\56334_max\max.agu [✔]
+/app/aguda-testing/test/valid/56334_max/max.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58166_booleanConfusion\booleanConfusion.agu [✔]
+/app/aguda-testing/test/valid/58166_booleanConfusion/booleanConfusion.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58166_digits\digits.agu [✔]
+/app/aguda-testing/test/valid/58166_digits/digits.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58166_mathTest\mathTest.agu [✔]
+/app/aguda-testing/test/valid/58166_mathTest/mathTest.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58166_modTest\modTest.agu [✔]
+/app/aguda-testing/test/valid/58166_modTest/modTest.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58166_powerTen\powerTen.agu [✔]
+/app/aguda-testing/test/valid/58166_powerTen/powerTen.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58168_3letsPrint1stValue\3letsPrint1stValue.agu [✔]
+/app/aguda-testing/test/valid/58168_3letsPrint1stValue/3letsPrint1stValue.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58168_addOneValueToArray\addOneValueToArray.agu [SKIP]
+/app/aguda-testing/test/valid/58168_addOneValueToArray/addOneValueToArray.agu [EXCEPTION]
 ('Unsupported type: Int[]', 3, 15)
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58168_cubesForEvenNum\cubesForEvenNum.agu [✔]
+/app/aguda-testing/test/valid/58168_cubesForEvenNum/cubesForEvenNum.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58168_decrementor\decrementor.agu [✔]
+/app/aguda-testing/test/valid/58168_decrementor/decrementor.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58168_incrementor\incrementor.agu [✔]
+/app/aguda-testing/test/valid/58168_incrementor/incrementor.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58168_minusTwoNumbers\minusTwoNumbers.agu [✔]
+/app/aguda-testing/test/valid/58168_minusTwoNumbers/minusTwoNumbers.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58168_numOfEvenNumInArray\numOfEvenNumInArray.agu [SKIP]
+/app/aguda-testing/test/valid/58168_numOfEvenNumInArray/numOfEvenNumInArray.agu [EXCEPTION]
 ('Unsupported type: Int[]', 3, 11)
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58168_sumNumInArray\sumNumInArray.agu [SKIP]
+/app/aguda-testing/test/valid/58168_sumNumInArray/sumNumInArray.agu [EXCEPTION]
 ('Unsupported type: Int[]', 3, 14)
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58168_sumOfMinAndOfMaxOfArray\sumOfMinAndOfMaxOfArray.agu [SKIP]
+/app/aguda-testing/test/valid/58168_sumOfMinAndOfMaxOfArray/sumOfMinAndOfMaxOfArray.agu [EXCEPTION]
 ('Unsupported type: Int[]', 3, 14)
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58168_sumTwoNumbers\sumTwoNumbers.agu [✔]
+/app/aguda-testing/test/valid/58168_sumTwoNumbers/sumTwoNumbers.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58170_categorizeNumbers\categorizeNumbers.agu [✔]
+/app/aguda-testing/test/valid/58170_categorizeNumbers/categorizeNumbers.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58170_complexWhile\complexWhile.agu [✔]
+/app/aguda-testing/test/valid/58170_complexWhile/complexWhile.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58170_factorial\factorial.agu [✔]
+/app/aguda-testing/test/valid/58170_factorial/factorial.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58170_manyParams\manyParams.agu [✔]
+/app/aguda-testing/test/valid/58170_manyParams/manyParams.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58170_nestedCalls\nestedCalls.agu [✔]
+/app/aguda-testing/test/valid/58170_nestedCalls/nestedCalls.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58170_opWithoutParen\opWithoutParen.agu [✔]
+/app/aguda-testing/test/valid/58170_opWithoutParen/opWithoutParen.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58170_pyramid\pyramid.agu [✔]
+/app/aguda-testing/test/valid/58170_pyramid/pyramid.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58170_sameNameVar\sameNameVar.agu [✔]
+/app/aguda-testing/test/valid/58170_sameNameVar/sameNameVar.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58182_fibonacci\fibonacci.agu [✔]
+/app/aguda-testing/test/valid/58182_fibonacci/fibonacci.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58182_function_unit_type\function_unit_type.agu [✔]
+/app/aguda-testing/test/valid/58182_function_unit_type/function_unit_type.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58182_logic_operations\logic_operations.agu [✔]
+/app/aguda-testing/test/valid/58182_logic_operations/logic_operations.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58182_nested_function_calls\nested_function_calls.agu [✔]
+/app/aguda-testing/test/valid/58182_nested_function_calls/nested_function_calls.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58182_simple_arithmetic\simple_arithmetic.agu [✔]
+/app/aguda-testing/test/valid/58182_simple_arithmetic/simple_arithmetic.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58182_while_loop_break\while_loop_break.agu [✔]
+/app/aguda-testing/test/valid/58182_while_loop_break/while_loop_break.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58185_boolean_logic\boolean_logic.agu [✔]
+/app/aguda-testing/test/valid/58185_boolean_logic/boolean_logic.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58185_bubble_sort\bubble_sort.agu [FAIL]
+/app/aguda-testing/test/valid/58185_bubble_sort/bubble_sort.agu [FAIL]
 Semantic Error: (-1, -1) No main function found
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58185_factorial\factorial.agu [✔]
+/app/aguda-testing/test/valid/58185_factorial/factorial.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58185_mutual_recursion\mutual_recursion.agu [SKIP]
+/app/aguda-testing/test/valid/58185_mutual_recursion/mutual_recursion.agu [EXCEPTION]
 Not implemented: Generating code for (12, 11) expression  '" is "'
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58185_power_operator\power_operator.agu [✔]
+/app/aguda-testing/test/valid/58185_power_operator/power_operator.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58185_sequencing\sequencing.agu [✔]
+/app/aguda-testing/test/valid/58185_sequencing/sequencing.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58185_simple_arithmetic\simple_arithmetic.agu [✔]
+/app/aguda-testing/test/valid/58185_simple_arithmetic/simple_arithmetic.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58185_string_concatenation\string_concatenation.agu [FAIL]
+/app/aguda-testing/test/valid/58185_string_concatenation/string_concatenation.agu [FAIL]
 Semantic Error: (-1, -1) No main function found
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58185_unit_type_test\unit_type_test.agu [✔]
+/app/aguda-testing/test/valid/58185_unit_type_test/unit_type_test.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58185_while_loops\while_loops.agu [✔]
+/app/aguda-testing/test/valid/58185_while_loops/while_loops.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58250_average\58250_average.agu [✔]
+/app/aguda-testing/test/valid/58250_average/58250_average.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58250_basic_addition\58250_basic_addition.agu [✔]
+/app/aguda-testing/test/valid/58250_basic_addition/58250_basic_addition.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58250_calculate_operations\58250_calculate_operations.agu [✔]
+/app/aguda-testing/test/valid/58250_calculate_operations/58250_calculate_operations.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58250_check_value\58250_check_value.agu [✔]
+/app/aguda-testing/test/valid/58250_check_value/58250_check_value.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58250_cube\58250_cube.agu [✔]
+/app/aguda-testing/test/valid/58250_cube/58250_cube.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58250_divide_two_numbers\58250_divide_two_numbers.agu [✔]
+/app/aguda-testing/test/valid/58250_divide_two_numbers/58250_divide_two_numbers.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58250_is_even\58250_is_even.agu [✔]
+/app/aguda-testing/test/valid/58250_is_even/58250_is_even.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58250_max_between_2\58250_max_between_2.agu [✔]
+/app/aguda-testing/test/valid/58250_max_between_2/58250_max_between_2.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\58250_sum_all_to_n\58250_sum_all_to_n.agu [✔]
+/app/aguda-testing/test/valid/58250_sum_all_to_n/58250_sum_all_to_n.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64361_array_sum\array_sum.agu [SKIP]
+/app/aguda-testing/test/valid/64361_array_sum/array_sum.agu [EXCEPTION]
 ('Unsupported type: Int[][]', 3, 26)
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64361_check_positive_value\check_positive.agu [✔]
+/app/aguda-testing/test/valid/64361_check_positive_value/check_positive.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64361_count_vowels\count_vowels.agu [SKIP]
+/app/aguda-testing/test/valid/64361_count_vowels/count_vowels.agu [EXCEPTION]
 ('Unsupported type: String[]', 3, 33)
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64361_exponential\exponential.agu [SKIP]
+/app/aguda-testing/test/valid/64361_exponential/exponential.agu [EXCEPTION]
 ('Unsupported type: Int[]', 3, 27)
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64361_factorial\factorial.agu [✔]
+/app/aguda-testing/test/valid/64361_factorial/factorial.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64361_fibonacci\fibonacci.agu [✔]
+/app/aguda-testing/test/valid/64361_fibonacci/fibonacci.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64361_greatest_common_divisor\greatest_common_divisor.agu [✔]
+/app/aguda-testing/test/valid/64361_greatest_common_divisor/greatest_common_divisor.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64361_prime_number\prime_number.agu [✔]
+/app/aguda-testing/test/valid/64361_prime_number/prime_number.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64361_reverse_array\reverse_array.agu [FAIL]
+/app/aguda-testing/test/valid/64361_reverse_array/reverse_array.agu [FAIL]
 Semantic Error: (-1, -1) No main function found
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64361_sum_function\sum_function.agu [FAIL]
+/app/aguda-testing/test/valid/64361_sum_function/sum_function.agu [FAIL]
 Semantic Error: (-1, -1) No main function found
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64371_even_fibonnaci_numbers\even_fibonnaci_numbers.agu [✔]
+/app/aguda-testing/test/valid/64371_even_fibonnaci_numbers/even_fibonnaci_numbers.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64371_greatest_common_divisor\greatest_common_divisor.agu [✔]
+/app/aguda-testing/test/valid/64371_greatest_common_divisor/greatest_common_divisor.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64371_multiples_3_or_5\multiples_3_or_5.agu [✔]
+/app/aguda-testing/test/valid/64371_multiples_3_or_5/multiples_3_or_5.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_add\add.agu [✔]
+/app/aguda-testing/test/valid/64854_add/add.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_coin_flip\coin_flip.agu [✔]
+/app/aguda-testing/test/valid/64854_coin_flip/coin_flip.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_heart\heart.agu [✔]
+/app/aguda-testing/test/valid/64854_heart/heart.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_inc\inc.agu [✔]
+/app/aguda-testing/test/valid/64854_inc/inc.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_is_pair\is_pair.agu [✔]
+/app/aguda-testing/test/valid/64854_is_pair/is_pair.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_positive_power\positive_power.agu [✔]
+/app/aguda-testing/test/valid/64854_positive_power/positive_power.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_printA\printA.agu [✔]
+/app/aguda-testing/test/valid/64854_printA/printA.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_produce_letter\produce_letter.agu [✔]
+/app/aguda-testing/test/valid/64854_produce_letter/produce_letter.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\64854_switch\switch.agu [✔]
+/app/aguda-testing/test/valid/64854_switch/switch.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000-scope-cond\tcomp000-scope-cond.agu [✔]
+/app/aguda-testing/test/valid/tcomp000-scope-cond/tcomp000-scope-cond.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000-scope-leave\tcomp000-scope-leave.agu [✔]
+/app/aguda-testing/test/valid/tcomp000-scope-leave/tcomp000-scope-leave.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_assoc_eq\assoc_eq.agu [✔]
+/app/aguda-testing/test/valid/tcomp000_assoc_eq/assoc_eq.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_callCond\tcomp000_callCond.agu [✔]
+/app/aguda-testing/test/valid/tcomp000_callCond/tcomp000_callCond.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_collatz\collatz.agu [✔]
+/app/aguda-testing/test/valid/tcomp000_collatz/collatz.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_double_wild\tcomp000_double_wild.agu [✔]
+/app/aguda-testing/test/valid/tcomp000_double_wild/tcomp000_double_wild.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_evenOddCond\evenOddCond.agu [✔]
+/app/aguda-testing/test/valid/tcomp000_evenOdd/evenOdd.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_evenOddResult\evenOddResult.agu [✔]
+/app/aguda-testing/test/valid/tcomp000_evenOddCond/evenOddCond.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_evenOdd\evenOdd.agu [✔]
+/app/aguda-testing/test/valid/tcomp000_evenOddResult/evenOddResult.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_expIf\expif.agu [✔]
+/app/aguda-testing/test/valid/tcomp000_expIf/expif.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_if_then_if\if_then_if.agu [✔]
+/app/aguda-testing/test/valid/tcomp000_if_then_if/if_then_if.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_intFuns\intFuns.agu [✔]
+/app/aguda-testing/test/valid/tcomp000_intFuns/intFuns.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_letOfLetFun\letOfLetFun.agu [✔]
+/app/aguda-testing/test/valid/tcomp000_letOfLet/letOfLet.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_letOfLet\letOfLet.agu [✔]
+/app/aguda-testing/test/valid/tcomp000_letOfLetFun/letOfLetFun.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_letPlusLet\letPlusLet.agu [✔]
+/app/aguda-testing/test/valid/tcomp000_letPlusLet/letPlusLet.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_notNotNot\notNotNot.agu [✔]
+/app/aguda-testing/test/valid/tcomp000_notNotNot/notNotNot.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_power-iterative\power-iterative.agu [✔]
+/app/aguda-testing/test/valid/tcomp000_power-iterative/power-iterative.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_power-of-power\power-of-power.agu [✔]
+/app/aguda-testing/test/valid/tcomp000_power-of-power/power-of-power.agu [✔]
 
 
-C:\Users\Gabri\Documents\2024-2025 2º Semestre\TComp\TComp_Repo\aguda-compiler\aguda-testing\test\valid\tcomp000_sumThree\sumThree.agu [✔]
+/app/aguda-testing/test/valid/tcomp000_sumThree/sumThree.agu [✔]
 
 
