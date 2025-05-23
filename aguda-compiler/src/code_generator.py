@@ -17,7 +17,7 @@ class CodeGenerator:
 
     def generate(self, program: Program) -> str:
         """Generate LLVM IR code from the AST."""
-        ctx = SymbolTable[ir.Value]()
+        ctx = SymbolTable[Tuple[ir.Value, Type]]()
         self.add_builtins(ctx)	
         self.first_pass(ctx, program)
         self.second_pass(ctx, program)
@@ -139,13 +139,13 @@ class CodeGenerator:
                 case FunctionDeclaration(id, _, type, _):
                     func_type = self.get_llvm_type(type)
                     func = ir.Function(self.module, func_type, id.name)
-                    ctx.insert(id.name, func)
+                    ctx.insert(id.name, (func, type))
                 case TopLevelVariableDeclaration(id, type, value):
                     if isinstance(value, (IntLiteral, BoolLiteral, UnitLiteral)):
                         var_type = self.get_llvm_type(type)
                         var = ir.GlobalVariable(self.module, var_type, id.name)
                         var.initializer = self.literalGen(value)
-                        ctx.insert(id.name, var)
+                        ctx.insert(id.name, (var, type))
                     else:
                         raise CodeGenerationError(f"Top-level variable declarations must be initialized with literals ({decl.lineno}, {decl.column})")
 
@@ -159,7 +159,7 @@ class CodeGenerator:
 
     def generate_function(self, ctx: SymbolTable, func_decl: FunctionDeclaration):
         """Generate LLVM code for a function declaration."""
-        func : ir.Function = ctx.lookup(func_decl.id.name)
+        func, _ = ctx.lookup(func_decl.id.name)
         
         entry_block = func.append_basic_block('entry')
         self.builder = ir.IRBuilder(entry_block)
@@ -171,7 +171,7 @@ class CodeGenerator:
             param_type = func_decl.type.param_types[func.args.index(arg)]
             param_ptr = self.builder.alloca(self.get_llvm_type(param_type))
             self.builder.store(arg, param_ptr)
-            local_ctx.insert(param.name, param_ptr)
+            local_ctx.insert(param.name, (param_ptr, param_type))
         
         value = self.expGen(local_ctx, func_decl.body)
         
@@ -186,7 +186,7 @@ class CodeGenerator:
             case IntLiteral() | BoolLiteral() | UnitLiteral():
                 return self.literalGen(exp)
             case Var(name):
-                var_value = ctx.lookup(name)
+                var_value, _ = ctx.lookup(name)
                 return self.builder.load(var_value)
             
             case VariableDeclaration(id, type, value):
@@ -197,7 +197,7 @@ class CodeGenerator:
                 # Store the value
                 val = self.expGen(ctx.enter_scope(),value)
                 self.builder.store(val, var_ptr)
-                ctx.insert(id.name, var_ptr)
+                ctx.insert(id.name, (var_ptr, type))
 
                 return self.literalGen(UnitLiteral())
             
@@ -230,13 +230,12 @@ class CodeGenerator:
                         raise CodeGenerationError(f"Unsupported binary operator: {op} ({exp.lineno}, {exp.column})")
 
             case FunctionCall(id, arguments):
+
+                if id.name == "print":
+                    return self.callPrint(ctx, arguments[0])
+                
                 arg_values = [self.expGen(ctx, arg) for arg in arguments]
-                func = ctx.lookup(id.name)
-                
-                # Special handling for print function: convert bool to int
-                if id.name == "print" and arg_values[0].type == ir.IntType(1):
-                        arg_values[0] = self.builder.zext(arg_values[0], ir.IntType(32))
-                
+                func, _ = ctx.lookup(id.name)                
                 return self.builder.call(func, arg_values)
             
             case Conditional(condition, then_branch, else_branch):
@@ -298,7 +297,7 @@ class CodeGenerator:
             case Assignment(lhs, exp):
                 val = self.expGen(ctx, exp)
                 if isinstance(lhs, Var):
-                    var_ptr = ctx.lookup(lhs.name)
+                    var_ptr, _ = ctx.lookup(lhs.name)
                     self.builder.store(val, var_ptr)
                 else:
                     raise CodeGenerationError(f"Array assignments not supported ({lhs.lineno}, {lhs.column})")
@@ -371,6 +370,12 @@ class CodeGenerator:
         
         self.builder.position_at_end(end_block)
         return self.builder.load(result_ptr)
+    
+    def callPrint(self, ctx: SymbolTable, exp: Exp):
+        """
+        Generate LLVM code for a print function call.
+        """
+        pass
 
     def literalGen(self, exp: Exp) -> ir.Value:
         """
