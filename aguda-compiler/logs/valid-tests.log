@@ -343,7 +343,7 @@ Got: '5'
 
 
 /app/aguda-testing/test/valid/58170_opWithoutParen/opWithoutParen.agu [FAIL]
-lli execution failed: lli: lli: /app/aguda-testing/test/valid/58170_opWithoutParen/opWithoutParen.ll:80:1: error: expected instruction opcode
+lli execution failed: lli: lli: /app/aguda-testing/test/valid/58170_opWithoutParen/opWithoutParen.ll:84:1: error: expected instruction opcode
 bool_1_end:
 ^
 
@@ -397,8 +397,8 @@ while_0_body:
 
 
 /app/aguda-testing/test/valid/58185_boolean_logic/boolean_logic.agu [FAIL]
-lli execution failed: lli: lli: /app/aguda-testing/test/valid/58185_boolean_logic/boolean_logic.ll:87:1: error: expected instruction opcode
-bool_7_end:
+lli execution failed: lli: lli: /app/aguda-testing/test/valid/58185_boolean_logic/boolean_logic.ll:75:1: error: expected instruction opcode
+bool_5_end:
 ^
 
 

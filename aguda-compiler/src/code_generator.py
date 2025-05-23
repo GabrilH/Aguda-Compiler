@@ -361,89 +361,27 @@ class CodeGenerator:
         Generate LLVM code for a print function call.
         Returns the LLVM value containing the result and the AGUDA type of the expression.
         """
-        # Get the printf function
         printf_func = self.module.get_global('printf')
-        
-        # Evaluate the argument
         arg_val, arg_type = self.expGen(ctx, exp)
-        
-        # Determine the format string and handle the argument based on type
         match arg_type:
             case BaseType("Int"):
-                # Create format string for integers
-                fmt_str = "%d\0"
-                fmt_const = ir.Constant(ir.ArrayType(ir.IntType(8), len(fmt_str)), bytearray(fmt_str.encode("utf8")))
-                fmt_global = ir.GlobalVariable(self.module, fmt_const.type, f"fmt_int_{self.fresh()}")
-                fmt_global.linkage = 'internal'
-                fmt_global.global_constant = True
-                fmt_global.initializer = fmt_const
-                
-                # Get pointer to format string
-                fmt_ptr = self.builder.gep(fmt_global, [ir.Constant(ir.IntType(32), 0), ir.Constant(ir.IntType(32), 0)])
-                
-                # Call printf
-                self.builder.call(printf_func, [fmt_ptr, arg_val])
+                str_ptr = self.create_global_string("%d\0")
+                self.builder.call(printf_func, [str_ptr, arg_val])
                 
             case BaseType("Bool"):
-                # Create format strings for True and False
-                true_str = "true\0"
-                false_str = "false\0"
-                
-                true_const = ir.Constant(ir.ArrayType(ir.IntType(8), len(true_str)), bytearray(true_str.encode("utf8")))
-                true_global = ir.GlobalVariable(self.module, true_const.type, f"fmt_true_{self.fresh()}")
-                true_global.linkage = 'internal'
-                true_global.global_constant = True
-                true_global.initializer = true_const
-                
-                false_const = ir.Constant(ir.ArrayType(ir.IntType(8), len(false_str)), bytearray(false_str.encode("utf8")))
-                false_global = ir.GlobalVariable(self.module, false_const.type, f"fmt_false_{self.fresh()}")
-                false_global.linkage = 'internal'
-                false_global.global_constant = True
-                false_global.initializer = false_const
-                
-                # Create conditional to choose the right string
-                then_label, else_label, end_label = self.fresh_cond_labels()
-                then_block = self.current_function.append_basic_block(then_label)
-                else_block = self.current_function.append_basic_block(else_label)
-                end_block = self.current_function.append_basic_block(end_label)
-                
-                # Branch based on boolean value
-                self.builder.cbranch(arg_val, then_block, else_block)
-                
-                # True case
-                self.builder.position_at_end(then_block)
-                true_ptr = self.builder.gep(true_global, [ir.Constant(ir.IntType(32), 0), ir.Constant(ir.IntType(32), 0)])
-                self.builder.call(printf_func, [true_ptr])
-                self.builder.branch(end_block)
-                
-                # False case
-                self.builder.position_at_end(else_block)
-                false_ptr = self.builder.gep(false_global, [ir.Constant(ir.IntType(32), 0), ir.Constant(ir.IntType(32), 0)])
-                self.builder.call(printf_func, [false_ptr])
-                self.builder.branch(end_block)
-                
-                # Continue
-                self.builder.position_at_end(end_block)
+                true_ptr = self.create_global_string("true\0")
+                false_ptr = self.create_global_string("false\0")
+                selected_ptr = self.builder.select(arg_val, true_ptr, false_ptr)
+                self.builder.call(printf_func, [selected_ptr])
                 
             case BaseType("Unit"):
-                # Create format string for unit
-                fmt_str = "unit\0"
-                fmt_const = ir.Constant(ir.ArrayType(ir.IntType(8), len(fmt_str)), bytearray(fmt_str.encode("utf8")))
-                fmt_global = ir.GlobalVariable(self.module, fmt_const.type, f"fmt_unit_{self.fresh()}")
-                fmt_global.linkage = 'internal'
-                fmt_global.global_constant = True
-                fmt_global.initializer = fmt_const
-                
-                # Get pointer to format string
-                fmt_ptr = self.builder.gep(fmt_global, [ir.Constant(ir.IntType(32), 0), ir.Constant(ir.IntType(32), 0)])
-                
-                # Call printf
-                self.builder.call(printf_func, [fmt_ptr])
+                str_ptr = self.create_global_string("unit\0")
+                self.builder.call(printf_func, [str_ptr])
                 
             case _:
                 raise CodeGenerationError(f"Unsupported type for print: {arg_type}")
         
-        return ir.Constant(ir.IntType(1), 0), BaseType("Unit")
+        return self.expGen(ctx, UnitLiteral())
 
     def get_llvm_type(self, aguda_type: Type) -> ir.Type:
         """Convert AGUDA type to LLVM type."""
@@ -482,3 +420,16 @@ class CodeGenerator:
         body_label = f"while_{loop_num}_body"
         end_label = f"while_{loop_num}_end"
         return cond_label, body_label, end_label
+    
+    def create_global_string(self, string: str) -> ir.Value:
+        """
+        Create a global variable for a string literal.
+        Returns the pointer to the string.
+        """
+        string_const = ir.Constant(ir.ArrayType(ir.IntType(8), len(string)), bytearray(string.encode("utf8")))
+        global_var = ir.GlobalVariable(self.module, string_const.type, f"str_{self.fresh()}")
+        global_var.linkage = 'internal'
+        global_var.global_constant = True
+        global_var.initializer = string_const
+        prt = self.builder.gep(global_var, [ir.Constant(ir.IntType(32), 0), ir.Constant(ir.IntType(32), 0)])
+        return prt
