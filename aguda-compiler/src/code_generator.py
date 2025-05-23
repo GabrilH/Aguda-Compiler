@@ -125,7 +125,7 @@ class CodeGenerator:
                     if isinstance(value, (IntLiteral, BoolLiteral, UnitLiteral)):
                         var_type = self.get_llvm_type(type)
                         var = ir.GlobalVariable(self.module, var_type, id.name)
-                        var.initializer, _ = self.expGen(ctx, value)
+                        var.initializer, _ = self.expGen(ctx.enter_scope(), value)
                         ctx.insert(id.name, (var, type))
                     else:
                         raise CodeGenerationError(f"Top-level variable declarations must be initialized with literals ({decl.lineno}, {decl.column})")
@@ -292,7 +292,7 @@ class CodeGenerator:
                 return self.boolGen(ctx, exp)
                 
             case Group(exp):
-                return self.expGen(ctx, exp)
+                return self.expGen(ctx.enter_scope(), exp)
             
             case _:
                 raise CodeGenerationError(f"Not implemented: Generating code for ({exp.lineno}, {exp.column}) expression  '{exp}'")

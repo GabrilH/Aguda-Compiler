@@ -1,8 +1,8 @@
 valid-tests
 
 Total tests run: 136
-Passed [✔]: 101
-Failed [FAIL]: 35
+Passed [✔]: 102
+Failed [FAIL]: 34
 
 /app/aguda-testing/test/valid/54394_array_operations/array_operations.agu [EXCEPTION]
 Not implemented type: Int[] (3, 30)
@@ -604,9 +604,9 @@ Expected: '5'
 Got: '5'
 
 
-/app/aguda-testing/test/valid/tcomp000-scope-leave/tcomp000-scope-leave.agu [FAIL]
+/app/aguda-testing/test/valid/tcomp000-scope-leave/tcomp000-scope-leave.agu [✔]
 Expected: '5'
-Got: 'true'
+Got: '5'
 
 
 /app/aguda-testing/test/valid/tcomp000_assoc_eq/assoc_eq.agu [FAIL]
