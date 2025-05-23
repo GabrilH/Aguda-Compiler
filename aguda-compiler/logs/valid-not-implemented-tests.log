@@ -1,8 +1,24 @@
 valid-not-implemented-tests
 
-Total tests run: 29
-Passed [✔]: 14
-Failed [FAIL]: 15
+Total tests run: 33
+Passed [✔]: 16
+Failed [FAIL]: 17
+
+/app/aguda-testing/test/valid-not-implemented/54394_array_operations/array_operations.agu [✔]
+Program is semantically valid!
+
+
+/app/aguda-testing/test/valid-not-implemented/54394_bool_array/bool_array.agu [✔]
+Program is semantically valid!
+
+
+/app/aguda-testing/test/valid-not-implemented/54394_uv_mapping/uv_mapping.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
+
+
+/app/aguda-testing/test/valid-not-implemented/54394_zip/zip.agu [FAIL]
+Semantic Error: (-1, -1) No main function found
+
 
 /app/aguda-testing/test/valid-not-implemented/56311_empty_array/empty_array.agu [FAIL]
 Semantic Error: (-1, -1) No main function found

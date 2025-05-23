@@ -1,16 +1,8 @@
 valid-tests
 
-Total tests run: 136
+Total tests run: 132
 Passed [✔]: 112
-Failed [FAIL]: 24
-
-/app/aguda-testing/test/valid/54394_array_operations/array_operations.agu [FAIL]
-Not implemented type: Int[] (3, 30)
-
-
-/app/aguda-testing/test/valid/54394_bool_array/bool_array.agu [FAIL]
-Not implemented type: Bool[] (4, 25)
-
+Failed [FAIL]: 20
 
 /app/aguda-testing/test/valid/54394_clamp/clamp.agu [✔]
 Expected: '7'
@@ -40,14 +32,6 @@ Got: '12'
 /app/aguda-testing/test/valid/54394_string_printing/string_printing.agu [✔]
 Expected: 'falsefalsefalsefalse'
 Got: 'falsefalsefalsefalse'
-
-
-/app/aguda-testing/test/valid/54394_uv_mapping/uv_mapping.agu [FAIL]
-Semantic Error: (-1, -1) No main function found
-
-
-/app/aguda-testing/test/valid/54394_zip/zip.agu [FAIL]
-Semantic Error: (-1, -1) No main function found
 
 
 /app/aguda-testing/test/valid/56269_ackermann/ackermann.agu [✔]
