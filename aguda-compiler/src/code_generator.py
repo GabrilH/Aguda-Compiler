@@ -70,14 +70,8 @@ class CodeGenerator:
         self.builder = ir.IRBuilder(entry_block)
         self.current_function = func
         
-        # New scope, add parameters to symbol table
         local_ctx = ctx.enter_scope()
-        for param, arg in zip(func_decl.parameters, func.args):
-            param_type = func_decl.type.param_types[func.args.index(arg)]
-            param_ptr = self.builder.alloca(self.get_llvm_type(param_type))
-            self.builder.store(arg, param_ptr)
-            local_ctx.insert(param.name, (param_ptr, param_type))
-        
+        self._setup_function_parameters(local_ctx, func_decl, func)
         value, _ = self.expGen(local_ctx, func_decl.body)
         
         self.builder.ret(value)
@@ -284,17 +278,17 @@ class CodeGenerator:
         arg_val, arg_type = self.expGen(ctx, exp)
         match arg_type:
             case BaseType("Int"):
-                str_ptr = self.create_global_string("%d\0")
+                str_ptr = self._create_global_string("%d\0")
                 self.builder.call(printf_func, [str_ptr, arg_val])
                 
             case BaseType("Bool"):
-                true_ptr = self.create_global_string("true\0")
-                false_ptr = self.create_global_string("false\0")
+                true_ptr = self._create_global_string("true\0")
+                false_ptr = self._create_global_string("false\0")
                 selected_ptr = self.builder.select(arg_val, true_ptr, false_ptr)
                 self.builder.call(printf_func, [selected_ptr])
                 
             case BaseType("Unit"):
-                str_ptr = self.create_global_string("unit\0")
+                str_ptr = self._create_global_string("unit\0")
                 self.builder.call(printf_func, [str_ptr])
                 
             case _:
@@ -341,7 +335,18 @@ class CodeGenerator:
         end_label = f"while_{loop_num}_end"
         return cond_label, body_label, end_label
     
-    def create_global_string(self, string: str) -> ir.Value:
+    def _setup_function_parameters(self, ctx: SymbolTable[Tuple[ir.Value, Type]], func_decl: FunctionDeclaration, func: ir.Function):
+        """
+        Setup function parameters. Raises an error if a parameter is a function type.
+        """
+        for param_var, param_type, arg in zip(func_decl.parameters, func_decl.type.param_types, func.args):          
+            if isinstance(param_type, FunctionType):
+                raise CodeGenerationError(f"Not implemented: Generating code for ({param_type.lineno}, {param_type.column}) type '{param_type}'")
+            param_ptr = self.builder.alloca(self.get_llvm_type(param_type))
+            self.builder.store(arg, param_ptr)
+            ctx.insert(param_var.name, (param_ptr, param_type))
+    
+    def _create_global_string(self, string: str) -> ir.Value:
         """
         Create a global variable for a string literal.
         Returns the pointer to the string.

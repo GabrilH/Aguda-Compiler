@@ -82,12 +82,8 @@ Expected: '6'
 Got: '6'
 
 
-/app/aguda-testing/test/valid/56307_applyTwiceFunction/applyTwiceFunction.agu [EXCEPTION]
-lli execution failed: lli: lli: /app/aguda-testing/test/valid/56307_applyTwiceFunction/applyTwiceFunction.ll:35:26: error: invalid type for function argument
-define i32 @"applyTwice"(i32 (i32) %".1", i32 %".2")
-                         ^
-
-
+/app/aguda-testing/test/valid/56307_applyTwiceFunction/applyTwiceFunction.agu [FAIL]
+Not implemented: Generating code for (2, 30) type '(Int) -> Int'
 
 
 /app/aguda-testing/test/valid/56307_arithmeticOperations/arithmeticOperations.agu [✔]
@@ -143,12 +139,8 @@ Expected: 'false'
 Got: 'false'
 
 
-/app/aguda-testing/test/valid/56311_high_order_function_type/high_order_func_type.agu [EXCEPTION]
-lli execution failed: lli: lli: /app/aguda-testing/test/valid/56311_high_order_function_type/high_order_func_type.ll:35:21: error: invalid type for function argument
-define i32 @"apply"(i32 (i32) %".1", i32 %".2")
-                    ^
-
-
+/app/aguda-testing/test/valid/56311_high_order_function_type/high_order_func_type.agu [FAIL]
+Not implemented: Generating code for (3, 24) type '(Int) -> Int'
 
 
 /app/aguda-testing/test/valid/56311_if_inside_if/if_inside_if.agu [✔]
