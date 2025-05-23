@@ -23,7 +23,7 @@ class CodeGenerator:
         self.second_pass(ctx, program)
         return str(self.module)
     
-    def add_builtins(self, ctx: SymbolTable):
+    def add_builtins(self, ctx: SymbolTable[Tuple[ir.Value, Type]]):
         """
         Adds built-in functions to the module with their implementations.
         """
@@ -130,7 +130,7 @@ class CodeGenerator:
 
         ctx.insert("_power", (power_func, power_type))
 
-    def first_pass(self, ctx: SymbolTable, program: Program):
+    def first_pass(self, ctx: SymbolTable[Tuple[ir.Value, Type]], program: Program):
         """
         First pass over the AST to collect function types and global variables.
         """
@@ -144,12 +144,12 @@ class CodeGenerator:
                     if isinstance(value, (IntLiteral, BoolLiteral, UnitLiteral)):
                         var_type = self.get_llvm_type(type)
                         var = ir.GlobalVariable(self.module, var_type, id.name)
-                        var.initializer = self.literalGen(value)
+                        var.initializer, _ = self.literalGen(value)
                         ctx.insert(id.name, (var, type))
                     else:
                         raise CodeGenerationError(f"Top-level variable declarations must be initialized with literals ({decl.lineno}, {decl.column})")
 
-    def second_pass(self, ctx: SymbolTable, program: Program):
+    def second_pass(self, ctx: SymbolTable[Tuple[ir.Value, Type]], program: Program):
         """
         Second pass over the AST to generate LLVM code.
         """
@@ -157,7 +157,7 @@ class CodeGenerator:
             if isinstance(decl, FunctionDeclaration):
                 self.generate_function(ctx, decl)
 
-    def generate_function(self, ctx: SymbolTable, func_decl: FunctionDeclaration):
+    def generate_function(self, ctx: SymbolTable[Tuple[ir.Value, Type]], func_decl: FunctionDeclaration):
         """Generate LLVM code for a function declaration."""
         func, _ = ctx.lookup(func_decl.id.name)
         
@@ -173,31 +173,31 @@ class CodeGenerator:
             self.builder.store(arg, param_ptr)
             local_ctx.insert(param.name, (param_ptr, param_type))
         
-        value = self.expGen(local_ctx, func_decl.body)
+        value, _ = self.expGen(local_ctx, func_decl.body)
         
         self.builder.ret(value)
 
-    def expGen(self, ctx: SymbolTable, exp: Exp) -> ir.Value:
+    def expGen(self, ctx: SymbolTable[Tuple[ir.Value, Type]], exp: Exp) -> Tuple[ir.Value, Type]:
         """
         Generate LLVM code for an expression.
-        Returns the LLVM value containing the result.
+        Returns the LLVM value containing the result and the AGUDA type of the expression.
         """
         match exp:
             case IntLiteral() | BoolLiteral() | UnitLiteral():
                 return self.literalGen(exp)
             case Var(name):
-                var_value, _ = ctx.lookup(name)
-                return self.builder.load(var_value)
+                var_value, var_aguda_type = ctx.lookup(name)
+                return self.builder.load(var_value), var_aguda_type
             
             case VariableDeclaration(id, type, value):
                 # Allocate space for the variable
-                var_type = self.get_llvm_type(type)
-                var_ptr = self.builder.alloca(var_type)
+                var_llvm_type = self.get_llvm_type(type)
+                var_ptr = self.builder.alloca(var_llvm_type)
                 
                 # Store the value
-                val = self.expGen(ctx.enter_scope(),value)
+                val, var_aguda_type = self.expGen(ctx.enter_scope(),value)
                 self.builder.store(val, var_ptr)
-                ctx.insert(id.name, (var_ptr, type))
+                ctx.insert(id.name, (var_ptr, var_aguda_type))
 
                 return self.literalGen(UnitLiteral())
             
@@ -207,37 +207,37 @@ class CodeGenerator:
                     return self.boolGen(ctx, exp)
                 
                 # For other binary operators, evaluate both sides
-                val1 = self.expGen(ctx, left)
-                val2 = self.expGen(ctx, right)
+                val1, _ = self.expGen(ctx, left)
+                val2, _ = self.expGen(ctx, right)
 
                 match op:
                     case '+':
-                        return self.builder.add(val1, val2)
+                        return self.builder.add(val1, val2), BaseType("Int")
                     case '-':
-                        return self.builder.sub(val1, val2)
+                        return self.builder.sub(val1, val2), BaseType("Int")
                     case '*':
-                        return self.builder.mul(val1, val2)
+                        return self.builder.mul(val1, val2), BaseType("Int")
                     case '/':
-                        return self.builder.sdiv(val1, val2)
+                        return self.builder.sdiv(val1, val2), BaseType("Int")
                     case '%':
-                        return self.builder.srem(val1, val2)
+                        return self.builder.srem(val1, val2), BaseType("Int")
                     case '^':
                         power_func = self.module.get_global('_power')
-                        return self.builder.call(power_func, [val1, val2])
+                        return self.builder.call(power_func, [val1, val2]), BaseType("Int")
                     case '==' | '!=' | '<' | '<=' | '>' | '>=':
-                        return self.builder.icmp_signed(op, val1, val2)
+                        return self.builder.icmp_signed(op, val1, val2), BaseType("Bool")
                     case _:
                         raise CodeGenerationError(f"Unsupported binary operator: {op} ({exp.lineno}, {exp.column})")
 
             case FunctionCall(id, arguments):
-                arg_values = [self.expGen(ctx, arg) for arg in arguments]
-                func, _  = ctx.lookup(id.name)
+                arg_values = [val for val, _ in [self.expGen(ctx, arg) for arg in arguments]]
+                func, func_aguda_type = ctx.lookup(id.name)
                 
                 # Special handling for print function: convert bool to int
                 if id.name == "print" and arg_values[0].type == ir.IntType(1):
                         arg_values[0] = self.builder.zext(arg_values[0], ir.IntType(32))
                 
-                return self.builder.call(func, arg_values)
+                return self.builder.call(func, arg_values), func_aguda_type.return_type
             
             case Conditional(condition, then_branch, else_branch):
                 then_label, else_label, end_label = self.fresh_cond_labels()
@@ -246,18 +246,18 @@ class CodeGenerator:
                 end_block = self.current_function.append_basic_block(end_label)
                 
                 # Generate condition and branch
-                cond_val = self.expGen(ctx, condition)
+                cond_val, _ = self.expGen(ctx, condition)
                 self.builder.cbranch(cond_val, then_block, else_block)
                 
                 # Generate then branch
                 self.builder.position_at_end(then_block)
-                then_val = self.expGen(ctx.enter_scope(), then_branch)
+                then_val, then_aguda_type = self.expGen(ctx.enter_scope(), then_branch)
                 then_block_end = self.builder.block
                 self.builder.branch(end_block)
                 
                 # Generate else branch
                 self.builder.position_at_end(else_block)
-                else_val = self.expGen(ctx.enter_scope(), else_branch)
+                else_val, _ = self.expGen(ctx.enter_scope(), else_branch)
                 else_block_end = self.builder.block
                 self.builder.branch(end_block)
 
@@ -267,7 +267,7 @@ class CodeGenerator:
                 phi.add_incoming(then_val, then_block_end)
                 phi.add_incoming(else_val, else_block_end)
                 
-                return phi
+                return phi, then_aguda_type
             
             case WhileLoop(condition, body):
                 cond_label, body_label, end_label = self.fresh_while_labels()
@@ -280,7 +280,7 @@ class CodeGenerator:
                 
                 # Generate condition
                 self.builder.position_at_end(cond_block)
-                cond_val = self.expGen(ctx, condition)
+                cond_val, _ = self.expGen(ctx, condition)
                 self.builder.cbranch(cond_val, body_block, end_block)
                 
                 # Generate body
@@ -296,7 +296,7 @@ class CodeGenerator:
                 return self.expGen(ctx, rest)
             
             case Assignment(lhs, exp):
-                val = self.expGen(ctx, exp)
+                val, _ = self.expGen(ctx, exp)
                 if isinstance(lhs, Var):
                     var_ptr, _ = ctx.lookup(lhs.name)
                     self.builder.store(val, var_ptr)
@@ -313,10 +313,10 @@ class CodeGenerator:
             case _:
                 raise CodeGenerationError(f"Not implemented: Generating code for ({exp.lineno}, {exp.column}) expression  '{exp}'")
         
-    def boolGen(self, ctx: SymbolTable, exp: Exp) -> ir.Value:
+    def boolGen(self, ctx: SymbolTable[Tuple[ir.Value, Type]], exp: Exp) -> Tuple[ir.Value, Type]:
         """
         Generate LLVM code for a boolean expression.
-        Returns a boolean value (i1) using proper short-circuit evaluation.
+        Returns the LLVM value containing the result and the AGUDA type of the expression.
         """
         result_ptr = self.builder.alloca(ir.IntType(1))
         
@@ -331,7 +331,7 @@ class CodeGenerator:
                 eval_right_block = self.current_function.append_basic_block(eval_right_label)
                 
                 # Evaluate left operand
-                left_val = self.expGen(ctx, left)
+                left_val, _ = self.expGen(ctx, left)
                 self.builder.cbranch(left_val, eval_right_block, end_block)
                 
                 # Store false result for the case when left is false
@@ -339,7 +339,7 @@ class CodeGenerator:
                 
                 # Evaluate right operand only if left was true
                 self.builder.position_at_end(eval_right_block)
-                right_val = self.expGen(ctx, right)
+                right_val, _ = self.expGen(ctx, right)
                 self.builder.store(right_val, result_ptr)
                 self.builder.branch(end_block)
                 
@@ -349,7 +349,7 @@ class CodeGenerator:
                 eval_right_block = self.current_function.append_basic_block(eval_right_label)
                 
                 # Evaluate left operand
-                left_val = self.expGen(ctx, left)
+                left_val, _ = self.expGen(ctx, left)
                 self.builder.cbranch(left_val, end_block, eval_right_block)
                 
                 # Store true result for the case when left is true
@@ -357,12 +357,12 @@ class CodeGenerator:
                 
                 # Evaluate right operand only if left was false
                 self.builder.position_at_end(eval_right_block)
-                right_val = self.expGen(ctx, right)
+                right_val, _ = self.expGen(ctx, right)
                 self.builder.store(right_val, result_ptr)
                 self.builder.branch(end_block)
                 
             case LogicalNegation(operand):
-                operand_val = self.expGen(ctx, operand)
+                operand_val, _ = self.expGen(ctx, operand)
                 self.builder.store(self.builder.not_(operand_val), result_ptr)
                 self.builder.branch(end_block)
                 
@@ -370,28 +370,28 @@ class CodeGenerator:
                 raise CodeGenerationError(f"Unexpected expression in boolGen: {exp}")
         
         self.builder.position_at_end(end_block)
-        return self.builder.load(result_ptr)
+        return self.builder.load(result_ptr), BaseType("Bool")
     
-    def callPrint(self, ctx: SymbolTable, exp: Exp):
+    def literalGen(self, exp: Exp) -> Tuple[ir.Value, Type]:
+        """
+        Generate LLVM code for a literal expression.
+        Returns the LLVM value containing the result and the AGUDA type of the expression.
+        """
+        match exp:
+            case IntLiteral(value):
+                return ir.Constant(ir.IntType(32), value), BaseType("Int")
+            case BoolLiteral(value):
+                return ir.Constant(ir.IntType(1), 1 if value else 0), BaseType("Bool")
+            case UnitLiteral():
+                return ir.Constant(ir.IntType(1), 0), BaseType("Unit")
+            case _:
+                raise CodeGenerationError(f"Not implemented: Generating code for ({exp.lineno}, {exp.column}) expression '{exp}'")
+    
+    def callPrint(self, ctx: SymbolTable[Tuple[ir.Value, Type]], exp: Exp):
         """
         Generate LLVM code for a print function call.
         """
         pass
-
-    def literalGen(self, exp: Exp) -> ir.Value:
-        """
-        Generate LLVM code for a literal expression.
-        Returns the LLVM value containing the result.
-        """
-        match exp:
-            case IntLiteral(value):
-                return ir.Constant(ir.IntType(32), value)
-            case BoolLiteral(value):
-                return ir.Constant(ir.IntType(1), 1 if value else 0)
-            case UnitLiteral():
-                return ir.Constant(ir.IntType(1), 0)
-            case _:
-                raise CodeGenerationError(f"Not implemented: Generating code for ({exp.lineno}, {exp.column}) expression '{exp}'")
 
     def get_llvm_type(self, aguda_type: Type) -> ir.Type:
         """Convert AGUDA type to LLVM type."""
