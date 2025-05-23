@@ -375,21 +375,6 @@ class CodeGenerator:
         self.builder.position_at_end(end_block)
         return self.builder.load(result_ptr), BaseType("Bool")
     
-    # def literalGen(self, exp: Exp) -> Tuple[ir.Value, Type]:
-    #     """
-    #     Generate LLVM code for a literal expression.
-    #     Returns the LLVM value containing the result and the AGUDA type of the expression.
-    #     """
-    #     match exp:
-    #         case IntLiteral(value):
-    #             return ir.Constant(ir.IntType(32), value), BaseType("Int")
-    #         case BoolLiteral(value):
-    #             return ir.Constant(ir.IntType(1), 1 if value else 0), BaseType("Bool")
-    #         case UnitLiteral():
-    #             return ir.Constant(ir.IntType(1), 0), BaseType("Unit")
-    #         case _:
-    #             raise CodeGenerationError(f"Not implemented: Generating code for ({exp.lineno}, {exp.column}) expression '{exp}'")
-    
     def callPrint(self, ctx: SymbolTable[Tuple[ir.Value, Type]], exp: Exp):
         """
         Generate LLVM code for a print function call.
