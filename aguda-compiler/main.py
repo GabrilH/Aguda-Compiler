@@ -129,39 +129,40 @@ def code_gen_test_run(filepath, valid):
         with open(output_path, 'w') as f:
             f.write(llvm_ir)
 
-        # Now run the LLVM IR using lli
-        result = subprocess.run(['lli', output_path], capture_output=True, text=True)
-        
-        if result.returncode != 0:
-            test_log.append(f"{filepath} [EXCEPTION]")
-            test_log.append(f"lli execution failed: {result.stderr}")
-            return test_log, ast
-
-        expect_path = filepath.replace('.agu', '.expect')
-            
-        try:
-            with open(expect_path, 'r') as f:
-                expected_output = f.readline().strip()
-            
-            actual_output = result.stdout.strip()
-            
-            if actual_output == expected_output:
-                test_log.append(f"{filepath} [✔]")
-            else:
-                test_log.append(f"{filepath} [FAIL]")
-
-            test_log.append(f"Expected: '{expected_output}'\nGot: '{actual_output}'")
-
-        except FileNotFoundError:
-            test_log.append(f"{filepath} [FAIL]")
-            test_log.append(f"Expect file not found: {expect_path}")
-
     except CodeGenerationError as e:
         test_log.append(f"{filepath} [FAIL]")
         test_log.append(str(e))
+        return test_log, ast
     except Exception as e:
         test_log.append(f"{filepath} [EXCEPTION]")
         test_log.append(str(e))
+        return test_log, ast
+
+    result = subprocess.run(['lli', output_path], capture_output=True, text=True)
+    
+    if result.returncode != 0:
+        test_log.append(f"{filepath} [EXCEPTION]")
+        test_log.append(f"lli execution failed: {result.stderr}")
+        return test_log, ast
+
+    expect_path = filepath.replace('.agu', '.expect')
+        
+    try:
+        with open(expect_path, 'r') as f:
+            expected_output = f.readline().strip()
+    except FileNotFoundError:
+        test_log.append(f"{filepath} [FAIL]")
+        test_log.append(f"Expect file not found: {expect_path}")
+        return test_log, ast
+
+    actual_output = result.stdout.strip()
+    
+    if actual_output == expected_output:
+        test_log.append(f"{filepath} [✔]")
+    else:
+        test_log.append(f"{filepath} [FAIL]")
+
+    test_log.append(f"Expected: '{expected_output}'\nGot: '{actual_output}'")
     
     return test_log, ast
 
@@ -266,15 +267,6 @@ def main():
         print(f"Running single test on file '{args.file_path}' with max_errors={MAX_ERRORS}")
         run_single_test(args.file_path)
         return
-
-    # Default behavior: accept stdin as program input
-    print(f"Write the AGUDA code to be validated, followed by [ENTER] and Ctrl+D (EOF). Max errors allowed: {MAX_ERRORS}")
-    code = sys.stdin.read()
-    temp_file_path = os.path.join(TEST_DIR, 'temp_input.agu')
-    with open(temp_file_path, 'w', encoding='utf-8') as temp_file:
-        temp_file.write(code)
-    run_single_test(temp_file_path)
-    os.remove(temp_file_path)
 
 if __name__ == '__main__':
     main()
