@@ -1,8 +1,8 @@
 valid-tests
 
 Total tests run: 132
-Passed [✔]: 112
-Failed [FAIL]: 20
+Passed [✔]: 114
+Failed [FAIL]: 18
 
 /app/aguda-testing/test/valid/54394_clamp/clamp.agu [✔]
 Expected: '7'
@@ -83,7 +83,7 @@ Got: '6'
 
 
 /app/aguda-testing/test/valid/56307_applyTwiceFunction/applyTwiceFunction.agu [EXCEPTION]
-lli execution failed: lli: lli: /app/aguda-testing/test/valid/56307_applyTwiceFunction/applyTwiceFunction.ll:43:26: error: invalid type for function argument
+lli execution failed: lli: lli: /app/aguda-testing/test/valid/56307_applyTwiceFunction/applyTwiceFunction.ll:35:26: error: invalid type for function argument
 define i32 @"applyTwice"(i32 (i32) %".1", i32 %".2")
                          ^
 
@@ -144,7 +144,7 @@ Got: 'false'
 
 
 /app/aguda-testing/test/valid/56311_high_order_function_type/high_order_func_type.agu [EXCEPTION]
-lli execution failed: lli: lli: /app/aguda-testing/test/valid/56311_high_order_function_type/high_order_func_type.ll:43:21: error: invalid type for function argument
+lli execution failed: lli: lli: /app/aguda-testing/test/valid/56311_high_order_function_type/high_order_func_type.ll:35:21: error: invalid type for function argument
 define i32 @"apply"(i32 (i32) %".1", i32 %".2")
                     ^
 
@@ -352,9 +352,9 @@ Expected: '7'
 Got: '7'
 
 
-/app/aguda-testing/test/valid/58182_simple_arithmetic/simple_arithmetic.agu [FAIL]
+/app/aguda-testing/test/valid/58182_simple_arithmetic/simple_arithmetic.agu [✔]
 Expected: '22-12460772'
-Got: '22-12460768'
+Got: '22-12460772'
 
 
 /app/aguda-testing/test/valid/58182_while_loop_break/while_loop_break.agu [✔]
@@ -380,9 +380,9 @@ Got: '120'
 Not implemented: Generating code for (12, 11) expression  '" is "'
 
 
-/app/aguda-testing/test/valid/58185_power_operator/power_operator.agu [FAIL]
+/app/aguda-testing/test/valid/58185_power_operator/power_operator.agu [✔]
 Expected: '851211212'
-Got: '851201212'
+Got: '851211212'
 
 
 /app/aguda-testing/test/valid/58185_sequencing/sequencing.agu [✔]
