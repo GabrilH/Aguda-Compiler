@@ -1,7 +1,7 @@
 from src.syntax import *
 from src.symbol_table import SymbolTable
 from llvmlite import ir
-from typing import Dict, Tuple, Optional
+from typing import Tuple, Optional
 
 class CodeGenerationError(Exception):
     """Custom exception for code generation errors."""
