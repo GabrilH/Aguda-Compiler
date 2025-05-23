@@ -312,18 +312,14 @@ class CodeGenerator:
             case BinaryOp(left, '&&', right):
                 # Create blocks for short-circuit evaluation
                 eval_right_label = f"bool_{fresh_num}_right"
-                store_false_label = f"bool_{fresh_num}_false"
                 eval_right_block = self.current_function.append_basic_block(eval_right_label)
-                store_false_block = self.current_function.append_basic_block(store_false_label)
+
+                # Store false result for the case when left is false
+                self.builder.store(ir.Constant(ir.IntType(1), 0), result_ptr)
                 
                 # Evaluate left operand
                 left_val, _ = self.expGen(ctx, left)
-                self.builder.cbranch(left_val, eval_right_block, store_false_block)
-                
-                # Store false result for the case when left is false
-                self.builder.position_at_end(store_false_block)
-                self.builder.store(ir.Constant(ir.IntType(1), 0), result_ptr)
-                self.builder.branch(end_block)
+                self.builder.cbranch(left_val, eval_right_block, end_block)
                 
                 # Evaluate right operand only if left was true
                 self.builder.position_at_end(eval_right_block)
@@ -334,18 +330,14 @@ class CodeGenerator:
             case BinaryOp(left, '||', right):
                 # Create blocks for short-circuit evaluation
                 eval_right_label = f"bool_{fresh_num}_right"
-                store_true_label = f"bool_{fresh_num}_true"
                 eval_right_block = self.current_function.append_basic_block(eval_right_label)
-                store_true_block = self.current_function.append_basic_block(store_true_label)
+
+                # Store true result for the case when left is true
+                self.builder.store(ir.Constant(ir.IntType(1), 1), result_ptr)
                 
                 # Evaluate left operand
                 left_val, _ = self.expGen(ctx, left)
-                self.builder.cbranch(left_val, store_true_block, eval_right_block)
-                
-                # Store true result for the case when left is true
-                self.builder.position_at_end(store_true_block)
-                self.builder.store(ir.Constant(ir.IntType(1), 1), result_ptr)
-                self.builder.branch(end_block)
+                self.builder.cbranch(left_val, end_block, eval_right_block)
                 
                 # Evaluate right operand only if left was false
                 self.builder.position_at_end(eval_right_block)
