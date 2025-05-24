@@ -2,6 +2,9 @@
 
 - **AGUDA Language Author:** tcomp000, Vasco T. Vasconcelos
 - **Compiler Author:** 58182, Gabriel Henriques
+- **PLY**: https://github.com/dabeaz/ply
+- **LLVMLITE:** https://github.com/numba/llvmlite
+
 
 This project is a compiler for the AGUDA programming language. It includes a lexer, a parser (both made with PLY), a type checker and generates LLVM code via llvmlite binding. The compiler also supports running tests for valid and invalid programs.
 
@@ -20,6 +23,8 @@ This project is a compiler for the AGUDA programming language. It includes a lex
 - **Run the following command** (inside project's root folder):
 
         docker-compose build
+
+    No-cache building time is taking me a mininum of 1 minute, but it may take more time depending on network speed.
 
 - When you no longer need the docker, you may remove the image by executing:
 
