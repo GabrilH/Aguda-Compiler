@@ -5,6 +5,19 @@ from typing import Tuple, Optional
 from src.lexer import lexer
 from src.parser import parser
 
+# AGUDA code for the power function based on tcomp000_power-iterative
+POWER_CODE = """
+let power (base, exponent) : (Int, Int) -> Int =
+    let result : Int = 1 ;
+    while exponent > 0 do (
+        set result = result * base;
+        set exponent = exponent - 1
+    ) ;
+    result
+"""
+
+POWER_NAME = "_power"
+
 class CodeGenerationError(Exception):
     """Custom exception for code generation errors."""
     pass
@@ -142,8 +155,8 @@ class CodeGenerator:
                     case '%':
                         return self.builder.srem(val1, val2), BaseType("Int")
                     case '^':
-                        power_func = self.module.get_global('_power')
-                        return self.builder.call(power_func, [val1, val2]), BaseType("Int")
+                        power_func, power_func_aguda_type = ctx.lookup(POWER_NAME)
+                        return self.builder.call(power_func, [val1, val2]), power_func_aguda_type.return_type
                     case '==' | '!=' | '<' | '<=' | '>' | '>=':
                         return self.builder.icmp_signed(op, val1, val2), BaseType("Bool")
 
@@ -340,19 +353,9 @@ class CodeGenerator:
         """
         Power function implementation by parsing and compiling AGUDA code
         """
-        # AGUDA code for the power function based on tcomp000_power-iterative
-        power_code = """
-        let power (base, exponent) : (Int, Int) -> Int =
-            let result : Int = 1 ;
-            while exponent > 0 do (
-                set result = result * base;
-                set exponent = exponent - 1
-            ) ;
-            result
-        """
-        ast = parser.parse(power_code.strip(), lexer=lexer)
+        ast = parser.parse(POWER_CODE.strip(), lexer=lexer)
         power_func_decl : FunctionDeclaration = ast.declarations[0]
         # Bypass parser's name restriction
-        power_func_decl.id.name = "_power"
+        power_func_decl.id.name = POWER_NAME
         self.register_func_signature(ctx, power_func_decl)
         self.generate_function(ctx, power_func_decl)
