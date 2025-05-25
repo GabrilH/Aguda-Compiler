@@ -353,7 +353,7 @@ class CodeGenerator:
         """
         Power function implementation by parsing and compiling AGUDA code
         """
-        ast = parser.parse(POWER_CODE.strip(), lexer=lexer)
+        ast : Program = parser.parse(POWER_CODE.strip(), lexer=lexer)
         power_func_decl : FunctionDeclaration = ast.declarations[0]
         # Bypass parser's name restriction
         power_func_decl.id.name = POWER_NAME
