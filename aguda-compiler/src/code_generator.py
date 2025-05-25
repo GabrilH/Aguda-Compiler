@@ -114,11 +114,11 @@ class CodeGenerator:
         """
         match exp:
             case IntLiteral(value):
-                return ir.Constant(ir.IntType(32), value), BaseType("Int")
+                return ir.Constant(self.get_llvm_type(BaseType("Int")), value), BaseType("Int")
             case BoolLiteral(value):
-                return ir.Constant(ir.IntType(1), 1 if value else 0), BaseType("Bool")
+                return ir.Constant(self.get_llvm_type(BaseType("Bool")), 1 if value else 0), BaseType("Bool")
             case UnitLiteral():
-                return ir.Constant(ir.IntType(1), 0), BaseType("Unit")
+                return ir.Constant(self.get_llvm_type(BaseType("Unit")), 0), BaseType("Unit")
             case Var(name):
                 var_value, var_aguda_type = ctx.lookup(name)
                 return self.builder.load(var_value), var_aguda_type
@@ -247,7 +247,7 @@ class CodeGenerator:
         Generate LLVM code for a boolean expression in a short-circuit manner.
         Returns the LLVM value containing the result and the AGUDA type of the expression.
         """
-        result_ptr = self.builder.alloca(ir.IntType(1))
+        result_ptr = self.builder.alloca(self.get_llvm_type(BaseType("Bool")))
         
         fresh_num = self.fresh()
         end_block = self.current_function.append_basic_block(f"bool_{fresh_num}_end")
