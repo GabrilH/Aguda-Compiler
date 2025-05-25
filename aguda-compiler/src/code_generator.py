@@ -247,33 +247,46 @@ class CodeGenerator:
         Generate LLVM code for a boolean expression in a short-circuit manner.
         Returns the LLVM value containing the result and the AGUDA type of the expression.
         """
-        result_ptr = self.builder.alloca(self.get_llvm_type(BaseType("Bool")))
-        
-        fresh_num = self.fresh()
-        end_block = self.current_function.append_basic_block(f"bool_{fresh_num}_end")
-        eval_right_block = self.current_function.append_basic_block(f"bool_{fresh_num}_right")
+        right_label, end_label = self.fresh_bool_labels()
+        eval_right_block = self.current_function.append_basic_block(right_label)
+        end_block = self.current_function.append_basic_block(end_label)
 
         # Evaluate left operand
         left_val, _ = self.expGen(ctx, exp.left)
-        self.builder.store(left_val, result_ptr)
-        
+        left_block = self.builder.block
+
         match exp.operator:
             case '&&':
-                # Branch: if left is true, evaluate right, otherwise end
+                # Branch: if left is true, evaluate right, otherwise end with false
                 self.builder.cbranch(left_val, eval_right_block, end_block)
                 
             case '||':                
-                # Branch: if left is true, end, otherwise evaluate right
+                # Branch: if left is true, end with true, otherwise evaluate right
                 self.builder.cbranch(left_val, end_block, eval_right_block)
 
         # Evaluate right operand
         self.builder.position_at_end(eval_right_block)
         right_val, _ = self.expGen(ctx, exp.right)
-        self.builder.store(right_val, result_ptr)
-
+        right_block = self.builder.block
         self.builder.branch(end_block)
+
+        # Create phi node for result
         self.builder.position_at_end(end_block)
-        return self.builder.load(result_ptr), BaseType("Bool")
+        phi = self.builder.phi(self.get_llvm_type(BaseType("Bool")))
+        
+        match exp.operator:
+            case '&&':
+                # If incoming from left_block -> result is false (left was false)
+                phi.add_incoming(ir.Constant(self.get_llvm_type(BaseType("Bool")), 0), left_block)
+                # If incoming from right_block -> result is right_val
+                phi.add_incoming(right_val, right_block)
+            case '||':
+                # If incoming from left_block -> result is true (left was true)
+                phi.add_incoming(ir.Constant(self.get_llvm_type(BaseType("Bool")), 1), left_block)
+                # If incoming from right_block -> result is right_val
+                phi.add_incoming(right_val, right_block)
+        
+        return phi, BaseType("Bool")
     
     def callPrint(self, ctx: SymbolTable[Tuple[ir.Value, Type]], exp: Exp) -> Tuple[ir.Value, Type]:
         """
@@ -333,6 +346,13 @@ class CodeGenerator:
         body_label = f"while_{loop_num}_body"
         end_label = f"while_{loop_num}_end"
         return cond_label, body_label, end_label
+    
+    def fresh_bool_labels(self) -> Tuple[str, str]:
+        """Generate a set of related labels for a boolean expression."""
+        bool_num = self.fresh()
+        right_label = f"bool_{bool_num}_right"
+        end_label = f"bool_{bool_num}_end"
+        return right_label, end_label
     
     def create_global_string(self, string: str, name: str):
         """

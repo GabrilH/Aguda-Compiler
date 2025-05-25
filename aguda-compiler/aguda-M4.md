@@ -173,17 +173,17 @@ It also prints to the console:
 
 ## A brief description of how you implemented short-circuit boolean expressions (or why you did not follow this approach)
 
-I implemented short-circuit boolean expressions by creating a dedicated `boolGen` method that handles && and || operators differently from other binary operations. For both cases, the left operand is first evaluated, but the evaluation of the right operand depends on the operator and left value:
+I implemented short-circuit boolean expressions by creating a dedicated `boolGen` method that handles && and || operators using LLVM basic blocks for proper control flow. The implementation creates separate basic blocks for evaluating the right operand and for merging results, ensuring that the right operand is only evaluated when necessary:
 
-- For AND (&&): If the left operand is false, we skip evaluating the right operand since the result will be false regardless. Only if the left is true do we evaluate the right operand.
+- For AND (&&): The left operand is evaluated first. If it's true, control flows to evaluate the right operand; if false, control jumps directly to the end block with a false result.
 
         self.builder.cbranch(left_val, eval_right_block, end_block)
 
-- For OR (||): If the left operand is true, we skip evaluating the right operand since the result will be true regardless. Only if the left is false do we evaluate the right operand.
+- For OR (||): The left operand is evaluated first. If it's true, control jumps directly to the end block with a true result; if false, control flows to evaluate the right operand.
 
         self.builder.cbranch(left_val, end_block, eval_right_block)
 
-A variable stores the result throughout the evaluation process, which is returned at the end.
+The final result is determined using a phi node that merges values from different execution paths: either the short-circuit value (false for &&, true for ||) when the right operand is not evaluated, or the actual right operand value when it is evaluated.
 
 ## If your program does not pass all tests, explain why
 
