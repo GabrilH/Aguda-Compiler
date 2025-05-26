@@ -183,7 +183,7 @@ I implemented short-circuit boolean expressions by creating a dedicated `boolGen
 
         self.builder.cbranch(left_val, end_block, eval_right_block)
 
-The final result is determined using a phi node that merges values from different execution paths: either the short-circuit value (false for &&, true for ||) when the right operand is not evaluated, or the actual right operand value when it is evaluated.
+The final result is determined using a phi node that merges values from different execution paths: either the left operand value (when short-circuiting occurs) or the right operand value (when the right operand is fully evaluated).
 
 ## If your program does not pass all tests, explain why
 
