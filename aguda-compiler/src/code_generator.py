@@ -273,18 +273,8 @@ class CodeGenerator:
         # Create phi node for result
         self.builder.position_at_end(end_block)
         phi = self.builder.phi(self.get_llvm_type(BaseType("Bool")))
-        
-        match exp.operator:
-            case '&&':
-                # If incoming from left_block -> result is false (left was false)
-                phi.add_incoming(ir.Constant(self.get_llvm_type(BaseType("Bool")), 0), left_block)
-                # If incoming from right_block -> result is right_val
-                phi.add_incoming(right_val, right_block)
-            case '||':
-                # If incoming from left_block -> result is true (left was true)
-                phi.add_incoming(ir.Constant(self.get_llvm_type(BaseType("Bool")), 1), left_block)
-                # If incoming from right_block -> result is right_val
-                phi.add_incoming(right_val, right_block)
+        phi.add_incoming(left_val, left_block)
+        phi.add_incoming(right_val, right_block)
         
         return phi, BaseType("Bool")
     
