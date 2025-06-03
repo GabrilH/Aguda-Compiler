@@ -1,7 +1,7 @@
 invalid-syntax-tests
 
-Total tests run: 62
-Passed [✔]: 62
+Total tests run: 63
+Passed [✔]: 63
 Failed [FAIL]: 0
 
 /app/aguda-testing/test/invalid-syntax/54394_bad_if_statement/bad_if_statement.agu [✔]
@@ -257,5 +257,9 @@ Syntactic error: at line 4, column 5: Unexpected token '1'
 
 /app/aguda-testing/test/invalid-syntax/tcomp000_wrong_comment/wrong_comment.agu [✔]
 Syntactic error: at EOF
+
+
+/app/aguda-testing/test/invalid-syntax/tcomp000_xor/tcomp000_xor.agu [✔]
+Syntactic error: at line 4, column 23: Unexpected token '|'
 
 

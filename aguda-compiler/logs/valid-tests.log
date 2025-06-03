@@ -1,7 +1,7 @@
 valid-tests
 
-Total tests run: 114
-Passed [✔]: 114
+Total tests run: 115
+Passed [✔]: 115
 Failed [FAIL]: 0
 
 /app/aguda-testing/test/valid/54394_clamp/clamp.agu [✔]
@@ -557,6 +557,11 @@ Got: '100'
 /app/aguda-testing/test/valid/tcomp000_notNotNot/notNotNot.agu [✔]
 Expected: 'false'
 Got: 'false'
+
+
+/app/aguda-testing/test/valid/tcomp000_power-iterative-global/power-iterative.agu [✔]
+Expected: '64'
+Got: '64'
 
 
 /app/aguda-testing/test/valid/tcomp000_power-iterative/power-iterative.agu [✔]
