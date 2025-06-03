@@ -1,5 +1,0 @@
-*.o
-*.hi
-Lexer.hs
-Parser.hs
-Calc

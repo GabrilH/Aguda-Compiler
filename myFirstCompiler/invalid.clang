@@ -1,7 +1,0 @@
-# An example of a program written in the lang programming language
-
-x = 1
-y = 1 + x
-print y + a
-z = x + 1
-print z
