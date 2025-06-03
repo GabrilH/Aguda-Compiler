@@ -19,16 +19,36 @@ def indent(s, level=2):
     return '\n'.join(' ' * level + line for line in str(s).splitlines())
 
 @dataclass
-class BaseType(Type):
-    name: str
-
+class UnitType(Type):
     def __str__(self):
-        return self.name
+        return 'Unit'
     
     def __eq__(self, other):
-        if isinstance(other, BaseType):
-            return self.name == other.name
-        return False
+        return isinstance(other, UnitType)
+    
+@dataclass
+class BoolType(Type):
+    def __str__(self):
+        return 'Bool'
+    
+    def __eq__(self, other):
+        return isinstance(other, BoolType)
+
+@dataclass
+class IntType(Type):
+    def __str__(self):
+        return 'Int'
+    
+    def __eq__(self, other):
+        return isinstance(other, IntType)
+
+@dataclass
+class StringType(Type):
+    def __str__(self):
+        return 'String'
+    
+    def __eq__(self, other):
+        return isinstance(other, StringType)
 
 @dataclass
 class ArrayType(Type):
@@ -48,7 +68,6 @@ class FunctionType(Type):
     return_type: Type
 
     def __str__(self):
-        # TODO talvez não meter () quando apenas um parametro
         params = ', '.join(str(t) for t in self.param_types)
         return f'({params}) -> {self.return_type}'
     
@@ -72,14 +91,12 @@ class IntLiteral(Exp):
     def __str__(self):
         return str(self.value)
 
-
 @dataclass
 class BoolLiteral(Exp):
     value: bool
 
     def __str__(self):
         return 'true' if self.value else 'false'
-
 
 @dataclass
 class UnitLiteral(Exp):
@@ -99,7 +116,6 @@ class Sequence(Exp):
     rest: Exp
 
     def __str__(self):
-        #TODO indent no rest?
         return f'{self.first} ;\n{self.rest}'
 
 @dataclass
@@ -110,7 +126,6 @@ class BinaryOp(Exp):
 
     def __str__(self):
         return f'{self.left} {self.operator} {self.right}'
-
 
 @dataclass
 class LogicalNegation(Exp):

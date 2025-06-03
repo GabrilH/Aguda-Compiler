@@ -36,10 +36,10 @@ class TypeChecker:
         """
         Adds built-in functions to the symbol table.
         """
-        ctx.insert('print', FunctionType(param_types=[BaseType('String')],
-                                        return_type=BaseType('Unit')))
-        ctx.insert('length', FunctionType(param_types=[ArrayType(BaseType('Int'))],
-                                        return_type=BaseType('Int')))
+        ctx.insert('print', FunctionType(param_types=[StringType()],
+                                        return_type=UnitType()))
+        ctx.insert('length', FunctionType(param_types=[ArrayType(IntType())],
+                                        return_type=IntType()))
         
     def first_pass(self, ctx: SymbolTable, node: ASTNode) -> None:
         """
@@ -133,8 +133,8 @@ class TypeChecker:
         if function_id.name == 'main':
             # check if matches let main (x) : Unit -> Unit
             if len(parameters) != 1 or len(function_type.param_types) != 1 or \
-                    function_type.param_types[0] != BaseType('Unit') or \
-                    function_type.return_type != BaseType('Unit'):
+                    function_type.param_types[0] != UnitType() or \
+                    function_type.return_type != UnitType():
                 self.logger.log(f"main function must have signature 'let main (x) : Unit -> Unit'", function_id.lineno, function_id.column)
                 return
 
@@ -155,13 +155,13 @@ class TypeChecker:
         """
         match (matched_exp, expected_type):
             case (ArrayAccess(exp1, exp2), _):
-                self.checkAgainst(ctx, exp2, BaseType('Int'))
+                self.checkAgainst(ctx, exp2, IntType())
                 exp1Type : ArrayType = self.typeof(ctx, exp1)
                 if self.checkInstance(exp1, exp1Type, ArrayType):
                     self.checkEqualTypes(matched_exp, exp1Type.type, expected_type)
             
             case (Conditional(exp1, exp2, exp3), _):
-                self.checkAgainst(ctx, exp1, BaseType('Bool'))
+                self.checkAgainst(ctx, exp1, BoolType())
                 self.checkAgainst(ctx.enter_scope(), exp2, expected_type)
                 self.checkAgainst(ctx.enter_scope(), exp3, expected_type)
 
@@ -206,24 +206,24 @@ class TypeChecker:
         """
         match matched_exp:        
             case IntLiteral():
-                return BaseType('Int')
+                return IntType()
             
             case BoolLiteral():
-                return BaseType('Bool')
+                return BoolType()
             
             case UnitLiteral():
-                return BaseType('Unit')
+                return UnitType()
             
             case StringLiteral():
-                return BaseType('String')
+                return StringType()
             
             case ArrayCreation(type, exp1, exp2):
-                self.checkAgainst(ctx, exp1, BaseType('Int'))
+                self.checkAgainst(ctx, exp1, IntType())
                 self.checkAgainst(ctx, exp2, type)            
                 return ArrayType(type)
             
             case ArrayAccess(exp1, exp2):
-                self.checkAgainst(ctx, exp2, BaseType('Int'))
+                self.checkAgainst(ctx, exp2, IntType())
                 exp1Type : ArrayType = self.typeof(ctx, exp1)
                 if self.checkInstance(exp1, exp1Type, ArrayType):         
                     return exp1Type.type
@@ -234,7 +234,7 @@ class TypeChecker:
                         self.logger.log(f"Print function takes exactly one argument", matched_exp.lineno, matched_exp.column)
                     exp1 = exps[0]
                     self.typeof(ctx, exp1)
-                    return BaseType('Unit')
+                    return UnitType()
                 
                 if id.name == 'length':
                     if len(exps) != 1:
@@ -242,7 +242,7 @@ class TypeChecker:
                     exp1 = exps[0]
                     exp1Type = self.typeof(ctx, exp1)
                     self.checkInstance(matched_exp, exp1Type, ArrayType)
-                    return BaseType('Int')
+                    return IntType()
                 
                 funcType : FunctionType = self.typeof(ctx, id)
                 if self.checkInstance(id, funcType, FunctionType):
@@ -252,7 +252,7 @@ class TypeChecker:
             case VariableDeclaration(id, type, exp):
                 self.checkAgainst(ctx.enter_scope(), exp, type)
                 self.insertIntoCtx(ctx, matched_exp, id, type)
-                return BaseType('Unit')
+                return UnitType()
             
             case TopLevelVariableDeclaration(id, type, exp):
 
@@ -262,28 +262,28 @@ class TypeChecker:
                     self.checkAgainst(local_ctx, exp.rest, type)
                 else:
                     self.checkAgainst(ctx.enter_scope(), exp, type)
-                return BaseType('Unit')
+                return UnitType()
             
             case Var(name):
                 return self.typeofVar(ctx, matched_exp, name)
             
             case Conditional(exp1, exp2, exp3):
-                self.checkAgainst(ctx, exp1, BaseType('Bool'))
+                self.checkAgainst(ctx, exp1, BoolType())
                 exp2Type = self.typeof(ctx.enter_scope(), exp2)
                 exp3Type = self.typeof(ctx.enter_scope(), exp3)         
                 self.checkEqualTypes(matched_exp, exp2Type, exp3Type)          
                 return exp2Type
             
             case WhileLoop(exp1, exp2):
-                self.checkAgainst(ctx, exp1, BaseType('Bool'))
+                self.checkAgainst(ctx, exp1, BoolType())
                 self.typeof(ctx.enter_scope(), exp2)
-                return BaseType('Unit')
+                return UnitType()
             
             case Assignment(lhs, exp):
                 lhsType = self.typeof(ctx, lhs)
                 expType = self.typeof(ctx, exp)
                 self.checkEqualTypes(matched_exp, lhsType, expType)
-                return BaseType('Unit')
+                return UnitType()
             
             case Sequence(first, rest):
                 self.typeof(ctx, first)
@@ -292,29 +292,29 @@ class TypeChecker:
             case BinaryOp(left, operator, right):
 
                 if operator in ['+', '-', '*', '/', '%', '^']:
-                    self.checkAgainst(ctx, left, BaseType('Int'))
-                    self.checkAgainst(ctx, right, BaseType('Int'))
-                    return BaseType('Int')
+                    self.checkAgainst(ctx, left, IntType())
+                    self.checkAgainst(ctx, right, IntType())
+                    return IntType()
                 
                 if operator in ['==', '!=', '<', '>', '<=', '>=']:
                     leftType = self.typeof(ctx, left)
                     rightType = self.typeof(ctx, right)
                     self.checkEqualTypes(matched_exp, leftType, rightType)
-                    return BaseType('Bool')
+                    return BoolType()
                 
                 if operator in ['&&', '||']:
-                    self.checkAgainst(ctx, left, BaseType('Bool'))
-                    self.checkAgainst(ctx, right, BaseType('Bool'))
-                    return BaseType('Bool')
+                    self.checkAgainst(ctx, left, BoolType())
+                    self.checkAgainst(ctx, right, BoolType())
+                    return BoolType()
                 
                 if operator == '++':
-                    self.checkAgainst(ctx, left, BaseType('String'))
-                    self.checkAgainst(ctx, right, BaseType('String'))
-                    return BaseType('String')
+                    self.checkAgainst(ctx, left, StringType())
+                    self.checkAgainst(ctx, right, StringType())
+                    return StringType()
             
             case LogicalNegation(operand):
-                self.checkAgainst(ctx, operand, BaseType('Bool'))
-                return BaseType('Bool')
+                self.checkAgainst(ctx, operand, BoolType())
+                return BoolType()
             
             case FunctionDeclaration(id, parameters, type, body):
                 self.checkBuiltInConflict(matched_exp, id)

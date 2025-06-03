@@ -87,7 +87,14 @@ def p_base_type(t):
               | UNIT_TYPE
               | BOOL_TYPE
     '''
-    base_type = s.BaseType(t[1])
+    if t[1] == 'Int':
+        base_type = s.IntType()
+    elif t[1] == 'String':
+        base_type = s.StringType()
+    elif t[1] == 'Unit':
+        base_type = s.UnitType()
+    else:
+        base_type = s.BoolType()
     base_type.lineno = t.lineno(1)
     base_type.column = find_column(t.lexer.lexdata, t.slice[1])
     t[0] = base_type

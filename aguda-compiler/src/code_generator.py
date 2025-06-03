@@ -114,11 +114,11 @@ class CodeGenerator:
         """
         match exp:
             case IntLiteral(value):
-                return ir.Constant(self.get_llvm_type(BaseType("Int")), value), BaseType("Int")
+                return ir.Constant(self.get_llvm_type(IntType()), value), IntType()
             case BoolLiteral(value):
-                return ir.Constant(self.get_llvm_type(BaseType("Bool")), 1 if value else 0), BaseType("Bool")
+                return ir.Constant(self.get_llvm_type(BoolType()), 1 if value else 0), BoolType()
             case UnitLiteral():
-                return ir.Constant(self.get_llvm_type(BaseType("Unit")), 0), BaseType("Unit")
+                return ir.Constant(self.get_llvm_type(UnitType()), 0), UnitType()
             case Var(name):
                 var_value, var_aguda_type = ctx.lookup(name)
                 return self.builder.load(var_value), var_aguda_type
@@ -145,24 +145,24 @@ class CodeGenerator:
 
                 match op:
                     case '+':
-                        return self.builder.add(val1, val2), BaseType("Int")
+                        return self.builder.add(val1, val2), IntType()
                     case '-':
-                        return self.builder.sub(val1, val2), BaseType("Int")
+                        return self.builder.sub(val1, val2), IntType()
                     case '*':
-                        return self.builder.mul(val1, val2), BaseType("Int")
+                        return self.builder.mul(val1, val2), IntType()
                     case '/':
-                        return self.builder.sdiv(val1, val2), BaseType("Int")
+                        return self.builder.sdiv(val1, val2), IntType()
                     case '%':
-                        return self.builder.srem(val1, val2), BaseType("Int")
+                        return self.builder.srem(val1, val2), IntType()
                     case '^':
                         power_func, power_func_aguda_type = ctx.lookup(POWER_NAME)
                         return self.builder.call(power_func, [val1, val2]), power_func_aguda_type.return_type
                     case '==' | '!=' | '<' | '<=' | '>' | '>=':
-                        return self.builder.icmp_signed(op, val1, val2), BaseType("Bool")
+                        return self.builder.icmp_signed(op, val1, val2), BoolType()
 
             case LogicalNegation(operand):
                 operand_val, _ = self.expGen(ctx, operand)
-                return self.builder.not_(operand_val), BaseType("Bool")
+                return self.builder.not_(operand_val), BoolType()
 
             case FunctionCall(id, arguments):
                 # Special handling for print function
@@ -272,11 +272,11 @@ class CodeGenerator:
 
         # Create phi node for result
         self.builder.position_at_end(end_block)
-        phi = self.builder.phi(self.get_llvm_type(BaseType("Bool")))
+        phi = self.builder.phi(self.get_llvm_type(BoolType()))
         phi.add_incoming(left_val, left_block)
         phi.add_incoming(right_val, right_block)
         
-        return phi, BaseType("Bool")
+        return phi, BoolType()
     
     def callPrint(self, ctx: SymbolTable[Tuple[ir.Value, Type]], exp: Exp) -> Tuple[ir.Value, Type]:
         """
@@ -286,17 +286,17 @@ class CodeGenerator:
         printf_func = self.module.get_global('printf')
         arg_val, arg_type = self.expGen(ctx, exp)
         match arg_type:
-            case BaseType("Int"):
+            case IntType():
                 str_ptr = self.get_string_ptr('int_format')
                 self.builder.call(printf_func, [str_ptr, arg_val])
                 
-            case BaseType("Bool"):
+            case BoolType():
                 true_ptr = self.get_string_ptr('true_str')
                 false_ptr = self.get_string_ptr('false_str')
                 selected_ptr = self.builder.select(arg_val, true_ptr, false_ptr)
                 self.builder.call(printf_func, [selected_ptr])
                 
-            case BaseType("Unit"):
+            case UnitType():
                 str_ptr = self.get_string_ptr('unit_str')
                 self.builder.call(printf_func, [str_ptr])
         
@@ -306,11 +306,11 @@ class CodeGenerator:
     def get_llvm_type(self, aguda_type: Type) -> ir.Type:
         """Convert AGUDA type to LLVM type."""
         match aguda_type:
-            case BaseType('Int'):
+            case IntType():
                 return ir.IntType(32)
-            case BaseType("Bool"):
+            case BoolType():
                 return ir.IntType(1)
-            case BaseType("Unit"):
+            case UnitType():
                 return ir.IntType(1)
             case _:
                 raise CodeGenerationError(f"Not implemented: Generating code for ({aguda_type.lineno}, {aguda_type.column}) type '{aguda_type}'")
