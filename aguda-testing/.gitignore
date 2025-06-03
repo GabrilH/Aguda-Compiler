@@ -1,5 +1,0 @@
-# LLVM
-*.ll
-
-# macos
-.DS_Store
