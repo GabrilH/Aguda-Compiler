@@ -34,31 +34,31 @@ Program is semantically valid!
 
 /app/aguda-testing/test/valid-not-implemented/56332_array_sum/array_sum.agu [FAIL]
 Semantic Error: (-1, -1) No main function found
-Semantic Error: (13, 1) Expected type 'Int[]', found type 'Unit' for expression 
+Semantic Error: (13, 1) Expected two equal types; found Unit and Int[], for expression 
 'let _ : Unit = print(arraySum(a))'
 
 
 /app/aguda-testing/test/valid-not-implemented/56332_array_update/array_update.agu [FAIL]
 Semantic Error: (-1, -1) No main function found
-Semantic Error: (13, 5) Expected type 'Int[]', found type 'Unit' for expression 
+Semantic Error: (13, 5) Expected function call to return type 'Int[]', found type 'Unit' for expression 
 'print(a[2])'
 
 
 /app/aguda-testing/test/valid-not-implemented/56332_count_even_in_array/count_even_in_array.agu [FAIL]
 Semantic Error: (-1, -1) No main function found
-Semantic Error: (21, 1) Expected type 'Int[]', found type 'Unit' for expression 
+Semantic Error: (21, 1) Expected two equal types; found Unit and Int[], for expression 
 'let _ : Unit = print(countEven(arr))'
 
 
 /app/aguda-testing/test/valid-not-implemented/56332_count_negatives_on_matrix/count_negatives_on_matrix.agu [FAIL]
 Semantic Error: (-1, -1) No main function found
-Semantic Error: (30, 1) Expected type 'Int[][]', found type 'Unit' for expression 
+Semantic Error: (30, 1) Expected two equal types; found Unit and Int[][], for expression 
 'let _ : Unit = print(countNegatives(matrix))'
 
 
 /app/aguda-testing/test/valid-not-implemented/56332_min_elem_of_array/min_elem_of_array.agu [FAIL]
 Semantic Error: (-1, -1) No main function found
-Semantic Error: (20, 1) Expected type 'Int[]', found type 'Unit' for expression 
+Semantic Error: (20, 1) Expected two equal types; found Unit and Int[], for expression 
 'let _ : Unit = print(minArray(arr))'
 
 

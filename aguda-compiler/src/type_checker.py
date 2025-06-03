@@ -154,104 +154,24 @@ class TypeChecker:
         Checks if the expression `exp` matches the expected type `type` in the given context `ctx`.
         """
         match (matched_exp, expected_type):
-            case (IntLiteral(), BaseType('Int')):
-                pass
-            case (BoolLiteral(), BaseType('Bool')):
-                pass
-            case (UnitLiteral(), BaseType('Unit')):
-                pass
-            case (StringLiteral(), BaseType('String')):
-                pass
-
-            case (ArrayCreation(type, exp1, exp2), ArrayType()):
-                self.checkAgainst(ctx, exp1, BaseType('Int'))
-                self.checkAgainst(ctx, exp2, type)
-
             case (ArrayAccess(exp1, exp2), _):
                 self.checkAgainst(ctx, exp2, BaseType('Int'))
                 exp1Type : ArrayType = self.typeof(ctx, exp1)
                 if self.checkInstance(exp1, exp1Type, ArrayType):
                     self.checkEqualTypes(matched_exp, exp1Type.type, expected_type)
-
-            case (FunctionCall(id, exps), _):
-                match (id.name, expected_type):
-                    case ('print', BaseType('Unit')):
-                        if len(exps) != 1:
-                            self.logger.log(f"Print function takes exactly one argument", matched_exp.lineno, matched_exp.column)
-                        else:
-                            exp1 = exps[0]
-                            self.typeof(ctx, exp1)
-
-                    case ('length', BaseType('Int')):
-                        if len(exps) != 1:
-                            self.logger.log(f"Length function takes exactly one argument", matched_exp.lineno, matched_exp.column)
-                        else:
-                            exp1 = exps[0]
-                            exp1Type = self.typeof(ctx, exp1)
-                            self.checkInstance(matched_exp, exp1Type, ArrayType)
-
-                    case ('length', _) | ('print', _):
-                        self.logger.log(f"Expected type '{expected_type}', found type '{self.typeof(ctx, matched_exp)}' "
-                                f"for expression \n'{matched_exp}'", matched_exp.lineno, matched_exp.column)
-
-                    case _:
-                        funcType : FunctionType = self.typeof(ctx, id)
-                        if self.checkInstance(id, funcType, FunctionType):
-                            self.checkArguments(ctx, matched_exp, exps, funcType)
-                            self.checkEqualTypes(matched_exp, funcType.return_type, expected_type)
-
-            case (VariableDeclaration(id, type, exp),BaseType('Unit')):
-                self.checkAgainst(ctx.enter_scope(), exp, type)
-                self.insertIntoCtx(ctx, matched_exp, id, type)
-
-            case (Var(name),_):
-                actual_type = self.typeofVar(ctx, matched_exp, name)
-                self.checkEqualTypes(matched_exp, actual_type, expected_type)
             
             case (Conditional(exp1, exp2, exp3), _):
                 self.checkAgainst(ctx, exp1, BaseType('Bool'))
                 self.checkAgainst(ctx.enter_scope(), exp2, expected_type)
                 self.checkAgainst(ctx.enter_scope(), exp3, expected_type)
 
-            case (WhileLoop(exp1, exp2), BaseType('Unit')):
-                self.checkAgainst(ctx, exp1, BaseType('Bool'))
-                self.typeof(ctx.enter_scope(), exp2)
-
-            case (Assignment(lhs, exp), BaseType('Unit')):
-                lhsType = self.typeof(ctx, lhs)
-                self.checkAgainst(ctx, exp, lhsType)
-
             case (Sequence(first, rest), _):
                 self.typeof(ctx, first)
                 self.checkAgainst(ctx, rest, expected_type)
 
-            case (BinaryOp(left, operator, right), _):
-
-                if operator in ['+', '-', '*', '/', '%', '^']:
-                    self.checkAgainst(ctx, left, BaseType('Int'))
-                    self.checkAgainst(ctx, right, BaseType('Int'))
-                    self.checkEqualTypes(matched_exp, BaseType('Int'), expected_type)
-                
-                if operator in ['==', '!=', '<', '>', '<=', '>=']:
-                    leftType = self.typeof(ctx, left)
-                    rightType = self.typeof(ctx, right)
-                    self.checkEqualTypes(matched_exp, leftType, rightType)
-                    self.checkEqualTypes(matched_exp, BaseType('Bool'), expected_type)
-                
-                if operator in ['&&', '||']:
-                    self.checkAgainst(ctx, left, BaseType('Bool'))
-                    self.checkAgainst(ctx, right, BaseType('Bool'))
-                    self.checkEqualTypes(matched_exp, BaseType('Bool'), expected_type)
-
-            case (LogicalNegation(operand), BaseType('Bool')):
-                self.checkAgainst(ctx, operand, BaseType('Bool'))
-
-            case (Group(exp), _):
-                self.checkAgainst(ctx.enter_scope(), exp, expected_type)
-
             case _:
-                self.logger.log(f"Expected type '{expected_type}', found type '{self.typeof(ctx, matched_exp)}' "
-                        f"for expression \n'{matched_exp}'", matched_exp.lineno, matched_exp.column)
+                actual_type = self.typeof(ctx, matched_exp)
+                self.checkEqualTypes(matched_exp, actual_type, expected_type)
 
     def insertIntoCtx(self, ctx: SymbolTable, matched_exp: Exp, var: Var, type: Type) -> None:
         """
