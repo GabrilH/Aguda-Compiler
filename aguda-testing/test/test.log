@@ -1,0 +1,632 @@
+Valid Aguda Programs
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/54394_array_operations/array_operations.agu [✘]
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/54394_bool_array/bool_array.agu [✘]
+captured: 7
+expected: 7
+
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/54394_clamp/clamp.agu [✔]
+captured: 15
+expected: 15
+
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/54394_combinations/combinations.agu [✔]
+captured: unit
+expected: unit
+
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/54394_identifier/identifier.agu [✔]
+captured: 1
+expected: 1
+
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/54394_operator_precedence/operator_precedence.agu [✔]
+captured: 12
+expected: 12
+
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/54394_semicolon_assignment/semicolon_assignment.agu [✔]
+captured: falsefalsefalsefalse
+expected: falsefalsefalsefalse
+
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/54394_string_printing/string_printing.agu [✔]
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/54394_uv_mapping/uv_mapping.agu [✘]
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/54394_zip/zip.agu [✘]
+captured: 9
+expected: 9
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56269_ackermann/ackermann.agu [✔]
+captured: 512
+expected: 512
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56269_associativity/associativity.agu [✔]
+captured: true
+expected: true
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56269_boolean/boolean.agu [✔]
+captured: true
+expected: true
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56269_booleanSequence/booleanSequence.agu [✔]
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56269_bottomRow/bottomRow.agu [✘]
+captured: true
+expected: true
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56269_if/if.agu [✔]
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56269_insertionSort/insertionSort.agu [✘]
+captured: 4
+expected: 4
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56269_multipleAssignment/multipleAssignment.agu [✔]
+captured: 9
+expected: 9
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56269_parentheses/parentheses.agu [✔]
+captured: 6
+expected: 6
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56269_variables/variables.agu [✔]
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56307_applyTwiceFunction/applyTwiceFunction.agu [✘]
+captured: 105
+expected: 105
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56307_arithmeticOperations/arithmeticOperations.agu [✔]
+captured: 54321
+expected: 54321
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56307_countdownFunction/countdownFunction.agu [✔]
+captured: 7
+expected: 7
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56307_counterFunction/counterFunction.agu [✔]
+captured: 120
+expected: 120
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56307_factorialFunction/factorialFunction.agu [✔]
+captured: 10
+expected: 10
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56307_maxFunction/maxFunction.agu [✔]
+captured: 512
+expected: 512
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56307_powerFunction/powerFunction.agu [✔]
+captured: 30
+expected: 30
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56307_shadowingFunction/shadowFunction.agu [✔]
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56307_sumArrayFunction/sumArrayFunction.agu [✘]
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56307_zeroLengthArray/zeroLengthArray.agu [✘]
+captured: -2147483648
+expected: -2147483648
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56311_boundary_arithmetic/boundary_arithmetic.agu [✔]
+captured: false
+expected: false
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56311_equals/equals_method.agu [✔]
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56311_high_order_function_type/high_order_func_type.agu [✘]
+captured: truefalse
+expected: truefalse
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56311_if_inside_if/if_inside_if.agu [✔]
+captured: 4
+expected: 4
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56311_minus_minus/minus_minus.agu [✔]
+captured: 4
+expected: 4
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56311_shadow_variables/shadow_variables.agu [✔]
+captured: unit
+expected: unit
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56311_while_loop_with_empty_body/while_loop_with_empty_body.agu [✔]
+captured: 10987654321
+expected: 10987654321
+
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56311_while_loop_with_mutations/while_loop_with_mutations.agu [✔]
+captured: 543210
+expected: 543210
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56332_dec_to_zero/dec_to_zero.agu [✔]
+captured: 3628800
+expected: 3628800
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56332_factorial_in_aguda/factorial_in_aguda.agu [✔]
+captured: true
+expected: true
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56332_if_then_else_printing_string/if_then_else_printing_string.agu [✔]
+captured: 60
+expected: 60
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56332_precedence_calc/precedence_calc.agu [✔]
+captured: 15
+expected: 15
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56332_simple_sum/simple_sum.agu [✔]
+captured: 120
+expected: 120
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56334_factorial/factorial.agu [✔]
+captured: 6765
+expected: 6765
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56334_fibonacci/fibonacci.agu [✔]
+captured: 9999999999999999997755
+expected: 9999999999999999997755
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56334_helloWorld/helloWorld.agu [✔]
+captured: 9
+expected: 9
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/56334_max/max.agu [✔]
+captured: true
+expected: true
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58166_booleanConfusion/booleanConfusion.agu [✔]
+captured: 4
+expected: 4
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58166_digits/digits.agu [✔]
+captured: false
+expected: false
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58166_mathTest/mathTest.agu [✔]
+captured: truefalsetruefalse
+expected: truefalsetruefalse
+
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58166_modTest/modTest.agu [✔]
+captured: 10000000
+expected: 10000000
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58166_powerTen/powerTen.agu [✔]
+captured: 0
+expected: 0
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58168_3letsPrint1stValue/3letsPrint1stValue.agu [✔]
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58168_addOneValueToArray/addOneValueToArray.agu [✘]
+captured: 64
+expected: 64
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58168_cubesForEvenNum/cubesForEvenNum.agu [✔]
+captured: 5
+expected: 5
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58168_decrementor/decrementor.agu [✔]
+captured: 5
+expected: 5
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58168_incrementor/incrementor.agu [✔]
+captured: 1
+expected: 1
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58168_minusTwoNumbers/minusTwoNumbers.agu [✔]
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58168_numOfEvenNumInArray/numOfEvenNumInArray.agu [✘]
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58168_sumNumInArray/sumNumInArray.agu [✘]
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58168_sumOfMinAndOfMaxOfArray/sumOfMinAndOfMaxOfArray.agu [✘]
+captured: 10
+expected: 10
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58168_sumTwoNumbers/sumTwoNumbers.agu [✔]
+captured: 67676778
+expected: 67676778
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58170_categorizeNumbers/categorizeNumbers.agu [✔]
+captured: 11029384756565
+expected: 11029384756565
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58170_complexWhile/complexWhile.agu [✔]
+captured: 120
+expected: 120
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58170_factorial/factorial.agu [✔]
+captured: 15
+expected: 15
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58170_manyParams/manyParams.agu [✔]
+captured: 5
+expected: 5
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58170_nestedCalls/nestedCalls.agu [✔]
+captured: 2512false
+expected: 2512false
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58170_opWithoutParen/opWithoutParen.agu [✔]
+captured: 001901119111119000019000111900111119011111119111111111900000019000001119000011111900011111119001111111119011111111111911111111111119
+expected: 001901119111119000019000111900111119011111119111111111900000019000001119000011111900011111119001111111119011111111111911111111111119
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58170_pyramid/pyramid.agu [✔]
+captured: 102010
+expected: 102010
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58170_sameNameVar/sameNameVar.agu [✔]
+captured: 6765
+expected: 6765
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58182_fibonacci/fibonacci.agu [✔]
+captured: 1
+expected: 1
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58182_function_unit_type/function_unit_type.agu [✔]
+captured: truetruetruefalsefalse
+expected: truetruetruefalsefalse
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58182_logic_operations/logic_operations.agu [✔]
+captured: 7
+expected: 7
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58182_nested_function_calls/nested_function_calls.agu [✔]
+captured: 22-12460772
+expected: 22-12460772
+
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58182_simple_arithmetic/simple_arithmetic.agu [✔]
+captured: 01234
+expected: 01234
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58182_while_loop_break/while_loop_break.agu [✔]
+captured: truefalsetruefalsefalsetrue
+expected: truefalsetruefalsefalsetrue
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58185_boolean_logic/boolean_logic.agu [✔]
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58185_bubble_sort/bubble_sort.agu [✘]
+captured: 120
+expected: 120
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58185_factorial/factorial.agu [✔]
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58185_mutual_recursion/mutual_recursion.agu [✘]
+captured: 851211212
+expected: 851211212
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58185_power_operator/power_operator.agu [✔]
+captured: 130
+expected: 130
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58185_sequencing/sequencing.agu [✔]
+captured: 1555021
+expected: 1555021
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58185_simple_arithmetic/simple_arithmetic.agu [✔]
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58185_string_concatenation/string_concatenation.agu [✘]
+captured: 321
+expected: 321
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58185_unit_type_test/unit_type_test.agu [✔]
+captured: 50550555055550555550
+expected: 50550555055550555550
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58185_while_loops/while_loops.agu [✔]
+captured: 30
+expected: 30
+
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58250_average/58250_average.agu [✔]
+captured: 15
+expected: 15
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58250_basic_addition/58250_basic_addition.agu [✔]
+captured: -5
+expected: -5
+
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58250_calculate_operations/58250_calculate_operations.agu [✔]
+captured: false
+expected: false
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58250_check_value/58250_check_value.agu [✔]
+captured: 125
+expected: 125
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58250_cube/58250_cube.agu [✔]
+captured: 5
+expected: 5
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58250_divide_two_numbers/58250_divide_two_numbers.agu [✔]
+captured: true
+expected: true
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58250_is_even/58250_is_even.agu [✔]
+captured: 20
+expected: 20
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58250_max_between_2/58250_max_between_2.agu [✔]
+captured: 33028128
+expected: 33028128
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/58250_sum_all_to_n/58250_sum_all_to_n.agu [✔]
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/64361_array_sum/array_sum.agu [✘]
+captured: falsetrue
+expected: falsetrue
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/64361_check_positive_value/check_positive.agu [✔]
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/64361_count_vowels/count_vowels.agu [✘]
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/64361_exponential/exponential.agu [✘]
+captured: 12015040
+expected: 12015040
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/64361_factorial/factorial.agu [✔]
+captured: 01555
+expected: 01555
+
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/64361_fibonacci/fibonacci.agu [✔]
+captured: 6114
+expected: 6114
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/64361_greatest_common_divisor/greatest_common_divisor.agu [✔]
+captured: falsetruefalsetrue
+expected: falsetruefalsetrue
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/64361_prime_number/prime_number.agu [✔]
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/64361_reverse_array/reverse_array.agu [✘]
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/64361_sum_function/sum_function.agu [✘]
+captured: 4613732
+expected: 4613732
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/64371_even_fibonnaci_numbers/even_fibonnaci_numbers.agu [✔]
+captured: 12
+expected: 12
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/64371_greatest_common_divisor/greatest_common_divisor.agu [✔]
+captured: 233168
+expected: 233168
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/64371_multiples_3_or_5/multiples_3_or_5.agu [✔]
+captured: 3
+expected: 3
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/64854_add/add.agu [✔]
+captured: 2
+expected: 2
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/64854_coin_flip/coin_flip.agu [✔]
+captured: 17034604
+expected: 17034604
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/64854_heart/heart.agu [✔]
+captured: 1
+expected: 1
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/64854_inc/inc.agu [✔]
+captured: true
+expected: true
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/64854_is_pair/is_pair.agu [✔]
+captured: 8
+expected: 8
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/64854_positive_power/positive_power.agu [✔]
+captured: unit
+expected: unit
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/64854_printA/printA.agu [✔]
+captured: true
+expected: true
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/64854_produce_letter/produce_letter.agu [✔]
+captured: false
+expected: false
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/64854_switch/switch.agu [✔]
+captured: 5
+expected: 5
+
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/tcomp000-scope-cond/tcomp000-scope-cond.agu [✔]
+captured: 5
+expected: 5
+
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/tcomp000-scope-leave/tcomp000-scope-leave.agu [✔]
+captured: true
+expected: true
+
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/tcomp000_assoc_eq/assoc_eq.agu [✔]
+captured: 9
+expected: 9
+
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/tcomp000_callCond/tcomp000_callCond.agu [✔]
+captured: unit
+expected: unit
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/tcomp000_collatz/collatz.agu [✔]
+captured: 5
+expected: 5
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/tcomp000_double_wild/tcomp000_double_wild.agu [✔]
+captured: true
+expected: true
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/tcomp000_evenOdd/evenOdd.agu [✔]
+captured: true
+expected: true
+
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/tcomp000_evenOddCond/evenOddCond.agu [✔]
+captured: true
+expected: true
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/tcomp000_evenOddResult/evenOddResult.agu [✔]
+captured: false
+expected: false
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/tcomp000_expIf/expif.agu [✔]
+captured: unit
+expected: unit
+
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/tcomp000_if_then_if/if_then_if.agu [✔]
+captured: 30
+expected: 30
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/tcomp000_intFuns/intFuns.agu [✔]
+captured: unit
+expected: unit
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/tcomp000_letOfLet/letOfLet.agu [✔]
+captured: unit
+expected: unit
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/tcomp000_letOfLetFun/letOfLetFun.agu [✔]
+captured: 100
+expected: 100
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/tcomp000_letPlusLet/letPlusLet.agu [✔]
+captured: false
+expected: false
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/tcomp000_notNotNot/notNotNot.agu [✔]
+captured: 64
+expected: 64
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/tcomp000_power-iterative/power-iterative.agu [✔]
+captured: -1712324607
+expected: -1712324607
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/tcomp000_power-of-power/power-of-power.agu [✔]
+captured: 18
+expected: 18
+
+  /Users/vv/workspace/tcomp/aguda-testing/test/valid/tcomp000_sumThree/sumThree.agu [✔]
+
+Failures:
+
+  src/CodeGen.hs:293:24: 
+  1) Valid Aguda Programs /Users/vv/workspace/tcomp/aguda-testing/test/valid/54394_array_operations/array_operations.agu
+       uncaught exception: ErrorCall
+       Not implemented: Generating code for (32,22) expression 'new Int [5 | 0]'
+       CallStack (from HasCallStack):
+         error, called at src/CodeGen.hs:293:24 in aguda-0.1.0.0-JiRc3g1Z34X3bcTeIEsxLY:CodeGen
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/tcomp/aguda-testing/test/valid/54394_array_operations/array_operations.agu/" --seed 835165930
+
+  src/CodeGen.hs:293:24: 
+  2) Valid Aguda Programs /Users/vv/workspace/tcomp/aguda-testing/test/valid/54394_bool_array/bool_array.agu
+       uncaught exception: ErrorCall
+       Not implemented: Generating code for (17,13) expression 'new Bool [4 | true]'
+       CallStack (from HasCallStack):
+         error, called at src/CodeGen.hs:293:24 in aguda-0.1.0.0-JiRc3g1Z34X3bcTeIEsxLY:CodeGen
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/tcomp/aguda-testing/test/valid/54394_bool_array/bool_array.agu/" --seed 835165930
+
+  src/CodeGen.hs:293:24: 
+  3) Valid Aguda Programs /Users/vv/workspace/tcomp/aguda-testing/test/valid/54394_uv_mapping/uv_mapping.agu
+       uncaught exception: ErrorCall
+       Not implemented: Generating code for (21,1) declaration 'let _ : Int[] =
+         rot90(rot270(vec2(70, 30)))'
+       CallStack (from HasCallStack):
+         error, called at src/CodeGen.hs:293:24 in aguda-0.1.0.0-JiRc3g1Z34X3bcTeIEsxLY:CodeGen
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/tcomp/aguda-testing/test/valid/54394_uv_mapping/uv_mapping.agu/" --seed 835165930
+
+  src/CodeGen.hs:293:24: 
+  4) Valid Aguda Programs /Users/vv/workspace/tcomp/aguda-testing/test/valid/54394_zip/zip.agu
+       uncaught exception: ErrorCall
+       Not implemented: Generating code for (15,1) declaration 'let _ : Int[][] =
+         zip(new Int [4 | 0], new Int [4 | 1])'
+       CallStack (from HasCallStack):
+         error, called at src/CodeGen.hs:293:24 in aguda-0.1.0.0-JiRc3g1Z34X3bcTeIEsxLY:CodeGen
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/tcomp/aguda-testing/test/valid/54394_zip/zip.agu/" --seed 835165930
+
+  src/CodeGen.hs:293:24: 
+  5) Valid Aguda Programs /Users/vv/workspace/tcomp/aguda-testing/test/valid/56269_bottomRow/bottomRow.agu
+       uncaught exception: ErrorCall
+       Not implemented: Generating code for (25,1) declaration 'let _ : Unit =
+         printMatrix(bottomRow(3))'
+       CallStack (from HasCallStack):
+         error, called at src/CodeGen.hs:293:24 in aguda-0.1.0.0-JiRc3g1Z34X3bcTeIEsxLY:CodeGen
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/tcomp/aguda-testing/test/valid/56269_bottomRow/bottomRow.agu/" --seed 835165930
+
+  src/CodeGen.hs:293:24: 
+  6) Valid Aguda Programs /Users/vv/workspace/tcomp/aguda-testing/test/valid/56269_insertionSort/insertionSort.agu
+       uncaught exception: ErrorCall
+       Not implemented: Generating code for (21,23) expression 'new Int [4 | 0]'
+       CallStack (from HasCallStack):
+         error, called at src/CodeGen.hs:293:24 in aguda-0.1.0.0-JiRc3g1Z34X3bcTeIEsxLY:CodeGen
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/tcomp/aguda-testing/test/valid/56269_insertionSort/insertionSort.agu/" --seed 835165930
+
+  src/CodeGen.hs:293:24: 
+  7) Valid Aguda Programs /Users/vv/workspace/tcomp/aguda-testing/test/valid/56307_applyTwiceFunction/applyTwiceFunction.agu
+       uncaught exception: ErrorCall
+       Not implemented: Generating code for (2,30) type '(Int) -> Int'
+       CallStack (from HasCallStack):
+         error, called at src/CodeGen.hs:293:24 in aguda-0.1.0.0-JiRc3g1Z34X3bcTeIEsxLY:CodeGen
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/tcomp/aguda-testing/test/valid/56307_applyTwiceFunction/applyTwiceFunction.agu/" --seed 835165930
+
+  src/CodeGen.hs:293:24: 
+  8) Valid Aguda Programs /Users/vv/workspace/tcomp/aguda-testing/test/valid/56307_sumArrayFunction/sumArrayFunction.agu
+       uncaught exception: ErrorCall
+       Not implemented: Generating code for (11,45) expression 'new Int [5 | 10]'
+       CallStack (from HasCallStack):
+         error, called at src/CodeGen.hs:293:24 in aguda-0.1.0.0-JiRc3g1Z34X3bcTeIEsxLY:CodeGen
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/tcomp/aguda-testing/test/valid/56307_sumArrayFunction/sumArrayFunction.agu/" --seed 835165930
+
+  src/CodeGen.hs:290:21: 
+  9) Valid Aguda Programs /Users/vv/workspace/tcomp/aguda-testing/test/valid/56307_zeroLengthArray/zeroLengthArray.agu
+       uncaught exception: ErrorCall
+       Internal error (should not happen) Unresolved symbol length
+       CallStack (from HasCallStack):
+         error, called at src/CodeGen.hs:290:21 in aguda-0.1.0.0-JiRc3g1Z34X3bcTeIEsxLY:CodeGen
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/tcomp/aguda-testing/test/valid/56307_zeroLengthArray/zeroLengthArray.agu/" --seed 835165930
+
+  src/CodeGen.hs:293:24: 
+  10) Valid Aguda Programs /Users/vv/workspace/tcomp/aguda-testing/test/valid/56311_high_order_function_type/high_order_func_type.agu
+       uncaught exception: ErrorCall
+       Not implemented: Generating code for (3,24) type '(Int) -> Int'
+       CallStack (from HasCallStack):
+         error, called at src/CodeGen.hs:293:24 in aguda-0.1.0.0-JiRc3g1Z34X3bcTeIEsxLY:CodeGen
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/tcomp/aguda-testing/test/valid/56311_high_order_function_type/high_order_func_type.agu/" --seed 835165930
+
+  src/CodeGen.hs:293:24: 
+  11) Valid Aguda Programs /Users/vv/workspace/tcomp/aguda-testing/test/valid/58168_addOneValueToArray/addOneValueToArray.agu
+       uncaught exception: ErrorCall
+       Not implemented: Generating code for (15,19) expression 'new Int [4 | 1]'
+       CallStack (from HasCallStack):
+         error, called at src/CodeGen.hs:293:24 in aguda-0.1.0.0-JiRc3g1Z34X3bcTeIEsxLY:CodeGen
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/tcomp/aguda-testing/test/valid/58168_addOneValueToArray/addOneValueToArray.agu/" --seed 835165930
+
+  src/CodeGen.hs:293:24: 
+  12) Valid Aguda Programs /Users/vv/workspace/tcomp/aguda-testing/test/valid/58168_numOfEvenNumInArray/numOfEvenNumInArray.agu
+       uncaught exception: ErrorCall
+       Not implemented: Generating code for (13,11) expression 'new Int [4 | 2]'
+       CallStack (from HasCallStack):
+         error, called at src/CodeGen.hs:293:24 in aguda-0.1.0.0-JiRc3g1Z34X3bcTeIEsxLY:CodeGen
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/tcomp/aguda-testing/test/valid/58168_numOfEvenNumInArray/numOfEvenNumInArray.agu/" --seed 835165930
+
+  src/CodeGen.hs:293:24: 
+  13) Valid Aguda Programs /Users/vv/workspace/tcomp/aguda-testing/test/valid/58168_sumNumInArray/sumNumInArray.agu
+       uncaught exception: ErrorCall
+       Not implemented: Generating code for (13,13) expression 'new Int [4 | 1]'
+       CallStack (from HasCallStack):
+         error, called at src/CodeGen.hs:293:24 in aguda-0.1.0.0-JiRc3g1Z34X3bcTeIEsxLY:CodeGen
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/tcomp/aguda-testing/test/valid/58168_sumNumInArray/sumNumInArray.agu/" --seed 835165930
+
+  src/CodeGen.hs:293:24: 
+  14) Valid Aguda Programs /Users/vv/workspace/tcomp/aguda-testing/test/valid/58168_sumOfMinAndOfMaxOfArray/sumOfMinAndOfMaxOfArray.agu
+       uncaught exception: ErrorCall
+       Not implemented: Generating code for (26,37) expression 'new Int [4 | 1]'
+       CallStack (from HasCallStack):
+         error, called at src/CodeGen.hs:293:24 in aguda-0.1.0.0-JiRc3g1Z34X3bcTeIEsxLY:CodeGen
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/tcomp/aguda-testing/test/valid/58168_sumOfMinAndOfMaxOfArray/sumOfMinAndOfMaxOfArray.agu/" --seed 835165930
+
+  src/CodeGen.hs:293:24: 
+  15) Valid Aguda Programs /Users/vv/workspace/tcomp/aguda-testing/test/valid/58185_bubble_sort/bubble_sort.agu
+       uncaught exception: ErrorCall
+       Not implemented: Generating code for (30,1) declaration 'let main : Unit =
+         let arr : Int[] = new Int [5 | 0] ;
+         set arr[0] = 5 ;
+         set arr[1] = 1 ;
+         set arr[2] = 4 ;
+         set arr[3] = 2 ;
+         set arr[4] = 8 ;
+         print("Before sorting: ") ;
+         printArray(arr) ;
+         print("After sorting: ") ;
+         printArray(bubbleSort(arr))'
+       CallStack (from HasCallStack):
+         error, called at src/CodeGen.hs:293:24 in aguda-0.1.0.0-JiRc3g1Z34X3bcTeIEsxLY:CodeGen
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/tcomp/aguda-testing/test/valid/58185_bubble_sort/bubble_sort.agu/" --seed 835165930
+
+  src/CodeGen.hs:293:24: 
+  16) Valid Aguda Programs /Users/vv/workspace/tcomp/aguda-testing/test/valid/58185_mutual_recursion/mutual_recursion.agu
+       uncaught exception: ErrorCall
+       Not implemented: Generating code for (12,11) expression '" is "'
+       CallStack (from HasCallStack):
+         error, called at src/CodeGen.hs:293:24 in aguda-0.1.0.0-JiRc3g1Z34X3bcTeIEsxLY:CodeGen
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/tcomp/aguda-testing/test/valid/58185_mutual_recursion/mutual_recursion.agu/" --seed 835165930
+
+  src/CodeGen.hs:293:24: 
+  17) Valid Aguda Programs /Users/vv/workspace/tcomp/aguda-testing/test/valid/58185_string_concatenation/string_concatenation.agu
+       uncaught exception: ErrorCall
+       Not implemented: Generating code for (11,1) declaration 'let main : Unit =
+         printName("Cristiano", "Ronaldo") ;
+         print("\n") ;
+         printName("Lionel", "Messi")'
+       CallStack (from HasCallStack):
+         error, called at src/CodeGen.hs:293:24 in aguda-0.1.0.0-JiRc3g1Z34X3bcTeIEsxLY:CodeGen
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/tcomp/aguda-testing/test/valid/58185_string_concatenation/string_concatenation.agu/" --seed 835165930
+
+  src/CodeGen.hs:293:24: 
+  18) Valid Aguda Programs /Users/vv/workspace/tcomp/aguda-testing/test/valid/64361_array_sum/array_sum.agu
+       uncaught exception: ErrorCall
+       Not implemented: Generating code for (17,28) expression 'new Int[] [2 | new Int [2 | 0]]'
+       CallStack (from HasCallStack):
+         error, called at src/CodeGen.hs:293:24 in aguda-0.1.0.0-JiRc3g1Z34X3bcTeIEsxLY:CodeGen
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/tcomp/aguda-testing/test/valid/64361_array_sum/array_sum.agu/" --seed 835165930
+
+  src/CodeGen.hs:293:24: 
+  19) Valid Aguda Programs /Users/vv/workspace/tcomp/aguda-testing/test/valid/64361_count_vowels/count_vowels.agu
+       uncaught exception: ErrorCall
+       Not implemented: Generating code for (16,27) expression 'new String [5 | "h" ;
+       "e" ;
+       "l" ;
+       "l" ;
+       "o"]'
+       CallStack (from HasCallStack):
+         error, called at src/CodeGen.hs:293:24 in aguda-0.1.0.0-JiRc3g1Z34X3bcTeIEsxLY:CodeGen
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/tcomp/aguda-testing/test/valid/64361_count_vowels/count_vowels.agu/" --seed 835165930
+
+  src/CodeGen.hs:293:24: 
+  20) Valid Aguda Programs /Users/vv/workspace/tcomp/aguda-testing/test/valid/64361_exponential/exponential.agu
+       uncaught exception: ErrorCall
+       Not implemented: Generating code for (14,27) expression 'new Int [3 | 0]'
+       CallStack (from HasCallStack):
+         error, called at src/CodeGen.hs:293:24 in aguda-0.1.0.0-JiRc3g1Z34X3bcTeIEsxLY:CodeGen
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/tcomp/aguda-testing/test/valid/64361_exponential/exponential.agu/" --seed 835165930
+
+  src/CodeGen.hs:293:24: 
+  21) Valid Aguda Programs /Users/vv/workspace/tcomp/aguda-testing/test/valid/64361_reverse_array/reverse_array.agu
+       uncaught exception: ErrorCall
+       Not implemented: Generating code for (15,1) declaration 'let _ : Unit =
+         let numbers : Int[] = new Int [5 | 0] ;
+         set numbers[0] = 1 ;
+         set numbers[1] = 2 ;
+         set numbers[2] = 3 ;
+         set numbers[3] = 4 ;
+         set numbers[4] = 5 ;
+         let reversed : Int[] = reverse_array(numbers, 5) ;
+         print(reversed[0]) ;
+         print(reversed[1]) ;
+         print(reversed[2]) ;
+         print(reversed[3]) ;
+         print(reversed[4])'
+       CallStack (from HasCallStack):
+         error, called at src/CodeGen.hs:293:24 in aguda-0.1.0.0-JiRc3g1Z34X3bcTeIEsxLY:CodeGen
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/tcomp/aguda-testing/test/valid/64361_reverse_array/reverse_array.agu/" --seed 835165930
+
+  src/CodeGen.hs:293:24: 
+  22) Valid Aguda Programs /Users/vv/workspace/tcomp/aguda-testing/test/valid/64361_sum_function/sum_function.agu
+       uncaught exception: ErrorCall
+       Not implemented: Generating code for (13,1) declaration 'let _ : Unit =
+         let numbers : Int[] = new Int [5 | 0] ;
+         set numbers[0] = 1 ;
+         set numbers[1] = 2 ;
+         set numbers[2] = 3 ;
+         set numbers[3] = 4 ;
+         set numbers[4] = 5 ;
+         print(sumArray(numbers))'
+       CallStack (from HasCallStack):
+         error, called at src/CodeGen.hs:293:24 in aguda-0.1.0.0-JiRc3g1Z34X3bcTeIEsxLY:CodeGen
+
+  To rerun use: --match "/Valid Aguda Programs//Users/vv/workspace/tcomp/aguda-testing/test/valid/64361_sum_function/sum_function.agu/" --seed 835165930
+
+Randomized with seed 835165930
+
+Finished in 1.8596 seconds
+136 examples, 22 failures
+
+
+
+
