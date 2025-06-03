@@ -5,8 +5,10 @@
 - **PLY**: https://github.com/dabeaz/ply
 - **LLVMLITE:** https://github.com/numba/llvmlite
 
-
 This project is a compiler for the AGUDA programming language. It includes a lexer, a parser (both made with PLY), a type checker and generates LLVM code via llvmlite binding. The compiler also supports running tests for valid and invalid programs.
+
+**Final Grade:** 19/20
+
 
 ## How to update your tests (**needs FCUL VPN**)
 - **Git pull `aguda-testing`**
