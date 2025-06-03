@@ -8,12 +8,12 @@
 
 This project is a compiler for the AGUDA programming language. It includes a lexer, a parser (both made with PLY), a type checker and generates LLVM code via llvmlite binding. The compiler also supports running tests for valid and invalid programs.
 
-## How to update your tests
+## How to update your tests (**needs FCUL VPN**)
 - **Git pull `aguda-testing`**
 
         cd aguda-testing; git pull
 
-    **OR** (if `aguda-testing` directory does not yet exist) run in project's root folder (**needs FCUL VPN**)
+    **OR** (if `aguda-testing` directory does not yet exist) run in project's root folder
 
         git clone https://git.alunos.di.fc.ul.pt/tcomp000/aguda-testing  
 
@@ -169,24 +169,3 @@ It also prints to the console:
     Total Tests Run: 132
     Total Passed Tests: 114
     Total Failed Tests: 18
-
-
-## A brief description of how you implemented short-circuit boolean expressions (or why you did not follow this approach)
-
-I implemented short-circuit boolean expressions by creating a dedicated `boolGen` method that handles && and || operators using LLVM basic blocks for proper control flow. The implementation creates separate basic blocks for evaluating the right operand and for merging results, ensuring that the right operand is only evaluated when necessary:
-
-- For AND (&&): The left operand is evaluated first. If it's true, control flows to evaluate the right operand; if false, control jumps directly to the end block with a false result.
-
-        self.builder.cbranch(left_val, eval_right_block, end_block)
-
-- For OR (||): The left operand is evaluated first. If it's true, control jumps directly to the end block with a true result; if false, control flows to evaluate the right operand.
-
-        self.builder.cbranch(left_val, end_block, eval_right_block)
-
-The final result is determined using a phi node that merges values from different execution paths: either the left operand value (when short-circuiting occurs) or the right operand value (when the right operand is fully evaluated).
-
-## If your program does not pass all tests, explain why
-
-- My compiler currently passses the same tests as the professor's
-
-
