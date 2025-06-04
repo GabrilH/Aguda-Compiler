@@ -7,6 +7,8 @@
 
 This project is a compiler for the AGUDA programming language. It includes a lexer, a parser (both made with PLY), a type checker and generates LLVM code via llvmlite binding. The compiler also supports running tests for valid and invalid programs.
 
+You can find the AGUDA language description and each milestone information inside `docs` directory.
+
 **Final Grade:** 19/20
 
 
